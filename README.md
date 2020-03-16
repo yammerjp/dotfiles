@@ -1,5 +1,11 @@
 # dotfiles
 
+## Install and deploy
+
+```
+$ curl -L dot.basd4g.net | sh
+```
+
 ## clone
 
 ```sh
