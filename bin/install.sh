@@ -30,3 +30,5 @@ else
   echo "Dotfiles already exist."
   echo "${DOT_DIRECTORY}"
 fi 
+
+sh ~/dotfiles/bin/deploy.sh
