@@ -1,3 +1,9 @@
+"===== dein.vim =====
+if filereadable(expand('dein/load.vim'))
+    source dein/load.vim
+endif
+
+
 "===== 日本語化 =====
 " A project which translate Vim documents into Japanese.
 call plug#begin('~/.vim/plugged')
@@ -84,3 +90,4 @@ set hlsearch
 set showmatch
 " タイトルを表示
 set title
+
