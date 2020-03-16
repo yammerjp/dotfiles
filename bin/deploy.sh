@@ -4,6 +4,8 @@
 SCRIPT_DIR=`dirname $0`
 cd $SCRIPT_DIR
 
+cd ..
+
 # symbolic link
 # ln -s .bashrc ~/.bashrc
 # ln -s .vimrc ~/.vimrc
