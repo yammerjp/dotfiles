@@ -22,3 +22,8 @@ cd ~/dotfiles
 $ mv ~/.hogerc ~/dotfiles/
 $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 ```
+
+## ToDo
+
+- exclude a dependency of git in dein/load.vim
+- install Powerline font before setup vim
