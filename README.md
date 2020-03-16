@@ -4,6 +4,9 @@
 
 ```
 $ curl -L dot.basd4g.net | sh
+
+# or
+# curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
 ```
 
 ## clone
