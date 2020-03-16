@@ -2,3 +2,4 @@
 dein/repos/
 dein/cache_vim
 dein/state_vim.vim
+dein/.cache
