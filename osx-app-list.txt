@@ -1,0 +1,31 @@
+Docker.app
+Dropbox.app
+ForkLift.app
+GIMP-2.10.app
+Google Chrome.app
+GoogleJapaneseInput.localized
+Hyper.app
+Image Capture.app
+Karabiner-Elements.app
+Karabiner-EventViewer.app
+LINE.app
+Mission Control.app
+SD Card Formatter.app
+Postman.app
+ScanSnap
+ShiftIt.app
+Skype.app
+Slack.app
+VirtualBox.app
+Visual Studio Code.app
+Xcode.app
+Microsoft Excel.app
+Microsoft PowerPoint.app
+Microsoft Word.app
+Keynote.app
+Numbers.app
+Pages.app
+Kindle.app
+iMovie.app
+iTunes.app
+MacPass.app
