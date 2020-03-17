@@ -1,0 +1,14 @@
+# This is Git's per-user configuration file.
+[user]
+        name = Keisuke Nakayama
+        email = baskk4.dt@gmail.com
+# Please adapt and uncomment the following lines:
+#       name = Keisuke Nakayama 
+#       email = baskk4.dt@gmail.com 
+[filter "lfs"]
+        required = true
+        clean = git-lfs clean -- %f
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+[push]
+        default = current
