@@ -1,10 +1,10 @@
-"===== dein.vim =====
+"========== dein.vim ==========
 if filereadable(expand('~/dotfiles/dein/init.vim'))
     source ~/dotfiles/dein/init.vim
 endif
 
 
-"===== 日本語化 =====
+"========== 日本語化 ==========
 " A project which translate Vim documents into Japanese.
 call plug#begin('~/.vim/plugged')
 Plug 'vim-jp/vimdoc-ja'
@@ -12,7 +12,7 @@ call plug#end()
 set helplang=ja,en
 
 
-"===== インデント =====
+"========== インデント ==========
 " インデント幅
 set shiftwidth=2
 " タブ文字の表示幅
@@ -27,7 +27,7 @@ set autoindent
 set smartindent
 
 
-"===== encoding =====
+"========== encoding ==========
 set encoding=utf8
 scriptencoding utf8
 set fileencoding=utf-8
@@ -39,13 +39,13 @@ set nobomb
 set t_Co=256
 
 
-"===== クリップボード =====
+"========== クリップボード ==========
 " クリップボード連携
 :set clipboard+=unnamed
 " Mac(homebrew版)以外では検証していない。 環境による条件分岐が必要かも
 
 
-"===== swapファイル =====
+"========== swapファイル ==========
 " swapファイルのディレクトリが存在しなければ作成
 let s:swap_dir = expand('~/.vim/tmp')
 if !isdirectory(s:swap_dir)
@@ -57,7 +57,7 @@ endif
 " :set noswapfile
 
 
-"===== キー入力 =====
+"========== キー入力 ==========
 "方向キーの無効化 
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -84,7 +84,8 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 挿入モードでバックスペース削除を有効
 set backspace=indent,eol,start
 
-"===== その他 =====
+
+"========== その他 ==========
 " 行番号を表示
 set number
 " ビープ音を消す
@@ -95,4 +96,5 @@ set hlsearch
 set showmatch
 " タイトルを表示
 set title
+
 
