@@ -1,5 +1,5 @@
 # dein.vim
-dein/repos/
-dein/cache_vim
-dein/state_vim.vim
-dein/.cache
+dein/*
+!dein/dein.toml
+!dein/dein_lazy.toml
+!dein/init.toml
