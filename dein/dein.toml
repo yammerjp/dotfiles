@@ -1,5 +1,11 @@
+#=========== dein.vim ==========
+# vimプラグイン管理
+
 [[plugins]]
 repo = 'Shougo/dein.vim'
+
+#========== vim-airline ==========
+#画面下部にステータスバーを表示
 
 [[plugins]]
 repo    = 'vim-airline/vim-airline'
