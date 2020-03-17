@@ -19,3 +19,15 @@ hook_add = '''
   let g:airline_theme = 'bubblegum'
 '''
 
+#========== nerdtree ==========
+#ファイラー
+
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  nnoremap <silent><C-n> :NERDTreeToggle<CR>
+  " ブックマークを初期表示
+  let g:NERDTreeShowBookmarks=1
+  " autocmd vimenter * NERDTree
+  " Vim起動時にNERDTreeを表示
+'''
