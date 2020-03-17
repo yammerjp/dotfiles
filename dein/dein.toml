@@ -6,8 +6,16 @@ repo    = 'vim-airline/vim-airline'
 depends = ['vim-airline-themes']
 hook_add = '''
   let g:airline_powerline_fonts = 1
+
+  " INSERTモードとNORMALモードの切替遅延を無くす
+  " https://github.com/bling/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
+  " https://yukidarake.hateblo.jp/entry/2015/07/10/201356
+  set timeout timeoutlen=50
 '''
 
 [[plugins]]
 repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  let g:airline_theme = 'bubblegum'
+'''
 
