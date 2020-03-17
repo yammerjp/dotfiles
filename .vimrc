@@ -46,6 +46,11 @@ set t_Co=256
 
 
 "===== swapファイル =====
+" swapファイルのディレクトリが存在しなければ作成
+let s:swap_dir = expand('~/.vim/tmp')
+if !isdirectory(s:swap_dir)
+  execute '!mkdir -p ' . s:swap_dir
+endif
 " swapファイルの生成先を指定
 :set directory=~/.vim/tmp
 " swapファイルを作成しない

@@ -21,5 +21,3 @@ do
     ln -s "$DOTFILES_DIR/$f" "$HOME/$f"
 done
 
-# vim's swap directory
-mkdir -p "$HOME/.vim/tmp"
