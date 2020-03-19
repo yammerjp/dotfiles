@@ -27,6 +27,11 @@ do
   LINK_TO="$HOME/$FILE"
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
 
+  if [ `readlink $LINK_TO` = $LINK_FROM ];then
+    echo "symlink is already put. $LINK_FROM  -> $LINK_TO"
+    continue
+  fi
+
   if [ -e $LINK_FROM ];then
     echo "mv -f $LINK_TO $LINK_TO_BACKUP"
     mv -f "$LINK_TO" "$LINK_TO_BACKUP"
