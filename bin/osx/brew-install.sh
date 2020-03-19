@@ -13,7 +13,7 @@ fi
 ./echo.sh 'Install packages with brew'
 # brew install hogehoge
 BREW_LIST="$SCRIPT_DIR/brew-list"
-cat "$BREW_LIST" | while read line
+cat "$BREW_LIST" | awk '{ print $1 }' | while read line
 do
   brew install "$line"
 done
@@ -26,7 +26,7 @@ brew cask install font-hackgen
 ./echo.sh 'Install packages with brew-cask'
 # brew cask install hogehoge
 CASK_LIST="$SCRIPT_DIR/cask-list"
-cat "$CASK_LIST" | while read line
+cat "$CASK_LIST" | awk '{ print $1 }' | while read line
 do
   brew cask install "$line"
 done

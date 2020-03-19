@@ -20,7 +20,7 @@ fi
 
 ./echo.sh 'Install with mas-cli'
 MAS_LIST="$SCRIPT_DIR/mas-list"
-cat "$MAS_LIST" | while read line
+cat "$MAS_LIST" | awk '{ print $1 }' | while read line
 do
   mas install "$line"
 done
