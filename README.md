@@ -7,6 +7,9 @@
 $ curl -L dot.basd4g.net | sh
 # or
 # curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
+# or
+# git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
+
 
 $ cd ~/dotfiles
 
@@ -26,19 +29,16 @@ $ mas open
 $ make mas-install
 ```
 
-## clone
-
-```sh
-git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
-cd ~/dotfiles
-```
-
-## add new dotfile
+## Add new dotfile
 
 ```sh
 $ mv ~/.hogerc ~/dotfiles/
 $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 ```
+
+## LICENSE
+
+MIT
 
 ## ToDo
 
