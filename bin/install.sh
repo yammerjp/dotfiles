@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # change directory to the shell file's directory
-SCRIPT_DIR=`dirname $0`
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
+
+alias ech="$SCRIPT_DIR/echo.sh"
 
 DOT_DIRECTORY="${HOME}/dotfiles"
 
@@ -11,10 +13,10 @@ REMOTE_URL="https://github.com/basd4g/dotfiles.git"
 
 # Download dotfiles if it isn't exist.
 if [ -d ${DOT_DIRECTORY} ]; then
-  echo "Dotfiles already exist."
-  echo "${DOT_DIRECTORY}"
+  ech "Dotfiles already exist."
+  ech "${DOT_DIRECTORY}"
 else
-  echo "Downloading dotfiles..."
+  ech "Downloading dotfiles..."
   mkdir ${DOT_DIRECTORY}
 
   
@@ -27,7 +29,7 @@ else
     rm -f ${HOME}/dotfiles.tar.gz
   fi
 
-  echo $(tput setaf 2)Download dotfiles complete!. $(tput sgr0)
+  ech $(tput setaf 2)Download dotfiles complete!. $(tput sgr0)
 fi 
 
 sh ~/dotfiles/bin/deploy.sh

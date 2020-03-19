@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # Change directory to the shell file's directory
-SCRIPT_DIR=`dirname $0`
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
 
 alias ech="../echo.sh"

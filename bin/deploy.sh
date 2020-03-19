@@ -1,8 +1,10 @@
 #!/bin/sh
 
 # change directory to the shell file's directory
-SCRIPT_DIR=`dirname $0`
+SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
+
+alias ech="$SCRIPT_DIR/echo.sh"
 
 cd ..
 
@@ -18,7 +20,7 @@ do
     [[ "$f" == ".gitignore" ]] && continue
     [[ "$f" == ".DS_Store" ]] && continue
 
-    echo "link $DOTFILES_DIR/$f -> $HOME/$f"
+    ech "link $DOTFILES_DIR/$f -> $HOME/$f"
     ln -s "$DOTFILES_DIR/$f" "$HOME/$f"
 done
 
