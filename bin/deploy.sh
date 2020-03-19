@@ -23,12 +23,16 @@ do
     mkdir -p $DIRNAME
   fi
 
-  if [ -e "$HOME/$FILE" ];then
-    echo "mv -f $HOME/$FILE $HOME/$FILE.org-dot-deploy"
-    mv -f "$HOME/$FILE" "$HOME/$FILE.org-dot-deploy"
+  LINK_FROM="$DOTFILES_DIR/$FILE"
+  LINK_TO="$HOME/$FILE"
+  LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
+
+  if [ -e $LINK_FROM ];then
+    echo "mv -f $LINK_TO $LINK_TO_BACKUP"
+    mv -f "$LINK_TO" "$LINK_TO_BACKUP"
   fi
 
-  echo "ln -s $DOTFILES_DIR/$FILE $HOME/$FILE"
-  ln -s "$DOTFILES_DIR/$FILE" "$HOME/$FILE"
+  echo "ln -s $LINK_FROM $LINK_TO"
+  ln -s "$LINK_FROM" "$LINK_TO"
 done
 
