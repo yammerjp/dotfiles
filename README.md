@@ -47,3 +47,4 @@ MIT
 - install Powerline font before setup vim
 - CI
 - fit for ubuntu
+- anyenv
