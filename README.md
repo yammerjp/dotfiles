@@ -39,7 +39,8 @@ $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 
 ## ToDo
 
+- load all vim plugin from dei.vim
 - exclude a dependency of git in dein/load.vim
 - install Powerline font before setup vim
 - CI
-- ubuntu version
+- fit for ubuntu
