@@ -23,6 +23,11 @@ do
     mkdir -p $DIRNAME
   fi
 
+  if [ -e "$HOME/$FILE" ];then
+    echo "mv -f $HOME/$FILE $HOME/$FILE.org-dot-deploy"
+    mv -f "$HOME/$FILE" "$HOME/$FILE.org-dot-deploy"
+  fi
+
   echo "ln -s $DOTFILES_DIR/$FILE $HOME/$FILE"
   ln -s "$DOTFILES_DIR/$FILE" "$HOME/$FILE"
 done
