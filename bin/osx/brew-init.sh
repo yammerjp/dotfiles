@@ -9,11 +9,14 @@ cd $SCRIPT_DIR
 # Install xcode developper tool
 xcode-select --install
 
-./echo.sh 'Install homebrew'
-# Install brew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+if [ -n `which brew` ]; then
+  ./echo.sh 'Skip to install homebrew because it is already installed'
+else
+  ./echo.sh 'Install homebrew'
+  # Install brew
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+fi
 
 # Check for success to install homebrew
-./echo.sh 'Check for success to install homebrew'
-echo "brew doctor"
+./echo.sh 'Check for success to install homebrew with `brew doctor`'
 brew doctor
