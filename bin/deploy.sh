@@ -30,7 +30,7 @@ do
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
 
   if [ `readlink $LINK_TO` = $LINK_FROM ];then
-    ech "symlink is already put. $LINK_FROM  -> $LINK_TO"
+    ech "symlink already exist. $LINK_FROM  -> $LINK_TO"
     continue
   fi
 
