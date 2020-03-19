@@ -1,26 +1,29 @@
-#!/bin/sh
+#!/bin/bash
 
 # change directory to the shell file's directory
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-cd $SCRIPT_DIR
+cd $SCRIPT_DIR/../
+DOTFILES_DIR=`pwd`
 
 alias ech="$SCRIPT_DIR/echo.sh"
 
-cd ..
-
-DOTFILES_DIR=`pwd`
-
 # symbolic link
-# ln -s .bashrc ~/.bashrc
-# ln -s .vimrc ~/.vimrc
 
-for f in .??*
+find . -type f | grep -E "^\./\." | while read FILE_WITH_DOT_SLASH
 do
-    [[ "$f" == ".git" ]] && continue
-    [[ "$f" == ".gitignore" ]] && continue
-    [[ "$f" == ".DS_Store" ]] && continue
+  FILE=${FILE_WITH_DOT_SLASH:2} # 先頭の./を取り除く
+  DIRNAME=`dirname "$FILE"`
 
-    ech "link $DOTFILES_DIR/$f -> $HOME/$f"
-    ln -s "$DOTFILES_DIR/$f" "$HOME/$f"
+  [[ $FILE =~ ^.git/ ]] && continue
+  [[ "$FILE" == ".gitignore" ]] && continue
+  [[ "$FILE" == ".DS_Store" ]] && continue
+
+  if [ "$DIRNAME" != "." ];then
+    echo "mkdir -p $DIRNAME" # ディレクトリを掘る
+    mkdir -p $DIRNAME
+  fi
+
+  echo "ln -s $DOTFILES_DIR/$FILE $HOME/$FILE"
+  ln -s "$DOTFILES_DIR/$FILE" "$HOME/$FILE"
 done
 
