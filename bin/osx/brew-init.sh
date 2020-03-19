@@ -4,7 +4,7 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
 
-alias ech="$SCRIPT_DIR/../echo.sh"
+ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
 
 ech 'Install XCode Developper Tool'
 # Setup homebrew

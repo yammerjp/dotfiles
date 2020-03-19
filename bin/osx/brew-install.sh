@@ -4,7 +4,7 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
 
-alias ech="../echo.sh"
+ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
 
 # Check to be installed mas
 if [ -z `which brew` ]; then
