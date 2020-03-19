@@ -3,24 +3,27 @@
 ## Install and deploy
 
 ```
-# Deploy dotfiles
+# Install dotfiles
 $ curl -L dot.basd4g.net | sh
 # or
 # curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
 
-$ cd 
+$ cd ~/dotfiles
+
+# Deploy dotfiles
+$ make deploy
 
 # Install homebrew
-$ ~/dotfiles/bin/osx/brew-init.sh
+$ make brew-init
 
 # install software
-$ ~/dotfiles/bin/osx/brew-install.sh
+$ make brew-install
 
 # Login Apple ID
 $ mas open
 
 # install mac app store software
-$ ~/dotfiles/bin/osx/mas-install.sh
+$ make mas-install
 ```
 
 ## clone

@@ -32,4 +32,6 @@ else
   ech $(tput setaf 2)Download dotfiles complete!. $(tput sgr0)
 fi 
 
-sh ~/dotfiles/bin/deploy.sh
+# sh ~/dotfiles/bin/deploy.sh
+# 自動でデプロイはとりあえず無効化
+# cd ~/dotfiles && make deploy でデプロイ
