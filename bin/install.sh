@@ -10,7 +10,10 @@ DOT_TARBALL="https://github.com/basd4g/dotfiles/tarball/master"
 REMOTE_URL="https://github.com/basd4g/dotfiles.git"
 
 # Download dotfiles if it isn't exist.
-if [ ! -d ${DOT_DIRECTORY} ]; then
+if [ -d ${DOT_DIRECTORY} ]; then
+  echo "Dotfiles already exist."
+  echo "${DOT_DIRECTORY}"
+else
   echo "Downloading dotfiles..."
   mkdir ${DOT_DIRECTORY}
 
@@ -25,10 +28,6 @@ if [ ! -d ${DOT_DIRECTORY} ]; then
   fi
 
   echo $(tput setaf 2)Download dotfiles complete!. $(tput sgr0)
-
-else
-  echo "Dotfiles already exist."
-  echo "${DOT_DIRECTORY}"
 fi 
 
 sh ~/dotfiles/bin/deploy.sh
