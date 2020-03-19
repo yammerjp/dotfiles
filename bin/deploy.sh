@@ -1,11 +1,13 @@
-#!/bin/bash
+#!/bin/sh
 
 # change directory to the shell file's directory
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
-cd $SCRIPT_DIR/../
-DOTFILES_DIR=`pwd`
+cd $SCRIPT_DIR
 
 alias ech="$SCRIPT_DIR/echo.sh"
+
+cd ..
+DOTFILES_DIR=`pwd`
 
 # symbolic link
 
@@ -19,7 +21,7 @@ do
   [[ "$FILE" == ".DS_Store" ]] && continue
 
   if [ "$DIRNAME" != "." ];then
-    echo "mkdir -p $DIRNAME" # ディレクトリを掘る
+    ech "mkdir -p $DIRNAME" # ディレクトリを掘る
     mkdir -p $DIRNAME
   fi
 
@@ -28,16 +30,16 @@ do
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
 
   if [ `readlink $LINK_TO` = $LINK_FROM ];then
-    echo "symlink is already put. $LINK_FROM  -> $LINK_TO"
+    ech "symlink is already put. $LINK_FROM  -> $LINK_TO"
     continue
   fi
 
   if [ -e $LINK_FROM ];then
-    echo "mv -f $LINK_TO $LINK_TO_BACKUP"
+    ech "mv -f $LINK_TO $LINK_TO_BACKUP"
     mv -f "$LINK_TO" "$LINK_TO_BACKUP"
   fi
 
-  echo "ln -s $LINK_FROM $LINK_TO"
+  ech "ln -s $LINK_FROM $LINK_TO"
   ln -s "$LINK_FROM" "$LINK_TO"
 done
 
