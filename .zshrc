@@ -1,17 +1,3 @@
-#=================================git補完====================================
-# $ ls -l `brew --prefix`/share/zsh/site-functions/
-# で_gitとgit-completion.bashが表示されていることを確認
-# されていない場合は
-# $ brew link git
-# または
-# $ brew link --overwrite git
-# を行う
-# 参考: https://gist.github.com/d-kuro/352498c993c51831b25963be62074afa
-
-# brewでインストールしたときのgit補完
-fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
-
 #=================================補完====================================
 # 補完機能有効にする
 autoload -U compinit
@@ -89,14 +75,29 @@ precmd() {
 
 #=================================OS別の設定====================================
 case ${OSTYPE} in
-
   darwin*) #Mac用の設定
     export CLICOLOR=1
-    # "-F":ディレクトリに"/"を表示 / "-G"でディレクトリを色表示 "-h":ファイルサイズを人間が読みやすい形式に
+    # "-F":ディレクトリに"/"を表示
+    # "-G"でディレクトリを色表示
+    # "-h":ファイルサイズを人間が読みやすい形式に
     alias ls='ls -FGh'
+
     # MacのGUIアプリケーションを実行
     alias prev='open /Applications/Preview.app'
     alias xcode='open /Applications/Xcode.app'
+
+    # git補完
+    # $ ls -l `brew --prefix`/share/zsh/site-functions/
+    # で_gitとgit-completion.bashが表示されていることを確認
+    # されていない場合は
+    # $ brew link git
+    # または
+    # $ brew link --overwrite git
+    # を行う
+    # 参考: https://gist.github.com/d-kuro/352498c993c51831b25963be62074afa
+    # brewでインストールしたときのgit補完
+    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+
     ;;
 
   linux*) #Linux用の設定
