@@ -27,8 +27,12 @@ alias g='git'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 
-#=================================表示====================================
+#=================================history====================================
+HISTSIZE=50000
+alias history="history -i"
 
+
+#=================================表示====================================
 PROMPT='$ '
 # [user@host] dir $
 # PROMPT='[%n@%m] %~ $ '
