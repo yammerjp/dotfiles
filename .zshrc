@@ -35,19 +35,12 @@ setopt list_packed
 
 
 #=================================alias====================================
-# "-F":ディレクトリに"/"を表示 / "-G"でディレクトリを色表示 "-h":ファイルサイズを人間が読みやすい形式に
-alias ls='ls -FGh'
-# alias ll='ls -alFG'
 
 # git alias
 alias g='git'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
 
-#=================================macOS====================================
-# MacのGUIアプリケーションを実行
-alias prev='open /Applications/Preview.app'
-alias xcode='open /Applications/Xcode.app'
 #=================================表示====================================
 
 PROMPT='$ '
@@ -92,3 +85,21 @@ precmd() {
   esac
   return $_r
 }
+
+
+#=================================OS別の設定====================================
+case ${OSTYPE} in
+
+  darwin*) #Mac用の設定
+    export CLICOLOR=1
+    # "-F":ディレクトリに"/"を表示 / "-G"でディレクトリを色表示 "-h":ファイルサイズを人間が読みやすい形式に
+    alias ls='ls -FGh'
+    # MacのGUIアプリケーションを実行
+    alias prev='open /Applications/Preview.app'
+    alias xcode='open /Applications/Xcode.app'
+    ;;
+
+  linux*) #Linux用の設定
+    alias ls='ls -Fh --color=auto'
+    ;;
+esac
