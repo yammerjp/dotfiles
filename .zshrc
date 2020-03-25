@@ -27,9 +27,29 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 
 
 #=================================history====================================
-HISTSIZE=50000
-alias history="history -i"
+HISTSIZE=50000 # メモリに保存するコマンド数
+HISTFILE=~/.zsh_history
+SAVEHIST=100000 # ヒストリファイルに保存するコマンド数
 
+alias history="history -i"
+function history-all { history -E 1 }
+
+# 重複するコマンド行は古い方を削除
+setopt hist_ignore_all_dups
+# 直前と同じコマンドラインはヒストリに追加しない
+setopt hist_ignore_dups
+# コマンド履歴ファイルを共有する
+setopt share_history
+# 履歴を追加 (毎回 .zsh_history を作るのではなく)
+setopt append_history
+# 履歴をインクリメンタルに追加
+setopt inc_append_history
+# ヒストリを呼び出してから実行する間に一旦編集可能
+setopt hist_verify
+# 余分な空白は詰めて記録
+setopt hist_reduce_blanks
+# historyコマンドは履歴に登録しない
+setopt hist_no_store
 
 #=================================表示====================================
 # 左プロンプト
