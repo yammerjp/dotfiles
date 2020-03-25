@@ -21,7 +21,6 @@ setopt list_packed
 
 
 #=================================alias====================================
-
 # git alias
 alias g='git'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
@@ -33,11 +32,12 @@ alias history="history -i"
 
 
 #=================================表示====================================
+# 左プロンプト
 PROMPT='$ '
 # [user@host] dir $
 # PROMPT='[%n@%m] %~ $ '
 
-#右プロンプト
+# 右プロンプト
 # %F{〜}は色指定、%fでリセット
 # %nはログインユーザ名、%~はカレントディレクトリ
 # "%(?..%F{red}-%?-)" は終了コードが0以外なら赤色で表示
@@ -47,26 +47,26 @@ RPROMPT="%(?..%F{red}-%?-)%F{green}[%1(v|%F{yellow}%1v%F{green} |)%n:%~ %T]%f"
 # コマンド実行後に非表示 (つまり最終行のみ表示される)
 setopt transient_rprompt
 
-#gitブランチ名表示
+# gitブランチ名表示
 autoload -Uz vcs_info
 zstyle ':vcs_info:*' enable git
 zstyle ':vcs_info:git:*' formats '%c%u%b'
 zstyle ':vcs_info:git:*' actionformats '%c%u%b|%a'
 
-#カレントディレクトリ/コマンド記録
+# カレントディレクトリ/コマンド記録
 local _cmd=''
 local _lastdir=''
 preexec() {
   _cmd="$1"
   _lastdir="$PWD"
 }
-#git情報更新
+# git情報更新
 update_vcs_info() {
   psvar=()
   LANG=en_US.UTF-8 vcs_info
   [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
 }
-#カレントディレクトリ変更時/git関連コマンド実行時に情報更新
+# カレントディレクトリ変更時/git関連コマンド実行時に情報更新
 precmd() {
   _r=$?
   case "${_cmd}" in
