@@ -17,9 +17,9 @@ hook_add = '''
   " https://github.com/bling/vim-airline/wiki/FAQ#there-is-a-pause-when-leaving-insert-mode
   " https://yukidarake.hateblo.jp/entry/2015/07/10/201356
   " set timeout timeoutlen=50
-  " <ESC><ESC>で:nohlsearchと競合するため、100に設定
+  " <ESC><ESC>で:nohlsearchと競合するため、200に設定
   " <ESC>長押しで:nohlsearch発火
-  set timeout timeoutlen=100
+  set timeout timeoutlen=200
 '''
 
 [[plugins]]
