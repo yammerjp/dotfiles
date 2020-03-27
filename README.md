@@ -10,7 +10,6 @@ $ curl -L dot.basd4g.net | sh
 # or
 # git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
 
-
 $ cd ~/dotfiles
 
 # Deploy dotfiles
@@ -19,13 +18,13 @@ $ make deploy
 # Install homebrew
 $ make brew-init
 
-# install software
+# Install softwares from homebrew
 $ make brew-install
 
 # Login Apple ID
 $ mas open
 
-# install mac app store software
+# Install softwares from Mac App Store
 $ make mas-install
 
 # Enable karabiner settings
