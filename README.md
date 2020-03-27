@@ -45,9 +45,8 @@ MIT
 
 ## ToDo
 
-- load all vim plugin from dei.vim
-- exclude a dependency of git in dein/load.vim
-- install Powerline font before setup vim
+- Load all vim plugin from dein.vim
+- Exclude a dependency of git in dein/load.vim
 - CI
-- fit for ubuntu
-- anyenv
+- Correspond for ubuntu
+- Add anyenv
