@@ -27,6 +27,10 @@ $ mas open
 
 # install mac app store software
 $ make mas-install
+
+# Enable karabiner settings
+$ open /Applications/Karabiner-Elements.app/
+#   > Complex modifications > Add rule > basd4g's setting > Enable All
 ```
 
 ## Add new dotfile
