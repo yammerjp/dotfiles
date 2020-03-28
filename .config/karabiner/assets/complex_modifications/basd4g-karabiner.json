@@ -122,7 +122,7 @@
       ]
     },
     {
-      "description": "英数かなキーを単押しでspaceキー、他のキーと組み合わせて押すとshiftキーを送信する。",
+      "description": "英数かなキーを無効化する。",
       "manipulators": [
         {
           "type": "basic",
@@ -133,17 +133,7 @@
                 "any"
               ]
             }
-          },
-          "to": [
-            {
-              "key_code": "left_shift"
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "spacebar"
-            }
-          ]
+          }
         },
         {
           "type": "basic",
@@ -154,17 +144,7 @@
                 "any"
               ]
             }
-          },
-          "to": [
-            {
-              "key_code": "left_shift"
-            }
-          ],
-          "to_if_alone": [
-            {
-              "key_code": "spacebar"
-            }
-          ]
+          }
         }
       ]
     }
