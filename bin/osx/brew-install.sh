@@ -4,7 +4,7 @@
 SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
 
-ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
+ech(){ sh "$SCRIPT_DIR/../echo.sh" "$*"; }
 
 # Check to be installed mas
 if [ -z `which brew` ]; then
@@ -31,7 +31,7 @@ do
     continue
   fi
   ech "  Install package $package"
-  brew install "$package"
+#  brew install "$package"
 done
 
 
@@ -46,5 +46,5 @@ do
     continue
   fi
   ech "  Install package $package"
-  brew cask install "$package"
+#  brew cask install "$package"
 done
