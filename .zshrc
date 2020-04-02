@@ -35,8 +35,8 @@ HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
 SAVEHIST=100000 # ヒストリファイルに保存するコマンド数
 
-alias history="history -i"
-function history-all { history -E 1 }
+alias his="history -i"
+function his-all { history -E 1 }
 
 # 重複するコマンド行は古い方を削除
 setopt hist_ignore_all_dups
