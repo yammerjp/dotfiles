@@ -45,3 +45,56 @@ hook_add = '''
 # tomlをシンタックスハイライト
 [[plugins]]
 repo = 'cespare/vim-toml'
+
+#========== vim-lsp  ==========
+# 各言語の入力支援をLSP経由で受ける
+# 事前に $ npm install -g typescript typescript-language-server
+# または $ yarn global add typescript typescript-language-server
+[[plugins]]
+repo = 'prabirshrestha/async.vim'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+depends = ['prabirshrestha/async.vim', 'prabirshrestha/asyncomplete.vim', 'prabirshrestha/asyncomplete-lsp.vim']
+hook_add = '''
+  " ===== connect language server of TypeScript, JavaScript =====
+  if executable('typescript-language-server')
+    au User lsp_setup call lsp#register_server({
+      \ 'name': 'typescript-language-server',
+      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
+      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
+  "     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
+      \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript', 'javascript.jsx'],
+  "    \ 'whitelist': ['typescript', 'typescript.tsx' ],
+     \ })
+  endif
+
+  " ===== connect language servers of other programming language =====
+  " ===== keymaps of vim-lsp =====
+  nnoremap [lsp]    <Nop>
+  nmap     <Space>l [lsp]
+
+  " サーバのstatus ( unknown server/ exited / starting / failed / running / not running )
+  nnoremap [lsp]s   :<C-u>LspStatus<CR>
+  " Fix format
+  nnoremap [lsp]f   :<C-u>LspDocumentFormat<CR>
+  " シンボルの情報をhover(ポップアップウィンドウで表示)
+  nnoremap [lsp]h   :<C-u>LspHover<CR>
+  " referenceを表示
+  nnoremap [lsp]r :<C-u>LspReferences<CR>
+  " Implementationを表示<CR>
+  nnoremap [lsp]i :<C-u>LspImplementation<CR>
+
+  " 定義元へJump
+  nnoremap [lsp]j :<C-u>LspDefinition<CR>
+  " splitして定義を表示
+  nnoremap [lsp]s :<C-u>rightbelow split \| LspDefinition<CR>
+  " vsplitして定義を表示
+  nnoremap [lsp]v :<C-u>vertical rightbelow split \| LspDefinition<CR>
+  " difinitionをポップアップウィンドウで表示
+  nnoremap [lsp]d :<C-u>LspPeekDefinition<CR>
+'''
