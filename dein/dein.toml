@@ -40,3 +40,8 @@ hook_add = '''
   " autocmd vimenter * NERDTree
   " Vim起動時にNERDTreeを表示
 '''
+
+#========== vim-toml  ==========
+# tomlをシンタックスハイライト
+[[plugins]]
+repo = 'cespare/vim-toml'
