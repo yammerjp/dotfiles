@@ -1,0 +1,15 @@
+#========== 日本語化 ==========
+# A project which translate Vim documents into Japanese.
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+on_cmd = [ 'h', 'help' ]
+hook_add = '''
+  set helplang=ja,en
+'''
+
+#========== vim-toml  ==========
+# tomlをシンタックスハイライト
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = [ 'toml' ]
+

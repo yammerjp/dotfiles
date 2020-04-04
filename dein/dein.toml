@@ -4,16 +4,14 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
-#========== 日本語化 ==========
-# A project which translate Vim documents into Japanese.
-[[plugins]]
-repo = 'vim-jp/vimdoc-ja'
-hook_add = '''
-  set helplang=ja,en
-'''
-
 #========== vim-airline ==========
 #画面下部にステータスバーを表示
+
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+hook_add = '''
+  let g:airline_theme = 'bubblegum'
+'''
 
 [[plugins]]
 repo    = 'vim-airline/vim-airline'
@@ -30,12 +28,6 @@ hook_add = '''
   set timeout timeoutlen=200
 '''
 
-[[plugins]]
-repo = 'vim-airline/vim-airline-themes'
-hook_add = '''
-  let g:airline_theme = 'bubblegum'
-'''
-
 #========== nerdtree ==========
 #ファイラー
 
@@ -48,11 +40,6 @@ hook_add = '''
   " autocmd vimenter * NERDTree
   " Vim起動時にNERDTreeを表示
 '''
-
-#========== vim-toml  ==========
-# tomlをシンタックスハイライト
-[[plugins]]
-repo = 'cespare/vim-toml'
 
 #========== vim-lsp  ==========
 # 各言語の入力支援をLSP経由で受ける
