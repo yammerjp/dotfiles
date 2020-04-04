@@ -89,4 +89,5 @@ set showmatch
 " タイトルを表示
 set title
 
+syntax on
 
