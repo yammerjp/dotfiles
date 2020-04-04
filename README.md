@@ -55,4 +55,3 @@ MIT
 - CI
 - Correspond for ubuntu
 - Add anyenv
-- Add a shell script of `yarn global add` or the file`~/.config/yarn/global/package.json`
