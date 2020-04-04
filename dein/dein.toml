@@ -4,6 +4,14 @@
 [[plugins]]
 repo = 'Shougo/dein.vim'
 
+#========== 日本語化 ==========
+# A project which translate Vim documents into Japanese.
+[[plugins]]
+repo = 'vim-jp/vimdoc-ja'
+hook_add = '''
+  set helplang=ja,en
+'''
+
 #========== vim-airline ==========
 #画面下部にステータスバーを表示
 

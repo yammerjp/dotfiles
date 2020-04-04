@@ -4,14 +4,6 @@ if filereadable(expand('~/dotfiles/dein/init.vim'))
 endif
 
 
-"========== 日本語化 ==========
-" A project which translate Vim documents into Japanese.
-call plug#begin('~/.vim/plugged')
-Plug 'vim-jp/vimdoc-ja'
-call plug#end()
-set helplang=ja,en
-
-
 "========== インデント ==========
 " インデント幅
 set shiftwidth=2
