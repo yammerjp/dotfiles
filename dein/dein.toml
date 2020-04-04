@@ -67,7 +67,7 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 
 [[plugins]]
 repo = 'prabirshrestha/vim-lsp'
-depends = ['prabirshrestha/async.vim', 'prabirshrestha/asyncomplete.vim', 'prabirshrestha/asyncomplete-lsp.vim']
+depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim']
 hook_add = '''
   " ===== connect language server of TypeScript, JavaScript =====
   if executable('typescript-language-server')
