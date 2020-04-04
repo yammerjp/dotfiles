@@ -21,20 +21,21 @@ do
   [[ "$FILE" == ".DS_Store" ]] && continue
 
   if [ "$DIRNAME" != "." ];then
-    ech "mkdir -p $DIRNAME" # ディレクトリを掘る
-    mkdir -p $DIRNAME
+    ech "mkdir -p $HOME/$DIRNAME" # ディレクトリを掘る
+    mkdir -p "$HOME/$DIRNAME"
   fi
 
   LINK_FROM="$DOTFILES_DIR/$FILE"
   LINK_TO="$HOME/$FILE"
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
+  LINK_ALREADY_EXISTS=`readlink "$LINK_TO"`
 
-  if [ `readlink $LINK_TO` = $LINK_FROM ];then
+  if [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
     ech "symlink already exist. $LINK_FROM  -> $LINK_TO"
     continue
   fi
 
-  if [ -e $LINK_FROM ];then
+  if [ -e "$LINK_TO" ];then
     ech "mv -f $LINK_TO $LINK_TO_BACKUP"
     mv -f "$LINK_TO" "$LINK_TO_BACKUP"
   fi
