@@ -29,6 +29,8 @@ setopt list_packed
 alias g='git'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
 
+# vim alias
+alias vi='vim -u NONE'
 
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
