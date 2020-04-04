@@ -34,6 +34,9 @@ $ open /Applications/Karabiner-Elements.app/
 # Install Vim plugins
 $ vim
 #   And wait a few minutes
+
+# Install Yarn global packages
+$ yarn global add
 ```
 
 ## Add new dotfile
