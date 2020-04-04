@@ -30,6 +30,10 @@ $ make mas-install
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
 #   > Complex modifications > Add rule > basd4g's setting > Enable All
+
+# Install Vim plugins
+$ vim
+#   And wait a few minutes
 ```
 
 ## Add new dotfile
@@ -45,8 +49,6 @@ MIT
 
 ## ToDo
 
-- Load all vim plugin from dein.vim
-- Exclude a dependency of git in dein/load.vim
 - CI
 - Correspond for ubuntu
 - Add anyenv
