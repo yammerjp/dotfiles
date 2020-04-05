@@ -14,7 +14,7 @@ $ curl -L dot.basd4g.net | sh
 $ cd ~/dotfiles
 
 # Deploy dotfiles
-$ make deploy
+$ make link
 ```
 
 ## macOS Setup
@@ -28,7 +28,7 @@ $ xcode-select -install
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ env CONTINUE_ALL_DARWIN=1 /bin/bash -c "$(curl -fsSL dot.basd4g.net)"
+$ MAKE_RUN=1 /bin/bash -c "$(curl -fsSL dot.basd4g.net)"
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/

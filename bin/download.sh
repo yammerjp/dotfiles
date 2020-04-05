@@ -26,15 +26,7 @@ else
   echo $(tput setaf 2)Download dotfiles complete!. $(tput sgr0)
 fi 
 
-if [ "${CONTINUE_ALL_DARWIN}" = "1" ];then
-  if [ $(uname) != "Darwin" ];then
-    echo "Your computer is not macOS. Abort to setup"
-    exit
-  fi
-
+if [ "${MAKE_RUN}" = "1" ];then
   cd ${DOT_DIRECTORY}
-  make deploy
-  make brew-install
-  yarn global add
-  vim -s bin/vimop
+  make run
 fi
