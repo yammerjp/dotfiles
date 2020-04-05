@@ -8,7 +8,7 @@ run:
 link:
 	bin/link.sh
 packages-init:
-	bin/install-packages.sh
+	bin/packages-init.sh
 yarn-init:
 	yarn global add
 vim-init:
