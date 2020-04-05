@@ -3,11 +3,12 @@ install:
 deploy:
 	bin/deploy.sh
 brew-init:
-	bin/osx/brew-init.sh
+	bin/brew-init.sh
 brew-install:
-	bin/osx/brew-install.sh
+	brew bundle --global
 mas-install:
-	bin/osx/mas-install.sh
+	brew bundle --file Brewfile-mas
+
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make install      # Download latest dotfiles directory. (You already downloaded dotfiles)'
