@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 DOT_DIRECTORY="${HOME}/dotfiles"
 
