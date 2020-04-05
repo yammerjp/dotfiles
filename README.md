@@ -17,37 +17,22 @@ $ cd ~/dotfiles
 $ make deploy
 ```
 
-### macOS apps
+## macOS Setup
 
-```
-$ make brew-init
-
-$ make brew-install
-
+```sh
 # Sign in to Apple ID
 $ open /Applications/App\ Store.app
 
-$ make mas-install
+# Setup Homebrew
+$ xcode-select -install
+$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+
+# Setup my settings
+$ env CONTINUE_ALL_DARWIN=1 /bin/bash -c "$(curl -fsSL dot.basd4g.net)"
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
 #   > Complex modifications > Add rule > basd4g's setting > Enable All
-```
-
-### Ubuntu apps
-
-```
-```
-
-### Common apps Setup
-
-```
-# Install Yarn global packages
-$ yarn global add
-
-# Install Vim plugins
-$ vim
-#   And wait a few minutes
 ```
 
 ## Add new dotfile
