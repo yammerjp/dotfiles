@@ -17,6 +17,7 @@ do
   DIRNAME=`dirname "$FILE"`
 
   [[ $FILE =~ ^.git/ ]] && continue
+  [[ $FILE =~ ^.github/ ]] && continue
   [[ "$FILE" == ".gitignore" ]] && continue
   [[ "$FILE" == ".DS_Store" ]] && continue
 

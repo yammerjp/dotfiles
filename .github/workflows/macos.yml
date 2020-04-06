@@ -16,5 +16,6 @@ jobs:
     # Error Check
     - name: copy
       run : |
-        cp ${GITHUB_WORKSPACE} ~/dotfiles
-        ls ~/dotfiles
+        cp -r ${GITHUB_WORKSPACE} ~/
+        cd ~/dotfiles
+        make run
