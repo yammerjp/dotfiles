@@ -23,13 +23,13 @@ jobs:
         cd ~/dotfiles
         make run
 
-    - name Load .zprofile
+    - name: Load .zprofile
       run: |
         zsh ~/.zprofile 2> /tmp/dotfiles/.zprofile.error.log
         cat /tmp/dotfiles/.zprofile.error.log
         if [ -s /tmp/dotfiles/.zprofile.error.log ]; then false; fi
 
-    - name Load .zshrc
+    - name: Load .zshrc
       run: |
         zsh ~/.zshrc 2> /tmp/dotfiles/.zshrc.error.log
         cat /tmp/dotfiles/.zshrc.error.log
