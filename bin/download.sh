@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 
 DOT_DIRECTORY="${HOME}/dotfiles"
 
@@ -14,7 +15,7 @@ else
   mkdir ${DOT_DIRECTORY}
 
   
-  if type "git" > /dev/null 2>&1; then
+  if type "git" > /dev/null 2>&1 && : ; then
     git clone --recursive "${REMOTE_URL}" "${DOT_DIRECTORY}"
   else
     # Download dotfiles without git
