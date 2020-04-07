@@ -12,7 +12,7 @@ DOTFILES_DIR=$(pwd)
 
 # symbolic link
 
-find . -type f | grep -E "^\./\." | while read -r FILE_WITH_DOT_SLASH
+find . -type f | grep -E "^\./\." | while read FILE_WITH_DOT_SLASH
 do
   FILE=${FILE_WITH_DOT_SLASH:2} # 先頭の./を取り除く
   DIRNAME=$(dirname "$FILE")
