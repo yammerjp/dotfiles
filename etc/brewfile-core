@@ -1,0 +1,5 @@
+# This file passes CI
+tap "homebrew/bundle"
+tap "homebrew/core"
+brew "vim"
+brew "yarn", link: false

@@ -25,6 +25,7 @@ jobs:
     - name: Run
       run : |
         cd ~/dotfiles
+        export BREW_BUNDLE_CORE_ONLY=1
         make run
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
