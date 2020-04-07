@@ -8,6 +8,12 @@ ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 DUMP_FILE="$DOTFILES_DIR/etc/brewfile"
 DUMP_FILE_TMP="/tmp/brewfile-dump"
 
+which brew 1> /dev/null && :
+if [ "$?" != "0" ];then
+  ech "Need homebrew."
+  exit 1
+fi
+
 brew bundle dump --force --file "$DUMP_FILE_TMP"
 
 cat "$DOTFILES_DIR/etc/brewfile-core" \
