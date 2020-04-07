@@ -17,20 +17,23 @@ jobs:
     - name: copy
       run : |
         cp -r ${GITHUB_WORKSPACE} ~/
-
+    - name: remove ACL
+      run : |
+        chmod -N "/Volumes/Macintosh HD/Users/runner"
+        chmod -N "/Volumes/Macintosh HD/Users/runner/.config"
     - name: run
-      run: |
+      run : |
         cd ~/dotfiles
         make run
 
     - name: Load .zprofile
-      run: |
+      run : |
         zsh ~/.zprofile 2> /tmp/dotfiles/.zprofile.error.log
         cat /tmp/dotfiles/.zprofile.error.log
         if [ -s /tmp/dotfiles/.zprofile.error.log ]; then false; fi
 
     - name: Load .zshrc
-      run: |
+      run : |
         zsh ~/.zshrc 2> /tmp/dotfiles/.zshrc.error.log
         cat /tmp/dotfiles/.zshrc.error.log
         if [ -s /tmp/dotfiles/.zshrc.error.log ]; then false; fi
