@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 # set -e
 
 # change directory to the shell file's directory

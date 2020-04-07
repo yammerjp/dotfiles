@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e
+#!/bin/bash -e
 
 # change directory to the shell file's directory
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)

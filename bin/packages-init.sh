@@ -1,5 +1,4 @@
-#!/bin/bash
-set -e
+#!/bin/bash -e
 
 DOTFILES_DIR="$HOME/dotfiles"
 cd $DOTFILES_DIR
