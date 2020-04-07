@@ -1,23 +1,13 @@
-#!/bin/bash
+#!/bin/bash -e
 
-# Bad practice
-# If you are comment out `set -e`,
-#  CI is failed on `mkdir -p /Users/runner/.config/yarn/global`
+DOTFILES_DIR="$HOME/dotfiles"
+cd "$DOTFILES_DIR"
 
-# set -e
-
-# change directory to the shell file's directory
-SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
-cd "$SCRIPT_DIR"
-
-ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
-
-cd ..
-DOTFILES_DIR=$(pwd)
+ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
 # symbolic link
 
-find . -type f | grep -E "^\./\." | while read FILE_WITH_DOT_SLASH
+find . -type f | grep -E "^\./\." | while read -r FILE_WITH_DOT_SLASH
 do
   FILE=${FILE_WITH_DOT_SLASH:2} # 先頭の./を取り除く
   DIRNAME=$(dirname "$FILE")
@@ -35,9 +25,8 @@ do
   LINK_FROM="$DOTFILES_DIR/$FILE"
   LINK_TO="$HOME/$FILE"
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
-  LINK_ALREADY_EXISTS=$(readlink "$LINK_TO")
 
-  if [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
+  if LINK_ALREADY_EXISTS=$(readlink "$LINK_TO") && [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
     ech "symlink already exist. $LINK_FROM  -> $LINK_TO"
     continue
   fi

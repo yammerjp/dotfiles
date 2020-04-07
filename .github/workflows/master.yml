@@ -1,4 +1,4 @@
-name: macos
+name: CI
 
 on:
   push:
@@ -7,7 +7,27 @@ on:
     branches: [ master ]
 
 jobs:
-  macos-test:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install required packages
+      run : |
+        sudo apt-get install shellcheck
+        sudo apt-get install zsh
+
+    - name: Check bin/*.sh
+      run : shellcheck ${GITHUB_WORKSPACE}/bin/*.sh
+
+    - name: Check .zprofile
+      run : zsh -n ${GITHUB_WORKSPACE}/.zprofile
+
+    - name: Check .zshrc
+      run : zsh -n ${GITHUB_WORKSPACE}/.zshrc
+
+  macos-setup:
     runs-on: macos-latest
 
     steps:
