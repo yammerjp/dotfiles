@@ -1,4 +1,4 @@
-name: macos
+name: master branch
 
 on:
   push:
@@ -7,7 +7,26 @@ on:
     branches: [ master ]
 
 jobs:
-  macos-test:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install required packages
+      run : sudo apt-get install shellcheck
+
+    - name: Check bin/*.sh
+      run : shellcheck ${GITHUB_WORKSPACE}/bin/*.sh
+
+    # SC2148 ... shebangが無いときの警告
+    - name: Check .zprofile
+      run : shellcheck ${GITHUB_WORKSPACE}/.zprofile --exclude=SC2148
+
+    - name: Check .zshrc
+      run : shellcheck ${GITHUB_WORKSPACE}/.zshrc --exclude=SC2148
+
+  macos-setup:
     runs-on: macos-latest
 
     steps:
