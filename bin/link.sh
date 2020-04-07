@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-# Bad practice
-# If you are comment out `set -e`,
-#  CI is failed on `mkdir -p /Users/runner/.config/yarn/global`
-
-# set -e
 
 # change directory to the shell file's directory
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
@@ -17,7 +12,7 @@ DOTFILES_DIR=$(pwd)
 
 # symbolic link
 
-find . -type f | grep -E "^\./\." | while read FILE_WITH_DOT_SLASH
+find . -type f | grep -E "^\./\." | while read -r FILE_WITH_DOT_SLASH
 do
   FILE=${FILE_WITH_DOT_SLASH:2} # 先頭の./を取り除く
   DIRNAME=$(dirname "$FILE")

@@ -6,8 +6,7 @@ cd "$SCRIPT_DIR"
 
 ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
 
-which yarn && :
-if [ "$?" != "0" ];then
+if ! which yarn > /dev/null 2>&1 ; then
   ech "Need yarn. Prease install yarn and retry the script."
   exit 1
 fi
