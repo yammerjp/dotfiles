@@ -13,25 +13,21 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    # Error Check
-    - name: copy
+    - name: Copy
       run : |
         cp -r ${GITHUB_WORKSPACE} ~/
 
-    - name: remove ACL
-      run : |
-        chmod -N "/Volumes/Macintosh HD/Users/runner"
-        chmod -N "/Volumes/Macintosh HD/Users/runner/.config"
-
-    - name: unlink node@12
+    # Default installed node conflicts with homebrew's one
+    - name: Unlink node@12
       run : |
         brew unlink node@12
 
-    - name: run
+    - name: Run
       run : |
         cd ~/dotfiles
         make run
 
+    # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile
       run : |
         touch error.log
@@ -39,6 +35,7 @@ jobs:
         cat error.log
         if [ -s error.log ]; then false; fi
 
+    # Use error.log. Not be able to use 'set -e' in .zshrc
     - name: Load .zshrc
       run : |
         touch error.log
