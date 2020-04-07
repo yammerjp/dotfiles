@@ -21,6 +21,9 @@ jobs:
       run : |
         chmod -N "/Volumes/Macintosh HD/Users/runner"
         chmod -N "/Volumes/Macintosh HD/Users/runner/.config"
+    - name: unlink node@12
+      run : |
+        brew unlink node@12
     - name: run
       run : |
         cd ~/dotfiles
