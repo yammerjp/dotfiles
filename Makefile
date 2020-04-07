@@ -10,7 +10,7 @@ link:
 packages-init:
 	bin/packages-init.sh
 yarn-init:
-	yarn global add
+	bin/yarn-init.sh
 vim-init:
 	vim -s bin/vimop
 help:
