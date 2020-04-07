@@ -29,15 +29,14 @@ do
 
   if [ "$DIRNAME" != "." ];then
     ech "mkdir -p $HOME/$DIRNAME" # ディレクトリを掘る
-    mkdir -p "$HOME/$DIRNAME" && :
+    mkdir -p "$HOME/$DIRNAME"
   fi
 
   LINK_FROM="$DOTFILES_DIR/$FILE"
   LINK_TO="$HOME/$FILE"
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
-  LINK_ALREADY_EXISTS=$(readlink "$LINK_TO")
 
-  if [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
+  if LINK_ALREADY_EXISTS=$(readlink "$LINK_TO") && [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
     ech "symlink already exist. $LINK_FROM  -> $LINK_TO"
     continue
   fi
