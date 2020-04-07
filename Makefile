@@ -12,7 +12,7 @@ packages-init:
 yarn-init:
 	bin/yarn-init.sh
 vim-init:
-	vim -s bin/vimop
+	vim -s etc/vimop
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make download      # Download dotfiles directory. (You already downloaded dotfiles)'
