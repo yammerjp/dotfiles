@@ -1,14 +1,9 @@
 #!/bin/bash -e
 
+DOTFILES_DIR="$HOME/dotfiles"
+cd "DOTFILES_DIR"
 
-# change directory to the shell file's directory
-SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
-cd "$SCRIPT_DIR"
-
-ech(){ sh "$SCRIPT_DIR/echo.sh" "$*"; }
-
-cd ..
-DOTFILES_DIR=$(pwd)
+ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
 # symbolic link
 

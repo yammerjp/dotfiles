@@ -1,7 +1,7 @@
 #!/bin/bash -e
 
 DOTFILES_DIR="$HOME/dotfiles"
-cd "$DOTFILES_DIR"
+cd "DOTFILES_DIR"
 
 ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
