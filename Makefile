@@ -13,6 +13,8 @@ yarn-init:
 	bin/yarn-init.sh
 vim-init:
 	vim -s etc/vimop
+brew-dump:
+	bin/brew-dump.sh
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make download      # Download dotfiles directory. (You already downloaded dotfiles)'
