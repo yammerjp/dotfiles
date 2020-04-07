@@ -14,7 +14,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Install required packages
-      run : sudo apt-get install shellcheck
+      run : |
+        sudo apt-get install shellcheck
+        sudo apt-get install zsh
 
     - name: Check bin/*.sh
       run : shellcheck ${GITHUB_WORKSPACE}/bin/*.sh
