@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -e
 
 # Bad practice
 # If you are comment out `set -e`,
@@ -29,7 +29,7 @@ do
 
   if [ "$DIRNAME" != "." ];then
     ech "mkdir -p $HOME/$DIRNAME" # ディレクトリを掘る
-    mkdir -p "$HOME/$DIRNAME"
+    mkdir -p "$HOME/$DIRNAME" && :
   fi
 
   LINK_FROM="$DOTFILES_DIR/$FILE"

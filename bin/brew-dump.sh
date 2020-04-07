@@ -8,7 +8,7 @@ ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 DUMP_FILE="$DOTFILES_DIR/etc/brewfile"
 DUMP_FILE_TMP="/tmp/brewfile-dump"
 
-if which brew;
+if which brew > /dev/null 2>&1; then
   ech "Need homebrew."
   exit 1
 fi
