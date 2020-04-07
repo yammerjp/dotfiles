@@ -1,4 +1,9 @@
-#!/bin/bash -e
+#!/bin/bash
+
+# Bad practice
+# If you are comment out `set -e`,
+#  CI is failed on `mkdir -p /Users/runner/.config/yarn/global`
+
 # set -e
 
 # change directory to the shell file's directory
@@ -45,4 +50,3 @@ do
   ech "ln -s $LINK_FROM $LINK_TO"
   ln -s "$LINK_FROM" "$LINK_TO"
 done
-
