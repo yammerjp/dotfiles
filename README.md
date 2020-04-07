@@ -1,3 +1,5 @@
+![CI](https://github.com/basd4g/dotfiles/workflows/CI/badge.svg)
+
 # dotfiles
 
 ## Install and deploy
