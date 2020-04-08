@@ -5,22 +5,38 @@ cd "$DOTFILES_DIR"
 
 ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
-function BrewInstall() {
+function InstallPackagesForMac() {
  if ! which brew > /dev/null 2>&1 ; then
     ech "Need homebrew. Prease install homebrew and retry the script."
     exit 1
   fi
 
- brew bundle --file "$DOTFILES_DIR/etc/brewfile-core"
- if [ "$BREW_BUNDLE_CORE_ONLY" = "1" ]; then
-  return 0
- fi
+  BREWFILE_CORE="$DOTFILES_DIR/etc/brewfile-core"
+  BREWFILE="$DOTFILES_DIR/etc/brewfile"
 
- brew bundle --file "$DOTFILES_DIR/etc/brewfile"
+  ech "Install packages in $BREWFILE_CORE"
+  brew bundle --file 
+
+  if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
+    ech "Skip to install packages in $BREWFILE"
+    return 0
+  fi
+
+  ech "Install packages in $BREWFILE"
+  brew bundle --file "$BREWFILE"
 }
 
 function AptInstall() {
- if [ "$(whoami)" != "root" ]; then
+  PACKAGES_LIST_PATH="$1"
+  ech "Install packages in $PACKAGES_LIST_PATH"
+  while read -r PACKAGE
+  do
+    apt install -y "$PACKAGE"
+  done < "$PACKAGES_LIST_PATH"
+}
+
+function InstallPackagesForUbuntu() {
+  if [ "$(whoami)" != "root" ]; then
     echo "Require root privilege"
     exit 1
   fi
@@ -33,22 +49,26 @@ function AptInstall() {
   apt update
   apt upgrade -y
 
-  while read -r PACKAGE
-  do
-    apt install -y "$PACKAGE"
-  done < "$DOTFILES_DIR/etc/aptfile"
+  APTFILE_CORE="$DOTFILES_DIR/etc/aptfile-core"
+  APTFILE="$DOTFILES_DIR/etc/aptfile"
+
+  AptInstall "$APTFILE_CORE"
+
+  if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
+    ech "Skip to install packages in $APTFILE"
+    return 0
+  fi
+
+  AptInstall "$APTFILE"
 }
 
 
 if [ "$(uname)" = "Darwin" ];then
   ech "Install packages for macOS"
-  BrewInstall
-  exit 0
+  InstallPackagesForMac
 
 elif [ "$(uname)" = "Linux" ];then
-
   ech "Install packages for Linux"
-  AptInstall
-  exit 0
+  InstallPackagesForUbuntu
 fi
 
