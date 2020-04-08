@@ -9,6 +9,11 @@ ZSH_PATH="/bin/zsh"
 
 ech "Chenge default shell to zsh"
 
+if [ "$SKIP_ZSH_INIT" = "1" ]; then
+  ech "Skip to set default shell"
+  exit 0
+fi
+
 if [ "$SHELL" = "$ZSH_PATH" ]; then
   ech "Your default shell is already zsh"
   exit 0
