@@ -32,6 +32,10 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 # vim alias
 alias vi='vim -u NONE'
 
+# covid19
+alias covid19='curl https://corona-stats.online/'
+alias covid-19='curl https://corona-stats.online/'
+
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
