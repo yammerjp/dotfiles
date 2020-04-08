@@ -5,6 +5,7 @@ run:
 	make packages-init
 	make yarn-init
 	make vim-init
+	make zsh-init
 link:
 	bin/link.sh
 packages-init:
@@ -13,6 +14,8 @@ yarn-init:
 	bin/yarn-init.sh
 vim-init:
 	vim -s etc/vimop
+zsh-init:
+	bin/zsh-init.sh
 brew-dump:
 	bin/brew-dump.sh
 help:
@@ -23,3 +26,4 @@ help:
 	@echo 'make packages-init # Install homebrew packages'
 	@echo 'make yarn-init     # Install nodejs packages'
 	@echo 'make vim-init      # Install vim plugins'
+	@echo 'make zsh-init      # Chenge default shell to zsh'
