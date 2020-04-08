@@ -25,7 +25,8 @@ if ! which "$ZSH_PATH" > /dev/null 2>&1 ; then
   exit 1
 fi
 
-chsh -s "$ZSH_PATH" "$(users)"
+# chsh -s "$ZSH_PATH" "$(users)"
+chsh -s "$ZSH_PATH" "$(who | awk ' { print $1 }')"
 ech "Chenged."
 ech "Please relogin to change shell"
 
