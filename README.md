@@ -50,6 +50,9 @@ MIT
 
 ## ToDo
 
-- CI
-- Correspond for ubuntu
-- Add anyenv
+- [ ] Add anyenv
+- [ ] Update aptfile
+- [ ] Add test of brewfile, aptfile
+- [ ] Devide `bin/packages-init.sh`
+- [ ] Add `dot.basd4g.net/help`
+
