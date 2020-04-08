@@ -2,23 +2,9 @@
 
 # dotfiles
 
-## Install and deploy dotfiles
+## Setup
 
-```
-# Install dotfiles
-$ curl -L dot.basd4g.net | sh
-# or
-# curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
-# or
-# git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
-
-$ cd ~/dotfiles
-
-# Deploy dotfiles
-$ make link
-```
-
-## Ubuntu Setup
+### Ubuntu Setup
 
 ```sh
 $ curl -sL dot.basd4g.net | bash
@@ -26,7 +12,7 @@ $ cd ~/dotfiles
 $ sudo make run
 ```
 
-## macOS Setup
+### macOS Setup
 
 ```sh
 # Sign in to Apple ID
@@ -44,8 +30,25 @@ $ open /Applications/Karabiner-Elements.app/
 #   > Complex modifications > Add rule > basd4g's setting > Enable All
 ```
 
+## Dotfiles
 
-## Add new dotfile
+### Install and deploy dotfiles
+
+```
+# Install dotfiles
+$ curl -L dot.basd4g.net | sh
+# or
+# curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
+# or
+# git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
+
+$ cd ~/dotfiles
+
+# Deploy dotfiles
+$ make link
+```
+
+### Add new dotfile
 
 ```sh
 $ mv ~/.hogerc ~/dotfiles/
