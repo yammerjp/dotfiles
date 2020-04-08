@@ -20,7 +20,7 @@ function BrewInstall() {
 }
 
 function AptInstall() {
- if [ "`whoami`" != "root" ]; then
+ if [ "$(whoami)" != "root" ]; then
     echo "Require root privilege"
     exit 1
   fi
@@ -33,10 +33,10 @@ function AptInstall() {
   apt update
   apt upgrade -y
 
-  cat "$DOTFILES_DIR/etc/aptfile" | while read -r PACKAGE
+  while read -r PACKAGE
   do
     apt install -y "$PACKAGE"
-  done
+  done < "$DOTFILES_DIR/etc/aptfile"
 }
 
 
