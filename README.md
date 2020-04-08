@@ -2,9 +2,8 @@
 
 # dotfiles
 
-## Install and deploy
+## Install and deploy Dotfiles
 
-### Dotfiles
 ```
 # Install dotfiles
 $ curl -L dot.basd4g.net | sh
@@ -19,6 +18,14 @@ $ cd ~/dotfiles
 $ make link
 ```
 
+## Ubuntu Setup
+
+```sh
+$ curl -sL dot.basd4g.net | bash
+$ cd ~/dotfiles
+$ sudo make run
+```
+
 ## macOS Setup
 
 ```sh
@@ -30,12 +37,13 @@ $ xcode-select -install
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ MAKE_RUN=1 /bin/bash -c "$(curl -fsSL dot.basd4g.net)"
+$ MAKE_RUN=1 bash -c "$(curl -fsSL dot.basd4g.net)"
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
 #   > Complex modifications > Add rule > basd4g's setting > Enable All
 ```
+
 
 ## Add new dotfile
 
