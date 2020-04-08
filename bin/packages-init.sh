@@ -5,6 +5,12 @@ cd "$DOTFILES_DIR"
 
 ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
+function BrewInstall() {
+  PACKAGES_LIST_PATH="$1"
+  ech "Install packages in $PACKAGES_LIST_PATH"
+  brew bundle --file "$PACKAGES_LIST_PATH"
+}
+
 function InstallPackagesForMac() {
  if ! which brew > /dev/null 2>&1 ; then
     ech "Need homebrew. Prease install homebrew and retry the script."
@@ -14,16 +20,14 @@ function InstallPackagesForMac() {
   BREWFILE_CORE="$DOTFILES_DIR/etc/brewfile-core"
   BREWFILE="$DOTFILES_DIR/etc/brewfile"
 
-  ech "Install packages in $BREWFILE_CORE"
-  brew bundle --file 
+  BrewInstall "$BREWFILE_CORE"
 
   if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
     ech "Skip to install packages in $BREWFILE"
     return 0
   fi
 
-  ech "Install packages in $BREWFILE"
-  brew bundle --file "$BREWFILE"
+  BrewInstall "$BREWFILE"
 }
 
 function AptInstall() {
