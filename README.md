@@ -2,7 +2,7 @@
 
 # dotfiles
 
-## Install and deploy Dotfiles
+## Install and deploy dotfiles
 
 ```
 # Install dotfiles
