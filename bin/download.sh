@@ -3,6 +3,8 @@
 function PrintDescription() {
   cat <<-"EOF"
 
+
+
       .o8                .    .o88o.  o8o  oooo                     
      "888              .o8    888 `"  `"'  `888                     
  .oooo888   .ooooo.  .o888oo o888oo  oooo   888   .ooooo.   .oooo.o 
@@ -11,18 +13,24 @@ d88' `888  d88' `88b   888    888    `888   888  d88' `88b d88(  "8
 888   888  888   888   888 .  888     888   888  888    .o o.  )88b 
 `Y8bod88P" `Y8bod8P'   "888" o888o   o888o o888o `Y8bod8P' 8""888P' 
                                                                     
+
+
+
+EOF
+  if [ "$(uname)" = "Linux" ];then
+    SUDO="sudo "
+  else
+    SUDO=""
+  fi
+  cat <<-EOF
 This is basd4g's dotfiles.
+Repository: https://github.com/basd4g/dotfiles
 
-https://github.com/basd4g/dotfiles
+Execute the commands to setup this pc.
 
-If you setup your pc, execute the commands.
+$ cd ~/dotfiles
+$ ${SUDO}make run
 
-```sh
-
-cd ~/dotfiles
-make run
-
-```
 
 EOF
 }
@@ -45,6 +53,7 @@ function DownloadDotfiles() {
     rm -f "${HOME}/dotfiles.tar.gz"
   fi
 
+  echo "Downloaded."
 }
 
 
