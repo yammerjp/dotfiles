@@ -27,6 +27,41 @@ jobs:
     - name: Check .zshrc
       run : zsh -n ${GITHUB_WORKSPACE}/.zshrc
 
+
+  ubuntu-setup:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Copy
+      run : |
+        cp -r ${GITHUB_WORKSPACE} ~/
+
+    - name: Run
+      run : >
+        cd ~/dotfiles &&
+        sudo bash -c '
+        export INSTALL_PACKAGES_CORE_ONLY=1 &&
+        export SKIP_ZSH_INIT=1 &&
+        make run'
+
+    # Use error.log. Not be able to use 'set -e' in .zprofile
+    - name: Load .zprofile
+      run : |
+        touch error.log
+        zsh ~/.zprofile 2> error.log
+        cat error.log
+        if [ -s error.log ]; then false; fi
+
+    # Use error.log. Not be able to use 'set -e' in .zshrc
+    - name: Load .zshrc
+      run : |
+        touch error.log
+        zsh ~/.zshrc 2> error.log
+        cat error.log
+        if [ -s error.log ]; then false; fi
+
   macos-setup:
     runs-on: macos-latest
 
@@ -45,7 +80,8 @@ jobs:
     - name: Run
       run : |
         cd ~/dotfiles
-        export BREW_BUNDLE_CORE_ONLY=1
+        export INSTALL_PACKAGES_CORE_ONLY=1
+        export SKIP_ZSH_INIT=1
         make run
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
