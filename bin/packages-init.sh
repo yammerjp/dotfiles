@@ -5,24 +5,22 @@ cd "$DOTFILES_DIR"
 
 ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
 
-if [ "$(uname)" = "Darwin" ];then
-
-  ech "Install packages for macOS"
-  if ! which brew > /dev/null 2>&1 ; then
+function BrewInstall() {
+ if ! which brew > /dev/null 2>&1 ; then
     ech "Need homebrew. Prease install homebrew and retry the script."
     exit 1
   fi
 
  brew bundle --file "$DOTFILES_DIR/etc/brewfile-core"
  if [ "$BREW_BUNDLE_CORE_ONLY" = "1" ]; then
-  exit 0
+  return 0
  fi
+
  brew bundle --file "$DOTFILES_DIR/etc/brewfile"
+}
 
-elif [ "$(uname)" = "Linux" ];then
-
-  ech "Install packages for Linux"
-  if [ "`whoami`" != "root" ]; then
+function AptInstall() {
+ if [ "`whoami`" != "root" ]; then
     echo "Require root privilege"
     exit 1
   fi
@@ -37,9 +35,20 @@ elif [ "$(uname)" = "Linux" ];then
 
   cat "$DOTFILES_DIR/etc/aptfile" | while read -r PACKAGE
   do
-    apt-get install -y "$PACKAGE"
+    apt install -y "$PACKAGE"
   done
+}
 
+
+if [ "$(uname)" = "Darwin" ];then
+  ech "Install packages for macOS"
+  BrewInstall
+  exit 0
+
+elif [ "$(uname)" = "Linux" ];then
+
+  ech "Install packages for Linux"
+  AptInstall
   exit 0
 fi
 
