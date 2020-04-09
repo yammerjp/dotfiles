@@ -26,7 +26,7 @@ bash "$APTFILE_CORE"
 
 if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
   ech "Skip to install packages in $APTFILE"
-  return 0
+  exit 0
 fi
 
 ech "Install packages in $APTFILE"

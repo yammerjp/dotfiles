@@ -19,7 +19,7 @@ brew bundle --file "$BREWFILE_CORE"
 
 if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
   ech "Skip to install packages in $BREWFILE"
-  return 0
+  exit 0
 fi
 
 ech "Install packages in $BREWFILE"
