@@ -17,11 +17,9 @@ pip3 install xkeysnail
 snap install --classic code
 snap install --classic heroku
 
-WORKING_DIR=`pwd`
-
-bash "$WORKING_DIR/aptfile.sh"
-bash "$WORKING_DIR/docker.sh"
-bash "$WORKING_DIR/google-chrome.sh"
-bash "$WORKING_DIR/hackgen.sh"
-bash "$WORKING_DIR/hyper.sh"
-bash "$WORKING_DIR/postgresql.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/aptfile.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/docker.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/google-chrome.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/hackgen.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/hyper.sh"
+bash "$HOME/dotfiles/bin/packages-init-linux/postgresql.sh"
