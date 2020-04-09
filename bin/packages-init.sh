@@ -17,8 +17,8 @@ function InstallPackagesForMac() {
     exit 1
   fi
 
-  BREWFILE_CORE="$DOTFILES_DIR/etc/brewfile-core"
-  BREWFILE="$DOTFILES_DIR/etc/brewfile"
+  BREWFILE_CORE="$DOTFILES_DIR/bin/packages-init-macos/brewfile-core"
+  BREWFILE="$DOTFILES_DIR/bin/packages-init-macos/brewfile"
 
   BrewInstall "$BREWFILE_CORE"
 
@@ -44,8 +44,8 @@ function InstallPackagesForUbuntu() {
   apt update
   apt upgrade -y
 
-  APTFILE_CORE="$DOTFILES_DIR/etc/aptfile-core.sh"
-  APTFILE="$DOTFILES_DIR/etc/aptfile.sh"
+  APTFILE_CORE="$DOTFILES_DIR/bin/packages-init-linux/aptfile-core.sh"
+  APTFILE="$DOTFILES_DIR/bin/packages-init-linux/aptfile.sh"
 
   bash "$APTFILE_CORE"
 
