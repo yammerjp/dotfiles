@@ -1,10 +1,12 @@
-name: Ubuntu Setup (core packages)
+name: Ubuntu Setup (all packages)"
 
 on:
   push:
-    branches: [ master ]
+    paths:
+    - 'bin/packages-init-linux/**'
   pull_request:
-    branches: [ master ]
+    paths:
+    - 'bin/packages-init-linux/**'
 
 jobs:
   ubuntu-setup:
@@ -21,7 +23,6 @@ jobs:
       run : >
         cd ~/dotfiles &&
         sudo bash -c '
-        export INSTALL_PACKAGES_CORE_ONLY=1 &&
         export SKIP_ZSH_INIT=1 &&
         make'
 
