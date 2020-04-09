@@ -30,15 +30,6 @@ function InstallPackagesForMac() {
   BrewInstall "$BREWFILE"
 }
 
-function AptInstall() {
-  PACKAGES_LIST_PATH="$1"
-  ech "Install packages in $PACKAGES_LIST_PATH"
-  while read -r PACKAGE
-  do
-    apt install -y "$PACKAGE"
-  done < "$PACKAGES_LIST_PATH"
-}
-
 function InstallPackagesForUbuntu() {
   if [ "$(whoami)" != "root" ]; then
     echo "Require root privilege"
@@ -53,17 +44,17 @@ function InstallPackagesForUbuntu() {
   apt update
   apt upgrade -y
 
-  APTFILE_CORE="$DOTFILES_DIR/etc/aptfile-core"
-  APTFILE="$DOTFILES_DIR/etc/aptfile"
+  APTFILE_CORE="$DOTFILES_DIR/etc/aptfile-core.sh"
+  APTFILE="$DOTFILES_DIR/etc/aptfile.sh"
 
-  AptInstall "$APTFILE_CORE"
+  bash "$APTFILE_CORE"
 
   if [ "$INSTALL_PACKAGES_CORE_ONLY" = "1" ]; then
     ech "Skip to install packages in $APTFILE"
     return 0
   fi
 
-  AptInstall "$APTFILE"
+  bash "$APTFILE"
 }
 
 
