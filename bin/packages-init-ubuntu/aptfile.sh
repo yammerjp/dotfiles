@@ -1,3 +1,4 @@
+#!/bin/bash -c
 apt install -y gdebi
 apt install -y ffmpeg
 apt install -y git

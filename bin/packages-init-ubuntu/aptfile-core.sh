@@ -1,3 +1,4 @@
+#!/bin/bash -c
 apt install -y nodejs
 apt install -y yarn
 apt install -y vim

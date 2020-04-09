@@ -1,3 +1,4 @@
+#!/bin/bash -c
 # docker
 curl https://get.docker.com | sh
 
