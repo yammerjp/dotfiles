@@ -9,7 +9,7 @@
 ```sh
 $ curl -sL dot.basd4g.net | bash
 $ cd ~/dotfiles
-$ sudo make run
+$ sudo make
 ```
 
 ### macOS Setup

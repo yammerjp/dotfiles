@@ -44,7 +44,7 @@ jobs:
         sudo bash -c '
         export INSTALL_PACKAGES_CORE_ONLY=1 &&
         export SKIP_ZSH_INIT=1 &&
-        make run'
+        make'
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile
@@ -82,7 +82,7 @@ jobs:
         cd ~/dotfiles
         export INSTALL_PACKAGES_CORE_ONLY=1
         export SKIP_ZSH_INIT=1
-        make run
+        make
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile

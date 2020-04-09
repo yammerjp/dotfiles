@@ -1,16 +1,4 @@
-help:
-	@echo '# Hello, this is dotfiles written by basd4g'
-	@echo 'make download      # Download dotfiles directory. (You already downloaded dotfiles)'
-	@echo 'make run           # link, packages-init, yarn-init, vim-init, zsh-init'
-	@echo 'make link          # Put symlinks of a dotfile'
-	@echo 'make packages-init # Install homebrew packages'
-	@echo 'make yarn-init     # Install nodejs packages'
-	@echo 'make vim-init      # Install vim plugins'
-	@echo 'make zsh-init      # Chenge default shell to zsh'
-	@echo 'make brew-dump     # Dump installed packages with brew to `~/dotfiles/etc/brewfile-core` and `~/dotfiles/etc/brewfile`'
-download:
-	bin/download.sh
-run:
+all:
 	make link
 	make packages-init
 	make yarn-init
@@ -28,4 +16,14 @@ zsh-init:
 	bin/zsh-init.sh
 brew-dump:
 	bin/brew-dump.sh
+help:
+	@echo '# Hello, this is dotfiles written by basd4g'
+	@echo 'make download      # Download dotfiles directory. (You already downloaded dotfiles)'
+	@echo 'make run           # link, packages-init, yarn-init, vim-init, zsh-init'
+	@echo 'make link          # Put symlinks of a dotfile'
+	@echo 'make packages-init # Install homebrew packages'
+	@echo 'make yarn-init     # Install nodejs packages'
+	@echo 'make vim-init      # Install vim plugins'
+	@echo 'make zsh-init      # Chenge default shell to zsh'
+	@echo 'make brew-dump     # Dump installed packages with brew to `~/dotfiles/etc/brewfile-core` and `~/dotfiles/etc/brewfile`'
 

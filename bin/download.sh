@@ -29,7 +29,7 @@ Repository: https://github.com/basd4g/dotfiles
 Execute the commands to setup this pc.
 
 $ cd ~/dotfiles
-$ ${SUDO}make run
+$ ${SUDO}make
 
 
 EOF
@@ -68,6 +68,6 @@ fi
 
 if [ "${MAKE_RUN}" = "1" ];then
   cd "${DOTFILES_DIR}"
-  make run
+  make
 fi
 
