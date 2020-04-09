@@ -10,7 +10,7 @@ if [ "$(uname)" = "Darwin" ];then
   bash "$DOTFILES_DIR/bin/packages-init-macos/init.sh"
 
 elif [ "$(uname)" = "Linux" ];then
-  ech "Install packages for Linux"
-  bash "$DOTFILES_DIR/bin/packages-init-linux/init.sh"
+  ech "Install packages for Ubuntu"
+  bash "$DOTFILES_DIR/bin/packages-init-ubuntu/init.sh"
 fi
 

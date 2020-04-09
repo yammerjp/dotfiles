@@ -3,11 +3,11 @@ name: Ubuntu Setup (all packages)"
 on:
   push:
     paths:
-    - 'bin/packages-init-linux/**'
+    - 'bin/packages-init-ubuntu/**'
     branches: [ master ]
   pull_request:
     paths:
-    - 'bin/packages-init-linux/**'
+    - 'bin/packages-init-ubuntu/**'
     branches: [ master ]
 
 jobs:

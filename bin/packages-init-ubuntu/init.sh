@@ -18,8 +18,8 @@ curl -sL https://deb.nodesource.com/setup_13.x | bash -
 apt update
 apt upgrade -y
 
-APTFILE_CORE="$DOTFILES_DIR/bin/packages-init-linux/aptfile-core.sh"
-APTFILE="$DOTFILES_DIR/bin/packages-init-linux/aptfile.sh"
+APTFILE_CORE="$DOTFILES_DIR/bin/packages-init-ubuntu/aptfile-core.sh"
+APTFILE="$DOTFILES_DIR/bin/packages-init-ubuntu/aptfile.sh"
 
 ech "Install packages in $APTFILE_CORE"
 bash "$APTFILE_CORE"
