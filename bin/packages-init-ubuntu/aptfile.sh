@@ -18,7 +18,6 @@ pip3 install xkeysnail
 snap install --classic code
 snap install --classic heroku
 
-bash "$HOME/dotfiles/bin/packages-init-ubuntu/aptfile.sh"
 bash "$HOME/dotfiles/bin/packages-init-ubuntu/docker.sh"
 bash "$HOME/dotfiles/bin/packages-init-ubuntu/google-chrome.sh"
 bash "$HOME/dotfiles/bin/packages-init-ubuntu/hackgen.sh"
