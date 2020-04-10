@@ -11,6 +11,6 @@ if [ "$(uname)" = "Darwin" ];then
 
 elif [ "$(uname)" = "Linux" ];then
   ech "Install packages for Ubuntu"
-  bash "$DOTFILES_DIR/bin/packages-init-ubuntu/init.sh"
+  bash "$DOTFILES_DIR/bin/packages-init-ubuntu.sh"
 fi
 

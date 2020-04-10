@@ -1,4 +1,4 @@
-name: Ubuntu Setup (all packages)"
+name: Ubuntu Setup
 
 on:
   push:
