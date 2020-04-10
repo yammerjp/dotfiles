@@ -1,4 +1,7 @@
-![CI](https://github.com/basd4g/dotfiles/workflows/CI/badge.svg)
+![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)
+![macOS Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup%20(core%20packages)/badge.svg)
+![Ubuntu Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(core%20packages)/badge.svg)
+![Ubuntu Setup (all packages)"](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(all%20packages)%22/badge.svg)
 
 # dotfiles
 
@@ -23,7 +26,9 @@ $ xcode-select -install
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ MAKE_RUN=1 bash -c "$(curl -fsSL dot.basd4g.net)"
+$ curl -sL dot.basd4g.net | bash
+$ cd ~/dotfiles
+$ make
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
@@ -35,16 +40,8 @@ $ open /Applications/Karabiner-Elements.app/
 ### Install and deploy dotfiles
 
 ```
-# Install dotfiles
-$ curl -L dot.basd4g.net | sh
-# or
-# curl -L http://raw.githubusercontent.com/basd4g/dotfiles/master/bin/install.sh | sh
-# or
-# git clone https://github.com/basd4g/dotfiles.git ~/dotfiles
-
+$ curl -sL dot.basd4g.net | sh
 $ cd ~/dotfiles
-
-# Deploy dotfiles
 $ make link
 ```
 
@@ -64,6 +61,6 @@ MIT
 - [ ] Add anyenv
 - [ ] Update aptfile
 - [ ] Add test of brewfile, aptfile
-- [ ] Devide `bin/packages-init.sh`
 - [ ] Add `dot.basd4g.net/help`
+- [ ] Divide brewfile, brewfile-mas to add checking all packages
 
