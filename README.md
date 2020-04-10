@@ -1,7 +1,9 @@
-![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)
-![macOS Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup%20(core%20packages)/badge.svg)
-![Ubuntu Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(core%20packages)/badge.svg)
-![Ubuntu Setup (all packages)"](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(all%20packages)%22/badge.svg)
+[![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3Alint)
+
+[![macOS Setup](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
+
+[![Ubuntu Setup](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
+
 
 # dotfiles
 
