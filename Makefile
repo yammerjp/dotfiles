@@ -15,7 +15,7 @@ vim-init:
 zsh-init:
 	bin/zsh-init.sh
 brew-dump:
-	bin/brew-dump.sh
+	brew bundle dump --global
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make download      # Download dotfiles directory. (You already downloaded dotfiles)'
