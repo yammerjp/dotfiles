@@ -48,8 +48,11 @@ $ make link
 ### Add new dotfile
 
 ```sh
-$ mv ~/.hogerc ~/dotfiles/
-$ ln -s ~/dotfiles/.hogerc ~/.hogerc
+$ cd ~/dotfiles
+$ mv ~/.hogerc ./
+$ make link
+# or
+# $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 ```
 
 ## LICENSE
@@ -59,8 +62,5 @@ MIT
 ## ToDo
 
 - [ ] Add anyenv
-- [ ] Update aptfile
-- [ ] Add test of brewfile, aptfile
 - [ ] Add `dot.basd4g.net/help`
-- [ ] Divide brewfile, brewfile-mas to add checking all packages
 
