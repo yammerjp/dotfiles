@@ -17,7 +17,6 @@ fi
 ech "Install packages"
 
 # ========== nodejs ==========
-
 curl -sL https://deb.nodesource.com/setup_13.x | bash -
 apt update
 apt upgrade -y
@@ -27,6 +26,11 @@ apt install -y nodejs
 apt install -y yarn
 apt install -y vim
 apt install -y zsh
+
+if [ "$1" = "minimum" ]; then
+  ech "Finished minimum packages"
+  exit 0
+fi
 
 apt install -y gdebi
 apt install -y ffmpeg

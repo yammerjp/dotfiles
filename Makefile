@@ -1,14 +1,17 @@
 all:
 	make link
 	make os-init
-	make packages-init
+	make packages-init-mini
 	make yarn-init
 	make vim-init
 	make zsh-init
+	make packages-init
 link:
 	bin/link.sh
 os-init:
 	bin/macos-defaults.sh
+packages-init-mini:
+	bin/packages-init.sh minimum
 packages-init:
 	bin/packages-init.sh
 yarn-init:
