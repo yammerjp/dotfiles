@@ -1,11 +1,10 @@
-all:
+inits:
 	make link
 	make os-init
 	make packages-init-mini
 	make yarn-init
 	make vim-init
 	make zsh-init
-	make packages-init
 link:
 	bin/link.sh
 os-init:
