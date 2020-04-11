@@ -20,7 +20,7 @@ vim-init:
 zsh-init:
 	bin/zsh-init.sh
 brew-dump:
-	brew bundle dump --file Brewfile
+	brew bundle dump --file etc/Brewfile
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make               # make inits'

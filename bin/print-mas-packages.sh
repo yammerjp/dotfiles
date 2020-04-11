@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-BREW_FILE="$HOME/dotfiles/Brewfile"
+BREW_FILE="$HOME/dotfiles/etc/Brewfile"
 
 awk '/^[^#]/ { print } ' "$BREW_FILE" \
   | grep -E '^mas "' \
