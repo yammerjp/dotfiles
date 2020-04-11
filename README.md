@@ -1,7 +1,9 @@
-![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)
-![macOS Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup%20(core%20packages)/badge.svg)
-![Ubuntu Setup (core packages)](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(core%20packages)/badge.svg)
-![Ubuntu Setup (all packages)"](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup%20(all%20packages)%22/badge.svg)
+[![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3Alint)
+
+[![macOS Setup](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
+
+[![Ubuntu Setup](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
+
 
 # dotfiles
 
@@ -48,8 +50,11 @@ $ make link
 ### Add new dotfile
 
 ```sh
-$ mv ~/.hogerc ~/dotfiles/
-$ ln -s ~/dotfiles/.hogerc ~/.hogerc
+$ cd ~/dotfiles
+$ mv ~/.hogerc ./
+$ make link
+# or
+# $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 ```
 
 ## LICENSE
@@ -59,8 +64,5 @@ MIT
 ## ToDo
 
 - [ ] Add anyenv
-- [ ] Update aptfile
-- [ ] Add test of brewfile, aptfile
 - [ ] Add `dot.basd4g.net/help`
-- [ ] Divide brewfile, brewfile-mas to add checking all packages
 
