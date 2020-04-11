@@ -22,7 +22,9 @@ jobs:
         cd ~/dotfiles &&
         sudo bash -c '
         export SKIP_ZSH_INIT=1 &&
-        make'
+        make &&
+        make packages-init
+        '
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile
