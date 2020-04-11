@@ -32,5 +32,5 @@ help:
 	@echo 'make yarn-init     # Install nodejs packages'
 	@echo 'make vim-init      # Install vim plugins'
 	@echo 'make zsh-init      # Chenge default shell to zsh'
-	@echo 'make brew-dump     # Dump installed packages with brew to `~/dotfiles/Brewfile`'
+	@echo 'make brew-dump     # Dump installed packages with brew to `~/dotfiles/etc/Brewfile`'
 
