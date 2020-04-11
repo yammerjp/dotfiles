@@ -29,6 +29,7 @@ jobs:
         export HOMEBREW_BUNDLE_MAS_SKIP="$(bash ~/dotfiles/bin/print-mas-packages.sh)"
         export SKIP_ZSH_INIT=1
         make
+        make packages-init
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile

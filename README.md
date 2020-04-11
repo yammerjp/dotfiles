@@ -1,9 +1,6 @@
 [![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3Alint)
-
 [![macOS Setup](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
-
 [![Ubuntu Setup](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
-
 
 # dotfiles
 
@@ -32,9 +29,16 @@ $ curl -sL dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ make
 
+# Enable macOS settings
+$ sudo reboot
+
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
 #   > Complex modifications > Add rule > basd4g's setting > Enable All
+
+# It may take some time to download and install all packages
+#  and the computer sometimes ask you password.
+$ make packages-init
 ```
 
 ## Dotfiles

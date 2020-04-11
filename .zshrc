@@ -32,6 +32,14 @@ alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset
 # vim alias
 alias vi='vim -u NONE'
 
+# colordiff
+if [[ -x `which colordiff` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+export LESS='-R'
+
 # covid19
 alias covid19='curl https://corona-stats.online/'
 alias covid-19='curl https://corona-stats.online/'
