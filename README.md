@@ -34,7 +34,10 @@ $ sudo reboot
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
-#   > Complex modifications > Add rule > basd4g's setting > Enable All
+#   Complex modifications > Add rule > basd4g's setting > Enable All
+#   Devices > Basic configuration > Modify events from devices \
+#     Check on [RK-Bluetooth keyboard (unknown)], [USB DEVICE SONiX], [USB DEVICE (SONiX)]
+#     Check off [Apple Internal Keyboard / Trackpad (Apple Inc.)]
 
 # It may take some time to download and install all packages
 #  and the computer sometimes ask you password.
