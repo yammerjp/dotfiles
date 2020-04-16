@@ -20,6 +20,7 @@ vim-init:
 zsh-init:
 	bin/zsh-init.sh
 brew-dump:
+	rm -f etc/Brewfile
 	brew bundle dump --file etc/Brewfile
 shiftit-init:
 	bin/shiftit-init.sh
