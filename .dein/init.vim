@@ -2,7 +2,7 @@
 " dark powered vim plugin manager
 
 " Set variables
-let g:rc_dir    = expand('~/dotfiles/dein')
+let g:rc_dir    = expand('~/.dein')
 let s:toml      = g:rc_dir . '/dein.toml'
 let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 let s:dein_repo_dir = g:rc_dir . '/repos/github.com/Shougo/dein.vim'

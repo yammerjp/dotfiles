@@ -1,6 +1,6 @@
 "========== dein.vim ==========
-if filereadable(expand('~/dotfiles/dein/init.vim'))
-    source ~/dotfiles/dein/init.vim
+if filereadable(expand('~/.dein/init.vim'))
+    source ~/.dein/init.vim
 endif
 
 
