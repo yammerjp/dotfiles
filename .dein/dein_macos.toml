@@ -1,0 +1,7 @@
+# git clone https://github.com/apple/sourcekit-lsp.git
+# cd sourcekit-lsp
+# swift build -c release
+# mv .build/release/sourcekit-lsp /usr/local/bin
+[[plugins]]
+repo = 'ryanolsonx/vim-lsp-swift'
+depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim', 'vim-lsp']

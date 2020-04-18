@@ -4,6 +4,7 @@
 " Set variables
 let g:rc_dir    = expand('~/.dein')
 let s:toml      = g:rc_dir . '/dein.toml'
+let s:macos_toml = g:rc_dir . '/dein_macos.toml'
 let s:lazy_toml = g:rc_dir . '/dein_lazy.toml'
 let s:dein_repo_dir = g:rc_dir . '/repos/github.com/Shougo/dein.vim'
 
@@ -22,8 +23,13 @@ if dein#load_state(g:rc_dir)
   call dein#begin(g:rc_dir)
 
   " Load plugins from toml
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#load_toml(s:toml,       {'lazy': 0})
+
+  if system('uname') == "Darwin\n"
+    call dein#load_toml(s:macos_toml, {'lazy': 0})
+  endif
+
+  call dein#load_toml(s:lazy_toml,  {'lazy': 1})
 
   call dein#end()
   call dein#save_state()
