@@ -10,15 +10,6 @@ if ! which brew > /dev/null 2>&1 ; then
   exit 1
 fi
 
-if ! which sourcekit-lsp > /dev/null 2>&1 ; then
-  ech "Install sourcekit-lsp (lsp for swift)"
-  git clone https://github.com/apple/sourcekit-lsp.git
-  cd sourcekit-lsp
-  swift build -c release
-  mv .build/release/sourcekit-lsp /usr/local/bin 
-  ech "Finished sourcekit-lsp"
-fi
-
 ech "Install packages"
 
 if [ "$1" = "minimum" ]; then
