@@ -22,8 +22,8 @@ if dein#load_state(g:rc_dir)
   call dein#begin(g:rc_dir)
 
   " Load plugins from toml
-  call dein#load_toml(s:toml,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml, {'lazy': 1})
+  call dein#load_toml(s:toml,       {'lazy': 0})
+  call dein#load_toml(s:lazy_toml,  {'lazy': 1})
 
   call dein#end()
   call dein#save_state()

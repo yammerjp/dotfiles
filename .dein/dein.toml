@@ -97,6 +97,6 @@ hook_add = '''
 # cd sourcekit-lsp
 # swift build -c release
 # mv .build/release/sourcekit-lsp /usr/local/bin
-[[plugins]]
-repo = 'ryanolsonx/vim-lsp-swift'
-depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim', 'vim-lsp']
+#[[plugins]]
+#repo = 'ryanolsonx/vim-lsp-swift'
+#depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim', 'vim-lsp']
