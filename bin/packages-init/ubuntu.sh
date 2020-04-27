@@ -45,7 +45,7 @@ apt install -y tree
 apt install -y ibus-mozc
 
 # ========== xkeysnail ==========
-apt install python3-pip
+apt install -y python3-pip
 pip3 install xkeysnail
 
 # ========== snap ==========
