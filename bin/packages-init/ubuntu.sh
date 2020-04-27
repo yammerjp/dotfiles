@@ -51,6 +51,7 @@ pip3 install xkeysnail
 # ========== snap ==========
 snap install --classic code
 snap install --classic heroku
+snap install chromium
 
 # ========== docker ==========
 curl https://get.docker.com | sh
@@ -58,16 +59,6 @@ curl https://get.docker.com | sh
 # docker-compose
 curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
 chmod +x /usr/local/bin/docker-compose
-
-# ========== Chrome ==========
-sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
-wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
-apt update
-apt install google-chrome-stable
-
-# Extension
-# LINE
-# BitWarden
 
 # ========== HackGen ==========
 TMP_FILE="/tmp/dotfiles/hackgen.zip"
