@@ -22,6 +22,10 @@ apt update
 apt upgrade -y
 apt install -y nodejs
 
+# ========== git =========
+add-apt-repository ppa:git-core/ppa
+apt install -y git
+
 # ========== apt ==========
 apt install -y yarn
 apt install -y vim
@@ -34,7 +38,6 @@ fi
 
 apt install -y gdebi
 apt install -y ffmpeg
-apt install -y git
 apt install -y lynx
 apt install -y mysql-server
 apt install -y mysql-client
