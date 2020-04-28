@@ -24,6 +24,8 @@ brew-dump:
 	brew bundle dump --file etc/Brewfile
 shiftit-init:
 	bin/shiftit-init.sh
+ubuntu-homedir-rename:
+	LANG=C xdg-user-dirs-gtk-update
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make                    # make inits'
@@ -37,4 +39,5 @@ help:
 	@echo 'make zsh-init           # Chenge default shell to zsh'
 	@echo 'make brew-dump          # Dump installed packages with brew to `~/dotfiles/etc/Brewfile`'
 	@echo 'make shiftif-init       # Set keymap of shiftit'
+	@echo 'make ubuntu-homedir-init # Rename directories in homedir from Japanese to English'
 
