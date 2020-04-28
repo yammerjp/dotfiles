@@ -1,6 +1,7 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR=$(cd "$(dirname "$0")/../" ; pwd)
+HOME=$(cd "$(dirname "$0")/../../" ; pwd)
 cd "$DOTFILES_DIR"
 
 find . -type f | grep -E "^\./\." | while read -r FILE_WITH_DOT_SLASH

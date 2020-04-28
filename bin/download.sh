@@ -35,12 +35,17 @@ $ ${SUDO}make
 EOF
 }
 
+if [ "$(whoami)" = "root" ]; then
+  echo "The script must be running without root."
+  exit 1
+fi
+
 DOTFILES_DIR="$HOME/dotfiles"
 
-URL_TAR="https://github.com/basd4g/dotfiles/tarball/master"
-URL_GIT="https://github.com/basd4g/dotfiles.git"
-
 function DownloadDotfiles() {
+  URL_TAR="https://github.com/basd4g/dotfiles/tarball/master"
+  URL_GIT="https://github.com/basd4g/dotfiles.git"
+
   echo "Downloading dotfiles..."
 
   if type "git" > /dev/null 2>&1 ; then
