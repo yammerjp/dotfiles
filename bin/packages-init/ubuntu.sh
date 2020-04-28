@@ -31,6 +31,7 @@ apt install -y yarn
 apt install -y vim
 apt install -y zsh
 apt install -y curl
+apt install -y colordiff
 
 if [ "$1" = "minimum" ]; then
   echo "Finished minimum packages"
