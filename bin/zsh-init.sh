@@ -17,7 +17,7 @@ if [ "$(whoami)" != "root" ]; then
   exit 1
 fi
 
-if ! which "$ZSH_PATH" > /dev/null 2>&1 ; then
+if ! command -v "$ZSH_PATH" > /dev/null 2>&1 ; then
   echo "Need zsh"
   echo "Please install zsh and retry this script"
   exit 1

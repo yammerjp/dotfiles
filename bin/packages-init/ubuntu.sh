@@ -4,7 +4,7 @@ if [ "$(whoami)" != "root" ]; then
   echo "Require root privilege"
   exit 1
 fi
-if ! which apt > /dev/null 2>&1 ; then
+if ! command -v apt > /dev/null 2>&1 ; then
   echo "Need apt"
   exit 1
 fi
