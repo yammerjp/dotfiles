@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
-cd "$DOTFILES_DIR"
-
-
 # sourcekit-lsp
 #if ! which sourcekit-lsp > /dev/null 2>&1 ; then
 #  echo "Install sourcekit-lsp (lsp for swift)"

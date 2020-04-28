@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
-cd "$DOTFILES_DIR"
-
 if [ "$(uname)" != "Darwin" ];then
   exit 0
 fi

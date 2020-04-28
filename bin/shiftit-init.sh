@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
-cd "$DOTFILES_DIR"
-
 if [ "$(uname)" != "Darwin" ]; then
   echo "This computer is not macOS"
   exit 1
