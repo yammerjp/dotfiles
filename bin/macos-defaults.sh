@@ -3,13 +3,11 @@
 DOTFILES_DIR="$HOME/dotfiles"
 cd "$DOTFILES_DIR"
 
-ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
-
 if [ "$(uname)" != "Darwin" ];then
   exit 0
 fi
 
-ech  "Set macOS settings with 'defaults' command"
+echo  "Set macOS settings with 'defaults' command"
 
 # Dock
 
@@ -115,4 +113,4 @@ defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/C
 defaults write com.apple.systemuiserver "NSStatusItem Visible com.apple.menuextra.bluetooth" 1
 defaults write com.apple.systemuiserver menuExtras -array-add "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
 
-ech "Finished. Please reboot this Computer."
+echo "Finished. Please reboot this Computer."

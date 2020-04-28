@@ -3,10 +3,8 @@
 DOTFILES_DIR="$HOME/dotfiles"
 cd "$DOTFILES_DIR"
 
-ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
-
-if ! which yarn > /dev/null 2>&1 ; then
-  ech "Need yarn. Prease install yarn and retry the script."
+if ! which yarn > /dev/null 3>&1 ; then
+  echo "Need yarn. Prease install yarn and retry the script."
   exit 1
 fi
 

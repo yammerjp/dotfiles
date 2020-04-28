@@ -3,17 +3,14 @@
 DOTFILES_DIR="$HOME/dotfiles"
 cd "$DOTFILES_DIR"
 
-ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
-
-# symbolic link
 if [ "$(uname)" != "Darwin" ]; then
-  ech "This computer is not macOS"
+  echo "This computer is not macOS"
   exit 1
 fi
 
 if ! defaults read org.shiftitapp.ShiftIt leftKeyCode > /dev/null; then
-  ech "The variable 'org.shiftitapp.ShiftIt leftKeyCode' is not found"
-  ech "This computer may not be installed shiftit"
+  echo "The variable 'org.shiftitapp.ShiftIt leftKeyCode' is not found"
+  echo "This computer may not be installed shiftit"
   exit 1
 fi
 

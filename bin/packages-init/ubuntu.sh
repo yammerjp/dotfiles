@@ -1,20 +1,15 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
-cd "$DOTFILES_DIR"
-
-ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
-
 if [ "$(whoami)" != "root" ]; then
   echo "Require root privilege"
   exit 1
 fi
 if ! which apt > /dev/null 2>&1 ; then
-  ech "Need apt"
+  echo "Need apt"
   exit 1
 fi
 
-ech "Install packages"
+echo "Install packages"
 
 # ========== nodejs ==========
 curl -sL https://deb.nodesource.com/setup_13.x | bash -
@@ -23,16 +18,17 @@ apt upgrade -y
 apt install -y nodejs
 
 # ========== git =========
-add-apt-repository ppa:git-core/ppa
+add-apt-repository -y ppa:git-core/ppa
 apt install -y git
 
 # ========== apt ==========
 apt install -y yarn
 apt install -y vim
 apt install -y zsh
+apt install -y curl
 
 if [ "$1" = "minimum" ]; then
-  ech "Finished minimum packages"
+  echo "Finished minimum packages"
   exit 0
 fi
 
@@ -55,13 +51,7 @@ pip3 install xkeysnail
 snap install --classic code
 snap install --classic heroku
 snap install chromium
-
-# ========== docker ==========
-curl https://get.docker.com | sh
-
-# docker-compose
-curl -L "https://github.com/docker/compose/releases/download/1.25.4/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-chmod +x /usr/local/bin/docker-compose
+snap install docker
 
 # ========== HackGen ==========
 TMP_FILE="/tmp/dotfiles/hackgen.zip"
