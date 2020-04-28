@@ -1,0 +1,18 @@
+[legacy/profiles:]
+default='90568e0f-0f54-44aa-baff-c6e41ab701b2'
+list=['b1dcc9dd-5262-4d8d-a863-c897e6d979b9', '90568e0f-0f54-44aa-baff-c6e41ab701b2']
+
+[legacy/profiles:/:90568e0f-0f54-44aa-baff-c6e41ab701b2]
+background-color='rgb(46,52,54)'
+background-transparency-percent=8
+bold-is-bright=true
+font='HackGen Console for Powerline 12'
+foreground-color='rgb(211,215,207)'
+use-system-font=false
+use-theme-colors=false
+use-theme-transparency=false
+use-transparent-background=true
+visible-name='HackGen'
+
+[legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9]
+visible-name='origin'

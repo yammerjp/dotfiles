@@ -26,6 +26,11 @@ shiftit-init:
 	bin/shiftit-init.sh
 ubuntu-homedir-rename:
 	LANG=C xdg-user-dirs-gtk-update
+gnome-terminal-load:
+	dconf reset /org/gnome/terminal/
+	dconf load /org/gnome/terminal/ < etc/gnome-terminal.dconf
+gnome-terminal-dump:
+	dconf dump /org/gnome/terminal/ > etc/gnome-terminal.dconf
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
 	@echo 'make                    # make inits'
@@ -40,4 +45,6 @@ help:
 	@echo 'make brew-dump          # Dump installed packages with brew to `~/dotfiles/etc/Brewfile`'
 	@echo 'make shiftif-init       # Set keymap of shiftit'
 	@echo 'make ubuntu-homedir-init # Rename directories in homedir from Japanese to English'
+	@echo 'make gnome-terminal-dump # Dump gnome-terminal settings'
+	@echo 'make gnome-terminal-load # Load gnome-terminal settings'
 
