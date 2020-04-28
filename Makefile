@@ -14,7 +14,7 @@ packages-init-mini:
 packages-init:
 	bin/packages-init.sh
 yarn-init:
-	bin/yarn-init.sh
+	yarn global add
 vim-init:
 	vim -s etc/vimop
 zsh-init:

@@ -145,5 +145,8 @@ case ${OSTYPE} in
 
   linux*) #Linux用の設定
     alias ls='ls -Fh --color=auto'
+
+    # yarnをpathに設定
+    export PATH="$PATH:$(yarn global bin)"
     ;;
 esac

@@ -21,8 +21,13 @@ apt install -y nodejs
 add-apt-repository -y ppa:git-core/ppa
 apt install -y git
 
-# ========== apt ==========
+# ========= yarn =========
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+apt update
 apt install -y yarn
+
+# ========== apt ==========
 apt install -y vim
 apt install -y zsh
 apt install -y curl
