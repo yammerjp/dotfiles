@@ -31,13 +31,21 @@ apt install -y yarn
 apt install -y vim
 apt install -y zsh
 apt install -y curl
-apt install -y colordiff
+
+# ========== HackGen ==========
+SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
+bash "$SCRIPT_DIR/hackgen.sh"
+
+# ========== xkeysnail ==========
+apt install -y python3-pip
+pip3 install xkeysnail
 
 if [ "$1" = "minimum" ]; then
   echo "Finished minimum packages"
   exit 0
 fi
 
+apt install -y colordiff
 apt install -y gdebi
 apt install -y ffmpeg
 apt install -y lynx
@@ -49,17 +57,9 @@ apt install -y shellcheck
 apt install -y tree
 apt install -y ibus-mozc
 
-# ========== xkeysnail ==========
-apt install -y python3-pip
-pip3 install xkeysnail
-
 # ========== snap ==========
 snap install --classic code
 snap install --classic heroku
 snap install chromium
 snap install docker
-
-# ========== HackGen ==========
-SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
-bash "$SCRIPT_DIR/hackgen.sh"
 
