@@ -2,7 +2,7 @@
 
 if [ "$(uname)" != "Darwin" ]; then
   echo "This computer is not macOS"
-  exit 1
+  exit 0
 fi
 
 if ! defaults read org.shiftitapp.ShiftIt leftKeyCode > /dev/null; then

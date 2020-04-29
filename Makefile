@@ -12,46 +12,40 @@ inits:
 
 # =========== setup commands ===========
 link:
-	bin/link.sh
+	bash bin/link.sh
 packages-init-mini:
-	bin/packages-init.sh minimum
+	bash bin/packages-init.sh minimum
 packages-init:
-	bin/packages-init.sh
+	bash bin/packages-init.sh
 yarn-init:
 	yarn global add
 vim-init:
 	vim -s etc/vimop
 zsh-init:
-	bin/zsh-init.sh
-
+	bash bin/zsh-init.sh
 user-default-init:
-	if [ "$(uname)" = "Darwin" ]; then
-		bin/user-default/os.sh
-		bin/user-default/shiftit.sh
-	fi
+	bash bin/user-default/init.sh
 ubuntu-homedir-rename:
-	if [ "$(uname)" = "Linux" ];then
-		LANG=C xdg-user-dirs-gtk-update
+	if [ "$(uname)" = "Linux" ];then \
+		LANG=C xdg-user-dirs-gtk-update ;\
 	fi
 xkeysnail-init:
-	if [ "$(uname)" = "Linux" ];then
-		bin/xkeysnail-init.sh
-	fi
+	bash bin/xkeysnail-init.sh
 gnome-terminal-load:
-	if [ "$(uname)" = "Linux" ];then
-		dconf reset /org/gnome/terminal/
-		dconf load /org/gnome/terminal/ < etc/gnome-terminal.dconf
+	if [ "$(uname)" = "Linux" ];then \
+		dconf reset /org/gnome/terminal/ ;\
+		dconf load /org/gnome/terminal/ < etc/gnome-terminal.dconf ;\
 	fi
 
 # =========== backup commands ===========
 gnome-terminal-dump:
-	if [ "$(uname)" = "Linux" ];then
-		dconf dump /org/gnome/terminal/ > etc/gnome-terminal.dconf
+	if [ "$(uname)" = "Linux" ];then \
+		dconf dump /org/gnome/terminal/ > etc/gnome-terminal.dconf ;\
 	fi
 brew-dump:
-	if [ "$(uname)" = "Darwin" ]; then
-		rm -f etc/Brewfile
-		brew bundle dump --file etc/Brewfile
+	if [ "$(uname)" = "Darwin" ]; then \
+		rm -f etc/Brewfile ;\
+		brew bundle dump --file etc/Brewfile ;\
 	fi
 
 # =========== help message ===========

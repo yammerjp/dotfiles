@@ -15,7 +15,8 @@ cd "$TMP_DIR"
 
 VERSION="$(curl -sI https://github.com/yuru7/HackGen/releases/latest | grep location | awk -F '/' '{print $NF }')"
 # 改行削除
-VERSION=`echo ${VERSION} | sed -e "s/[\r\n]\+//g"`
+# shellcheck disable=SC2001
+VERSION="${VERSION//[\r\n]\+/}"
 URL="https://github.com/yuru7/HackGen/releases/download/$VERSION/HackGen_$VERSION.zip"
 
 echo "Download HackGen font from $URL"

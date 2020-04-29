@@ -4,8 +4,6 @@ if [ "$(uname)" != "Darwin" ];then
   exit 0
 fi
 
-echo  "Set macOS settings with 'defaults' command"
-
 # Dock
 
 # Automatically hide or show the Dock （Dock を自動的に隠す）
