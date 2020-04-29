@@ -14,9 +14,9 @@ inits:
 link:
 	bash bin/link.sh
 packages-init-mini:
-	bash bin/packages-init.sh minimum
+	bash bin/packages/init.sh minimum
 packages-init:
-	bash bin/packages-init.sh
+	bash bin/packages/init.sh
 yarn-init:
 	yarn global add
 vim-init:
