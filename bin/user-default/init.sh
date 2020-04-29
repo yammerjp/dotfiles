@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-if [ "$(uname)" != "Darwin" ];then
-  exit 0
-fi
-
 echo  "Set User Default with 'defaults' command"
 
 SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)

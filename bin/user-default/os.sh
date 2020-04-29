@@ -1,9 +1,5 @@
 #!/bin/bash -e
 
-if [ "$(uname)" != "Darwin" ];then
-  exit 0
-fi
-
 # Dock
 
 # Automatically hide or show the Dock （Dock を自動的に隠す）

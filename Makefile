@@ -24,13 +24,17 @@ vim-init:
 zsh-init:
 	bash bin/zsh-init.sh
 user-default-init:
-	bash bin/user-default/init.sh
+	if [ "$(uname)" = "Darwin" ];then \
+		bash bin/user-default/init.sh ;\
+	fi
 ubuntu-homedir-rename:
 	if [ "$(uname)" = "Linux" ];then \
 		LANG=C xdg-user-dirs-gtk-update ;\
 	fi
 xkeysnail-init:
-	bash bin/xkeysnail-init.sh
+	if [ "$(uname)" = "Linux" ];then \
+		bash bin/xkeysnail-init.sh ;\
+	fi
 gnome-terminal-load:
 	if [ "$(uname)" = "Linux" ];then \
 		dconf reset /org/gnome/terminal/ ;\

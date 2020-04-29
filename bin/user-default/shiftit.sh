@@ -1,10 +1,5 @@
 #!/bin/bash -e
 
-if [ "$(uname)" != "Darwin" ]; then
-  echo "This computer is not macOS"
-  exit 0
-fi
-
 if ! defaults read org.shiftitapp.ShiftIt leftKeyCode > /dev/null; then
   echo "The variable 'org.shiftitapp.ShiftIt leftKeyCode' is not found"
   echo "This computer may not be installed shiftit"
