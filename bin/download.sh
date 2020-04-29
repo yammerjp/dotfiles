@@ -35,22 +35,33 @@ $ ${SUDO}make
 EOF
 }
 
+if [ "$(whoami)" = "root" ]; then
+  echo "The script must be running without root."
+  exit 1
+fi
+
 DOTFILES_DIR="$HOME/dotfiles"
 
-URL_TAR="https://github.com/basd4g/dotfiles/tarball/master"
-URL_GIT="https://github.com/basd4g/dotfiles.git"
-
 function DownloadDotfiles() {
-  echo "Downloading dotfiles..."
-  mkdir "${DOTFILES_DIR}"
+  URL_TAR="https://github.com/basd4g/dotfiles/tarball/master"
+  URL_GIT="https://github.com/basd4g/dotfiles.git"
 
-  if type "git" > /dev/null 2>&1 && : ; then
+  echo "Downloading dotfiles..."
+
+  if type "git" > /dev/null 2>&1 ; then
+    echo "with git"
     git clone --recursive "${URL_GIT}" "${DOTFILES_DIR}"
+  elif type "curl" > /dev/null 2>&1 ; then
+    echo "with curl"
+    mkdir "${DOTFILES_DIR}"
+    curl -fsSL "${URL_TAR}" | tar xz  --strip-components 1 -C "${DOTFILES_DIR}"
+  elif type "wget" > /dev/null 2>&1 ; then
+    echo "with wget"
+    mkdir "${DOTFILES_DIR}"
+    wget "${URL_TAR}" --quiet -O - | tar xz  --strip-components 1 -C "${DOTFILES_DIR}"
   else
-    # Download dotfiles without git
-    curl -fsSLo "${HOME}/dotfiles.tar.gz" "${URL_TAR}"
-    tar -zxf "${HOME}/dotfiles.tar.gz" --strip-components 1 -C "${DOTFILES_DIR}"
-    rm -f "${HOME}/dotfiles.tar.gz"
+    echo "Need git or curl or wget."
+    exit 1
   fi
 
   echo "Downloaded."

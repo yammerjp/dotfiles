@@ -18,8 +18,8 @@ jobs:
         sudo apt-get install shellcheck
         sudo apt-get install zsh
 
-    - name: Check bin/*.sh
-      run : find ${GITHUB_WORKSPACE}/bin -type f | grep -E "\.sh$" | xargs shellcheck
+    - name: Check '*.sh'
+      run : find ${GITHUB_WORKSPACE} -type f | grep -E "\.sh$" | xargs shellcheck
 
     - name: Check .zprofile
       run : zsh -n ${GITHUB_WORKSPACE}/.zprofile

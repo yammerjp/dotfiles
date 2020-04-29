@@ -1,11 +1,8 @@
 #!/bin/bash -e
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR=$(cd "$(dirname "$0")/../" ; pwd)
+HOME=$(cd "$(dirname "$0")/../../" ; pwd)
 cd "$DOTFILES_DIR"
-
-ech(){ sh "$DOTFILES_DIR/bin/echo.sh" "$*"; }
-
-# symbolic link
 
 find . -type f | grep -E "^\./\." | while read -r FILE_WITH_DOT_SLASH
 do
@@ -18,7 +15,7 @@ do
   [[ "$FILE" == ".DS_Store" ]] && continue
 
   if [ "$DIRNAME" != "." ];then
-    ech "mkdir -p $HOME/$DIRNAME" # ディレクトリを掘る
+    echo "mkdir -p $HOME/$DIRNAME" # ディレクトリを掘る
     mkdir -p "$HOME/$DIRNAME"
   fi
 
@@ -27,15 +24,15 @@ do
   LINK_TO_BACKUP="$HOME/$FILE.org-dot-deploy"
 
   if LINK_ALREADY_EXISTS=$(readlink "$LINK_TO") && [ "$LINK_ALREADY_EXISTS" = "$LINK_FROM" ];then
-    ech "symlink already exist. $LINK_FROM  -> $LINK_TO"
+    echo "symlink already exist. $LINK_FROM  -> $LINK_TO"
     continue
   fi
 
   if [ -e "$LINK_TO" ];then
-    ech "mv -f $LINK_TO $LINK_TO_BACKUP"
+    echo "mv -f $LINK_TO $LINK_TO_BACKUP"
     mv -f "$LINK_TO" "$LINK_TO_BACKUP"
   fi
 
-  ech "ln -s $LINK_FROM $LINK_TO"
+  echo "ln -s $LINK_FROM $LINK_TO"
   ln -s "$LINK_FROM" "$LINK_TO"
 done

@@ -12,3 +12,5 @@
         process = git-lfs filter-process
 [push]
         default = current
+[core]
+	editor = vim
