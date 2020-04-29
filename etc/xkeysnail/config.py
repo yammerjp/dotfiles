@@ -9,10 +9,10 @@ define_modmap({
     K("Shift-ESC"): K("Shift-GRAVE"),
 
     # vim like direction keys
-    K("RAlt-h"): K("LEFT"),
-    K("RAlt-j"): K("DOWN"),
-    K("RAlt-k"): K("UP"),
-    K("RAlt-l"): K("RIGHT")
+    # K("M-h"): K("left"),
+    # K("M-j"): K("down"),
+    # K("M-k"): K("up"),
+    # K("M-l"): K("right")
 })
 
 define_multipurpose_modmap({
@@ -23,12 +23,12 @@ define_multipurpose_modmap({
     Key.LEFT_SHIFT: [Key.MUHENKAN, Key.LEFT_CTRL],
 
     # 右shift: 単独でかな, 複数でcmd
-    Key.RIGHT_CTRL: [Key.HENKAN, Key.RIGHT_CTRL],
+    Key.RIGHT_SHIFT: [Key.HENKAN, Key.RIGHT_CTRL],
 
     # SandS
     Key.SPACE: [Key.SPACE, Key.LEFT_SHIFT],
 
     # tab: 単独でtab, 複数でalt
-    Key.TAB: [Key.TAB, Key.LEFT_ALT]
+    Key.TAB: [Key.TAB, Key.RIGHT_ALT]
 })
 
