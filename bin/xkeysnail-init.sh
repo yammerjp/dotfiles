@@ -24,10 +24,19 @@ udevadm control --reload-rules && udevadm trigger
 
 DOTFILES_DIR=$(cd "$(dirname "$0")/../" ; pwd)
 
+echo 'symlink start.sh, config.py'
 rm -rf "/etc/opt/xkeysnail"
 mkdir -p "/etc/opt/xkeysnail"
 ln -s "$DOTFILES_DIR/etc/xkeysnail/start.sh" "/etc/opt/xkeysnail/start.sh"
 ln -s "$DOTFILES_DIR/etc/xkeysnail/config.py" "/etc/opt/xkeysnail/config.py"
 
+echo 'Add line to /etc/sudoers'
+sudoers_line="${SUDO_USER:-$USER} ALL=(xkeysnail) NOPASSWD: /usr/local/bin/xkeysnail"
+if ! grep -x "$sudoers_line" /etc/sudoers > /dev/null 2>&1 ; then
+  echo "$sudoers_line" | EDITOR='tee -a' visudo > /dev/null
+fi
+
+echo 'systemctl reload and enable xkeysnail'
 systemctl daemon-reload
 systemctl --user enable xkeysnail
+

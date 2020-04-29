@@ -8,11 +8,8 @@ Description=xkeysnail
 
 [Service]
 KillMode=process
-ExecStart=/usr/local/bin/xkeysnail /etc/opt/xkeysnail/config.py >> /home/basd4g/.xkeysnail.log 2>&1
-#ExecStart=/bin/bash /home/basd4g/test.sh
-#ExecStartPre=xhost +SI:localuser:xkeysnail
+ExecStart=/bin/bash /etc/opt/xkeysnail/start.sh
 Type=simple
-User=xkeysnail
 Restart=always
 
 # Update DISPLAY to be the same as `echo $DISPLAY` on your graphical terminal.
