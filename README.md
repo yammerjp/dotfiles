@@ -2,7 +2,7 @@
 [![macOS Setup](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
 [![Ubuntu Setup](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
 
-# dotfiles
+# My dotfiles
 
 ## Setup
 
@@ -29,21 +29,18 @@ $ curl -sL dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ make
 
-# Enable macOS settings
+# Enable macOS settings of User Defaults
 $ sudo reboot
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
 #   Complex modifications > Add rule > basd4g's setting > Enable All
-#   Devices > Basic configuration > Modify events from devices \
-#     Check on [RK-Bluetooth keyboard (unknown)], [USB DEVICE SONiX], [USB DEVICE (SONiX)]
-#     Check off [Apple Internal Keyboard / Trackpad (Apple Inc.)]
 
 # It may take some time to download and install all packages
 #  and the computer sometimes ask you password.
 $ make packages-init
 
-# Set keymap of shiftit
+# Set shiftit keymaps of User Defaults
 $ make shiftit-init"
 ```
 
@@ -63,8 +60,6 @@ $ make link
 $ cd ~/dotfiles
 $ mv ~/.hogerc ./
 $ make link
-# or
-# $ ln -s ~/dotfiles/.hogerc ~/.hogerc
 ```
 
 ## LICENSE
