@@ -2,7 +2,7 @@
 inits:
 	make link
 	make packages-init-mini
-	make user-default-init
+	make user-defaults-init
 	make xkeysnail-init
 	make gnome-terminal-load
 	make ubuntu-homedir-rename
@@ -23,9 +23,9 @@ vim-init:
 	vim -s etc/vimop
 zsh-init:
 	bash bin/zsh-init.sh
-user-default-init:
+user-defaults-init:
 	if [ "$(uname)" = "Darwin" ];then \
-		bash bin/user-default/init.sh ;\
+		bash bin/user-defaults/init.sh ;\
 	fi
 ubuntu-homedir-rename:
 	if [ "$(uname)" = "Linux" ];then \
@@ -62,7 +62,7 @@ help:
 	@echo 'make yarn-init           # Install nodejs packages'
 	@echo 'make vim-init            # Install vim plugins'
 	@echo 'make zsh-init            # Chenge default shell to zsh'
-	@echo 'make user-default-init   # (macOS) Set user-default (macOS)'
+	@echo 'make user-defaults-init   # (macOS) Set user-defaults (macOS)'
 	@echo 'make ubuntu-homedir-init # (ubuntu) Rename directories in homedir from Japanese to English'
 	@echo 'make gnome-terminal-load # (ubuntu) Load gnome-terminal settings'
 	@echo 'make xkeysnail-init      # (ubuntu) Set start xkeysnail automatically'
