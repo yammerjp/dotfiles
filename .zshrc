@@ -161,5 +161,11 @@ case ${OSTYPE} in
     export EDITOR="/bin/vi"
     export SUDO_EDITOR="/bin/vi"
 
+    # deno
+    if [ -e "$HOME/.deno" ]; then
+      export DENO_INSTALL="$HOME/.deno"
+      export PATH="$DENO_INSTALL/bin:$PATH"
+    fi
+
     ;;
 esac
