@@ -68,5 +68,5 @@ snap install --classic shotcut
 snap install --classic slack
 
 # ========== deno ==========
-bash ./deno.sh
+bash "$SCRIPT_DIR/deno.sh"
 
