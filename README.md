@@ -39,9 +39,6 @@ $ open /Applications/Karabiner-Elements.app/
 # It may take some time to download and install all packages
 #  and the computer sometimes ask you password.
 $ make packages-init
-
-# Set shiftit keymaps of User Defaults
-$ make shiftit-init"
 ```
 
 ## Dotfiles
