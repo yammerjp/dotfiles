@@ -54,6 +54,8 @@ decompress() {
   tar zxvf "$1"
 }
 
+alias search='find . -type f | xargs grep'
+
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
