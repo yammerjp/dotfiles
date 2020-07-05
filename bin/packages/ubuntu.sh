@@ -65,6 +65,7 @@ snap install --classic heroku
 snap install chromium
 snap install docker
 snap install --classic shotcut
+snap install --classic slack
 
 # ========== deno ==========
 bash ./deno.sh
