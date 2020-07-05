@@ -28,6 +28,7 @@ setopt list_packed
 # git alias
 alias g='git'
 alias glog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative"
+alias gtree='git ls-tree -r master --name-only'
 
 # vim alias
 alias vi='vim -u NONE'
