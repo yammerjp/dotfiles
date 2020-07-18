@@ -9,7 +9,6 @@ inits:
 	make yarn-init
 	make vim-init
 	make zsh-init
-	make deno-init
 
 # =========== setup commands ===========
 link:
@@ -58,15 +57,15 @@ brew-dump:
 # =========== help message ===========
 help:
 	@echo '# Hello, this is dotfiles written by basd4g'
-	@echo 'make (inits)             # run all scripts without packages-init'
+	@echo 'make (inits)             # run all scripts without packages-init, deno-init'
 	@echo 'make link                # Put symlinks of a dotfile'
 	@echo 'make packages-init-mini  # Install minimum homebrew or apt packages'
 	@echo 'make packages-init       # Install homebrew or apt packages (very heavy)'
 	@echo 'make yarn-init           # Install nodejs packages'
 	@echo 'make vim-init            # Install vim plugins'
 	@echo 'make zsh-init            # Chenge default shell to zsh'
-	@echo 'make deno-init           # Install deno (on linux)'
-	@echo 'make user-defaults-init   # (macOS) Set user-defaults (macOS)'
+	@echo 'make deno-init           # (ubuntu) Install deno'
+	@echo 'make user-defaults-init  # (macOS) Set user-defaults (macOS)'
 	@echo 'make ubuntu-homedir-init # (ubuntu) Rename directories in homedir from Japanese to English'
 	@echo 'make gnome-terminal-load # (ubuntu) Load gnome-terminal settings'
 	@echo 'make xkeysnail-init      # (ubuntu) Set start xkeysnail automatically'
