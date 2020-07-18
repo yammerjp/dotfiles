@@ -1,5 +1,4 @@
 #!/bin/bash -e
-SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
 
 if [ "$(whoami)" != "root" ]; then
   echo "Require root privilege"
