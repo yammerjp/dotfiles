@@ -9,6 +9,7 @@ inits:
 	make yarn-init
 	make vim-init
 	make zsh-init
+	make deno-init
 
 # =========== setup commands ===========
 link:
@@ -23,6 +24,8 @@ vim-init:
 	vim -s etc/vimop
 zsh-init:
 	bash bin/zsh-init.sh
+deno-init:
+	bash bin/packages/deno.sh
 user-defaults-init:
 	if [ "$(uname)" = "Darwin" ];then \
 		bash bin/user-defaults/init.sh ;\
@@ -62,6 +65,7 @@ help:
 	@echo 'make yarn-init           # Install nodejs packages'
 	@echo 'make vim-init            # Install vim plugins'
 	@echo 'make zsh-init            # Chenge default shell to zsh'
+	@echo 'make deno-init           # Install deno (on linux)'
 	@echo 'make user-defaults-init   # (macOS) Set user-defaults (macOS)'
 	@echo 'make ubuntu-homedir-init # (ubuntu) Rename directories in homedir from Japanese to English'
 	@echo 'make gnome-terminal-load # (ubuntu) Load gnome-terminal settings'
