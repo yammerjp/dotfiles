@@ -1,3 +1,0 @@
-# Run xkeysnail
-bash "$HOME/.xkeysnail/start.sh" &
-

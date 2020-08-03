@@ -3,7 +3,6 @@ inits:
 	make link
 	make packages-init-mini
 	make user-defaults-init
-	make xkeysnail-init
 	make gnome-terminal-load
 	make ubuntu-homedir-rename
 	make yarn-init
@@ -32,10 +31,6 @@ user-defaults-init:
 ubuntu-homedir-rename:
 	if [ "$(uname)" = "Linux" ];then \
 		LANG=C xdg-user-dirs-gtk-update ;\
-	fi
-xkeysnail-init:
-	if [ "$(uname)" = "Linux" ];then \
-		bash bin/xkeysnail-init.sh ;\
 	fi
 gnome-terminal-load:
 	if [ "$(uname)" = "Linux" ];then \
