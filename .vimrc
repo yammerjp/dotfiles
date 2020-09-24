@@ -76,10 +76,6 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 挿入モードでバックスペース削除を有効
 set backspace=indent,eol,start
 
-" normapモードで;と:を入れ替える (USキーボードのため)
-nnoremap ; :
-nnoremap : ;
-
 
 "========== その他 ==========
 " 行番号を表示
