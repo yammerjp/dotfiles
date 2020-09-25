@@ -70,6 +70,7 @@ hook_add = '''
 
   " ===== connect language servers of other programming language =====
   " ===== keymaps of vim-lsp =====
+  " デフォルトのキーマップ: Ctrl+n で次の候補へ, Ctrl+p で前の候補へ
   nnoremap [lsp]    <Nop>
   nmap     <Space>l [lsp]
 
