@@ -157,6 +157,7 @@ case ${OSTYPE} in
 
   linux*) #Linux用の設定
     alias ls='ls -Fh --color=auto'
+    alias xm='xmodmap ~/.Xmodmap'
 
     # yarnをpathに設定
     export PATH="$PATH:$(yarn global bin)"
@@ -172,3 +173,5 @@ case ${OSTYPE} in
 
     ;;
 esac
+export PATH=$HOME/.rbenv/bin:$PATH
+eval "$(rbenv init -)"

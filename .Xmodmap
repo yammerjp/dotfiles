@@ -1,0 +1,4 @@
+! F14(keycode 192) -> Muhenkan
+keycode 192 = Muhenkan NoSymbol Muhenkan
+! F15(keycode 193) -> Henkan
+keycode 193 = Henkan_Mode NoSymbol Henkan_Mode
