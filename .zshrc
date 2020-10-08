@@ -2,7 +2,6 @@
 # キーバインドをviにする
 bindkey -v
 
-#=================================補完====================================
 # 補完機能有効にする
 autoload -U compinit
 compinit -u
@@ -27,6 +26,10 @@ setopt list_packed
 #=================================alias====================================
 alias g='git'
 alias vi='vim -u NONE'
+alias search='find . -type f | xargs grep'
+alias covid19='curl https://corona-stats.online/'
+alias his="history -i"
+alias his-all="history -E 1"
 
 # colordiff
 if [[ -x `which colordiff` ]]; then
@@ -35,10 +38,6 @@ else
   alias diff='diff -u'
 fi
 export LESS='-R'
-
-# covid19
-alias covid19='curl https://corona-stats.online/'
-alias covid-19='curl https://corona-stats.online/'
 
 compress() {
   echo "tar zcvf $1.tar.gz $1"
@@ -49,15 +48,11 @@ decompress() {
   tar zxvf "$1"
 }
 
-alias search='find . -type f | xargs grep'
 
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
 SAVEHIST=100000 # ヒストリファイルに保存するコマンド数
-
-alias his="history -i"
-function his-all { history -E 1; }
 
 # 重複するコマンド行は古い方を削除
 setopt hist_ignore_all_dups
@@ -168,5 +163,7 @@ case ${OSTYPE} in
 
     ;;
 esac
+
+#=================================ruby====================================
 export PATH=$HOME/.rbenv/bin:$PATH
 eval "$(rbenv init -)"
