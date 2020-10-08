@@ -121,8 +121,3 @@ case ${OSTYPE} in
     fi
     ;;
 esac
-
-
-#=================================ruby====================================
-export PATH=$HOME/.rbenv/bin:$PATH
-eval "$(rbenv init -)"
