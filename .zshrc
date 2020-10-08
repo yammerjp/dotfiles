@@ -23,32 +23,6 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 setopt list_packed
 
 
-#=================================alias====================================
-alias g='git'
-alias vi='vim -u NONE'
-alias search='find . -type f | xargs grep'
-alias covid19='curl https://corona-stats.online/'
-alias his="history -i"
-alias his-all="history -E 1"
-
-# colordiff
-if [[ -x `which colordiff` ]]; then
-  alias diff='colordiff -u'
-else
-  alias diff='diff -u'
-fi
-export LESS='-R'
-
-compress() {
-  echo "tar zcvf $1.tar.gz $1"
-  tar zcvf "$1.tar.gz" "$1"
-}
-decompress() {
-  echo "tar zxvf $1"
-  tar zxvf "$1"
-}
-
-
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
@@ -122,15 +96,6 @@ precmd() {
 case ${OSTYPE} in
   darwin*) #Mac用の設定
     export CLICOLOR=1
-    # "-F":ディレクトリに"/"を表示
-    # "-G"でディレクトリを色表示
-    # "-h":ファイルサイズを人間が読みやすい形式に
-    alias ls='ls -FGh'
-
-    # MacのGUIアプリケーションを実行
-    alias prev='open /Applications/Preview.app'
-    alias xcode='open /Applications/Xcode.app'
-
     # git補完
     # $ ls -l `brew --prefix`/share/zsh/site-functions/
     # で_gitとgit-completion.bashが表示されていることを確認
@@ -142,33 +107,21 @@ case ${OSTYPE} in
     # 参考: https://gist.github.com/d-kuro/352498c993c51831b25963be62074afa
     # brewでインストールしたときのgit補完
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
-
-    alias cpy="pbcopy"
-    alias pst="pbpaste"
-
     ;;
-
   linux*) #Linux用の設定
-    alias ls='ls -Fh --color=auto'
-    alias xm='xmodmap ~/.Xmodmap'
-
-    alias cpy="xclip -selection clipboard"
-    alias pst="xclip -selection clipboard -o"
-
     # yarnをpathに設定
     export PATH="$PATH:$(yarn global bin)"
     # visudoをviに設定
     export EDITOR="/bin/vi"
     export SUDO_EDITOR="/bin/vi"
-
     # deno
     if [ -e "$HOME/.deno" ]; then
       export DENO_INSTALL="$HOME/.deno"
       export PATH="$DENO_INSTALL/bin:$PATH"
     fi
-
     ;;
 esac
+
 
 #=================================ruby====================================
 export PATH=$HOME/.rbenv/bin:$PATH
