@@ -143,11 +143,17 @@ case ${OSTYPE} in
     # brewでインストールしたときのgit補完
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 
+    alias cpy="pbcopy"
+    alias pst="pbpaste"
+
     ;;
 
   linux*) #Linux用の設定
     alias ls='ls -Fh --color=auto'
     alias xm='xmodmap ~/.Xmodmap'
+
+    alias cpy="xclip -selection clipboard"
+    alias pst="xclip -selection clipboard -o"
 
     # yarnをpathに設定
     export PATH="$PATH:$(yarn global bin)"
