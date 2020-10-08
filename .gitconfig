@@ -14,3 +14,13 @@
         default = current
 [core]
 	editor = vim
+[alias]
+        a = add
+        c = commit
+        d = diff
+        l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+        diflog = log -p
+        s = status --short
+        tree = ls-tree -r master --name-only
+        alias = "!cat ~/.gitconfig | sed '1,/\\[alias]/d;'"
+        als = alias
