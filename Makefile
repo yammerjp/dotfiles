@@ -63,7 +63,6 @@ help:
 	@echo 'make user-defaults-init  # (macOS) Set user-defaults (macOS)'
 	@echo 'make ubuntu-homedir-init # (ubuntu) Rename directories in homedir from Japanese to English'
 	@echo 'make gnome-terminal-load # (ubuntu) Load gnome-terminal settings'
-	@echo 'make xkeysnail-init      # (ubuntu) Set start xkeysnail automatically'
 	@echo 'make gnome-terminal-dump # (ubuntu) Dump gnome-terminal settings'
 	@echo 'make brew-dump           # (macOS) Dump installed packages with brew to `~/dotfiles/etc/Brewfile`'
 
