@@ -7,26 +7,34 @@ inits:                 # run all scripts without packages, ubuntu-deno
 	make ubuntu-homedir-rename
 	make yarn
 	make vim
-	make zsh
+	make ubuntu-zsh
 
 # =========== setup commands ===========
 link:                  # Put symlinks of a dotfile
 	bash bin/link.sh
 packages-mini:         # Install minimum homebrew or apt packages
-	bash bin/packages/init.sh minimum
+	if [ "$(uname)" = "Darwin" ];then \
+	  bash bin/macos-packages.sh minimum;\
+	elif [ "$(uname)" = "Linux" ];then \
+	  bash bin/ubuntu-packages.sh minimum;\
+	fi
 packages:              # Install homebrew or apt packages (very heavy)
-	bash bin/packages/init.sh
+	if [ "$(uname)" = "Darwin" ];then \
+	  bash bin/macos-packages.sh;\
+	elif [ "$(uname)" = "Linux" ];then \
+	  bash bin/ubuntu-packages.sh;\
+	fi
 yarn:                  # Install nodejs packages
 	yarn global add
 vim:                   # Install vim plugins
 	vim -s etc/vimop
-zsh:                   # Chenge default shell to zsh
-	bash bin/zsh-init.sh
+ubuntu-zsh:            # Chenge default shell to zsh
+	bash bin/ubuntu-zsh.sh
 ubuntu-deno:           # (ubuntu) Install deno
-	bash bin/packages/deno.sh
+	bash bin/ubuntu-deno.sh
 macos-userdefaults:    # (macOS) Set user-defaults (macOS)
 	if [ "$(uname)" = "Darwin" ];then \
-		bash bin/user-defaults/init.sh ;\
+		bash bin/macos-userdefaults.sh ;\
 	fi
 ubuntu-homedir-rename: # (ubuntu) Rename directories in homedir from Japanese to English
 	if [ "$(uname)" = "Linux" ];then \

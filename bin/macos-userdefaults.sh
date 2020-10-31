@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
+echo  "Set User Default with 'defaults' command"
+
+SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
+
 # Dock
 
 # Automatically hide or show the Dock （Dock を自動的に隠す）

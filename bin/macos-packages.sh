@@ -9,9 +9,10 @@ fi
 
 echo "Install packages"
 
+brew bundle --file "$DOTFILES_DIR/etc/Brewfile-mini"
+echo "Finished minimum packages"
+
 if [ "$1" = "minimum" ]; then
-  brew bundle --file "$DOTFILES_DIR/etc/Brewfile-mini"
-  echo "Finished minimum packages"
   exit 0
 fi
 
