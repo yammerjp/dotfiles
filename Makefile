@@ -1,12 +1,12 @@
 # =========== setup all ===========
-inits:                 # run all scripts without packages, ubuntu-deno
+inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubuntu-homedir-rename, ubuntu-gnome-term-load, ubuntu-zsh
 	make link
 	make packages-mini
-	make macos-userdefaults
-	make ubuntu-gnome-term-load
-	make ubuntu-homedir-rename
 	make yarn
 	make vim
+	make macos-userdefaults
+	make ubuntu-homedir-rename
+	make ubuntu-gnome-term-load
 	make ubuntu-zsh
 
 # =========== setup commands ===========
@@ -18,7 +18,7 @@ ifeq ($(shell uname), Darwin)
 else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh minimum
 endif
-packages:              # Install homebrew or apt packages (very heavy)
+packages:              # Install homebrew or apt packages (HEAVY TRAFFIC)
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-packages.sh
 else ifeq ($(shell uname), Linux)
@@ -38,7 +38,7 @@ ubuntu-deno:           # (ubuntu) Install deno
 ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-deno.sh
 endif
-macos-userdefaults:    # (macOS) Set user-defaults (macOS)
+macos-userdefaults:    # (macOS) Set user-defaults
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-userdefaults.sh
 endif
@@ -70,6 +70,6 @@ endif
 # =========== help message ===========
 help:                  # Show this help
 	@echo '# Hello, this is dotfiles written by basd4g'
-	@grep -E '^[a-z\-]+:' Makefile | head -1 | awk -F ':' '{ print $$2 }' | awk '{printf "make:      %s\n", $$0 }'
+	@grep -E '^[a-z\-]+:' Makefile | head -1 | awk -F ':' '{ print $$1 }' | awk '{printf "make:                       # %s\n", $$0 }'
 	@grep -E '^[a-z\-]+:' Makefile | awk '{printf "make %s\n", $$0 }'
 
