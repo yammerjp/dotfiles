@@ -3,7 +3,7 @@ inits:                 # run all scripts without packages, ubuntu-deno
 	make link
 	make packages-mini
 	make macos-userdefaults
-	make ubuntu-gnome-term-load:
+	make ubuntu-gnome-term-load
 	make ubuntu-homedir-rename
 	make yarn
 	make vim
