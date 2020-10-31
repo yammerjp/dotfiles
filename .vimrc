@@ -45,27 +45,9 @@ if !isdirectory(s:swap_dir)
 endif
 " swapファイルの生成先を指定
 :set directory=~/.vim/tmp
-" swapファイルを作成しない
-" :set noswapfile
 
 
 "========== キー入力 ==========
-"方向キーの無効化 
-noremap <Up> <Nop>
-noremap <Down> <Nop>
-noremap <Left> <Nop>
-noremap <Right> <Nop>
-inoremap <Up> <Nop>
-inoremap <Down> <Nop>
-inoremap <Left> <Nop>
-inoremap <Right> <Nop>
- 
-"入力モード時のカーソル移動
-inoremap <C-j> <Down>
-inoremap <C-k> <Up>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
 " xで削除した時はヤンクしない
 vnoremap x "_x
 nnoremap x "_x
