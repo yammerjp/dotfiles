@@ -12,6 +12,7 @@
 $ curl -sL dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ sudo make
+$ sudo make packages
 ```
 
 ### macOS Setup
@@ -38,7 +39,7 @@ $ open /Applications/Karabiner-Elements.app/
 
 # It may take some time to download and install all packages
 #  and the computer sometimes ask you password.
-$ make packages-init
+$ make packages
 ```
 
 ## Dotfiles
