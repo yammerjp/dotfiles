@@ -37,5 +37,6 @@ case ${OSTYPE} in
     alias pst="xclip -selection clipboard -o"
     alias ls='ls -Fh --color=auto'
     alias xm='xmodmap ~/.Xmodmap'
+    alias open='xdg-open'
     ;;
 esac
