@@ -23,7 +23,7 @@ jobs:
         sudo bash -c '
         export SKIP_ZSH_INIT=1 &&
         make &&
-        make packages-init
+        make packages
         '
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
