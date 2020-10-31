@@ -96,16 +96,6 @@ precmd() {
 case ${OSTYPE} in
   darwin*) #Mac用の設定
     export CLICOLOR=1
-    # git補完
-    # $ ls -l `brew --prefix`/share/zsh/site-functions/
-    # で_gitとgit-completion.bashが表示されていることを確認
-    # されていない場合は
-    # $ brew link git
-    # または
-    # $ brew link --overwrite git
-    # を行う
-    # 参考: https://gist.github.com/d-kuro/352498c993c51831b25963be62074afa
-    # brewでインストールしたときのgit補完
     fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
     ;;
   linux*) #Linux用の設定
