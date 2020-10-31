@@ -90,4 +90,4 @@ set showmatch
 set title
 
 syntax on
-
+colorscheme pablo

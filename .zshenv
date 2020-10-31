@@ -5,6 +5,7 @@ alias search='find . -type f | xargs grep'
 alias covid19='curl https://corona-stats.online/'
 alias his="history -i"
 alias his-all="history -E 1"
+alias ide="bash ~/.tmux-ide.sh"
 
 # colordiff
 if [[ -x `which colordiff` ]]; then

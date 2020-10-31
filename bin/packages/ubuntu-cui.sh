@@ -31,6 +31,7 @@ apt install -y yarn
 apt install -y vim
 apt install -y zsh
 apt install -y curl
+apt install -y tmux
 
 apt install -y colordiff
 apt install -y gdebi
