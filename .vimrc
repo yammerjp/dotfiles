@@ -33,8 +33,13 @@ set t_Co=256
 
 "========== クリップボード ==========
 " クリップボード連携
-:set clipboard+=unnamed
-" Mac(homebrew版)以外では検証していない。 環境による条件分岐が必要かも
+if has("mac")
+set clipboard=unnamed
+elseif has("unix")
+set clipboard=unnamedplus
+" $ vim --version | grep clipboard の結果が -clipboard であれば, インストールされた vim は Xwindow のクリップボードに対応していない.
+" vim-gtk をインストールする
+endif
 
 
 "========== swapファイル ==========
