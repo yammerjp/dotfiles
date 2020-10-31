@@ -62,6 +62,9 @@ set backspace=indent,eol,start
 "========== その他 ==========
 " 行番号を表示
 set number
+" 行番号を非表示
+" set nonumber
+
 " ビープ音を消す
 set belloff=all
 " 検索した時にハイライト
