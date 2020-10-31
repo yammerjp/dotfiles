@@ -13,23 +13,23 @@ fi
 
 echo "Install packages for CUI"
 
-# ========== nodejs ==========
+# ==================== nodejs ====================
 curl -sL https://deb.nodesource.com/setup
 apt update
 apt upgrade -y
 apt install -y nodejs
 
-# ========== git =========
+# ==================== git ====================
 add-apt-repository -y ppa:git-core/ppa
 apt install -y git
 
-# ========= yarn =========
+# ==================== yarn ====================
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 apt update
 apt install -y yarn
 
-# ========== apt ==========
+# ==================== apt packages ====================
 apt install -y vim
 apt install -y zsh
 apt install -y curl
@@ -44,18 +44,18 @@ apt install -y shellcheck
 apt install -y tree
 apt install -y imagemagick
 
-# ========== snap ==========
+# ==================== snap packages ====================
 snap install --classic heroku
 snap install docker
 
 if [ "$1" = "minimum" ]; then
+  echo "Finished minimum packages"
   exit 0
 fi
 
 echo "Install packages for GUI"
 
-
-# ========== HackGen ==========
+# ==================== HackGen ====================
 TMP_FILE="/tmp/dotfiles/hackgen"
 TMP_FILE_ZIP="$TMP_FILE.zip"
 TMP_DIR="$(dirname "$TMP_FILE_ZIP")"
@@ -76,16 +76,11 @@ unzip "$TMP_FILE"
 mv "HackGen_$VERSION" "/usr/share/fonts/HackGen"
 fc-cache -fv
 
-
-if [ "$1" = "minimum" ]; then
-  echo "Finished minimum packages"
-  exit 0
-fi
-
+# ==================== apt packages ====================
 apt install -y ibus-mozc
 apt install -y gimp
 
-# ========== snap ==========
+# ==================== snap packages ====================
 snap install --classic code
 snap install chromium
 snap install --classic shotcut
