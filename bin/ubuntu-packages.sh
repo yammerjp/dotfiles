@@ -24,8 +24,13 @@ add-apt-repository -y ppa:git-core/ppa
 apt install -y git
 
 # ==================== yarn ====================
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
+YARN_PACKAGE_URL='deb https://dl.yarnpkg.com/debian/ stable main'
+YARN_LIST='/etc/apt/sources.list.d/yarn.list'
+if grep -q "$YARN_PACKAGE_URL" "$YARN_LIST"; then; else
+  echo $YARN_PACKAGE_URL >> $YARN_LIST
+fi
+
 apt update
 apt install -y yarn
 
