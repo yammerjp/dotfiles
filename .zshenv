@@ -1,4 +1,5 @@
 alias g='git'
+alias gs=''
 alias vi='vim -u NONE'
 alias search='find . -type f | xargs grep'
 alias covid19='curl https://corona-stats.online/'
