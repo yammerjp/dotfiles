@@ -79,10 +79,6 @@ mv "HackGen_$VERSION" "/usr/share/fonts/HackGen"
 fc-cache -fv
 
 
-# ========== xkeysnail ==========
-apt install -y python3-pip
-pip3 install xkeysnail
-
 if [ "$1" = "minimum" ]; then
   echo "Finished minimum packages"
   exit 0
