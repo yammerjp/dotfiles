@@ -27,8 +27,8 @@ apt install -y git
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add -
 YARN_PACKAGE_URL='deb https://dl.yarnpkg.com/debian/ stable main'
 YARN_LIST='/etc/apt/sources.list.d/yarn.list'
-if grep -q "$YARN_PACKAGE_URL" "$YARN_LIST"; then; else
-  echo $YARN_PACKAGE_URL >> $YARN_LIST
+if ! grep -q "$YARN_PACKAGE_URL" "$YARN_LIST" ; then
+  echo "$YARN_PACKAGE_URL" >> "$YARN_LIST"
 fi
 
 apt update
