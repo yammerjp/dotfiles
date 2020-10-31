@@ -1,7 +1,5 @@
 #!/bin/bash -e
 
-SCRIPT_DIR=$(cd "$(dirname "$0")"; pwd)
-
 echo "Install packages"
 
 if [ "$(whoami)" != "root" ]; then
