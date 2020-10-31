@@ -13,6 +13,8 @@ fi
 
 echo "Install packages for CUI"
 
+apt install -y curl
+
 # ==================== nodejs ====================
 curl -sL https://deb.nodesource.com/setup
 apt update
@@ -37,7 +39,6 @@ apt install -y yarn
 # ==================== apt packages ====================
 apt install -y vim
 apt install -y zsh
-apt install -y curl
 apt install -y tmux
 
 apt install -y colordiff
@@ -86,7 +87,38 @@ apt install -y ibus-mozc
 apt install -y gimp
 
 # ==================== snap packages ====================
-snap install --classic code
 snap install chromium
-snap install --classic shotcut
-snap install --classic slack
+# snap install --classic shotcut
+
+# ==================== VScode ====================
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+install -o root -g root -m 644 microsoft.gpg /usr/share/keyrings/microsoft-archive-keyring.gpg
+sh -c 'echo "deb [arch=amd64 signed-by=/usr/share/keyrings/microsoft-archive-keyring.gpg] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+apt install -y apt-transport-https
+apt update
+apt install -y code # or code-insiders
+# https://wiki.debian.org/VisualStudioCode
+# https://code.visualstudio.com/docs/setup/linux
+
+# ==================== slack ====================
+#snap install --classic slack
+echo "Please install slack from deb package downloaded by web-browser !!"
+
+# ==================== spotify ====================
+curl -sS https://download.spotify.com/debian/pubkey_0D811D58.gpg | apt-key add -
+SPOTIFY_PACKAGE_URL="deb http://repository.spotify.com stable non-free"
+SPOTIFY_LIST="/etc/apt/sources.list.d/spotify.list"
+if ! grep -q "$SPOTIFY_PACKAGE_URL" "$SPOTIFY_LIST" ; then
+  echo "$SPOTIFY_PACKAGE_URL" >> "$SPOTIFY_LIST"
+fi
+apt update
+apt install -y spotify-client
+# https://www.spotify.com/jp/download/linux/
+
+# ==================== vivaldi ====================
+wget -qO- https://repo.vivaldi.com/archive/linux_signing_key.pub | apt-key add -
+add-apt-repository 'deb https://repo.vivaldi.com/archive/deb/ stable main'
+apt update
+apt install -y vivaldi-stable
+#  https://help.vivaldi.com/ja/article/manual-setup-vivaldi-linux-repositories/
+
