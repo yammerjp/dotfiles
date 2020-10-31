@@ -27,7 +27,6 @@ jobs:
         cd ~/dotfiles
         export HOMEBREW_BUNDLE_CASK_SKIP="vagrant virtualbox virtualbox-extension-pack"
         export HOMEBREW_BUNDLE_MAS_SKIP="$(bash ~/dotfiles/lib/print-mas-packages.sh)"
-        export SKIP_ZSH_INIT=1
         make
         make packages
 

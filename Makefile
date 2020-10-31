@@ -29,7 +29,9 @@ yarn:                  # Install nodejs packages
 vim:                   # Install vim plugins
 	vim -s etc/vimop
 ubuntu-zsh:            # Chenge default shell to zsh
-ifeq ($(shell uname), Linux)
+ifeq ($(CI), true)
+	@echo "Skip on CI"
+else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-zsh.sh
 endif
 ubuntu-deno:           # (ubuntu) Install deno
@@ -41,11 +43,15 @@ ifeq ($(shell uname), Darwin)
 	bash bin/macos-userdefaults.sh
 endif
 ubuntu-homedir-rename: # (ubuntu) Rename directories in homedir from Japanese to English
-ifeq ($(shell uname), Linux)
+ifeq ($(CI), true)
+	@echo "Skip on CI"
+else ifeq ($(shell uname), Linux)
 		LANG=C xdg-user-dirs-gtk-update
 endif
 ubuntu-gnome-term-load:# (ubuntu) Load gnome-terminal settings
-ifeq ($(shell uname), Linux)
+ifeq ($(CI), true)
+	@echo "Skip on CI"
+else ifeq ($(shell uname), Linux)
 	dconf reset /org/gnome/terminal/
 	dconf load /org/gnome/terminal/ < etc/gnome-terminal.dconf
 endif

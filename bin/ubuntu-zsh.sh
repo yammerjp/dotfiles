@@ -2,11 +2,6 @@
 
 ZSH_PATH="/bin/zsh"
 
-if [ "$SKIP_ZSH_INIT" = "1" ]; then
-  echo "Skip to set default shell"
-  exit 0
-fi
-
 if [ "$SHELL" = "$ZSH_PATH" ]; then
   echo "Your default shell is already zsh"
   exit 0
