@@ -85,9 +85,11 @@ fc-cache -fv
 # ==================== apt packages ====================
 apt install -y ibus-mozc
 apt install -y gimp
+apt install -y screenruler
 
 # ==================== snap packages ====================
 snap install chromium
+snap install pick-colour-picker
 # snap install --classic shotcut
 
 # ==================== VScode ====================
