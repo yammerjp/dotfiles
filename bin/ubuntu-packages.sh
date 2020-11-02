@@ -23,6 +23,13 @@ Install_yarn () {
   apt install -y yarn
 }
 
+Install_deno () {
+  sudo_user=$SUDO_USER
+  curl -fsSL https://deno.land/x/install/install.sh | sudo su - $sudo_user
+  sudo_user_home=`getent passwd $sudo_user`
+  $sudo_user_home/.deno/bin/deno completions zsh >  /usr/local/share/zsh/site-functions/_deno
+}
+
 Install_hackgen () {
   TMP_FILE="/tmp/dotfiles/hackgen"
   TMP_FILE_ZIP="$TMP_FILE.zip"
@@ -95,6 +102,7 @@ apt install -y curl
 Install_nodejs
 Install_git
 Install_yarn
+Install_deno
 apt install -y vim
 apt install -y zsh
 apt install -y tmux
