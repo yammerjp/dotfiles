@@ -22,6 +22,20 @@ zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
 # 補完リストの表示間隔を狭くする
 setopt list_packed
 
+#=================================man====================================
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;36m") \
+        LESS_TERMCAP_md=$(printf "\e[1;36m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+# [manの読み方（初心者向け） - Qiita](https://qiita.com/aosho235/items/0f2b73d08eb645c05208)
+# [manコマンドで表示されるドキュメントの色付けをカスタマイズ - Steel Dragon 14106](https://raimon49.github.io/2017/03/31/man-with-colored-pager.html)
 
 #=================================history====================================
 HISTSIZE=50000 # メモリに保存するコマンド数
