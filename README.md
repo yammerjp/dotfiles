@@ -12,6 +12,7 @@
 $ wget -q -O dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ sudo make
+$ sudo make ubuntu-zsh
 $ sudo make packages
 ```
 

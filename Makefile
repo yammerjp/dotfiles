@@ -1,5 +1,5 @@
 # =========== setup all ===========
-inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubuntu-homedir-rename, ubuntu-gnome-term-load, ubuntu-zsh
+inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubuntu-homedir-rename, ubuntu-gnome-term-load
 	make link
 	make packages-mini
 	make yarn
@@ -7,47 +7,54 @@ inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubu
 	make macos-userdefaults
 	make ubuntu-homedir-rename
 	make ubuntu-gnome-term-load
-	make ubuntu-zsh
 
 # =========== setup commands ===========
 link:                  # Put symlinks of a dotfile
 	bash bin/link.sh
+
 packages-mini:         # Install minimum homebrew or apt packages
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-packages.sh minimum
 else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh minimum
 endif
+
 packages:              # Install homebrew or apt packages (HEAVY TRAFFIC)
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-packages.sh
 else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh
 endif
+
 yarn:                  # Install nodejs packages
 	yarn global add
+
 vim:                   # Install vim plugins
 	vim -s etc/vimop
+
 ubuntu-zsh:            # Chenge default shell to zsh
-ifeq ($(CI), true)
-	@echo "Skip on CI"
-else ifeq ($(shell uname), Linux)
-	bash bin/ubuntu-zsh.sh
+ifeq ($(shell uname), Linux)
+	which zsh ||  (echo "Please install zsh" && exit 1)
+	chsh -s $(shell which zsh)
 endif
+
 ubuntu-deno:           # (ubuntu) Install deno
 ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-deno.sh
 endif
+
 macos-userdefaults:    # (macOS) Set user-defaults
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-userdefaults.sh
 endif
+
 ubuntu-homedir-rename: # (ubuntu) Rename directories in homedir from Japanese to English
 ifeq ($(CI), true)
 	@echo "Skip on CI"
 else ifeq ($(shell uname), Linux)
 		LANG=C xdg-user-dirs-gtk-update
 endif
+
 ubuntu-gnome-term-load:# (ubuntu) Load gnome-terminal settings
 ifeq ($(CI), true)
 	@echo "Skip on CI"
@@ -61,6 +68,7 @@ ubuntu-gnome-term-dump:# (ubuntu) Dump gnome-terminal settings
 ifeq ($(shell uname), Linux)
 	dconf dump /org/gnome/terminal/ > etc/gnome-terminal.dconf
 endif
+
 macos-brew-dump:       # (macOS) Dump installed packages with brew to `~/dotfiles/etc/Brewfile`
 ifeq ($(shell uname), Darwin)
 	rm -f etc/Brewfile
