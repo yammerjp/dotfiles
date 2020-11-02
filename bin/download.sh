@@ -76,9 +76,3 @@ else
   PrintDescription
   DownloadDotfiles
 fi 
-
-if [ "${MAKE_RUN}" = "1" ];then
-  cd "${DOTFILES_DIR}"
-  make
-fi
-
