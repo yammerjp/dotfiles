@@ -9,7 +9,7 @@
 ### Ubuntu Setup
 
 ```sh
-$ curl -sL dot.basd4g.net | bash
+$ wget -q -O dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ sudo make
 $ sudo make packages
@@ -47,7 +47,7 @@ $ make packages
 ### Install and deploy dotfiles
 
 ```
-$ curl -sL dot.basd4g.net | sh
+$ curl -sL dot.basd4g.net | bash
 $ cd ~/dotfiles
 $ make link
 ```
