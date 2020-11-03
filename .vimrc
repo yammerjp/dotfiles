@@ -5,8 +5,8 @@ endif
 
 
 "========== インデント ==========
-" 不可視文字を可視化(タブが「▸-」と表示される)
-set list listchars=tab:\▸\-
+" 不可視文字を可視化(タブが「>-」と表示される)
+set list listchars=tab:>-
 " インデント幅
 set shiftwidth=2
 " タブ文字の表示幅
@@ -34,13 +34,12 @@ set t_Co=256
 
 
 "========== クリップボード ==========
-" クリップボード連携
 if has("mac")
-set clipboard=unnamed
+  set clipboard=unnamed
 elseif has("unix")
-set clipboard=unnamedplus
-" $ vim --version | grep clipboard の結果が -clipboard であれば, インストールされた vim は Xwindow のクリップボードに対応していない.
-" vim-gtk をインストールする
+  set clipboard=unnamedplus
+  " $ vim --version | grep clipboard の結果が -clipboard であれば, インストールされた vim は Xwindow のクリップボードに対応していない.
+  " vim-gtk をインストールする
 endif
 
 
