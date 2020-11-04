@@ -97,7 +97,7 @@ if ! command -v apt > /dev/null 2>&1 ; then
   exit 1
 fi
 
-echo "Install packages for CUI"
+echo "Install packages for minimum"
 
 apt install -y curl
 Install_nodejs
@@ -109,13 +109,10 @@ apt install -y zsh
 apt install -y tmux
 apt install -y colordiff
 apt install -y gdebi
-apt install -y ffmpeg
 apt install -y nkf
 apt install -y nmap
 apt install -y shellcheck
 apt install -y tree
-apt install -y imagemagick
-snap install --classic heroku
 snap install docker
 
 if [ "$1" = "minimum" ]; then
@@ -123,7 +120,7 @@ if [ "$1" = "minimum" ]; then
   exit 0
 fi
 
-echo "Install packages for GUI"
+echo "Install another packages"
 
 Install_hackgen
 Install_vscode
@@ -131,8 +128,22 @@ Install_spotify
 Install_vivaldi
 apt install -y ibus-mozc
 apt install -y gimp
-apt install -y screenruler
 snap install chromium
+
+if [ "$1" != "full" ]; then
+  echo "Finished packages"
+  exit 0
+fi
+
+echo "Install extra packages"
+apt install -y screenruler
+apt install -y ffmpeg
+apt install -y imagemagick
+snap install --classic heroku
 snap install pick-colour-picker
-# snap install --classic shotcut
+snap install losslesscut
+snap install obs-studio
+snap install inkscape
+snap install --classic shotcut
 echo "Please install slack from deb package downloaded by web-browser !!" # snap install --classic slack
+echo "Finished full packages"
