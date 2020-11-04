@@ -24,10 +24,11 @@ Install_yarn () {
 }
 
 Install_deno () {
-  sudo_user=$SUDO_USER
-  curl -fsSL https://deno.land/x/install/install.sh | sudo su - $sudo_user
-  sudo_user_home=`getent passwd $sudo_user`
-  $sudo_user_home/.deno/bin/deno completions zsh >  /usr/local/share/zsh/site-functions/_deno
+  # shellcheck disable=SC2153
+  sudo_user="$SUDO_USER"
+  curl -fsSL https://deno.land/x/install/install.sh | sudo su - "$sudo_user"
+  sudo_user_home=$(getent passwd "$sudo_user")
+  "$sudo_user_home"/.deno/bin/deno completions zsh >  /usr/local/share/zsh/site-functions/_deno
 }
 
 Install_hackgen () {
