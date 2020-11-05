@@ -16,6 +16,16 @@ gclone() {
   fi
 }
 
+# ssh
+ssh-authorized_keys-refresh() {
+  mkdir -p ~/.ssh
+  if [ -e ~/.ssh/authorized_keys ]; then
+    mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
+  fi
+  curl https://github.com/basd4g.keys > ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+}
+
 # colordiff
 if [[ -x `which colordiff` ]]; then
   alias diff='colordiff -u'
