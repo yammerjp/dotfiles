@@ -1,4 +1,3 @@
-alias g='git'
 alias gs=''
 alias vi='vim -u NONE'
 alias search='find . -type f | xargs grep'
@@ -6,6 +5,16 @@ alias covid19='curl https://corona-stats.online/'
 alias his="history -i"
 alias his-all="history -E 1"
 alias ide="bash ~/.tmux-ide.sh"
+
+# git
+alias g='git'
+gclone() {
+  if [ -n "$1" ]; then
+    git clone "git@github.com:$1/$2.git"
+  else
+    echo 'Usage: gclone username reponame # clone git repository from github.com'
+  fi
+}
 
 # colordiff
 if [[ -x `which colordiff` ]]; then
