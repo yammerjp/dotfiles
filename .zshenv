@@ -4,6 +4,12 @@ alias search='find . -type f | xargs grep'
 alias covid19='curl https://corona-stats.online/'
 alias his="history -i -t '%Y-%m-%dT%H:%M:%d%z'"
 alias his-all="history -t '%Y-%m-%dT%H:%M:%d%z' -E 1"
+alias hisall="his-all"
+hispeco () {
+  cmd=$(his-all |peco | sed 's/[\t ]\+/ /g' | cut -d ' ' -f4-)
+  echo -e "\e[38;5;33mexcute on zsh: $cmd\e[0m" 1>&2
+  echo "$cmd" | zsh
+}
 alias ide="bash ~/.tmux-ide.sh"
 
 # git
