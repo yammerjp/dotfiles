@@ -113,6 +113,7 @@ apt install -y nkf
 apt install -y nmap
 apt install -y shellcheck
 apt install -y tree
+apt install -y openssh-server # sudo systemctl enable ssh
 snap install docker
 
 if [ "$1" = "minimum" ]; then
