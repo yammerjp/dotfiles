@@ -15,6 +15,9 @@
         a = add
         c = commit
         d = diff
+        ds = "diff --staged"
+        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
         l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
         diflog = log -p
         s = status --short
