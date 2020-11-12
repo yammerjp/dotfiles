@@ -63,7 +63,7 @@ setopt hist_no_store
 
 #=================================表示====================================
 # 左プロンプト
-PROMPT='$ '
+PROMPT='%F{yellow}$ '
 # [user@host] dir $
 # PROMPT='[%n@%m] %~ $ '
 
@@ -89,6 +89,7 @@ local _lastdir=''
 preexec() {
   _cmd="$1"
   _lastdir="$PWD"
+  echo -ne "\e[0m" # プロンプトの色を元に戻す
 }
 # git情報更新
 update_vcs_info() {
