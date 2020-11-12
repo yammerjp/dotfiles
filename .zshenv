@@ -49,6 +49,22 @@ decompress() {
   tar zxvf "$1"
 }
 
+zshcolors () {
+  for num in `seq 256`;do
+    echo -ne "\e[38;5;${num}m${num}\t\e[0m"
+    if [ `expr $num "%" 16` = 0 ];then
+      echo
+    fi
+  done
+  for num in `seq 256`;do
+    echo -ne "\e[48;5;${num}m${num}\t\e[0m"
+    row=`expr $num "%" 16`
+    if [ `expr $num "%" 16` = 0 ];then
+      echo
+    fi
+  done
+}
+
 case ${OSTYPE} in
   darwin*) #Mac用の設定
     alias cpy="pbcopy"
