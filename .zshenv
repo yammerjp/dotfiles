@@ -2,8 +2,8 @@ alias gs=''
 alias vi='vim -u NONE'
 alias search='find . -type f | xargs grep'
 alias covid19='curl https://corona-stats.online/'
-alias his="history -i"
-alias his-all="history -E 1"
+alias his="history -i -t '%Y-%m-%dT%H:%M:%d%z'"
+alias his-all="history -t '%Y-%m-%dT%H:%M:%d%z' -E 1"
 alias ide="bash ~/.tmux-ide.sh"
 
 # git

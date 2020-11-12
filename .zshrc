@@ -41,6 +41,7 @@ man() {
 HISTSIZE=50000 # メモリに保存するコマンド数
 HISTFILE=~/.zsh_history
 SAVEHIST=100000 # ヒストリファイルに保存するコマンド数
+setopt extended_history # historyファイルに時刻情報を記録
 
 # 重複するコマンド行は古い方を削除
 setopt hist_ignore_all_dups
