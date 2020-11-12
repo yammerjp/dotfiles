@@ -14,14 +14,14 @@ link:                  # Put symlinks of a dotfile
 
 packages-mini:         # Install minimum homebrew or apt packages
 ifeq ($(shell uname), Darwin)
-	bash bin/macos-packages.sh minimum
+	brew bundle --file etc/Brewfile-mini
 else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh minimum
 endif
 
 packages:              # Install homebrew or apt packages (HEAVY TRAFFIC)
 ifeq ($(shell uname), Darwin)
-	bash bin/macos-packages.sh
+	brew bundle --file etc/Brewfile
 else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh
 endif
