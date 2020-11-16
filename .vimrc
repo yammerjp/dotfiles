@@ -1,3 +1,4 @@
+colorscheme pablo
 "========== dein.vim ==========
 if filereadable(expand('~/.dein/init.vim'))
     source ~/.dein/init.vim
@@ -81,4 +82,5 @@ set showmatch
 set title
 
 syntax on
-colorscheme pablo
+
+hi SpecialKey ctermbg=NONE ctermfg=237 guibg=NONE guifg=NONE
