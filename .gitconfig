@@ -24,3 +24,5 @@
         tree = ls-tree -r master --name-only
         alias = "!cat ~/.gitconfig | sed '1,/\\[alias]/d;'"
         als = alias
+        rao = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
+        remote-add-origin =arog
