@@ -56,19 +56,6 @@ repo = 'prabirshrestha/asyncomplete-lsp.vim'
 repo = 'prabirshrestha/vim-lsp'
 depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim']
 hook_add = '''
-  " ===== connect language server of TypeScript, JavaScript =====
-  if executable('typescript-language-server')
-    au User lsp_setup call lsp#register_server({
-      \ 'name': 'typescript-language-server',
-      \ 'cmd': {server_info->[&shell, &shellcmdflag, 'typescript-language-server --stdio']},
-      \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'package.json'))},
-  "     \ 'root_uri':{server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), 'tsconfig.json'))},
-      \ 'whitelist': ['typescript', 'typescript.tsx', 'javascript', 'javascript.jsx'],
-  "    \ 'whitelist': ['typescript', 'typescript.tsx' ],
-     \ })
-  endif
-
-  " ===== connect language servers of other programming language =====
   " ===== keymaps of vim-lsp =====
   " デフォルトのキーマップ: Ctrl+n で次の候補へ, Ctrl+p で前の候補へ
   nnoremap [lsp]    <Nop>
@@ -94,10 +81,6 @@ hook_add = '''
   " difinitionをポップアップウィンドウで表示
   nnoremap [lsp]d :<C-u>LspPeekDefinition<CR>
 '''
-# git clone https://github.com/apple/sourcekit-lsp.git
-# cd sourcekit-lsp
-# swift build -c release
-# mv .build/release/sourcekit-lsp /usr/local/bin
-#[[plugins]]
-#repo = 'ryanolsonx/vim-lsp-swift'
-#depends = ['async.vim', 'asyncomplete.vim', 'asyncomplete-lsp.vim', 'vim-lsp']
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
