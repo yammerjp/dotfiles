@@ -17,8 +17,11 @@ alias ide="bash ~/.tmux-ide.sh"
 # git
 alias g='git'
 gclone() {
-  if [ -n "$1" ]; then
-    git clone "git@github.com:$1/$2.git"
+  if [ -n "$1" ] && [ -n "$2" ] ; then
+    repo_dir="$HOME/dev/github.com/$1/$2"
+    gh repo clone $1/$2 $repo_dir
+    cd $repo_dir
+    echo "Cloned https://github.com/$1/$2.git to $repo_dir, and moved there."
   else
     echo 'Usage: gclone username reponame # clone git repository from github.com'
   fi
