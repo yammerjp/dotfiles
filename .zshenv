@@ -1,6 +1,7 @@
 alias n-exec=$(bash -c "which n")
 alias n="echo \"Please type the command 'n-exec' if you want to execute 'n' that is nodejs version management tool.\""
 alias gs=''
+alias du='du -h'
 alias vi='vim -u NONE'
 alias search='find . -type f | xargs grep'
 alias covid19='curl https://corona-stats.online/'
