@@ -30,6 +30,7 @@ gclone() {
 # ssh
 ssh-authorized_keys-refresh() {
   mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
   if [ -e ~/.ssh/authorized_keys ]; then
     mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
   fi
