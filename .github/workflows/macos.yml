@@ -18,9 +18,9 @@ jobs:
         cp -r ${GITHUB_WORKSPACE} ~/
 
     # Default installed node conflicts with homebrew's one
-    - name: Unlink node@12
-      run : |
-        brew unlink node@12
+    #- name: Unlink node@12
+    #  run : |
+    #    brew unlink node@12
 
     - name: Run
       run : |

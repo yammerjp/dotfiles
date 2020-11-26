@@ -18,8 +18,11 @@ alias ide="bash ~/.tmux-ide.sh"
 # git
 alias g='git'
 gclone() {
-  if [ -n "$1" ]; then
-    git clone "git@github.com:$1/$2.git"
+  if [ -n "$1" ] && [ -n "$2" ] ; then
+    repo_dir="$HOME/dev/github.com/$1/$2"
+    gh repo clone $1/$2 $repo_dir
+    cd $repo_dir
+    echo "Cloned https://github.com/$1/$2.git to $repo_dir, and moved there."
   else
     echo 'Usage: gclone username reponame # clone git repository from github.com'
   fi
@@ -28,6 +31,7 @@ gclone() {
 # ssh
 ssh-authorized_keys-refresh() {
   mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
   if [ -e ~/.ssh/authorized_keys ]; then
     mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
   fi
