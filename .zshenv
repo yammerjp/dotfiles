@@ -58,7 +58,7 @@ export LESS='-R'
 
 # memo
 memo() {
-  dairy_dir="$HOME/dev/github.com/basd4g/memo/daily-life"
+  dairy_dir="$HOME/dev/github.com/basd4g/memo/daylog"
   mkdir -p ${dairy_dir}
   vim "${dairy_dir}/$(date '+%Y%m%d').md"
 }
