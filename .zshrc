@@ -63,8 +63,8 @@ setopt hist_no_store
 alias his="history -i -t '%Y/%m/%d-%H:%M'"
 alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
 alias hisall="his-all"
-hispeco () {
-  if [ ${OSTYPE} = 'darwin' ]; then
+hispeco_ctrl_h () {
+  if [[ ${OSTYPE} = 'darwin'* ]]; then
     cmd=$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
   else
     cmd=$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
@@ -73,8 +73,17 @@ hispeco () {
   CURSOR=$#BUFFER
   zle redisplay
 }
-zle -N hispeco
-bindkey '^h' hispeco
+zle -N hispeco_ctrl_h
+bindkey '^h' hispeco_ctrl_h
+
+hispeco() {
+  if [[ ${OSTYPE} = 'darwin'* ]]; then
+    print -z "$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
+  else
+    print -z "$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
+  fi
+}
+
 
 
 #=================================表示====================================
