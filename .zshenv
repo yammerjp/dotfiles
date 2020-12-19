@@ -3,16 +3,9 @@ alias n="echo \"Please type the command 'n-exec' if you want to execute 'n' that
 alias gs=''
 alias du='du -h'
 alias vi='vim -u NONE'
-alias search='find . -type f | xargs grep'
+alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
-alias his="history -i -t '%Y-%m-%dT%H:%M:%d%z'"
-alias his-all="history -t '%Y-%m-%dT%H:%M:%d%z' -E 1"
-alias hisall="his-all"
-hispeco () {
-  cmd=$(his-all |peco | sed 's/[\t ]\+/ /g' | cut -d ' ' -f4-)
-  echo -e "\e[38;5;33mexcute on zsh: $cmd\e[0m" 1>&2
-  echo "$cmd" | zsh
-}
+
 alias ide="bash ~/.tmux-ide.sh"
 
 # git
@@ -92,6 +85,7 @@ case ${OSTYPE} in
   darwin*) #Mac用の設定
     alias cpy="pbcopy"
     alias pst="pbpaste"
+    alias tac="tail -r"
     alias ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレクトリを色表示, "-h":ファイルサイズを人間が読みやすい形式に
     # MacのGUIアプリケーションを実行
     alias prev='open /Applications/Preview.app'
@@ -105,3 +99,6 @@ case ${OSTYPE} in
     alias open='xdg-open'
     ;;
 esac
+
+
+# mmv
