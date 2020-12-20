@@ -97,7 +97,7 @@ PROMPT='%F{yellow}$ '
 # %nはログインユーザ名、%~はカレントディレクトリ
 # "%(?..%F{red}-%?-)" は終了コードが0以外なら赤色で表示
 # "%1(v|%F{yellow}%1v%F{green} |)" の部分がVCS情報 (psvarの長さが1以上なら黄色で表示)
-RPROMPT="%(?..%F{red}-%?-)%F{green}[%1(v|%F{yellow}%1v%F{green} |)%n:%~ %T]%f"
+RPROMPT="%(?..%F{red}-%?-)%F{green}[%1(v|%F{yellow}%1v%F{green} |)%n@%m:%~ ]%f"
 
 # コマンド実行後に非表示 (つまり最終行のみ表示される)
 setopt transient_rprompt
