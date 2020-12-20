@@ -100,5 +100,14 @@ case ${OSTYPE} in
     ;;
 esac
 
-
+_SNIP_FILE="$HOME/.snip"
+snipadd () {
+  echo $@ >> $_SNIP_FILE
+}
+snippeco () {
+  print -z $(cat $_SNIP_FILE | peco)
+}
+snipedit () {
+  vim $_SNIP_FILE
+}
 # mmv
