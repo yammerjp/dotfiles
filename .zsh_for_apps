@@ -17,13 +17,13 @@
   source /opt/local/share/nvm/init-nvm.sh
 
 # for Rust lang
-  if which cargo > /dev/null 2>&1; then
+  if [ -e "$HOME/.cargo/env" ]; then
     source $HOME/.cargo/env
   fi
 
 # yarn
   if which yarn > /dev/null 2>&1; then
-#    export PATH="$PATH:$(yarn global bin)"
+    export PATH="$PATH:$(yarn global bin)"
   fi
 
 # deno
