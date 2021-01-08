@@ -1,0 +1,37 @@
+# This file is applications' settings such as adding $PATH
+# homebrew
+  if which brew > /dev/null 2>&1; then
+    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
+  fi
+  # homebrew for arm64, darwin
+  # (N-/) ... ディレクトリが存在するときのみ追加
+  path=(
+    /opt/homebrew/bin(N-/)
+    /usr/local/bin(N-/)
+    $path
+  )
+  # x86_64版のbrewを実行するとき, =brew で実行させる
+  setopt magic_equal_subst
+
+# for nvm (nodejs version manager)
+  source /opt/local/share/nvm/init-nvm.sh
+
+# for Rust lang
+  if which cargo > /dev/null 2>&1; then
+    source $HOME/.cargo/env
+  fi
+
+# yarn
+  if which yarn > /dev/null 2>&1; then
+#    export PATH="$PATH:$(yarn global bin)"
+  fi
+
+# deno
+  if [ -e "$HOME/.deno" ]; then
+    export DENO_INSTALL="$HOME/.deno"
+    export PATH="$DENO_INSTALL/bin:$PATH"
+  fi
+
+# Macports
+  export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
+  export DISPLAY=:0

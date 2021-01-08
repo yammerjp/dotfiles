@@ -63,7 +63,12 @@ setopt hist_no_store
 alias his="history -i -t '%Y/%m/%d-%H:%M'"
 alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
 alias hisall="his-all"
+
 hispeco_ctrl_h () {
+  if ! which peco; then
+    echo 'peco is not installed'
+    return 1
+  fi
   if [[ ${OSTYPE} = 'darwin'* ]]; then
     cmd=$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
   else
@@ -77,6 +82,10 @@ zle -N hispeco_ctrl_h
 bindkey '^h' hispeco_ctrl_h
 
 hispeco() {
+  if ! which peco; then
+    echo 'peco is not installed'
+    return 1
+  fi
   if [[ ${OSTYPE} = 'darwin'* ]]; then
     print -z "$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
   else
@@ -136,18 +145,14 @@ precmd() {
 case ${OSTYPE} in
   darwin*) #Mac用の設定
     export CLICOLOR=1
-    fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
     ;;
   linux*) #Linux用の設定
-    # yarnをpathに設定
-    export PATH="$PATH:$(yarn global bin)"
     # visudoをviに設定
     export EDITOR="/bin/vi"
     export SUDO_EDITOR="/bin/vi"
-    # deno
-    if [ -e "$HOME/.deno" ]; then
-      export DENO_INSTALL="$HOME/.deno"
-      export PATH="$DENO_INSTALL/bin:$PATH"
-    fi
     ;;
 esac
+
+source "$HOME/.zsh_for_apps"
+
+export PATH="$HOME/bin:$PATH"
