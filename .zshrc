@@ -126,12 +126,11 @@ update_vcs_info() {
 precmd() {
   _r=$?
   case "${_cmd}" in
-    git*|stg*) update_vcs_info ;;
+    g*|stg*) update_vcs_info ;;
     *) [ "${_lastdir}" != "$PWD" ] && update_vcs_info ;;
   esac
   return $_r
 }
-
 
 #=================================OS別の設定====================================
 case ${OSTYPE} in
