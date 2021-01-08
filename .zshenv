@@ -3,6 +3,7 @@ alias n="echo \"Please type the command 'n-exec' if you want to execute 'n' that
 alias gs=''
 alias du='du -h'
 alias vi='vim -u NONE'
+alias tree='tree -N'
 alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
 
