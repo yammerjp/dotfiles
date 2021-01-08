@@ -87,3 +87,5 @@ hi SpecialKey ctermbg=NONE ctermfg=237 guibg=NONE guifg=NONE
 
 set splitright
 :command Term :vert terminal
+
+highlight LineNr ctermfg=239
