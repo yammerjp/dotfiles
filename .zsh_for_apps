@@ -14,7 +14,9 @@
   setopt magic_equal_subst
 
 # for nvm (nodejs version manager)
-  source /opt/local/share/nvm/init-nvm.sh
+  if [ -e /opt/local/share/nvm/init-nvm.sh ]; then
+    source /opt/local/share/nvm/init-nvm.sh
+  fi
 
 # for Rust lang
   if [ -e "$HOME/.cargo/env" ]; then
