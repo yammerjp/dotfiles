@@ -41,6 +41,11 @@ hook_add = '''
   " Vim起動時にNERDTreeを表示
 '''
 
+#========== vim-gitgutter  ==========
+# Git 差分表示
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
 #========== vim-lsp  ==========
 # 各言語の入力支援をLSP経由で受ける
 # 事前に $ npm install -g typescript typescript-language-server

@@ -89,3 +89,11 @@ set splitright
 :command Term :vert terminal
 
 highlight LineNr ctermfg=239
+
+" GitGutter の色変更 ~/.dein/dein.toml の hook_add に書いても適用されないので .vimrc に記載
+let g:gitgutter_override_sign_column_highlight = 0
+highlight SignColumn ctermbg=0
+highlight GitGutterAdd    ctermfg=2 ctermbg=0
+highlight GitGutterChange ctermfg=3 ctermbg=0
+" GitGutter の更新間隔を早める (4000ms(default) => 250ms)
+set updatetime=250
