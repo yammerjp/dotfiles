@@ -117,3 +117,5 @@ snipedit () {
   vim $_SNIP_FILE
 }
 # mmv
+source "$HOME/.cargo/env"
+alias cr='cargo run'
