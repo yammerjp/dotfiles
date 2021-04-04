@@ -26,6 +26,16 @@ else ifeq ($(shell uname), Linux)
 	bash bin/ubuntu-packages.sh
 endif
 
+packages-macos-x86_64:    # Install homebrew packages for x86_64 machine
+ifeq ($(shell uname), Darwin)
+	brew bundle --file etc/Brewfile-x86_64
+endif
+
+packages-macos-private:# Install homebrew packages for private machine
+ifeq ($(shell uname), Darwin)
+	brew bundle --file etc/Brewfile-private
+endif
+
 yarn:                  # Install nodejs packages
 	yarn global add
 
