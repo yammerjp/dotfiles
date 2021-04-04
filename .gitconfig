@@ -13,7 +13,7 @@
 	editor = vim
 [alias]
         a = add
-        c = commit
+        c = "commit -v"
         d = diff
         ds = "diff --staged"
         ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
