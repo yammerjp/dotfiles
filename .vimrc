@@ -90,7 +90,9 @@ set splitright
 
 highlight LineNr ctermfg=239
 
+"========== vim-git-gutter ==========
 " GitGutter の色変更 ~/.dein/dein.toml の hook_add に書いても適用されないので .vimrc に記載
+" https://wonderwall.hatenablog.com/entry/2016/03/26/211710
 let g:gitgutter_override_sign_column_highlight = 0
 highlight SignColumn ctermbg=0
 highlight GitGutterAdd    ctermfg=2 ctermbg=0
