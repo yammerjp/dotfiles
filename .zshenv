@@ -5,6 +5,8 @@ alias vi='vim -u NONE'
 alias tree='tree -N'
 alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
+alias mount-sg4t='sshfs h8:/media/sg4t ~/sg4t'
+alias ssh-h8='ssh -A h8'
 
 alias ide="bash ~/.tmux-ide.sh"
 
