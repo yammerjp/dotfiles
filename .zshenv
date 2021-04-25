@@ -96,6 +96,9 @@ case ${OSTYPE} in
     # MacのGUIアプリケーションを実行
     alias prev='open /Applications/Preview.app'
     alias xcode='open /Applications/Xcode.app'
+    
+    alias mute-on="osascript -e \"tell application \\\"System Events\\\" to set volume input volume 0\""
+    alias mute-off="osascript -e \"tell application \\\"System Events\\\" to set volume input volume 70\""
    ;;
   linux*) #Linux用の設定
     alias cpy="xclip -selection clipboard"

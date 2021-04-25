@@ -1,0 +1,28 @@
+{
+  "title": "Mic mute/unmute with clicking mouse",
+  "rules": [
+    {
+      "description": "unmute/mute with mouse button down/up",
+      "manipulators": [ {
+        "type": "basic",
+        "conditions": [ {
+          "type":"device_if",
+          "identifiers": [ {
+            "product_id": 19727,
+            "vendor_id": 1121
+          } ]
+        } ],
+        "from": {
+          "pointing_button": "button2",
+          "modifiers": { "optional": [ "any" ] }
+        },
+        "to": [ {
+          "shell_command": "osascript -e \"tell application \\\"System Events\\\" to set volume input volume 70\""
+        } ],
+        "to_after_key_up": [ {
+          "shell_command": "osascript -e \"tell application \\\"System Events\\\" to set volume input volume 0\""
+        } ]
+      } ]
+    }
+  ]
+}
