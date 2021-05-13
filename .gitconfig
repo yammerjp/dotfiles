@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
         name = Keisuke Nakayama
-        email = baskk4.dt@gmail.com
+        email = me@yammer.jp
 [filter "lfs"]
         required = true
         clean = git-lfs clean -- %f
