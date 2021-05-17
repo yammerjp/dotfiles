@@ -87,7 +87,7 @@ endif
 
 # =========== help message ===========
 help:                  # Show this help
-	@echo '# Hello, this is dotfiles written by basd4g'
+	@echo '# Hello, this is dotfiles written by yammerjp'
 	@grep -E '^[a-z\-]+:' Makefile | head -1 | awk -F ':' '{ print $$1 }' | awk '{printf "make:                       # %s\n", $$0 }'
 	@grep -E '^[a-z\-]+:' Makefile | awk '{printf "make %s\n", $$0 }'
 

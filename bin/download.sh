@@ -5,7 +5,7 @@ if [ "$(whoami)" = "root" ]; then
   exit 1
 fi
 
-DOTFILES_DIR="$HOME/dotfiles"
+DOTFILES_DIR="$HOME/dev/github.com/yammerjp/dotfiles"
 if [ -d "${DOTFILES_DIR}" ]; then
   echo "Dotfiles is already exist."
   echo "${DOTFILES_DIR}"
@@ -27,15 +27,15 @@ d88' `888  d88' `88b   888    888    `888   888  d88' `88b d88(  "8
 
 
 
-This is basd4g's dotfiles.
-Repository: https://github.com/basd4g/dotfiles
+This is yammerjp's dotfiles.
+Repository: https://github.com/yammerjp/dotfiles
 
 Downloading dotfiles...
 EOF
 
 
-URL_TAR="https://github.com/basd4g/dotfiles/tarball/master"
-URL_GIT="https://github.com/basd4g/dotfiles.git"
+URL_TAR="https://github.com/yammerjp/dotfiles/tarball/master"
+URL_GIT="https://github.com/yammerjp/dotfiles.git"
 
 if type "git" > /dev/null 2>&1 ; then
   echo "with git"

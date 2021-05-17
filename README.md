@@ -1,6 +1,6 @@
-[![lint](https://github.com/basd4g/dotfiles/workflows/lint/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3Alint)
-[![macOS Setup](https://github.com/basd4g/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
-[![Ubuntu Setup](https://github.com/basd4g/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/basd4g/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
+[![lint](https://github.com/yammerjp/dotfiles/workflows/lint/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3Alint)
+[![macOS Setup](https://github.com/yammerjp/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
+[![Ubuntu Setup](https://github.com/yammerjp/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
 
 # My dotfiles
 
@@ -9,7 +9,7 @@
 ### Ubuntu Setup
 
 ```sh
-$ wget -q -O dot.basd4g.net | bash
+$ wget -q -O dot.yammerjp.net | bash
 $ cd ~/dotfiles
 $ sudo make
 $ sudo make ubuntu-zsh
@@ -27,7 +27,7 @@ $ xcode-select --install
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ curl -sL dot.basd4g.net | bash
+$ curl -sL dot.yammerjp.net | bash
 $ cd ~/dotfiles
 $ make
 
@@ -36,7 +36,7 @@ $ sudo reboot
 
 # Enable karabiner settings
 $ open /Applications/Karabiner-Elements.app/
-#   Complex modifications > Add rule > basd4g's setting > Enable All
+#   Complex modifications > Add rule > yammerjp's setting > Enable All
 
 # It may take some time to download and install all packages
 #  and the computer sometimes ask you password.
@@ -48,7 +48,7 @@ $ make packages
 ### Install and deploy dotfiles
 
 ```
-$ curl -sL dot.basd4g.net | bash
+$ curl -sL dot.yammerjp.net | bash
 $ cd ~/dotfiles
 $ make link
 ```
@@ -68,5 +68,5 @@ MIT
 ## ToDo
 
 - [ ] Add anyenv
-- [ ] Add `dot.basd4g.net/help`
+- [ ] Add `dot.yammerjp.net/help`
 
