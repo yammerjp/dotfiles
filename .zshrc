@@ -174,7 +174,8 @@ gclone() {
   if [ -z "$1" ]; then
     echo 'Usage: gclone username reponame # clone git repository from github.com'
     return 1
-  if [[ "$1" =~ / ]];
+  fi
+  if [[ "$1" =~ '/' ]]; then
     repo="$1"
   else
     repo="$1/$2"
@@ -285,7 +286,7 @@ snipedit () {
 #=================================末尾処理====================================
 zsh_for_apps_path="$HOME/.zsh_for_apps"
 if [ -e "$zsh_for_apps_path" ]; then
-  source "$zsh_for_app_path"
+  source "$zsh_for_apps_path"
 fi
 
 export PATH="$HOME/bin:$PATH"
