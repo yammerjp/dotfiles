@@ -1,7 +1,8 @@
 # This is Git's per-user configuration file.
-[user]
-        name = Keisuke Nakayama
-        email = me@yammer.jp
+[include]
+        path = ~/.gitconfig-private
+[includeIf "gitdir:~/dev/github.com/**"]
+        path = ~/.gitconfig-user-public
 [filter "lfs"]
         required = true
         clean = git-lfs clean -- %f
@@ -9,8 +10,10 @@
         process = git-lfs filter-process
 [push]
         default = current
+[init]
+        defaultBranch = main
 [core]
-	editor = vim
+        editor = vim
 [alias]
         a = add
         c = "commit -v"
