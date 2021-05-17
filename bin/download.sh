@@ -5,7 +5,9 @@ if [ "$(whoami)" = "root" ]; then
   exit 1
 fi
 
-DOTFILES_DIR="$HOME/dev/github.com/yammerjp/dotfiles"
+REPO="yammerjp/dotfiles"
+
+DOTFILES_DIR="$HOME/dev/github.com/$REPO"
 if [ -d "${DOTFILES_DIR}" ]; then
   echo "Dotfiles is already exist."
   echo "${DOTFILES_DIR}"
@@ -33,30 +35,11 @@ Repository: https://github.com/yammerjp/dotfiles
 Downloading dotfiles...
 EOF
 
-
-URL_TAR="https://github.com/yammerjp/dotfiles/tarball/master"
-URL_GIT="https://github.com/yammerjp/dotfiles.git"
-
-if type "git" > /dev/null 2>&1 ; then
-  echo "with git"
-  git clone --recursive "${URL_GIT}" "${DOTFILES_DIR}"
-elif type "curl" > /dev/null 2>&1 ; then
-  echo "with curl"
-  mkdir "${DOTFILES_DIR}"
-  curl -fsSL "${URL_TAR}" | tar xz  --strip-components 1 -C "${DOTFILES_DIR}"
-elif type "wget" > /dev/null 2>&1 ; then
-  echo "with wget"
-  mkdir "${DOTFILES_DIR}"
-  wget "${URL_TAR}" --quiet -O - | tar xz  --strip-components 1 -C "${DOTFILES_DIR}"
-else
-  echo "Need git, curl or wget."
-  exit 1
-fi
-
+git clone "https://github.com/$REPO.git" "${DOTFILES_DIR}"
 
 echo -e "Downloaded.\n\n"
 echo -e "Execute the commands to setup this pc.\n\n"
-echo    "$ cd ~/dotfiles"
+echo    "$ cd ${DOTFILES_DIR}"
 
 if [ "$(uname)" = "Linux" ];then
   echo -e "$ sudo make\n\n"
