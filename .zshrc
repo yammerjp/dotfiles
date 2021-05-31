@@ -281,7 +281,20 @@ snipedit () {
 
 # mmv
 
+vscode-extension-export () {
+  code --list-extensions > ~/.vscode-extensions
+}
 
+vscode-extensions-import () {
+  VSCODE_EXTENSIONS_FILE="$HOME/.vscode-extensions"
+  if ! [ -e "$VSCODE_EXTENSIONS_FILE" ]; then
+    echo "$VSCODE_EXTENSIONS_FILE is not found..." 1>&2
+    return
+  fi
+  cat "$VSCODE_EXTENSIONS_FILE" | while read extension; do
+    code --install-extension $extension
+  done
+}
 
 #=================================末尾処理====================================
 zsh_for_apps_path="$HOME/.zsh_for_apps"
