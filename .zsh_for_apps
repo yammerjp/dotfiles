@@ -45,6 +45,10 @@
     export PATH="$DENO_INSTALL/bin:$PATH"
   fi
 
+  if which rbenv > /dev/null; then
+    eval "$(rbenv init -)"
+  fi
+
 # Macports
   export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
   export DISPLAY=:0
