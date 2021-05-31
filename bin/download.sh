@@ -7,7 +7,7 @@ fi
 
 REPO="yammerjp/dotfiles"
 
-DOTFILES_DIR="$HOME/dev/github.com/$REPO"
+DOTFILES_DIR="$HOME/src/github.com/$REPO"
 if [ -d "${DOTFILES_DIR}" ]; then
   echo "Dotfiles is already exist."
   echo "${DOTFILES_DIR}"

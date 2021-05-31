@@ -1,6 +1,6 @@
 #!/bin/bash -e
 
-DOTDIR="$HOME/dev/github.com/yammerjp/dotfiles-private"
+DOTDIR="$HOME/src/github.com/yammerjp/dotfiles-private"
 git clone https://github.com/yammerjp/dotfiles-private.git $DOTDIR
 cd $DOTDIR
 
