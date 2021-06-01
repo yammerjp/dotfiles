@@ -183,7 +183,7 @@ gclone() {
   if [ -z "$2" ]; then
     repo="yammerjp/$1"
   fi
-  clone_to="$HOME/dev/github.com/${repo}"
+  clone_to="$HOME/src/github.com/${repo}"
   clone_from="git@github.com:${repo}.git"
   if ! git clone "${clone_from}" "${clone_to}"; then
     echo "Failed to clone from '${clone_from}' to '${clone_to}'"
@@ -214,7 +214,7 @@ export LESS='-R'
 
 # memo
 memo() {
-  memo_repo_dir="$HOME/dev/github.com/yammerjp/memo"
+  memo_repo_dir="$HOME/src/github.com/yammerjp/memo"
   if ! [ -e $memo_repo_dir ]; then
     gclone memo
   fi
