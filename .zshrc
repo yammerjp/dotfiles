@@ -297,6 +297,11 @@ vscode-extensions-import () {
 }
 
 #=================================末尾処理====================================
+zshrc_company="$HOME/.zshrc_company"
+if [ -e "$zshrc_company" ]; then
+  source "$zshrc_company"
+fi
+
 zsh_for_apps_path="$HOME/.zsh_for_apps"
 if [ -e "$zsh_for_apps_path" ]; then
   source "$zsh_for_apps_path"
