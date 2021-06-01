@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [include]
-        path = ~/.gitconfig-private
+        path = ~/.gitconfig-company
 [includeIf "gitdir:~/src/github.com/**"]
         path = ~/.gitconfig-user-public
 [filter "lfs"]
