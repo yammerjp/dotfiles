@@ -149,11 +149,7 @@ echo "Install extra packages"
 apt install -y screenruler
 apt install -y ffmpeg
 apt install -y imagemagick
-snap install --classic heroku
 snap install pick-colour-picker
-snap install losslesscut
-snap install obs-studio
 snap install inkscape
-snap install --classic shotcut
 echo "Please install slack from deb package downloaded by web-browser !!" # snap install --classic slack
 echo "Finished full packages"
