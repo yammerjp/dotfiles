@@ -1,12 +1,11 @@
 # =========== setup all ===========
-inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubuntu-homedir-rename, ubuntu-gnome-term-load
+inits:                 # link, packages-mini, yarn, vim, macos-userdefaults, ubuntu-homedir-rename
 	make link
 	make packages-mini
 	make yarn
 	make vim
 	make macos-userdefaults
 	make ubuntu-homedir-rename
-	make ubuntu-gnome-term-load
 
 # =========== setup commands ===========
 link:                  # Put symlinks of a dotfile
@@ -48,11 +47,6 @@ ifeq ($(shell uname), Linux)
 	chsh -s $(shell which zsh)
 endif
 
-ubuntu-deno:           # (ubuntu) Install deno
-ifeq ($(shell uname), Linux)
-	bash bin/ubuntu-deno.sh
-endif
-
 macos-userdefaults:    # (macOS) Set user-defaults
 ifeq ($(shell uname), Darwin)
 	bash bin/macos-userdefaults.sh
@@ -63,20 +57,6 @@ ifeq ($(CI), true)
 	@echo "Skip on CI"
 else ifeq ($(shell uname), Linux)
 		LANG=C xdg-user-dirs-gtk-update
-endif
-
-ubuntu-gnome-term-load:# (ubuntu) Load gnome-terminal settings
-ifeq ($(CI), true)
-	@echo "Skip on CI"
-else ifeq ($(shell uname), Linux)
-	dconf reset /org/gnome/terminal/
-	dconf load /org/gnome/terminal/ < etc/gnome-terminal.dconf
-endif
-
-# =========== backup commands ===========
-ubuntu-gnome-term-dump:# (ubuntu) Dump gnome-terminal settings
-ifeq ($(shell uname), Linux)
-	dconf dump /org/gnome/terminal/ > etc/gnome-terminal.dconf
 endif
 
 macos-brew-dump:       # (macOS) Dump installed packages with brew to `~/dotfiles/etc/Brewfile`
