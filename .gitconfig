@@ -1,8 +1,9 @@
 # This is Git's per-user configuration file.
+[user]
+        name = Keisuke Nakayama
+        email = me@yammer.jp
 [include]
         path = ~/.gitconfig-company
-[includeIf "gitdir:~/src/github.com/**"]
-        path = ~/.gitconfig-user-public
 [filter "lfs"]
         required = true
         clean = git-lfs clean -- %f
