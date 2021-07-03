@@ -1,4 +1,5 @@
 #!/bin/bash -e
+# shellcheck disable=SC2046,SC1091
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"

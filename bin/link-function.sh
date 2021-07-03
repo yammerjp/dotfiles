@@ -76,7 +76,7 @@ function dotdir2linkingFromAndTo () {
 
 function main() {
   ON_CONFLICTION="$1"
-  DOTDIRS="${@:2}"
+  DOTDIRS="${*:2}"
 
   echo "$ON_CONFLICTION"
 

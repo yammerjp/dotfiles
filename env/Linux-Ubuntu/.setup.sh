@@ -19,7 +19,9 @@ echo "$password" | sudo -S chsh --shell "$(which zsh)" "$username"
 #  ... ubuntu home dir
 # mv "~/ダウンロード" "~/Downloads"
 #                                   ... and so on ...
-LANG=C xdg-user-dirs-gtk-update
+if [ "$CI" != "true" ]; then
+  LANG=C xdg-user-dirs-gtk-update
+fi
 
 # package install
 echo "$password" | sudo -S bash ./.setup-packages.sh

@@ -11,7 +11,7 @@ link-overwrite:        # Put symlinks of a dotfile with overwriting by specified
 	xargs bash bin/link.sh overwrite 
 setup:                 # Run setup script for your environment (install packages, os settings, and so on ...)
 	@echo "you can execute 'make setup' after excuting 'make link'"
-	bash ~/.setup-util/setup.sh
+	bash ~/.setup.sh
 unlink:                # Remove symlinks of a dotfile
 	pwd | xargs bash bin/unlink.sh
 dotdirs:               # Show dotfile directories for your environment
