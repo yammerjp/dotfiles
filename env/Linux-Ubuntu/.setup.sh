@@ -3,18 +3,18 @@
 # download ... dotfiles/bin/download.sh
 # link     ... make link
 
-SCRIPT_DIR=$(cd $(dirname $0); pwd)
-cd $SCRIPT_DIR
+SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
+cd "$SCRIPT_DIR"
 
-read -sp password
+read -rsp password
 
 # Change login shell to zsh.
 if ! which zsh; then
   echo "Please install zsh"
   exit 1
 fi
-username=`whoami`
-echo "$password" | sudo -S chsh --shell `which zsh` "$username"
+username="$(whoami)"
+echo "$password" | sudo -S chsh --shell "$(which zsh)" "$username"
 
 #  ... ubuntu home dir
 # mv "~/ダウンロード" "~/Downloads"
