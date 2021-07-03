@@ -1,0 +1,8 @@
+alias cpy="pbcopy"
+alias pst="pbpaste"
+alias tac="tail -r"
+#alias sha256sum="shasum -a 256"
+alias ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレクトリを色表示, "-h":ファイルサイズを人間が読みやすい形式に
+# MacのGUIアプリケーションを実行
+alias prev='open /Applications/Preview.app'
+alias xcode='open /Applications/Xcode.app'

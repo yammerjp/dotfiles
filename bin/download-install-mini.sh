@@ -4,19 +4,20 @@
 
 # 前提: このスクリプトを実行するには次のような環境である必要があります
 #   1. パッケージマネージャとして yum が使える CentOS, AmazonLinux等)
-#   2. sudo, curl が使える必要があります
+#   2. sudo, curl が使える
 #       それぞれインストールするには次のようなコマンドを実行します
-#       $ su -c yum install -y sudo # sudo コマンドのインストール
-#       $ sudo yum install -y curl  # curl のインストール
+#         $ su -c yum install -y sudo    # sudo コマンドのインストール
+#         $ sudo yum install -y curl     # curl のインストール
 
 
 # dotfilesをダウンロードする
 # ========================================
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/.zshrc > ~/.zshrc
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/.vimrc > ~/.vimrc
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/.tmux.conf > ~/.tmux.conf
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/.gitconfig > ~/.gitconfig
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/.gitconfig-user-public > ~/.gitconfig-user-public
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.zshrc > ~/.zshrc
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.zshrc-common > ~/.zshrc-common
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.vimrc > ~/.vimrc
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.vimrc-common > ~/.vimrc-common
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.tmux.conf > ~/.tmux.conf
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.gitconfig > ~/.gitconfig
 
 
 # 各種ソフトウェアをインストールする
