@@ -287,4 +287,4 @@ if [ -e "$zsh_for_apps_path" ]; then
   source "$zsh_for_apps_path"
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.config/npm-packages/bin:$PATH"
