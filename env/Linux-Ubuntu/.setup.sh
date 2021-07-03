@@ -17,10 +17,10 @@ chsh -s $(shell which zsh)
 LANG=C xdg-user-dirs-gtk-update
 
 # package install
-bash ./install-packages.sh
+bash ./.setup-packages.sh
 
 # vim init
 vim -s ./vimop
 
 # npm init
-npm install --global
+yarn global add

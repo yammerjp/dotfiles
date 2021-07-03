@@ -9,7 +9,7 @@ link:                  # Put symlinks of a dotfile
 	bash bin/link-list.sh | xargs bash bin/link.sh skip
 link-overwrite:        # Put symlinks of a dotfile with overwriting by specified dotfiles directories (stdin) if they conflict
 	xargs bash bin/link.sh overwrite 
-seup:                 # Run setup script for your environment (install packages, os settings, and so on ...)
+setup:                 # Run setup script for your environment (install packages, os settings, and so on ...)
 	@echo "you can execute 'make setup' after excuting 'make link'"
 	bash ~/.setup-util/setup.sh
 unlink:                # Remove symlinks of a dotfile

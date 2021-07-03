@@ -15,7 +15,7 @@ bash ./brew-init.sh
 # vim init
 vim -s ./vimop
 
-# npm init
-npm install --global
+# yarn init
+yarn global add
 
 echo "Nothing to do" 1>&2
