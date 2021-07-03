@@ -19,7 +19,7 @@ jobs:
         cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
 
     - name: Run
-      run : >
+      run : |
         cd ~/src/github.com/yammerjp/dotfiles
         make link
         make setup
