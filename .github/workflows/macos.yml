@@ -25,7 +25,7 @@ jobs:
 
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp
+        cd ~/src/github.com/yammerjp/dotfiles
         make link
         echo 'brew "vim"\nbrew "yarn"' > ~/.Brewfile
         make setup

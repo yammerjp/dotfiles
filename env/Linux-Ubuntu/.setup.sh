@@ -9,12 +9,12 @@ cd "$SCRIPT_DIR"
 read -rsp password
 
 # Change login shell to zsh.
-if ! which zsh; then
+if ! command -v zsh; then
   echo "Please install zsh"
   exit 1
 fi
 username="$(whoami)"
-echo "$password" | sudo -S chsh --shell "$(which zsh)" "$username"
+echo "$password" | sudo -S chsh --shell "$(command -v zsh)" "$username"
 
 #  ... ubuntu home dir
 # mv "~/ダウンロード" "~/Downloads"
