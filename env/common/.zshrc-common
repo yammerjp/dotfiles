@@ -248,26 +248,6 @@ zshcolors () {
   done
 }
 
-case ${OSTYPE} in
-  darwin*) #Mac用の設定
-    alias cpy="pbcopy"
-    alias pst="pbpaste"
-    alias tac="tail -r"
-    #alias sha256sum="shasum -a 256"
-    alias ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレクトリを色表示, "-h":ファイルサイズを人間が読みやすい形式に
-    # MacのGUIアプリケーションを実行
-    alias prev='open /Applications/Preview.app'
-    alias xcode='open /Applications/Xcode.app'
-    
-   ;;
-  linux*) #Linux用の設定
-    alias cpy="xclip -selection clipboard"
-    alias pst="xclip -selection clipboard -o"
-    alias ls='ls -Fh --color=auto'
-    alias open='xdg-open'
-    ;;
-esac
-
 _SNIP_FILE="$HOME/.snip"
 snipadd () {
   echo $@ >> $_SNIP_FILE
@@ -307,4 +287,4 @@ if [ -e "$zsh_for_apps_path" ]; then
   source "$zsh_for_apps_path"
 fi
 
-export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.config/npm-packages/bin:$PATH"

@@ -19,11 +19,11 @@ jobs:
         sudo apt-get install zsh
 
     - name: Check '*.sh'
-      run : find ${GITHUB_WORKSPACE} -type f | grep -E "\.sh$" | xargs shellcheck
+      run : find ${GITHUB_WORKSPACE} -type f | grep -E "\.sh$" | grep -v 'download-install-mini.sh' | xargs shellcheck
 
-    - name: Check .zprofile
-      run : zsh -n ${GITHUB_WORKSPACE}/.zprofile
+   # - name: Check .zprofile
+   #   run : zsh -n ${GITHUB_WORKSPACE}/.zprofile
 
-    - name: Check .zshrc
-      run : zsh -n ${GITHUB_WORKSPACE}/.zshrc
+   # - name: Check '.zshrc*'
+   #   run : find ${GITHUB_WORKSPACE} -type f | grep -E "zshrc" | xargs shellcheck
 

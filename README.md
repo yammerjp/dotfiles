@@ -9,11 +9,10 @@
 ### Ubuntu Setup
 
 ```sh
-$ wget -q -O dot.yammerjp.net | bash
-$ cd ~/dotfiles
-$ sudo make
-$ sudo make ubuntu-zsh
-$ sudo make packages
+$ wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
+$ cd ~/src/github.com/yammerjp/dotfiles
+$ make link
+$ make setup
 ```
 
 ### macOS Setup
@@ -27,9 +26,10 @@ $ xcode-select --install
 $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ curl -sL dot.yammerjp.net | bash
-$ cd ~/dotfiles
-$ make
+$ curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
+$ cd ~/src/github.com/yammerjp/dotfiles
+$ make link
+$ make setup
 
 # Enable macOS settings of User Defaults
 $ sudo reboot
@@ -43,24 +43,6 @@ $ open /Applications/Karabiner-Elements.app/
 $ make packages
 ```
 
-## Dotfiles
-
-### Install and deploy dotfiles
-
-```
-$ curl -sL dot.yammerjp.net | bash
-$ cd ~/dotfiles
-$ make link
-```
-
-### Add new dotfile
-
-```sh
-$ cd ~/dotfiles
-$ mv ~/.hogerc ./
-$ make link
-```
-
 ## LICENSE
 
 MIT
@@ -70,3 +52,9 @@ MIT
 - [ ] Add anyenv
 - [ ] Add `dot.yammerjp.net/help`
 
+## MEMO
+
+```sh
+brew bundle --file ~/.Brewfile
+brew bundle dump --file ~/.Brewfile
+```

@@ -15,7 +15,8 @@ jobs:
 
     - name: Copy
       run : |
-        cp -r ${GITHUB_WORKSPACE} ~/
+        mkdir -p ~/src/github.com/yammerjp
+        cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
 
     # Default installed node conflicts with homebrew's one
     #- name: Unlink node@12
@@ -24,11 +25,10 @@ jobs:
 
     - name: Run
       run : |
-        cd ~/dotfiles
-        export HOMEBREW_BUNDLE_CASK_SKIP="vagrant virtualbox virtualbox-extension-pack"
-        export HOMEBREW_BUNDLE_MAS_SKIP="$(bash ~/dotfiles/lib/print-mas-packages.sh)"
-        make
-        make packages
+        cd ~/src/github.com/yammerjp/dotfiles
+        make link
+        echo 'brew "vim"\nbrew "yarn"' > ~/.Brewfile
+        make setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile
