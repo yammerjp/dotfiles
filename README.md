@@ -52,3 +52,9 @@ MIT
 - [ ] Add anyenv
 - [ ] Add `dot.yammerjp.net/help`
 
+## MEMO
+
+```sh
+brew bundle --file ~/.Brewfile
+brew bundle dump --file ~/.Brewfile
+```

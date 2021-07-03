@@ -1,2 +1,2 @@
-source "$HOME/.zshrc-macos"
+source "$HOME/.zshrc-darwin"
 source "$HOME/.zshrc-common"

@@ -7,7 +7,7 @@ SCRIPT_DIR=$(cd $(dirname $0); pwd)
 cd $SCRIPT_DIR
 
 # os initializing setup
-#  ... ubuntu chsh
+# Change login shell to zsh.
 which zsh ||  (echo "Please install zsh" && exit 1)
 chsh -s $(shell which zsh)
 

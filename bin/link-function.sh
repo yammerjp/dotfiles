@@ -87,7 +87,10 @@ function main() {
 
   for DOTDIR in $DOTDIRS
   do
-     dotdir2linkingFromAndTo "$DOTDIR" | createLinks "$ON_CONFLICTION"
+    if ! [ -d "$DOTDIR" ]; then
+      continue
+    fi
+    dotdir2linkingFromAndTo "$DOTDIR" | createLinks "$ON_CONFLICTION"
   done
 }
 

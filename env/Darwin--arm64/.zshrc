@@ -36,5 +36,5 @@ fi
 export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 export DISPLAY=:0
 
-source "$HOME/.zshrc-macos"
+source "$HOME/.zshrc-darwin"
 source "$HOME/.zshrc-common"
