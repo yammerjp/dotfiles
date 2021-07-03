@@ -7,13 +7,13 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
 # os initializing setup
-bash ./userdefaults-init.sh
+bash .userdefaults-init.sh
 
 # package install
-bash ./brew-init.sh
+brew bundle --file ~/.Brewfile
 
 # vim init
-vim -s ./vimop
+vim -s .vimop
 
 # yarn init
 yarn global add

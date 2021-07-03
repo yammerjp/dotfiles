@@ -24,10 +24,10 @@ if [ "$CI" != "true" ]; then
 fi
 
 # package install
-echo "$password" | sudo -S bash ./.setup-packages.sh
+echo "$password" | sudo -S bash .setup-packages.sh
 
 # vim init
-vim -s ./vimop
+vim -s .vimop
 
 # npm init
 yarn global add
