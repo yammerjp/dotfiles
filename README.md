@@ -55,6 +55,3 @@ MIT
 ## MEMO
 
 ```sh
-brew bundle --file ~/.Brewfile
-brew bundle dump --file ~/.Brewfile
-```
