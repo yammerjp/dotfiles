@@ -261,7 +261,7 @@ snipedit () {
 
 # mmv
 
-vscode-extension-export () {
+vscode-extensions-export () {
   code --list-extensions > ~/.vscode-extensions
 }
 
