@@ -49,5 +49,3 @@ install_packages
 
 install_vim_plugins
 
-yarn global add
-

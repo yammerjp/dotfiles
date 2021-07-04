@@ -276,6 +276,18 @@ vscode-extensions-import () {
   done
 }
 
+
+function npm-global-dump() {
+  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > ~/.npmdump
+}
+
+function npm-global-bundle() {
+  while read pkg
+  do
+    npm install --global $pkg
+  done < ~/.npmdump
+}
+
 #=================================末尾処理====================================
 zshrc_company="$HOME/.zshrc_company"
 if [ -e "$zshrc_company" ]; then
