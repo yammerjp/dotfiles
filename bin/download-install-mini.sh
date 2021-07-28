@@ -12,12 +12,12 @@
 
 # dotfilesをダウンロードする
 # ========================================
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.zshrc > ~/.zshrc
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.zshrc-common > ~/.zshrc-common
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.vimrc > ~/.vimrc
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.vimrc-common > ~/.vimrc-common
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.tmux.conf > ~/.tmux.conf
-curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/env/common/.gitconfig > ~/.gitconfig
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.zshrc > ~/.zshrc
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.zshrc-common > ~/.zshrc-common
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.vimrc > ~/.vimrc
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.vimrc-common > ~/.vimrc-common
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.tmux.conf > ~/.tmux.conf
+curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.gitconfig > ~/.gitconfig
 
 
 # 各種ソフトウェアをインストールする
