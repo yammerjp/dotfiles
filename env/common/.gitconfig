@@ -13,6 +13,7 @@
         default = current
 [init]
         defaultBranch = main
+	templatedir = ~/.git-templates/git-secrets
 [core]
         editor = vim
 [alias]
@@ -30,3 +31,10 @@
         als = alias
         rao = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
         remote-add-origin =arog
+[secrets]
+	providers = git secrets --aws-provider
+	patterns = (A3T[A-Z0-9]|AKIA|AGPA|AIDA|AROA|AIPA|ANPA|ANVA|ASIA)[A-Z0-9]{16}
+	patterns = (\"|')?(AWS|aws|Aws)?_?(SECRET|secret|Secret)?_?(ACCESS|access|Access)?_?(KEY|key|Key)(\"|')?\\s*(:|=>|=)\\s*(\"|')?[A-Za-z0-9/\\+=]{40}(\"|')?
+	patterns = (\"|')?(AWS|aws|Aws)?_?(ACCOUNT|account|Account)_?(ID|id|Id)?(\"|')?\\s*(:|=>|=)\\s*(\"|')?[0-9]{4}\\-?[0-9]{4}\\-?[0-9]{4}(\"|')?
+	allowed = AKIAIOSFODNN7EXAMPLE
+	allowed = wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
