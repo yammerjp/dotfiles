@@ -224,12 +224,24 @@ memo() {
 }
 
 compress() {
-  echo "tar zcvf $1.tar.gz $1"
+  if ! [ -n "$1" ]; then
+    echo "Usage: $0 <compressing-dir>" 1>&2
+    return
+  fi
+  echo "tar -zcvf $1.tar.gz $1"
   tar zcvf "$1.tar.gz" "$1"
 }
 decompress() {
+  if ! [ -n "$1" ]; then
+    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
+    return
+  fi
+  if ! [[ "$1" =~ "\.tar\/.gz$" ]]; then
+    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
+    return
+  fi
   echo "tar zxvf $1"
-  tar zxvf "$1"
+  tar -zxvf "$1"
 }
 
 zshcolors () {
