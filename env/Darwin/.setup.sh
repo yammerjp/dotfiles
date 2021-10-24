@@ -12,6 +12,11 @@ bash .userdefaults-init.sh
 # package install
 brew bundle --file ~/.Brewfile
 
+# setup anyenv
+anyenv install nodenv
+anyenv install phpenv
+anyenv install rbenv
+
 # vim init
 vim -s .vimop
 
