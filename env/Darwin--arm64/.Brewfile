@@ -26,7 +26,6 @@ brew "neovim", args: ["HEAD"]
 brew "tmux"
 brew "tree"
 brew "wget"
-brew "yarn"
 brew "zlib"
 brew "basd4g/tap/pdef"
 cask "chromium"

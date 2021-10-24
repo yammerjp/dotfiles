@@ -15,7 +15,4 @@ brew bundle --file ~/.Brewfile
 # vim init
 vim -s .vimop
 
-# yarn init
-yarn global add
-
 echo "Nothing to do" 1>&2
