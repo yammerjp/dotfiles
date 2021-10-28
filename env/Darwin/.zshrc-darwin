@@ -20,3 +20,5 @@ function brew-bundle() {
 eval "$(nodenv init -)"
 eval "$(rbenv init -)"
 eval "$(pyenv init -)"
+
+alias nv='nvim'
