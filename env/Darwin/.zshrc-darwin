@@ -17,4 +17,6 @@ function brew-bundle() {
   brew bundle --file ~/.Brewfile
 }
 
-
+eval "$(nodenv init -)"
+eval "$(rbenv init -)"
+eval "$(pyenv init -)"

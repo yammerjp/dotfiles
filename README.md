@@ -46,5 +46,4 @@ MIT
 
 ## ToDo
 
-- [ ] Add anyenv
 - [ ] Add `dot.yammerjp.net/help`

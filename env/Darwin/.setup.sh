@@ -12,10 +12,21 @@ bash .userdefaults-init.sh
 # package install
 brew bundle --file ~/.Brewfile
 
-# setup anyenv
-anyenv install nodenv
-anyenv install phpenv
-anyenv install rbenv
+eval (rbenv init -)
+latest_stable_ruby=$(rbenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
+
+rbenv install $latest_stable_ruby
+rbenv global $latest_stable_ruby
+
+eval (nodenv init -)
+latest_stable_node=$(nodenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
+nodenv install $latest_stable_node
+nodenv global $latest_stable_node
+
+eval (pyenv init -)
+latest_stable_python=$(pyenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
+pyenv install $latest_stable_python
+pyenv global $latest_stable_python
 
 # vim init
 vim -s .vimop
