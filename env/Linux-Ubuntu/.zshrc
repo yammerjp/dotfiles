@@ -9,4 +9,7 @@ if [ -e "$HOME/.cargo/env" ]; then
   alias cr='cargo run'
 fi
 
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+source "$HOME/.zshrc-linux"
 source "$HOME/.zshrc-common"

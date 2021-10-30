@@ -38,9 +38,6 @@ $ sudo reboot
 $ open /Applications/Karabiner-Elements.app/
 #   Complex modifications > Add rule > yammerjp's setting > Enable All
 
-# It may take some time to download and install all packages
-#  and the computer sometimes ask you password.
-$ make packages
 ```
 
 ## LICENSE
@@ -49,9 +46,4 @@ MIT
 
 ## ToDo
 
-- [ ] Add anyenv
 - [ ] Add `dot.yammerjp.net/help`
-
-## MEMO
-
-```sh

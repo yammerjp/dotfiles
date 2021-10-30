@@ -1,5 +1,13 @@
 # This file is applications' settings such as adding $PATH
 
+# homebrew for arm64, darwin
+# (N-/) ... ディレクトリが存在するときのみ追加
+path=(
+  /opt/homebrew/bin(N-/)
+  /usr/local/bin(N-/)
+  $path
+)
+
 # homebrew
 fpath=($(brew --prefix)/share/zsh/site-functions $fpath)
 if [ -e "/opt/homebrew/opt/luajit-openresty/bin" ]; then
@@ -8,13 +16,6 @@ fi
 if [ -e "/opt/homebrew/sbin" ]; then
   export PATH="/opt/homebrew/sbin:$PATH"
 fi
-# homebrew for arm64, darwin
-# (N-/) ... ディレクトリが存在するときのみ追加
-path=(
-  /opt/homebrew/bin(N-/)
-  /usr/local/bin(N-/)
-  $path
-)
 # x86_64版のbrewを実行するとき, =brew で実行させる
 setopt magic_equal_subst
 
