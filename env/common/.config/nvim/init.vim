@@ -1,5 +1,3 @@
-colorscheme pablo
-
 "========== インデント ==========
 " 不可視文字を可視化(タブが「>-」と表示される)
 set list listchars=tab:>-
@@ -88,6 +86,15 @@ highlight LineNr ctermfg=239
 " vimplug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'tpope/vim-fugitive'
+Plug 'morhetz/gruvbox'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'mattn/vim-lsp-settings'
 call plug#end()
 
 " GitGutter
@@ -98,3 +105,8 @@ highlight GitGutterAdd    ctermfg=2 ctermbg=0
 highlight GitGutterChange ctermfg=3 ctermbg=0
 " GitGutter の更新間隔を早める (4000ms(default) => 250ms)
 set updatetime=250
+
+" gruvbox
+syntax enable
+set background=dark
+colorscheme gruvbox

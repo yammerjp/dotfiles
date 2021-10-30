@@ -22,6 +22,9 @@ eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
 alias nv='nvim'
+alias purevim='/usr/bin/vim'
+alias vim='nvim'
+
 # use gnu dircolors
 if [ -x `whence -p gdircolors` ]; then alias dircolors='gdircolors'; fi
 eval `dircolors --sh ~/.gruvbox.dircolors`
