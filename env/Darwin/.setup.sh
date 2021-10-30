@@ -10,7 +10,7 @@ cd "$SCRIPT_DIR"
 bash ~/.userdefaults.sh
 
 # package install
-# brew bundle --file ~/.Brewfile
+brew bundle --file ~/.Brewfile
 
 eval "rbenv init -"
 latest_stable_ruby=$(rbenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
