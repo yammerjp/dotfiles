@@ -2,6 +2,9 @@
 [user]
         name = Keisuke Nakayama
         email = me@yammer.jp
+[ghq]
+  root = ~/src
+  user = yammerjp
 [include]
         path = ~/.gitconfig-company
 [filter "lfs"]
@@ -30,3 +33,4 @@
         als = alias
         rao = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
         remote-add-origin =arog
+        sw = "!git branch -a | fzf | xargs git checkout"
