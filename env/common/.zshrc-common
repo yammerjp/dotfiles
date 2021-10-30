@@ -223,6 +223,7 @@ memo() {
   vim "${dairy_dir}/$(date '+%Y%m%d').md"
 }
 
+# compress
 compress() {
   echo "tar zcvf $1.tar.gz $1"
   tar zcvf "$1.tar.gz" "$1"
@@ -231,6 +232,8 @@ decompress() {
   echo "tar zxvf $1"
   tar zxvf "$1"
 }
+
+# color
 
 zshcolors () {
   for num in `seq 256`;do
@@ -248,6 +251,8 @@ zshcolors () {
   done
 }
 
+
+# snip
 _SNIP_FILE="$HOME/.snip"
 snipadd () {
   echo $@ >> $_SNIP_FILE
@@ -261,6 +266,7 @@ snipedit () {
 
 # mmv
 
+# vscode
 vscode-extensions-export () {
   code --list-extensions > ~/.vscode-extensions
 }
@@ -276,7 +282,7 @@ vscode-extensions-import () {
   done
 }
 
-
+# npm
 function npm-global-dump() {
   npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > ~/.npmdump
 }
@@ -287,6 +293,27 @@ function npm-global-bundle() {
     npm install --global $pkg
   done < ~/.npmdump
 }
+
+#fzf
+# ghqでcloneしたリポジトリ一覧
+function ghq_code() {
+  local repo="$(ghq list | fzf --preview "bat --color=always --style=numbers --line-range=:100 $(ghq root)/{}/README.*")"
+  if [ -n "$repo" ]; then
+    BUFFER="code $(ghq root)/${repo} && exit"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N ghq_code
+bindkey '^f' ghq_code
+
+# shellのhistory一覧
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
 
 #=================================末尾処理====================================
 zshrc_company="$HOME/.zshrc_company"
