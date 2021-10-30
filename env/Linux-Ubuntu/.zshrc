@@ -11,4 +11,5 @@ fi
 
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
+source "$HOME/.zshrc-linux"
 source "$HOME/.zshrc-common"

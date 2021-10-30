@@ -22,3 +22,10 @@ eval "$(rbenv init -)"
 eval "$(pyenv init -)"
 
 alias nv='nvim'
+# use gnu dircolors
+if [ -x `whence -p gdircolors` ]; then alias dircolors='gdircolors'; fi
+eval `dircolors --sh ~/.gruvbox.dircolors`
+
+# enable ls colors for zsh completion
+if [ -x `whence -p gls` ]; then alias ls='gls --color=auto'; fi
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
