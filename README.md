@@ -47,3 +47,4 @@ MIT
 ## ToDo
 
 - [ ] Add `dot.yammerjp.net/help`
+- [ ] Add installing vim-plug with .setup.sh and execute :PlugInstall
