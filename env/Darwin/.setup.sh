@@ -7,23 +7,23 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
 # os initializing setup
-bash .userdefaults-init.sh
+bash ~/.userdefaults.sh
 
 # package install
-brew bundle --file ~/.Brewfile
+# brew bundle --file ~/.Brewfile
 
-eval (rbenv init -)
+eval "rbenv init -"
 latest_stable_ruby=$(rbenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
 
 rbenv install $latest_stable_ruby
 rbenv global $latest_stable_ruby
 
-eval (nodenv init -)
+eval "nodenv init -"
 latest_stable_node=$(nodenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
 nodenv install $latest_stable_node
 nodenv global $latest_stable_node
 
-eval (pyenv init -)
+eval "pyenv init -"
 latest_stable_python=$(pyenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)
 pyenv install $latest_stable_python
 pyenv global $latest_stable_python
