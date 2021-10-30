@@ -326,6 +326,9 @@ function select-history() {
 zle -N select-history
 bindkey '^r' select-history
 
+function ssh-keygen-me() {
+  ssh-keygen -t rsa -b 4096 -C "me@yammer.jp"
+}
 #=================================末尾処理====================================
 zshrc_company="$HOME/.zshrc_company"
 if [ -e "$zshrc_company" ]; then
