@@ -9,4 +9,6 @@ source "$HOME/.zshrc-darwin"
 source "$HOME/.zshrc-common"
 
 # 計測
-# zprof
+if (which zprof > /dev/null 2>&1) ;then
+  zprof | less
+fi
