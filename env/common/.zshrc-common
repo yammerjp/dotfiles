@@ -143,23 +143,7 @@ precmd() {
   return $_r
 }
 
-#=================================OS別の設定====================================
-case ${OSTYPE} in
-  darwin*) #Mac用の設定
-    export CLICOLOR=1
-   ;;
-  linux*) #Linux用の設定
-    # visudoをviに設定
-    export EDITOR="/bin/vi"
-    export SUDO_EDITOR="/bin/vi"
-    ;;
-esac
-
-
 #=================================alias====================================
-alias n-exec=$(bash -c "which n")
-alias n="echo \"Please type the command 'n-exec' if you want to execute 'n' that is nodejs version management tool.\""
-
 alias du='du -h'
 alias vi='vim -u NONE'
 alias tree='tree -N'
@@ -301,16 +285,5 @@ function npm-global-bundle() {
     npm install --global $pkg
   done < ~/.npmdump
 }
-
-#=================================末尾処理====================================
-zshrc_company="$HOME/.zshrc_company"
-if [ -e "$zshrc_company" ]; then
-  source "$zshrc_company"
-fi
-
-zsh_for_apps_path="$HOME/.zsh_for_apps"
-if [ -e "$zsh_for_apps_path" ]; then
-  source "$zsh_for_apps_path"
-fi
 
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$PATH"
