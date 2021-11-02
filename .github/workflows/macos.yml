@@ -27,7 +27,9 @@ jobs:
       run : |
         cd ~/src/github.com/yammerjp/dotfiles
         make link
-        echo 'brew "vim"\nbrew "yarn"' > ~/.Brewfile
+        echo 'brew "vim"' >> ~/.Brewfile
+        sed -i '' '/^cask /d' ~/.Brewfile
+        sed -i '' '/^mas /d' ~/.Brewfile
         make setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile

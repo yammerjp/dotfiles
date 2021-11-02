@@ -1,3 +1,2 @@
-# This is Git's per-user configuration file.
 [include]
         path = ~/.gitconfig-common
