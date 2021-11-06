@@ -95,7 +95,12 @@ Plug 'prabirshrestha/vim-lsp'
 Plug 'prabirshrestha/async.vim'
 Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 call plug#end()
+" brew install fzf
+" brew install repgrep
+" need nodejs and npm (for LSP)
 
 " GitGutter
 " https://wonderwall.hatenablog.com/entry/2016/03/26/211710
@@ -106,7 +111,15 @@ highlight GitGutterChange ctermfg=3 ctermbg=0
 " GitGutter の更新間隔を早める (4000ms(default) => 250ms)
 set updatetime=250
 
+
+" vim-airline
+let g:airline_powerline_fonts = 1
+
 " gruvbox
 syntax enable
 set background=dark
 colorscheme gruvbox
+
+" fzf.vim
+noremap <C-p> :GFiles<CR>
+noremap <C-f> :Rg<CR>
