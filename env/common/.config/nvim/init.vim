@@ -83,6 +83,18 @@ set splitright
 
 highlight LineNr ctermfg=239
 
+
+" buffer を使いやすくする
+noremap <Left> :bprev<CR>
+noremap <Right> :bnext<CR>
+" バッファに開かれたファイルを保存していなくてもファイルが切り替えられるようにする
+:set hidden
+
+" 無効化
+noremap ZZ <Nop>
+noremap ZQ <Nop>
+noremap Q <Nop>
+
 " vimplug
 call plug#begin('~/.local/share/nvim/plugged')
 Plug 'airblade/vim-gitgutter'
@@ -97,6 +109,7 @@ Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
+Plug 'preservim/nerdtree'
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -121,5 +134,8 @@ set background=dark
 colorscheme gruvbox
 
 " fzf.vim
-noremap <C-p> :GFiles<CR>
-noremap <C-f> :Rg<CR>
+noremap sp :GFiles<CR>
+noremap sP :GFiles?<CR>
+noremap sb :Buffer<CR>
+noremap sf :Rg<CR>
+noremap bt :NERDTree<CR>
