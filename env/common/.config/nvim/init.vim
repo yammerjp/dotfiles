@@ -26,6 +26,9 @@ set ambiwidth=double
 set nobomb
 set t_Co=256
 
+" phpの時は文字コードをeuc-jpに設定
+autocmd FileType php :set fileencoding=euc-jp
+
 
 "========== クリップボード ==========
 if has("mac")
