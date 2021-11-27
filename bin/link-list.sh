@@ -16,30 +16,25 @@ DIST="$(distribution)" # Ubuntu
 
 
 function dotdirs() {
+  DOTDIRS=""
   if [ "$ARCH" != "" ]; then
-    echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
+    DOTDIRS="$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
   fi
   if [ "$DIST" != "" ]; then
-    echo "$DOTFILES_DIR/env/$OS-$DIST"
+    DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/$OS-$DIST"
   fi
   if [ "$OS" != "" ]; then
-    echo "$DOTFILES_DIR/env/$OS"
+    DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/$OS"
   fi
-  echo "$DOTFILES_DIR/env/common"
+  DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/common"
+  echo "$DOTDIRS"
 }
 
 # example: 
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Darwin
-#   $DOTFILES_DIR/env/Darwin--x86_64
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64
+#
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin--arm64
 #   
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Darwin
-#   $DOTFILES_DIR/env/Darwin--arm64
-#   
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Linux
-#   $DOTFILES_DIR/env/Linux-Ubuntu
-#   $DOTFILES_DIR/env/Linux-Ubuntu-x86_64
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Linux:$HOME/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:$HOME/src/github.com/yammerjp/dotfiles/Linux-Ubuntu-x86_64
 
 dotdirs

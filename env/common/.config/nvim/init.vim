@@ -113,6 +113,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 " brew install fzf
 " brew install repgrep
