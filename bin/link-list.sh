@@ -15,19 +15,22 @@ ARCH="$(uname -m)"     # arm64 x86_64
 DIST="$(distribution)" # Ubuntu
 
 
-function dotdirs() {
+function dotdirs_with_line_break() {
   DOTDIRS=""
   if [ "$ARCH" != "" ]; then
-    DOTDIRS="$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
+    echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
   fi
   if [ "$DIST" != "" ]; then
-    DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/$OS-$DIST"
+    echo "$DOTFILES_DIR/env/$OS-$DIST"
   fi
   if [ "$OS" != "" ]; then
-    DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/$OS"
+    echo "$DOTFILES_DIR/env/$OS"
   fi
-  DOTDIRS="$DOTDIRS:$DOTFILES_DIR/env/common"
-  echo "$DOTDIRS"
+  echo -n "$DOTFILES_DIR/env/common"
+}
+
+function dotdirs() {
+  echo "$(dotdirs_with_line_break |  tr '\n' ':')"
 }
 
 # example: 

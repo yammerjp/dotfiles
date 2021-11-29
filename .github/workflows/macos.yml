@@ -25,12 +25,12 @@ jobs:
 
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles
-        make link
+        cd ~/src/github.com/yammerjp/dotfiles/bin
+        ./dotfiles link
         echo 'brew "vim"' >> ~/.Brewfile
         sed -i '' '/^cask /d' ~/.Brewfile
         sed -i '' '/^mas /d' ~/.Brewfile
-        make setup
+        ./dotfiles setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     - name: Load .zprofile

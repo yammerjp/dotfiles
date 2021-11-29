@@ -1,0 +1,65 @@
+#!/bin/bash -e
+
+SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
+# cd "$SCRIPT_DIR"
+
+OWN_EXECUTION_COMMAND="$0"
+SUB_COMMAND="$1"
+
+source "$SCRIPT_DIR/functions.sh"
+
+function read_env_dotfile_dirs() {
+  ENVIRONMENTAL_DOTFILE_DIRS="$(source $SCRIPT_DIR/link-list.sh)"
+  if [ "$DOTFILE_DIRS" != "" ]; then
+    echo -n "$DOTFILE_DIRS"
+    return
+  fi
+
+  if [ "$DOTFILE_DIR" == "" ]; then
+    echo -n "$ENVIRONMENTAL_DOTFILE_DIRS"
+  else
+    echo -n "$DOTFILE_DIR:$ENVIRONMENTAL_DOTFILE_DIRS"
+  fi
+}
+
+function print_help() {
+  message '# Hello, this is dotfiles written by yammerjp'
+  message "$OWN_EXECUTION_COMMAND"
+  message "$(grep -E '^    [a-z\-]+ *) # @help-message ' $OWN_EXECUTION_COMMAND | sed 's/) # @help-message/.../')"
+}
+
+function run_setup() {
+  SUB_COMMAND="$1"
+  DOTFILE_DIRS="$2"
+  OWN_EXECUTION_COMMAND="$3"
+
+  case "$SUB_COMMAND" in
+    help          ) # @help-message Show this help
+      print_help
+      ;;
+    link          ) # @help-message Put symlinks of a dotfile
+      create_links "$DOTFILE_DIRS" evacuate
+      ;;
+    link-skip     ) # @help-message Put symlinks of a dotfile without confliction
+      create_links "$DOTFILE_DIRS" skip
+      ;;
+
+    link-overwrite) # @help-message Put symlinks of a dotfile with overwriting if they conflict
+      create_links "$DOTFILE_DIRS" overwrite
+      ;;
+    setup         ) # @help-message Run setup script for your environment (install packages, os settings, and so on ...)
+      message "you can execute 'make setup' after excuting '$OWN_EXECUTION_COMMAND link'"
+      bash ~/.setup.sh
+      ;;
+    dotdirs       ) # @help-message Show dotfile directories for your environment
+      echo "$DOTFILE_DIRS"
+      ;;
+    * )
+      print_help
+      ;;
+  esac
+
+}
+
+DOTFILE_DIRS="$(read_env_dotfile_dirs)"
+run_setup "$SUB_COMMAND" "$DOTFILE_DIRS" "$OWN_EXECUTION_COMMAND"
