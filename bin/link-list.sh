@@ -16,7 +16,6 @@ DIST="$(distribution)" # Ubuntu
 
 
 function dotdirs_with_line_break() {
-  DOTDIRS=""
   if [ "$ARCH" != "" ]; then
     echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
   fi
@@ -30,7 +29,7 @@ function dotdirs_with_line_break() {
 }
 
 function dotdirs() {
-  echo "$(dotdirs_with_line_break |  tr "\n" ':')"
+  dotdirs_with_line_break |  tr "\n" ':'
 }
 
 # example: 

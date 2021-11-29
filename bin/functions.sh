@@ -25,6 +25,7 @@ function message() {
 function devide_with_colon() {
   COLON_SEPARATED_STRING="$1"
 
+  # shellcheck disable=SC2001
   echo "$COLON_SEPARATED_STRING" | sed "s/:/\n/g"
 }
 
@@ -32,7 +33,7 @@ function find_dotfiles() {
   DOTFILES_DIR="$1"
 
   DOTFILES_DIR_CHAR_LENGTH=${#DOTFILES_DIR}
-  find "$DOTFILES_DIR" -type f | cut -c "$(expr "$DOTFILES_DIR_CHAR_LENGTH" + 2)-" | sort
+  find "$DOTFILES_DIR" -type f | cut -c "$(( "$DOTFILES_DIR_CHAR_LENGTH" + 2))-" | sort
 }
 
 function link_from_to() {
@@ -67,7 +68,7 @@ function extract_should_link() {
 
 function create_dir() {
   CREATE_DIR_FILE_PATH="$1"
-  DIRNAME=$(dirname "$1")
+  DIRNAME=$(dirname "$CREATE_DIR_FILE_PATH")
   if [ -d "$DIRNAME" ]; then
     return
   fi
@@ -85,7 +86,7 @@ function evacuate_file() {
     if ! [ -e "$EVACUATE_PATH" ]; then
       break;
     fi
-    COUNT=`expr $COUNT + 1`
+    COUNT="$(( "$COUNT" + 1))"
   done
 
   message "mv -f $FILE_PATH $EVACUATE_PATH"
@@ -108,7 +109,7 @@ function resolve_if_conflict() {
     # backup old file
     evacuate )
       if [ -L "$FILE_PATH" ];then
-        message "delete link from $(readlink $FILE_PATH) to $FILE_PATH"
+        message "delete link from $(readlink "$FILE_PATH") to $FILE_PATH"
         rm "$FILE_PATH"
         return 0
       else
@@ -138,9 +139,9 @@ function resolve_if_conflict() {
 function dotfiles_list() {
   DOTFILE_DIRS_COLON_SEPARATED="$1"
 
-  devide_with_colon $DOTFILE_DIRS_COLON_SEPARATED | while read DOTFILES_DIR
+  devide_with_colon "$DOTFILE_DIRS_COLON_SEPARATED" | while read -r DOTFILES_DIR
   do
-    find_dotfiles "$DOTFILES_DIR" | while read DOTFILE_RELATIVE_PATH
+    find_dotfiles "$DOTFILES_DIR" | while read -r DOTFILE_RELATIVE_PATH
     do
       link_from_to "$DOTFILES_DIR" "$DOTFILE_RELATIVE_PATH"
     done
@@ -172,8 +173,8 @@ function create_links() {
   DOTFILE_DIRS_COLON_SEPARATED="$1"
   ON_CONFLICTION="$2"
 
-  dotfiles_list "$DOTFILE_DIRS_COLON_SEPARATED" | while read LINK_FROM LINK_TO
+  dotfiles_list "$DOTFILE_DIRS_COLON_SEPARATED" | while read -r LINK_FROM LINK_TO
   do
-    create_link $LINK_FROM $LINK_TO $ON_CONFLICTION
+    create_link "$LINK_FROM" "$LINK_TO" "$ON_CONFLICTION"
   done
 }

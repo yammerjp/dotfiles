@@ -6,15 +6,18 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 OWN_EXECUTION_COMMAND="$0"
 SUB_COMMAND="$1"
 
+# shellcheck disable=SC1091
 source "$SCRIPT_DIR/functions.sh"
 
 function read_env_dotfile_dirs() {
-  ENVIRONMENTAL_DOTFILE_DIRS="$(source $SCRIPT_DIR/link-list.sh)"
+  # shellcheck disable=SC1091
+  ENVIRONMENTAL_DOTFILE_DIRS="$(source "$SCRIPT_DIR/link-list.sh")"
   if [ "$DOTFILE_DIRS" != "" ]; then
     echo -n "$DOTFILE_DIRS"
     return
   fi
 
+  # shellcheck disable=SC2153
   if [ "$DOTFILE_DIR" == "" ]; then
     echo -n "$ENVIRONMENTAL_DOTFILE_DIRS"
   else
@@ -25,7 +28,7 @@ function read_env_dotfile_dirs() {
 function print_help() {
   message '# Hello, this is dotfiles written by yammerjp'
   message "$OWN_EXECUTION_COMMAND"
-  message "$(grep -E '^    [a-z\-]+ *) # @help-message ' $OWN_EXECUTION_COMMAND | sed 's/) # @help-message/.../')"
+  message "$(grep -E '^    [a-z\-]+ *) # @help-message ' "$OWN_EXECUTION_COMMAND" | sed 's/) # @help-message/.../')"
 }
 
 function run_setup() {
