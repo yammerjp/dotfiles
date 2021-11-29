@@ -30,7 +30,7 @@ function dotdirs_with_line_break() {
 }
 
 function dotdirs() {
-  echo "$(dotdirs_with_line_break |  tr '\n' ':')"
+  echo "$(dotdirs_with_line_break |  tr "\n" ':')"
 }
 
 # example: 
