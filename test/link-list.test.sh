@@ -4,6 +4,9 @@
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
+source test-util.sh
+source ../bin/link-list.sh
+
 # mock
 function uname() {
   if [ "$1" = '-s' ]; then
@@ -15,26 +18,23 @@ function uname() {
   fi
 }
 
-source test-util.sh
-
-
 test_case 'link-list.sh macOS, Apple Silicon' "$(
-	MOCK_OS="Darwin"
-	MOCK_ARCH="arm64"
-	MOCK_DIST=""
+	OS="Darwin"
+	ARCH="arm64"
+	DIST=""
 	HOME="__this_is_home_dir__"
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"echo $(source ../bin/link-list.sh)"
+		"echo "$(dotdirs)""
 )"
 
 test_case "link-list.sh Ubuntu, x86_64" "$(
-	MOCK_OS="Linux"
-	MOCK_ARCH="x86_64"
-	MOCK_DIST="Ubuntu"
+	OS="Linux"
+	ARCH="x86_64"
+	DIST="Ubuntu"
 	HOME="__this_is_home_dir__"
 
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu-x86_64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"echo $(source ../bin/link-list.sh)"
+		"echo "$(dotdirs)""
 )"

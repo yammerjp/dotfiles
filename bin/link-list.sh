@@ -7,15 +7,15 @@ function distribution() {
   fi
 }
 
-REPO="yammerjp/dotfiles"
-DOTFILES_DIR="$HOME/src/github.com/$REPO"
 
 OS="$(uname -s)"       # Darwin Linux
 ARCH="$(uname -m)"     # arm64 x86_64
 DIST="$(distribution)" # Ubuntu
 
-
 function dotdirs_with_line_break() {
+  REPO="yammerjp/dotfiles"
+  DOTFILES_DIR="$HOME/src/github.com/$REPO"
+
   if [ "$ARCH" != "" ]; then
     echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
   fi
@@ -38,5 +38,3 @@ function dotdirs() {
 #   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin--arm64
 #   
 #   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Linux:$HOME/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:$HOME/src/github.com/yammerjp/dotfiles/Linux-Ubuntu-x86_64
-
-dotdirs

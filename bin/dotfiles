@@ -8,10 +8,11 @@ SUB_COMMAND="$1"
 
 # shellcheck disable=SC1091
 source "$SCRIPT_DIR/functions.sh"
+source "$SCRIPT_DIR/link-list.sh"
 
 function read_env_dotfile_dirs() {
   # shellcheck disable=SC1091
-  ENVIRONMENTAL_DOTFILE_DIRS="$(source "$SCRIPT_DIR/link-list.sh")"
+  ENVIRONMENTAL_DOTFILE_DIRS="$(dotdirs)"
   if [ "$DOTFILE_DIRS" != "" ]; then
     echo -n "$DOTFILE_DIRS"
     return
