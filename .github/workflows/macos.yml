@@ -13,24 +13,20 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Copy
-      run : |
-        mkdir -p ~/src/github.com/yammerjp
-        cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
-
-    # Default installed node conflicts with homebrew's one
-    #- name: Unlink node@12
-    #  run : |
-    #    brew unlink node@12
     - name: Install dependencies
       run : |
         brew install awk
 
     - name: Mask .Brewfile
       run : |
-        echo 'brew "vim"' >> ~/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64/.Brewfile
-        sed -i '' '/^cask /d' ~/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64/.Brewfile
-        sed -i '' '/^mas /d' ~/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64/.Brewfile
+        echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+        sed -i '' '/^cask /d' ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+        sed -i '' '/^mas /d'  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+
+    - name: Copy
+      run : |
+        mkdir -p ~/src/github.com/yammerjp
+        cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
 
     - name: Run
       run : |
