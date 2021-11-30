@@ -29,7 +29,7 @@ function dotdirs_with_line_break() {
 }
 
 function dotdirs() {
-  dotdirs_with_line_break |  tr "\n" ':'
+  dotdirs_with_line_break | awk '{printf "%s%s", NR==1?"":":", $0}'
 }
 
 # example: 
