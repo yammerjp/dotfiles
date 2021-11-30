@@ -1,5 +1,5 @@
 #!/bin/bash -e
-# shellcheck disable=SC2046,SC1091
+# shellcheck disable=SC2046,SC1091,SC2034
 
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
@@ -25,7 +25,7 @@ test_case 'link-list.sh macOS, Apple Silicon' "$(
 	HOME="__this_is_home_dir__"
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"echo "$(dotdirs)""
+		"echo $(dotdirs)"
 )"
 
 test_case "link-list.sh Ubuntu, x86_64" "$(
@@ -36,5 +36,5 @@ test_case "link-list.sh Ubuntu, x86_64" "$(
 
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu-x86_64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"echo "$(dotdirs)""
+		"echo $(dotdirs)"
 )"
