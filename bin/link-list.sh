@@ -29,7 +29,7 @@ function dotdirs_with_line_break() {
 }
 
 function dotdirs() {
-  dotdirs_with_line_break | awk 'sep=NR==1?"":":"{printf "%s%s", $sep, $0}'
+  dotdirs_with_line_break | awk '{printf NR==1 ? "%s" : ":%s", $0}'
 }
 
 # example: 
