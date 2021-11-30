@@ -33,7 +33,8 @@ function find_dotfiles() {
   DOTFILES_DIR="$1"
 
   DOTFILES_DIR_CHAR_LENGTH=${#DOTFILES_DIR}
-  find "$DOTFILES_DIR" -type f | cut -c "$(( "$DOTFILES_DIR_CHAR_LENGTH" + 2))-" | sort
+  # shellcheck disable=SC2004
+  find "$DOTFILES_DIR" -type f | cut -c "$(($DOTFILES_DIR_CHAR_LENGTH + 2))-" | sort
 }
 
 function link_from_to() {
@@ -86,7 +87,8 @@ function evacuate_file() {
     if ! [ -e "$EVACUATE_PATH" ]; then
       break;
     fi
-    COUNT="$(( "$COUNT" + 1))"
+    # shellcheck disable=SC2004
+    COUNT="$(($COUNT + 1))"
   done
 
   message "mv -f $FILE_PATH $EVACUATE_PATH"

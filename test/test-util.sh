@@ -2,13 +2,13 @@
 # shellcheck disable=SC2046,SC1091
 
 function test_message() {
-	printf "$@\n" # 1>&2
+	printf "%s\n" "$@" # 1>&2
 }
 function test_message_green() {
-	printf "\033[32m$@\033[39m\n" # 1>&2
+	printf "\033[32m%s\033[39m\n" "$@" # 1>&2
 }
 function test_message_red() {
-	printf "\033[31m$@\033[39m\n" # 1>&2
+	printf "\033[31m%s\033[39m\n" "$@" # 1>&2
 }
 
 function assert() {

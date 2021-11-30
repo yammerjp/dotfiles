@@ -56,6 +56,7 @@ test_case "link_from_to, ubuntu" "$(
 
 
 test_case "extract_should_link" "$(
+  # shellcheck disable=SC2034
 	ASSERT_INPUT="$(cat <<- EOS
 		__HIGH_PRIORITY_DOTFILES_DIRECTORY__/.bashrc __HOME_DIR__/.bashrc
 		__HIGH_PRIORITY_DOTFILES_DIRECTORY__/.config/nvim/init.nvim __HOME_DIR__/.config/nvim/init.nvim

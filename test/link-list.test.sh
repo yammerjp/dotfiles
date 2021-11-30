@@ -17,7 +17,7 @@ function uname() {
 
 source test-util.sh
 
-## __test_case__ macOS, Apple Silicon
+
 test_case 'link-list.sh macOS, Apple Silicon' "$(
 	MOCK_OS="Darwin"
 	MOCK_ARCH="arm64"
@@ -25,11 +25,8 @@ test_case 'link-list.sh macOS, Apple Silicon' "$(
 	HOME="__this_is_home_dir__"
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"source ../bin/link-list.sh"
+		"echo $(source ../bin/link-list.sh)"
 )"
-
-
-## __test_case__ Ubuntu x86_64
 
 test_case "link-list.sh Ubuntu, x86_64" "$(
 	MOCK_OS="Linux"
@@ -39,5 +36,5 @@ test_case "link-list.sh Ubuntu, x86_64" "$(
 
 	assert \
 		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu-x86_64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
-		"source ../bin/link-list.sh"
+		"echo $(source ../bin/link-list.sh)"
 )"
