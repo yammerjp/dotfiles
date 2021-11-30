@@ -30,21 +30,22 @@ jobs:
         echo 'brew "vim"' >> ~/.Brewfile
         sed -i '' '/^cask /d' ~/.Brewfile
         sed -i '' '/^mas /d' ~/.Brewfile
+        brew install awk
         ./dotfiles setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
-    - name: Load .zprofile
-      run : |
-        touch error.log
-        zsh ~/.zprofile 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    #- name: Load .zprofile
+    #  run : |
+    #    touch error.log
+    #    zsh ~/.zprofile 2> error.log
+    #    cat error.log
+    #    if [ -s error.log ]; then false; fi
 
-    # Use error.log. Not be able to use 'set -e' in .zshrc
-    - name: Load .zshrc
-      run : |
-        touch error.log
-        zsh ~/.zshrc 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    ## Use error.log. Not be able to use 'set -e' in .zshrc
+    #- name: Load .zshrc
+    #  run : |
+    #    touch error.log
+    #    zsh ~/.zshrc 2> error.log
+    #    cat error.log
+    #    if [ -s error.log ]; then false; fi
 
