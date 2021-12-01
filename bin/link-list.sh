@@ -29,7 +29,9 @@ function dotdirs_with_line_break() {
 }
 
 function dotdirs() {
-  dotdirs_with_line_break | awk 'NR==1{printf "%s", $0} {printf ":%s", $0}'
+  dotdirs_with_line_break | \
+   # /usr/bin/awk 'NR==1{printf "%s", $0} NR!=1{printf ":%s", $0}'
+    tr '\n' ':'
 }
 
 # example: 

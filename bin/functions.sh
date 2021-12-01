@@ -26,7 +26,9 @@ function devide_with_colon() {
   COLON_SEPARATED_STRING="$1"
 
   # shellcheck disable=SC2001
-  echo "$COLON_SEPARATED_STRING" | sed "s/:/\n/g"
+  echo "$COLON_SEPARATED_STRING" | \
+    # awk 'BEGIN{RS=":"}NR==1{printf "%s", $1} NR!=1{printf "\n%s", $1}'
+    tr ':' '\n'
 }
 
 function find_dotfiles() {
