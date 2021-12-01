@@ -13,10 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Install dependencies
-      run : |
-        brew install awk
-
     - name: Mask .Brewfile
       run : |
         echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
