@@ -113,6 +113,7 @@ Plug 'mattn/vim-lsp-settings'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
+Plug 'evanleck/vim-svelte', {'branch': 'main'}
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -136,7 +137,19 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 
-" fzf.vim
+" deno and vim-lsp
+if executable("deno")
+  augroup LspTypeScript
+    autocmd!
+    autocmd User lsp_setup call lsp#register_server({
+    \ "name": "deno lsp",
+    \ "cmd": {server_info -> ["deno", "lsp"]},
+    \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
+    \ "whitelist": ["typescript", "typescript.tsx"],
+    \ })
+  augroup END
+endif
+
 noremap sp :GFiles<CR>
 noremap sP :GFiles?<CR>
 noremap sb :Buffer<CR>

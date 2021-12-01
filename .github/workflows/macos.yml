@@ -13,38 +13,36 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
+    - name: Mask .Brewfile
+      run : |
+        echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+        sed -i '' '/^cask /d' ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+        sed -i '' '/^mas /d'  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+
     - name: Copy
       run : |
         mkdir -p ~/src/github.com/yammerjp
         cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
 
-    # Default installed node conflicts with homebrew's one
-    #- name: Unlink node@12
-    #  run : |
-    #    brew unlink node@12
-
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles
-        make link
-        echo 'brew "vim"' >> ~/.Brewfile
-        sed -i '' '/^cask /d' ~/.Brewfile
-        sed -i '' '/^mas /d' ~/.Brewfile
-        make setup
+        cd ~/src/github.com/yammerjp/dotfiles/bin
+        ./dotfiles link
+        ./dotfiles setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
-    - name: Load .zprofile
-      run : |
-        touch error.log
-        zsh ~/.zprofile 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    #- name: Load .zprofile
+    #  run : |
+    #    touch error.log
+    #    zsh ~/.zprofile 2> error.log
+    #    cat error.log
+    #    if [ -s error.log ]; then false; fi
 
-    # Use error.log. Not be able to use 'set -e' in .zshrc
-    - name: Load .zshrc
-      run : |
-        touch error.log
-        zsh ~/.zshrc 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    ## Use error.log. Not be able to use 'set -e' in .zshrc
+    #- name: Load .zshrc
+    #  run : |
+    #    touch error.log
+    #    zsh ~/.zshrc 2> error.log
+    #    cat error.log
+    #    if [ -s error.log ]; then false; fi
 

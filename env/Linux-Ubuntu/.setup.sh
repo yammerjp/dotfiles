@@ -3,6 +3,7 @@
 function change_login_shell() {
   # Change login shell to zsh.
   if ! command -v zsh; then
+    # shellcheck disable=SC2154
     echo "$password" | sudo -S apt install zsh -y
   fi
   username="$(whoami)"

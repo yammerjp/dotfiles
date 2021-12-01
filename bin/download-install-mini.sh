@@ -24,7 +24,7 @@ curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/env/common/.
 # ========================================
 ## sudo するためのパスワードを $password 変数に格納する
 printf "password: "
-read password
+read -r password
 
 
 # 格納したパスワードを使ってsudoを実行する
@@ -40,9 +40,11 @@ echo "$password" | sudo -S yum install -y util-linux-user # chshを使うため�
 # ========================================
 
 # ユーザ名を $username 変数に格納する
+# shellcheck disable=SC2006
 username=`whoami`
 # 「ログインシェルをzshに変更する」を 格納した $password を使って sudo で実行
-echo "$password" | sudo -S chsh --shell `which zsh` "$username"
+# shellcheck disable=SC2006
+echo "$password" | sudo -S chsh --shell "`command -v zsh`" "$username"
 
 
 echo "dotfiles is successfully installed!"

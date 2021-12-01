@@ -20,23 +20,23 @@ jobs:
 
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles
-        make link
-        make setup
+        cd ~/src/github.com/yammerjp/dotfiles/bin
+        ./dotfiles link
+        ./dotfiles setup
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
-    - name: Load .zprofile
-      run : |
-        touch error.log
-        zsh ~/.zprofile 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    # - name: Load .zprofile
+    #   run : |
+    #     touch error.log
+    #     zsh ~/.zprofile 2> error.log
+    #     cat error.log
+    #     if [ -s error.log ]; then false; fi
 
     # Use error.log. Not be able to use 'set -e' in .zshrc
-    - name: Load .zshrc
-      run : |
-        touch error.log
-        zsh ~/.zshrc 2> error.log
-        cat error.log
-        if [ -s error.log ]; then false; fi
+    # - name: Load .zshrc
+    #   run : |
+    #     touch error.log
+    #     zsh ~/.zshrc 2> error.log
+    #     cat error.log
+    #     if [ -s error.log ]; then false; fi
 

@@ -7,15 +7,15 @@ function distribution() {
   fi
 }
 
-REPO="yammerjp/dotfiles"
-DOTFILES_DIR="$HOME/src/github.com/$REPO"
 
 OS="$(uname -s)"       # Darwin Linux
 ARCH="$(uname -m)"     # arm64 x86_64
 DIST="$(distribution)" # Ubuntu
 
+function dotdirs_with_line_break() {
+  REPO="yammerjp/dotfiles"
+  DOTFILES_DIR="$HOME/src/github.com/$REPO"
 
-function dotdirs() {
   if [ "$ARCH" != "" ]; then
     echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
   fi
@@ -25,21 +25,18 @@ function dotdirs() {
   if [ "$OS" != "" ]; then
     echo "$DOTFILES_DIR/env/$OS"
   fi
-  echo "$DOTFILES_DIR/env/common"
+  echo -n "$DOTFILES_DIR/env/common"
+}
+
+function dotdirs() {
+  dotdirs_with_line_break | \
+   # /usr/bin/awk 'NR==1{printf "%s", $0} NR!=1{printf ":%s", $0}'
+    tr '\n' ':'
 }
 
 # example: 
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Darwin
-#   $DOTFILES_DIR/env/Darwin--x86_64
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64
+#
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin--arm64
 #   
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Darwin
-#   $DOTFILES_DIR/env/Darwin--arm64
-#   
-#   $DOTFILES_DIR/env/common
-#   $DOTFILES_DIR/env/Linux
-#   $DOTFILES_DIR/env/Linux-Ubuntu
-#   $DOTFILES_DIR/env/Linux-Ubuntu-x86_64
-
-dotdirs
+#   $HOME/src/github.com/yammerjp/dotfiles/env/common:$HOME/src/github.com/yammerjp/dotfiles/env/Linux:$HOME/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:$HOME/src/github.com/yammerjp/dotfiles/Linux-Ubuntu-x86_64

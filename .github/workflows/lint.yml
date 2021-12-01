@@ -19,7 +19,7 @@ jobs:
         sudo apt-get install zsh
 
     - name: Check '*.sh'
-      run : find ${GITHUB_WORKSPACE} -type f | grep -E "\.sh$" | grep -v 'download-install-mini.sh' | xargs shellcheck
+      run : find ${GITHUB_WORKSPACE} -type f | grep -E "\.sh$|bin/dotfiles$" | xargs shellcheck
 
    # - name: Check .zprofile
    #   run : zsh -n ${GITHUB_WORKSPACE}/.zprofile
