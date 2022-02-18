@@ -114,6 +114,10 @@ Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'preservim/nerdtree'
 Plug 'evanleck/vim-svelte', {'branch': 'main'}
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'jonsmithers/vim-html-template-literals'
+Plug 'pangloss/vim-javascript'
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -128,6 +132,7 @@ highlight GitGutterChange ctermfg=3 ctermbg=0
 " GitGutter の更新間隔を早める (4000ms(default) => 250ms)
 set updatetime=250
 
+let g:htl_css_templates = 1
 
 " vim-airline
 let g:airline_powerline_fonts = 1
