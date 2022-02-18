@@ -321,4 +321,20 @@ function ssh-keygen-me() {
   ssh-keygen -t rsa -b 4096 -C "me@yammer.jp"
 }
 
+function rbenv() {
+  # コマンド実行時に遅延読み込み
+  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
+  unfunction "$0"
+  source <(rbenv init -)
+  $0 "$@"
+}
+
+nodenv() {
+  # コマンド実行時に遅延読み込み
+  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
+  unfunction "$0"
+  source <(nodenv init -)
+  $0 "$@"
+}
+
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$PATH"
