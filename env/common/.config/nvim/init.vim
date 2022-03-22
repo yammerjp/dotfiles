@@ -118,6 +118,7 @@ Plug 'pangloss/vim-javascript'
 Plug 'leafgarland/typescript-vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 call plug#end()
 " brew install fzf
 " brew install repgrep
