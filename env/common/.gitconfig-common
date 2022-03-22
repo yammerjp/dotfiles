@@ -29,3 +29,9 @@
         rao = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
         remote-add-origin =arog
         sw = "!git branch -a | fzf | xargs git checkout"
+        branch-delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main|master'|xargs git branch -d; };f"
+        worktree-new = "!bash -c 'git worktree add ~/git-worktree/$(dirname $(pwd))-$1' $1"
+        latest-merged-commit = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -1 | awk '{print $1}'"
+        open-editing = "!bash -c 'git diff --name-only `git latest-merged-commit` | cat | xargs code'"
+        oe = "open-editing"
+

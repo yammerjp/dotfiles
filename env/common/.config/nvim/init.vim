@@ -119,6 +119,7 @@ Plug 'leafgarland/typescript-vim'
 Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
+Plug 'mattn/vim-sqlfmt'
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -161,3 +162,10 @@ noremap sP :GFiles?<CR>
 noremap sb :Buffer<CR>
 noremap sf :Rg<CR>
 noremap bt :NERDTree<CR>
+
+
+" フォーマットのオプションを変更
+let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
+
+" マッピング設定
+nmap <buffer><leader>sf <Plug>(sqlfmt)
