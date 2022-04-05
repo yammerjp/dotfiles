@@ -7,6 +7,9 @@
 source "$HOME/.zshrc-darwin-arm64"
 source "$HOME/.zshrc-darwin"
 source "$HOME/.zshrc-common"
+if [ -e "$HOME/.zshrc-private" ]; then
+  source "$HOME/.zshrc-private"
+fi
 
 # 計測
 if (which zprof > /dev/null 2>&1) ;then
