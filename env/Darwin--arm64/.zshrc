@@ -12,3 +12,5 @@ source "$HOME/.zshrc-common"
 if (which zprof > /dev/null 2>&1) ;then
   zprof | less
 fi
+
+export PATH="$HOME/go/bin:$PATH"

@@ -337,4 +337,4 @@ nodenv() {
   $0 "$@"
 }
 
-export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$HOME/go/bin:$PATH"
