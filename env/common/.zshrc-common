@@ -158,6 +158,7 @@ alias g='git'
 alias gs='g s'
 alias gS='g s'
 alias ga.='g a .'
+alias git-config-edit="vim ~/.config/git/config"
 gclone() {
   if [ -z "$1" ]; then
     echo 'Usage: gclone username reponame # clone git repository from github.com'
