@@ -342,3 +342,9 @@ nodenv() {
 alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
 export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$HOME/go/bin:$PATH"
 export XDG_CONFIG_HOME="$HOME/.config"
+
+# TODO
+# commitしていないファイルがあるかを確認
+# fetchの最終日から時間が経っているかを確認 (毎回fetchしてられない)
+# pushの最終日から時間が経っているかを確認 (毎回pushしてられない)
+# それらを確認して最新に更新し、更新日を記録する関数を追加
