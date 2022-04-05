@@ -150,6 +150,8 @@ alias tree='tree -N'
 alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
 alias ssh='ssh -A'
+alias ipe='curl ipinfo.io/ip'
+alias bip='bundle install --path vendor/bundle'
 
 # git
 alias g='git'
