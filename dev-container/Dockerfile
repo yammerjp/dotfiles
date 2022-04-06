@@ -16,7 +16,7 @@ ARG PASSWORD=password
 　RUN useradd -m --uid ${UID} --groups sudo ${USER} \
   && echo ${USER}:${PASSWORD} | chpasswd
 
-COPY ./clone.sh /home/ubuntu/clone.sh
+COPY ./.zshenv /home/ubuntu/.zshenv
 RUN mkdir /home/ubuntu/dotfiles-remote
 
 USER ${USER}
