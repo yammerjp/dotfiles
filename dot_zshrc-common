@@ -1,0 +1,351 @@
+#=================================補完====================================
+# キーバインドをviにする
+bindkey -v
+
+# 補完機能有効にする
+autoload -U compinit
+compinit -u
+
+# 補完候補に色つける
+autoload -U colors
+colors
+# export LSCOLORS=Gxfxcxdxbxegedabagacad
+# export LS_COLORS='di=0;96:ln=0;33:so=0;95:pi=0;95:ex=0;92:bd=0;95:cd=0;95:fi=0:or=0;93:mi=0;93'
+zstyle ':completion:*' list-colors "${LS_COLORS}"
+
+# 単語の入力途中でもTab補完を有効化
+setopt complete_in_word
+# 補完候補をハイライト
+zstyle ':completion:*:default' menu select=1
+# キャッシュの利用による補完の高速化
+zstyle ':completion::complete:*' use-cache true
+# 大文字、小文字を区別せず補完する
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z}'
+# 補完リストの表示間隔を狭くする
+setopt list_packed
+
+#=================================man====================================
+man() {
+    env \
+        LESS_TERMCAP_mb=$(printf "\e[1;36m") \
+        LESS_TERMCAP_md=$(printf "\e[1;36m") \
+        LESS_TERMCAP_me=$(printf "\e[0m") \
+        LESS_TERMCAP_se=$(printf "\e[0m") \
+        LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+        LESS_TERMCAP_ue=$(printf "\e[0m") \
+        LESS_TERMCAP_us=$(printf "\e[1;32m") \
+        man "$@"
+}
+# [manの読み方（初心者向け） - Qiita](https://qiita.com/aosho235/items/0f2b73d08eb645c05208)
+# [manコマンドで表示されるドキュメントの色付けをカスタマイズ - Steel Dragon 14106](https://raimon49.github.io/2017/03/31/man-with-colored-pager.html)
+
+#=================================history====================================
+HISTSIZE=50000 # メモリに保存するコマンド数
+HISTFILE=~/.zsh_history
+SAVEHIST=100000 # ヒストリファイルに保存するコマンド数
+setopt extended_history # historyファイルに時刻情報を記録
+
+# 重複するコマンド行は古い方を削除
+setopt hist_ignore_all_dups
+# 直前と同じコマンドラインはヒストリに追加しない
+setopt hist_ignore_dups
+# コマンド履歴ファイルを共有する
+setopt share_history
+# 履歴を追加 (毎回 .zsh_history を作るのではなく)
+setopt append_history
+# 履歴をインクリメンタルに追加
+setopt inc_append_history
+# ヒストリを呼び出してから実行する間に一旦編集可能
+setopt hist_verify
+# 余分な空白は詰めて記録
+setopt hist_reduce_blanks
+# historyコマンドは履歴に登録しない
+setopt hist_no_store
+
+alias his="history -i -t '%Y/%m/%d-%H:%M'"
+alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
+alias hisall="his-all"
+
+hispeco_ctrl_h () {
+  if ! which peco; then
+    echo 'peco is not installed'
+    return 1
+  fi
+  if [[ ${OSTYPE} = 'darwin'* ]]; then
+    cmd=$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
+  else
+    cmd=$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')
+  fi
+  BUFFER="$cmd"
+  CURSOR=$#BUFFER
+  zle redisplay
+}
+zle -N hispeco_ctrl_h
+bindkey '^h' hispeco_ctrl_h
+
+hispeco() {
+  if ! which peco; then
+    echo 'peco is not installed'
+    return 1
+  fi
+  if [[ ${OSTYPE} = 'darwin'* ]]; then
+    print -z "$(his-all | tail -r | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
+  else
+    print -z "$(his-all | tac | peco | awk '{c="";for(i=3;i<=NF;i++) c=c $i" "; print c}')"
+  fi
+}
+
+
+
+#=================================表示====================================
+# 左プロンプト
+PROMPT='%F{yellow}$ '
+# [user@host] dir $
+# PROMPT='[%n@%m] %~ $ '
+
+# 右プロンプト
+# %F{〜}は色指定、%fでリセット
+# %nはログインユーザ名、%~はカレントディレクトリ
+# "%(?..%F{red}-%?-)" は終了コードが0以外なら赤色で表示
+# "%1(v|%F{yellow}%1v%F{green} |)" の部分がVCS情報 (psvarの長さが1以上なら黄色で表示)
+RPROMPT="%(?..%F{red}-%?-)%F{green}[%1(v|%F{yellow}%1v%F{green} |)%n@%m:%~ ]%f"
+
+# コマンド実行後に非表示 (つまり最終行のみ表示される)
+setopt transient_rprompt
+
+# gitブランチ名表示
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' enable git
+zstyle ':vcs_info:git:*' formats '%c%u%b'
+zstyle ':vcs_info:git:*' actionformats '%c%u%b|%a'
+
+# カレントディレクトリ/コマンド記録
+local _cmd=''
+local _lastdir=''
+preexec() {
+  _cmd="$1"
+  _lastdir="$PWD"
+  echo -ne "\e[0m" # プロンプトの色を元に戻す
+}
+# git情報更新
+update_vcs_info() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+# カレントディレクトリ変更時/git関連コマンド実行時に情報更新
+precmd() {
+  _r=$?
+  case "${_cmd}" in
+    g*|stg*) update_vcs_info ;;
+    *) [ "${_lastdir}" != "$PWD" ] && update_vcs_info ;;
+  esac
+  return $_r
+}
+
+#=================================alias====================================
+alias du='du -h'
+alias vi='vim -u NONE'
+alias tree='tree -N'
+alias search='find . -type f | grep -v "/.git/" | xargs grep'
+alias covid19='curl https://corona-stats.online/'
+alias ssh='ssh -A'
+alias ipe='curl ipinfo.io/ip'
+alias bip='bundle install --path vendor/bundle'
+
+# git
+alias g='git'
+alias gs='g s'
+alias gS='g s'
+alias ga.='g a .'
+alias git-config-edit="vim ~/.config/git/config"
+gclone() {
+  if [ -z "$1" ]; then
+    echo 'Usage: gclone username reponame # clone git repository from github.com'
+    return 1
+  fi
+  if [[ "$1" =~ '/' ]]; then
+    repo="$1"
+  else
+    repo="$1/$2"
+  fi
+  if [ -z "$2" ]; then
+    repo="yammerjp/$1"
+  fi
+  clone_to="$HOME/src/github.com/${repo}"
+  clone_from="git@github.com:${repo}.git"
+  if ! git clone "${clone_from}" "${clone_to}"; then
+    echo "Failed to clone from '${clone_from}' to '${clone_to}'"
+    return 1
+  fi
+  cd "${clone_to}"
+  echo "Cloned from '${clone_from}' to '${clone_to}', and moved there"
+}
+
+# ssh
+ssh-authorized_keys-refresh() {
+  mkdir -p ~/.ssh
+  chmod 700 ~/.ssh
+  if [ -e ~/.ssh/authorized_keys.org ]; then
+    echo "Please evacuate ~/.ssh/authorized_keys.org"
+    return
+  fi
+  if [ -e ~/.ssh/authorized_keys ]; then
+    mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
+  fi
+  curl https://github.com/yammerjp.keys > ~/.ssh/authorized_keys
+  chmod 600 ~/.ssh/authorized_keys
+}
+
+# colordiff
+if [[ -x `which colordiff 2> /dev/null` ]]; then
+  alias diff='colordiff -u'
+else
+  alias diff='diff -u'
+fi
+export LESS='-R'
+
+# memo
+memo() {
+  memo_repo_dir="$HOME/src/github.com/yammerjp/memo"
+  if ! [ -e $memo_repo_dir ]; then
+    gclone memo
+  fi
+  dairy_dir="$memo_repo_dir/daylog"
+  mkdir -p ${dairy_dir}
+  vim "${dairy_dir}/$(date '+%Y%m%d').md"
+}
+
+# compress
+compress() {
+  if ! [ -n "$1" ]; then
+    echo "Usage: $0 <compressing-dir>" 1>&2
+    return
+  fi
+  echo "tar -zcvf $1.tar.gz $1"
+  tar zcvf "$1.tar.gz" "$1"
+}
+decompress() {
+  if ! [ -n "$1" ]; then
+    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
+    return
+  fi
+  if ! [[ "$1" =~ "\.tar\/.gz$" ]]; then
+    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
+    return
+  fi
+  echo "tar zxvf $1"
+  tar -zxvf "$1"
+}
+
+# color
+
+zshcolors () {
+  for num in `seq 256`;do
+    echo -ne "\e[38;5;${num}m${num}\t\e[0m"
+    if [ `expr $num "%" 16` = 0 ];then
+      echo
+    fi
+  done
+  for num in `seq 256`;do
+    echo -ne "\e[48;5;${num}m${num}\t\e[0m"
+    row=`expr $num "%" 16`
+    if [ `expr $num "%" 16` = 0 ];then
+      echo
+    fi
+  done
+}
+
+
+# snip
+_SNIP_FILE="$HOME/.snip"
+snipadd () {
+  echo $@ >> $_SNIP_FILE
+}
+snippeco () {
+  print -z $(cat $_SNIP_FILE | peco)
+}
+snipedit () {
+  vim $_SNIP_FILE
+}
+
+# mmv
+
+# vscode
+vscode-extensions-export () {
+  code --list-extensions > ~/.vscode-extensions
+}
+
+vscode-extensions-import () {
+  VSCODE_EXTENSIONS_FILE="$HOME/.vscode-extensions"
+  if ! [ -e "$VSCODE_EXTENSIONS_FILE" ]; then
+    echo "$VSCODE_EXTENSIONS_FILE is not found..." 1>&2
+    return
+  fi
+  cat "$VSCODE_EXTENSIONS_FILE" | while read extension; do
+    code --install-extension $extension
+  done
+}
+
+# npm
+function npm-global-dump() {
+  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > ~/.npmdump
+}
+
+function npm-global-bundle() {
+  while read pkg
+  do
+    npm install --global $pkg
+  done < ~/.npmdump
+}
+
+#fzf
+# ghqでcloneしたリポジトリ一覧
+function ghq_code() {
+  local repo="$(ghq list | fzf --preview "bat --color=always --style=numbers --line-range=:100 $(ghq root)/{}/README.*")"
+  if [ -n "$repo" ]; then
+    BUFFER="code $(ghq root)/${repo} && exit"
+    zle accept-line
+  fi
+  zle clear-screen
+}
+zle -N ghq_code
+bindkey '^f' ghq_code
+
+# shellのhistory一覧
+function select-history() {
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history
+bindkey '^r' select-history
+
+function ssh-keygen-me() {
+  ssh-keygen -t rsa -b 4096 -C "me@yammer.jp"
+}
+
+function rbenv() {
+  # コマンド実行時に遅延読み込み
+  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
+  unfunction "$0"
+  source <(rbenv init -)
+  $0 "$@"
+}
+
+nodenv() {
+  # コマンド実行時に遅延読み込み
+  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
+  unfunction "$0"
+  source <(nodenv init -)
+  $0 "$@"
+}
+
+alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.config/npm-packages/bin:$HOME/go/bin:$PATH"
+export XDG_CONFIG_HOME="$HOME/.config"
+
+# TODO
+# commitしていないファイルがあるかを確認
+# fetchの最終日から時間が経っているかを確認 (毎回fetchしてられない)
+# pushの最終日から時間が経っているかを確認 (毎回pushしてられない)
+# それらを確認して最新に更新し、更新日を記録する関数を追加
