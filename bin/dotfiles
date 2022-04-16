@@ -288,6 +288,6 @@ DOTFILE_DIRS="$(read_env_dotfile_dirs)"
 if [ "$1" !=  "--debug" ]; then
   DOTFILES_RUN_MODE=debug
 fi
-if [ "$DOTFILE_RUN_MODE" =  "debug" ]; then
+if [ "$DOTFILE_RUN_MODE" !=  "debug" ]; then
   run_setup "$SUB_COMMAND" "$DOTFILE_DIRS" "$OWN_EXECUTION_COMMAND"
 fi
