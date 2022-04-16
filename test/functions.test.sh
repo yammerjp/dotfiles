@@ -6,7 +6,8 @@ cd "$SCRIPT_DIR"
 
 source test-util.sh
 
-source "../bin/functions.sh"
+DOTFILES_RUN_MODE="debug"
+source "../bin/dotfiles"
 
 
 

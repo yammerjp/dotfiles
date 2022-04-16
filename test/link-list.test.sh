@@ -5,7 +5,9 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
 source test-util.sh
-source ../bin/link-list.sh
+
+DOTFILES_RUN_MODE="debug"
+source ../bin/dotfiles
 
 # mock
 function uname() {
