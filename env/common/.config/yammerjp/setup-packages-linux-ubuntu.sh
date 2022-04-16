@@ -23,14 +23,6 @@ Install_yarn () {
   apt install -y yarn
 }
 
-Install_peco () {
-  PECO_URL=$( curl -s https://api.github.com/repos/peco/peco/releases/latest \
-    | grep browser_download_url | awk -F '"' '{print $4}' | grep  peco_linux_amd64.tar.gz)
-  curl -fsSL "$PECO_URL" -o /tmp/peco_linux_amd64.tar.gz
-  tar -xzf /tmp/peco_linux_amd64.tar.gz -C /tmp
-  cp /tmp/peco_linux_amd64/peco /usr/local/bin
-}
-
 Install_deno () {
   # shellcheck disable=SC2153
   sudo_user="$SUDO_USER"
@@ -112,7 +104,6 @@ Install_nodejs
 Install_git
 Install_yarn
 Install_deno
-Install_peco
 apt install -y vim
 apt install -y neovim
 apt install -y zsh
@@ -124,6 +115,7 @@ apt install -y nmap
 apt install -y shellcheck
 apt install -y tree
 apt install -y openssh-server # sudo systemctl enable ssh
+apt install -y fzf
 snap install docker
 
 if [ "$1" = "minimum" ]; then
