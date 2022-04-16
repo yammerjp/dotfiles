@@ -1,9 +1,4 @@
 colorscheme pablo
-"========== dein.vim ==========
-if filereadable(expand('~/.dein/init.vim'))
-    source ~/.dein/init.vim
-endif
-
 
 "========== インデント ==========
 " 不可視文字を可視化(タブが「>-」と表示される)
