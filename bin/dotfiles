@@ -1,8 +1,5 @@
 #!/bin/bash -e
 
-SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
-# cd "$SCRIPT_DIR"
-
 OWN_EXECUTION_COMMAND="$0"
 SUB_COMMAND="$1"
 
