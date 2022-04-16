@@ -10,7 +10,7 @@
 
 ```sh
 $ wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
-$ cd ~/src/github.com/yammerjp/dotfiles/bin
+$ cd ~/src/github.com/yammerjp/dotfiles/.bin
 $ ./dotfiles link
 $ ./dotfiles setup
 ```
@@ -27,7 +27,7 @@ $ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/
 
 # Setup my settings
 $ curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
-$ cd ~/src/github.com/yammerjp/dotfiles/bin
+$ cd ~/src/github.com/yammerjp/dotfiles/.bin
 $ ./dotfiles link
 $ ./dotfiles setup
 

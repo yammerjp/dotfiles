@@ -20,7 +20,7 @@ jobs:
 
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles/bin
+        cd ~/src/github.com/yammerjp/dotfiles/.bin
         ./dotfiles link
         ./dotfiles setup
 
