@@ -5,16 +5,13 @@ RUN apt-get update \
   && apt-get -y install curl \
   && apt-get -y install zsh \
   && apt-get -y install git \
-  && apt-get -y install sudo \
   && apt-get -y install vim \
   && apt-get -y clean \
   && rm -rf /var/lib/apt/lists/*
 
 ARG UID=1000
 ARG USER=ubuntu
-ARG PASSWORD=password
-　RUN useradd -m --uid ${UID} --groups sudo ${USER} \
-  && echo ${USER}:${PASSWORD} | chpasswd
+RUN useradd -m --uid ${UID} ${USER}
 
 COPY ./.zshenv /home/ubuntu/.zshenv
 RUN mkdir /home/ubuntu/dotfiles-remote
