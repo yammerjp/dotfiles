@@ -40,7 +40,7 @@ function find_dotfiles() {
 
   DOTFILES_DIR_CHAR_LENGTH=${#DOTFILES_DIR}
   # shellcheck disable=SC2004
-  find "$DOTFILES_DIR" -type f | cut -c "$(($DOTFILES_DIR_CHAR_LENGTH + 2))-" | grep -e "^\." | sort
+  find "$DOTFILES_DIR" -type f | cut -c "$(($DOTFILES_DIR_CHAR_LENGTH + 2))-" | grep -e "^\." | grep -v "^\.git/" | grep -v "^\.github/" | grep -v "^\.gitignore$" | sort
 }
 
 function link_from_to() {
