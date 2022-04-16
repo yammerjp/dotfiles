@@ -13,11 +13,11 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Mask .Brewfile
+    - name: Mask Homebrew package list
       run : |
-        echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
-        sed -i '' '/^cask /d' ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
-        sed -i '' '/^mas /d'  ${GITHUB_WORKSPACE}/env/Darwin--x86_64/.Brewfile
+        echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/env/common/.config/homebrew/package-list-darwin-x86_64
+        sed -i '' '/^cask /d' ${GITHUB_WORKSPACE}/env/common/.config/homebrew/package-list-darwin-x86_64
+        sed -i '' '/^mas /d'  ${GITHUB_WORKSPACE}/env/common/.config/homebrew/package-list-darwin-x86_64
 
     - name: Copy
       run : |
