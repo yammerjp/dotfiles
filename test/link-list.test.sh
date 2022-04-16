@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 source test-util.sh
 
 DOTFILES_RUN_MODE="debug"
-source ../bin/dotfiles
+source ../.bin/dotfiles
 
 # mock
 function uname() {
@@ -26,7 +26,7 @@ test_case 'link-list.sh macOS, Apple Silicon' "$(
 	DIST=""
 	HOME="__this_is_home_dir__"
 	assert \
-		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
+		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Darwin:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common:__this_is_home_dir__/src/github.com/yammerjp/dotfiles" \
 		"echo $(dotdirs)"
 )"
 
@@ -37,6 +37,6 @@ test_case "link-list.sh Ubuntu, x86_64" "$(
 	HOME="__this_is_home_dir__"
 
 	assert \
-		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu-x86_64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common" \
+		"__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu-x86_64:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/Linux:__this_is_home_dir__/src/github.com/yammerjp/dotfiles/env/common:__this_is_home_dir__/src/github.com/yammerjp/dotfiles" \
 		"echo $(dotdirs)"
 )"

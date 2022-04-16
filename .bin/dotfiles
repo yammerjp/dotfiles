@@ -213,7 +213,8 @@ function dotdirs_with_line_break() {
   if [ "$OS" != "" ]; then
     echo "$DOTFILES_DIR/env/$OS"
   fi
-  echo -n "$DOTFILES_DIR/env/common"
+  echo "$DOTFILES_DIR/env/common"
+  echo -n "$DOTFILES_DIR"
 }
 
 function dotdirs() {
