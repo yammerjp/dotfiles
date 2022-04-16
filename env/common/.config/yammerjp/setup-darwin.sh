@@ -29,7 +29,7 @@ latest_stable_python="$(pyenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | t
 pyenv install "$latest_stable_python"
 pyenv global "$latest_stable_python"
 
-# vim init
-vim -s .vimop
+# nvim plugin install
+nvim -s "$HOME/.config/nvim/plugin-install-operation"
 
 echo "Nothing to do" 1>&2

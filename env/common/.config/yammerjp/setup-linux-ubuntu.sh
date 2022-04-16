@@ -25,9 +25,9 @@ function install_packages() {
 
 }
 
-function install_vim_plugins() {
-  # vim init
-  vim -s .vimop
+function install_nvim_plugins() {
+  # nvim plugin install
+  nvim -s "$HOME/.config/nvim/plugin-install-operation"
 }
 
 
@@ -48,5 +48,5 @@ rename_home_dirs
 
 install_packages
 
-install_vim_plugins
+install_nvim_plugins
 
