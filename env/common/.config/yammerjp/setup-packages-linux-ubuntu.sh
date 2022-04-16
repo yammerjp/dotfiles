@@ -114,6 +114,7 @@ Install_yarn
 Install_deno
 Install_peco
 apt install -y vim
+apt install -y neovim
 apt install -y zsh
 apt install -y tmux
 apt install -y colordiff
