@@ -9,16 +9,16 @@ OS="$(uname -s)"          # Darwin Linux
 ARCH="$(uname -m)"        # arm64 x86_64
 DIST="$(os_distribution)" # Ubuntu         # allow empty
 
-ZSH_SCRIPT_FILENAMES = (
-  "variables.zsh"
-  "${(L)OS}-${(L)DIST}-${(L)ARCH}.zsh"
-  "${(L)OS}-${(L)DIST}.zsh"
-  "${(L)OS}.zsh"
-  "prompt.zsh"
-  "history.zsh"
-  "completion.zsh"
-  "alias.zsh"
-  "git.zsh"
+ZSH_SCRIPT_FILENAMES=( \
+  "variables.zsh" \
+  "${(L)OS}-${(L)DIST}-${(L)ARCH}.zsh" \
+  "${(L)OS}-${(L)DIST}.zsh" \
+  "${(L)OS}.zsh" \
+  "prompt.zsh" \
+  "history.zsh" \
+  "completion.zsh" \
+  "alias.zsh" \
+  "git.zsh" \
 )
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
