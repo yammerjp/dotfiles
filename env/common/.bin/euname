@@ -1,0 +1,24 @@
+#!/bin/bash
+
+function os_distribution() {
+  if uname -v | grep -q "Ubuntu"; then  # 0 ... ubuntu / 1 ... other
+    echo 'ubuntu'
+    return
+  fi
+}
+
+case "$1" in
+  os)
+    # ex. Darwin Linux
+    uname -s | tr '[A-Z]' '[a-z]'
+    ;;
+  architecture)
+    # ex. arm64 x86_64
+    uname -m | tr '[A-Z]' '[a-z]'
+    ;;
+  distribution)
+    # ex. Ubuntu
+    # allow empty
+    os_distribution
+    ;;
+esac

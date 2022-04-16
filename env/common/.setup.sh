@@ -1,5 +1,12 @@
 #!/bin/bash -e
 
+function os_distribution() {
+  if uname -v | grep -q "Ubuntu"; then  # 0 ... ubuntu / 1 ... other
+    echo 'Ubuntu'
+    return
+  fi
+}
+
 OS="$(uname -s)"          # Darwin Linux
 DIST="$(os_distribution)" # Ubuntu         # allow empty
 
