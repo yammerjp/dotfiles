@@ -30,6 +30,6 @@ pyenv install "$latest_stable_python"
 pyenv global "$latest_stable_python"
 
 # nvim plugin install
-nvim -s "$HOME/.config/nvim/plugin-install-operation"
+nvim -s "$HOME/.config/nvim/plugin-install.vim"
 
 echo "Nothing to do" 1>&2

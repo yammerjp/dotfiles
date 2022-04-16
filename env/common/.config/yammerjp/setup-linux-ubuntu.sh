@@ -26,7 +26,7 @@ function install_packages() {
 
 function install_nvim_plugins() {
   # nvim plugin install
-  nvim -s "$HOME/.config/nvim/plugin-install-operation"
+  nvim -s "$HOME/.config/nvim/plugin-install.vim"
 }
 
 
