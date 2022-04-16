@@ -24,7 +24,7 @@ ZSH_SCRIPT_FILENAMES=( \
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
   if [ -e "$HOME/.config/zsh/$ELEMENT" ]; then
-    echo source "$HOME/.config/zsh/$ELEMENT"
+    source "$HOME/.config/zsh/$ELEMENT"
   fi
 done
 
