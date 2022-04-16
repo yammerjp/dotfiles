@@ -1,0 +1,19 @@
+#!/bin/bash
+
+NPMRC="$HOME/.npmrc"
+# $NPM_CONFIG_USERCONFIG is not supported
+
+touch "$NPMRC"
+
+NPMRC_PREFIX=~/.config/npm
+NPMRC_CACHE=~/.cache/npm
+
+if ! grep  -q "prefix=$NPMRC_PREFIX" "$NPMRC"; then
+  echo "prefix=$NPMRC_PREFIX" >> "$NPMRC"
+  mkdir -p $NPMRC_PREFIX
+fi
+
+if ! grep  -q "cache=$NPMRC_CACHE" "$NPMRC"; then
+  echo "cache=$NPMRC_CACHE" >> "$NPMRC"
+  mkdir -p $NPMRC_CACHE
+fi

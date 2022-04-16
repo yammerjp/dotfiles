@@ -102,15 +102,16 @@ function vscode-extensions-import () {
 }
 
 # npm
+NPM_PACKAGE_LIST="${XDG_CONFIG_HOME}/npm/package-list"
 function npm-global-dump() {
-  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > ~/.npmdump
+  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > "$NPM_PACKAGE_LIST"
 }
 
 function npm-global-bundle() {
   while read pkg
   do
     npm install --global $pkg
-  done < ~/.npmdump
+  done < "$NPM_PACKAGE_LIST"
 }
 
 function nodenv() {
