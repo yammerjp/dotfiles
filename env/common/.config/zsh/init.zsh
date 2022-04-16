@@ -19,11 +19,12 @@ ZSH_SCRIPT_FILENAMES=( \
   "completion.zsh" \
   "alias.zsh" \
   "git.zsh" \
+  "gdb.zsh" \
 )
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
   if [ -e "$HOME/.config/zsh/$ELEMENT" ]; then
-    source "$HOME/.config/zsh/$ELEMENT"
+    echo source "$HOME/.config/zsh/$ELEMENT"
   fi
 done
 
