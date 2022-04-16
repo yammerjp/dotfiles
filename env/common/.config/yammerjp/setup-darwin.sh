@@ -7,10 +7,11 @@ SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
 # os initializing setup
-bash ~/.userdefaults.sh
+bash ~/.config/yammerjp/darwin-userdefaults.sh
 
 # package install
-brew bundle --file ~/.Brewfile
+ARCH="$(uname -m)" # arm64 or x86_64
+brew bundle --file "~/.config/homebrew/package-list-darwin-${ARCH}"
 
 eval "rbenv init -"
 latest_stable_ruby="$(rbenv install -l 2>/dev/null | grep -e '^[0-9. ]\+$' | tail -1)"

@@ -1,17 +1,12 @@
 #!/bin/bash -e
 
-# download
-# link
+OS="$(uname -s)"          # Darwin Linux
+DIST="$(os_distribution)" # Ubuntu         # allow empty
 
-SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
-cd "$SCRIPT_DIR"
-
-# os initializing setup
-#  ... ubuntu home dir
-#  ... ubuntu chsh
-#  ... macos userdefaults
-
-# package install
-# vim init
-# npm init
-echo "Nothing to do" 1>&2
+if [ "$OS" = Darwin ]; then
+  source ~/.config/yammerjp/setup-darwin.sh
+elif [ "$OS" = Linux ] && [ "$DIST" = Ubuntu ]; then
+  source ~/.config/yammerjp/setup-linux-ubuntu.sh
+else
+  echo "setup script is not found..." 1&>2
+fi
