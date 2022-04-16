@@ -21,7 +21,7 @@ function rename_home_dirs() {
 
 function install_packages() {
   # package install
-  echo "$password" | sudo -S bash setup-packages-linux-ubuntu.sh
+  echo "$password" | sudo -S bash "$HOME/.config/yammerjp/setup-packages-linux-ubuntu.sh"
 }
 
 function install_nvim_plugins() {
@@ -39,13 +39,12 @@ function install_nvim_plugins() {
 SCRIPT_DIR="$(cd "$(dirname "$0")"; pwd)"
 cd "$SCRIPT_DIR"
 
-read -rsp password
-
-change_login_shell
-
-rename_home_dirs
-
+# read -rsp password
+# 
+# change_login_shell
+# 
+# rename_home_dirs
+# 
 install_packages
 
 install_nvim_plugins
-
