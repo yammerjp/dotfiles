@@ -286,7 +286,7 @@ function run_setup() {
 }
 
 DOTFILE_DIRS="$(read_env_dotfile_dirs)"
-if [ "$1" !=  "--debug" ]; then
+if [ "$1" ==  "--debug" ]; then
   DOTFILES_RUN_MODE=debug
 fi
 if [ "$DOTFILES_RUN_MODE" !=  "debug" ]; then
