@@ -20,6 +20,7 @@ ZSH_SCRIPT_FILENAMES=( \
   "alias.zsh" \
   "git.zsh" \
   "gdb.zsh" \
+  "detect-to-edit-dotfiles.zsh" \
 )
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
