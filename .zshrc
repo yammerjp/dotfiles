@@ -3,3 +3,11 @@ if [ -e ~/.config/zsh/init.zsh ]; then
 else
   echo "not found: ~/.config/zsh/init.zsh"
 fi
+
+if [ -e ~/.zshrc.private ]; then
+  source ~/.zshrc.private
+fi
+
+if [ -e ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
