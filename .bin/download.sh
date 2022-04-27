@@ -11,8 +11,7 @@ DOTFILES_DIR="$HOME/src/github.com/$REPO"
 if [ -d "${DOTFILES_DIR}" ]; then
   echo "Dotfiles is already exist."
   echo "${DOTFILES_DIR}"
-  exit 0
-fi
+else
 
 cat <<-"EOF"
 
@@ -38,11 +37,24 @@ EOF
 git clone "https://github.com/$REPO.git" "${DOTFILES_DIR}"
 
 echo -e "Downloaded.\n\n"
-echo -e "Execute the commands to setup this pc.\n\n"
-echo    "$ cd ${DOTFILES_DIR}"
 
-if [ "$(uname)" = "Linux" ];then
-  echo -e "$ sudo make\n\n"
-else
-  echo -e "$ make\n\n"
 fi
+
+LINK_CMD="${DOTFILES_DIR}/.bin/dotfiles link"
+SETUP_CMD="${DOTFILES_DIR}/.bin/dotfiles setup"
+
+if [ "$DOTFILES_EXECUTE_LINK" = "true" ]; then
+  $LINK_CMD
+else
+  echo -e "\n\nExecute the commands to link dotfiles on this pc.\n\n"
+  echo "$ $LINK_CMD"
+fi
+
+if [ "$DOTFILES_EXECUTE_SETUP" = "true" ]; then
+  $SETUP_CMD
+else
+  echo -e "\n\nExecute the commands to setup this pc.\n\n"
+  echo "$ $SETUP_CMD"
+fi
+
+
