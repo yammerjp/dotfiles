@@ -15,9 +15,11 @@
         defaultBranch = main
 [core]
         editor = vim
+[commit]
+        verbose = true
 [alias]
         a = add
-        c = "commit -v"
+        c = commit
         d = diff
         ds = "diff --staged"
         ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
