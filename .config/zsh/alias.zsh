@@ -170,3 +170,8 @@ function man() {
 }
 # [manの読み方（初心者向け） - Qiita](https://qiita.com/aosho235/items/0f2b73d08eb645c05208)
 # [manコマンドで表示されるドキュメントの色付けをカスタマイズ - Steel Dragon 14106](https://raimon49.github.io/2017/03/31/man-with-colored-pager.html)
+
+function cpnew() {
+  cp ~/.config/yammerjp/competitive-programming-template.cpp ./$1
+  vim $1
+}
