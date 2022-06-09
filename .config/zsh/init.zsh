@@ -36,7 +36,7 @@ function findDotfilesDiff() {
     REPO_PATH="$1"
   fi
 
-  if ! git -C "$REPO_PATH" diff --exit-code --quiet 2>&1 > /dev/null; then
+  if ! git -C "$REPO_PATH" diff --exit-code --quiet $(grep -e "branch 'main'" -e "branch 'master'" $REPO_PATH/.git/FETCH_HEAD | awk '{ print $1 }') 2>&1 > /dev/null; then
     cat 1>&2 << EOF
  ____  _     _____    _    ____  _____    ____ ___  __  __ __  __ ___ _____ 
 |  _ \| |   | ____|  / \  / ___|| ____|  / ___/ _ \|  \/  |  \/  |_ _|_   _|
@@ -45,7 +45,7 @@ function findDotfilesDiff() {
 |_|   |_____|_____/_/   \_\____/|_____|  \____\___/|_|  |_|_|  |_|___| |_|  
 
 Find diff on dotfiles: $REPO_PATH
-Please commit diff" 1>&2
+Please commit diff
 EOF
   fi
 }
