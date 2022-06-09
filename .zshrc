@@ -4,6 +4,11 @@ else
   echo "not found: ~/.config/zsh/init.zsh"
 fi
 
+if [ -e ~/.zshrc.company ]; then
+  source ~/.zshrc.company
+fi
+
+
 if [ -e ~/.zshrc.private ]; then
   source ~/.zshrc.private
 fi
