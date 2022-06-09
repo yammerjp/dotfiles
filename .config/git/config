@@ -19,7 +19,8 @@
         a = add
         c = "commit -v"
         d = diff
-        ds = "diff --staged"
+        di = "diff --ignore-all-space"
+        ds = "di --staged"
         ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
         pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
         l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
@@ -42,5 +43,5 @@
         ls-files-all-history = "!git log --oneline | awk '{ print $1 }' | xargs -I{} git ls-tree -r --name-only {} | sort | uniq"
         reflog-verbose = log -g
         vv = branch -vv
-        diff-from-release = "!git diff `git latest-merged-commit` --ignore-all-space"
+        diff-from-release = "!git di `git latest-merged-commit` --ignore-all-space"
         dfr = diff-from-release
