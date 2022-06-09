@@ -42,3 +42,5 @@
         ls-files-all-history = "!git log --oneline | awk '{ print $1 }' | xargs -I{} git ls-tree -r --name-only {} | sort | uniq"
         reflog-verbose = log -g
         vv = branch -vv
+        diff-from-release = "!git diff `git latest-merged-commit` --ignore-all-space"
+        dfr = diff-from-release
