@@ -45,7 +45,7 @@ function findDotfilesDiff() {
 |_|   |_____|_____/_/   \_\____/|_____|  \____\___/|_|  |_|_|  |_|___| |_|  
 
 Find diff on dotfiles: $REPO_PATH
-Please commit diff
+Please commit or push diff
 EOF
   fi
 }
