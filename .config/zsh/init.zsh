@@ -36,7 +36,7 @@ function findDotfilesDiff() {
     REPO_PATH="$1"
   fi
 
-  if ! git -C "$REPO_PATH" diff --exit-code --quiet "origin/$(git branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')" ; then
+  if ! git -C "$REPO_PATH" diff --exit-code --quiet "origin/$(git -C "$REPO_PATH" branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')" ; then
     cat 1>&2 << EOF
  ____  _     _____    _    ____  _____    ____ ___  __  __ __  __ ___ _____ 
 |  _ \| |   | ____|  / \  / ___|| ____|  / ___/ _ \|  \/  |  \/  |_ _|_   _|
