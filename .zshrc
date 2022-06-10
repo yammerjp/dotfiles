@@ -19,7 +19,7 @@ function main () {
   fi
 }
 
-if [ $LOADED_ZSHRC != "true" ] || [ "$FORCE_LOAD_ZSHRC" = "true" ]; then
+if [ "$LOADED_ZSHRC" != "true" ] || [ "$FORCE_LOAD_ZSHRC" = "true" ]; then
   main
 fi
 
