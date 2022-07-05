@@ -23,4 +23,4 @@ if [ "$LOADED_ZSHRC" != "true" ] || [ "$FORCE_LOAD_ZSHRC" = "true" ]; then
   main
 fi
 
-LOADED_ZSHRC="true"
+LOADED_ZSHRC="false"
