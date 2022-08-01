@@ -1,7 +1,5 @@
 abbr -S g='git'
-abbr -S gs='g s'
-abbr -S gS='g s'
-abbr -S ga.='g a .'
+abbr -S ga.='git add .'
 abbr -S git-config-edit="vim ~/.config/git/config"
 abbr import-git-aliases -S
 
