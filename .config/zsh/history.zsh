@@ -20,9 +20,9 @@ setopt hist_reduce_blanks
 # historyコマンドは履歴に登録しない
 setopt hist_no_store
 
-alias his="history -i -t '%Y/%m/%d-%H:%M'"
-alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
-alias hisall="his-all"
+abbr -S his="history -i -t '%Y/%m/%d-%H:%M'"
+abbr -S his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
+abbr -S hisall="his-all"
 
 # shellのhistory一覧
 function select-history() {

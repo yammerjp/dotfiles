@@ -1,14 +1,14 @@
 
 export CLICOLOR=1
 
-alias cpy="pbcopy"
-alias pst="pbpaste"
-alias tac="tail -r"
-#alias sha256sum="shasum -a 256"
-alias ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレクトリを色表示, "-h":ファイルサイズを人間が読みやすい形式に
+abbr -S cpy="pbcopy"
+abbr -S pst="pbpaste"
+abbr -S tac="tail -r"
+#abbr -S sha256sum="shasum -a 256"
+abbr -S ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレクトリを色表示, "-h":ファイルサイズを人間が読みやすい形式に
 # MacのGUIアプリケーションを実行
-alias prev='open /Applications/Preview.app'
-alias xcode='open /Applications/Xcode.app'
+abbr -S prev='open /Applications/Preview.app'
+abbr -S xcode='open /Applications/Xcode.app'
 
 function brew-dump() {
   rm -rf /tmp/.Brewfile
@@ -52,14 +52,14 @@ rbenv() {
   $0 "$@"
 }
 
-alias nv='nvim'
-alias purevim='/usr/bin/vim'
-alias vim='nvim'
+abbr -S nv='nvim'
+abbr -S purevim='/usr/bin/vim'
+abbr -S vim='nvim'
 
 # use gnu dircolors
-if [ -x `whence -p gdircolors` ]; then alias dircolors='gdircolors'; fi
+if [ -x `whence -p gdircolors` ]; then abbr -S dircolors='gdircolors'; fi
 eval `dircolors --sh ~/.gruvbox.dircolors`
 
 # enable ls colors for zsh completion
-if [ -x `whence -p gls` ]; then alias ls='gls --color=auto'; fi
+if [ -x `whence -p gls` ]; then abbr -S ls='gls --color=auto'; fi
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
