@@ -1,12 +1,12 @@
-abbr -S cpy="xclip -selection clipboard"
-abbr -S pst="xclip -selection clipboard -o"
-abbr -S ls='ls -Fh --color=auto'
-abbr -S open='xdg-open'
+alias cpy="xclip -selection clipboard"
+alias pst="xclip -selection clipboard -o"
+alias ls='ls -Fh --color=auto'
+alias open='xdg-open'
 
 # for Rust lang
 if [ -e "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
-  abbr -S cr='cargo run'
+  alias cr='cargo run'
 fi
 
 if [ -e "/home/linuxbrew/.linuxbrew/bin/brew" ]; then

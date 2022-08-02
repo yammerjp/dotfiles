@@ -1,7 +1,6 @@
-abbr -S g='git'
-abbr -S ga.='git add .'
-abbr -S git-config-edit="vim ~/.config/git/config"
-abbr import-git-aliases -S
+alias g='git'
+alias ga.='git add .'
+alias git-config-edit="vim ~/.config/git/config"
 
 function gclone() {
   if [ -z "$1" ]; then

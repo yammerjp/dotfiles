@@ -20,7 +20,7 @@ setopt magic_equal_subst
 # for Rust lang
 if [ -e "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
-  abbr -S cr='cargo run'
+  alias cr='cargo run'
 fi
 
 if [ -e "/opt/homebrew/Caskroom/google-cloud-sdk/latest/google-cloud-sdk" ]; then

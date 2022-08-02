@@ -1,14 +1,14 @@
-abbr -S du='du -h'
-abbr -S vi='vim -u NONE'
-abbr -S tree='tree -N'
-abbr -S search='find . -type f | grep -v "/.git/" | xargs grep'
-abbr -S covid19='curl https://corona-stats.online/'
-abbr -S ssh='ssh -A'
-abbr -S ipe='curl ipinfo.io/ip'
-abbr -S bip='bundle install --path vendor/bundle'
-abbr -S eucjp2utf8="iconv -f EUC-JP -t UTF-8"
-abbr -S vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
-abbr -S vim-origin="/usr/bin/vim"
+alias du='du -h'
+alias vi='vim -u NONE'
+alias tree='tree -N'
+alias search='find . -type f | grep -v "/.git/" | xargs grep'
+alias covid19='curl https://corona-stats.online/'
+alias ssh='ssh -A'
+alias ipe='curl ipinfo.io/ip'
+alias bip='bundle install --path vendor/bundle'
+alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
+alias vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
+alias vim-origin="/usr/bin/vim"
 
 # ssh
 function ssh-authorized_keys-refresh() {
@@ -30,9 +30,9 @@ function ssh-keygen-me() {
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
-  abbr -S diff='colordiff -u'
+  alias diff='colordiff -u'
 else
-  abbr -S diff='diff -u'
+  alias diff='diff -u'
 fi
 export LESS='-R'
 

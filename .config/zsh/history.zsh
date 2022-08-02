@@ -22,9 +22,9 @@ setopt hist_no_store
 # 空白で始まるコマンドは履歴に登録しない
 setopt hist_ignore_space
 
-abbr -S his="history -i -t '%Y/%m/%d-%H:%M'"
-abbr -S his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
-abbr -S hisall="his-all"
+alias his="history -i -t '%Y/%m/%d-%H:%M'"
+alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"
+alias hisall="his-all"
 
 # shellのhistory一覧
 function select-history() {
