@@ -11,6 +11,8 @@
         process = git-lfs filter-process
 [push]
         default = current
+[pull]
+        rebase = false
 [init]
         defaultBranch = main
 [core]
