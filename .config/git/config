@@ -39,12 +39,16 @@
         branch-delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main|master'|xargs git branch -d; };f"
         worktree-new = "!bash -c 'git worktree add ~/git-worktree/$(dirname $(pwd))-$1' $1"
         latest-merged-commit = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -1 | awk '{print $1}'"
-        open-editing = "!bash -c 'git diff --name-only `git latest-merged-commit` | cat | xargs code'"
+        open-editing = "!bash -c 'git dfr --name-only | cat | xargs code'"
+        open-editing-prev-head = "!bash -c 'git dfp --name-only | cat | xargs code'"
         oe = open-editing
+        oep = open-editing-prev-head
         r = "!git reflog -n 50 --pretty='format:%gs' | perl -anal -e '$seen{$1}++ or print $1 if /checkout:.*to (.+)/'"
         rsw = "!git reflog -n 50 --pretty='format:%gs' | perl -anal -e '$seen{$1}++ or print $1 if /checkout:.*to (.+)/' | fzf | xargs git checkout"
         ls-files-all-history = "!git log --oneline | awk '{ print $1 }' | xargs -I{} git ls-tree -r --name-only {} | sort | uniq"
         reflog-verbose = log -g
         vv = branch -vv
-        diff-from-release = "!git diff --ignore-all-space `git latest-merged-commit` --ignore-all-space"
+        diff-from-release = "!git diff --ignore-all-space `git latest-merged-commit`"
+        diff-from-prev-head = "!git diff --ignore-all-space HEAD^"
         dfr = diff-from-release
+        dfp = diff-from-prev-head
