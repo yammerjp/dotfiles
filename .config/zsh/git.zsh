@@ -1,5 +1,6 @@
 alias g='git'
 alias ga.='git add .'
+alias gs='git status'
 alias git-config-edit="vim ~/.config/git/config"
 
 function gclone() {
