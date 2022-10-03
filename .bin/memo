@@ -23,7 +23,7 @@ if ! [ -e $MEMO_REPO_DIR ]; then
 fi
 
 DAYLOG_DIR="$MEMO_REPO_DIR/$MEMO_REPO_DAYLOG_DIR"
-mkdir -p "DAYLOG_DIR"
+mkdir -p "$DAYLOG_DIR"
 
 if command -v gdate > /dev/null; then
   DATECMD="gdate"
