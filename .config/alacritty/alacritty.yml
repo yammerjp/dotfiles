@@ -1,0 +1,8 @@
+font:
+  normal:
+    family: HackGen Console
+    style: Regular
+  bold:
+    family: HackGen Console
+    style: Bold
+  size: 18.0

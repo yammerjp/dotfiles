@@ -15,6 +15,9 @@ fi
 if [ "$MEMO_REPO_DAYLOG_DIR" = "" ]; then
   MEMO_REPO_DAYLOG_DIR="daylog"
 fi
+if [ "$MEMO_DATE_FORMAT" = "" ]; then
+  MEMO_DATE_FORMAT='+%Y%m%d'
+fi
 
 MEMO_REPO_DIR="$GIT_REPOS_BASE_DIR/$MEMO_REPO_HOST/$MEMO_REPO_USER/$MEMO_REPO_REPONAME"
 
@@ -38,13 +41,13 @@ else
 fi
 
 if [ "$1" = prev ] || [ "$1" = p ]; then
-  FILENAME="$($DATECMD --date "$2 day ago" '+%Y%m%d').md"
+  FILENAME="$($DATECMD --date "$2 day ago" $MEMO_DATE_FORMAT ).md"
 elif [ "$1" = next ] || [ "$1" = n ]; then
-  FILENAME="$($DATECMD --date "$2 day" '+%Y%m%d').md"
+  FILENAME="$($DATECMD --date "$2 day" $MEMO_DATE_FORMAT ).md"
 elif [ "$1" = list ] || [ "$1" = l ]; then
   vim "$(find "$DAYLOG_DIR" -type f | fzf --preview "$CATCMD {}")"
   return
 else
-  FILENAME="$($DATECMD '+%Y%m%d').md"
+  FILENAME="$($DATECMD $MEMO_DATE_FORMAT ).md"
 fi
 exec nvim "$DAYLOG_DIR/$FILENAME"
