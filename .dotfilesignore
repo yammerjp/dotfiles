@@ -1,0 +1,8 @@
+.dotfilesignore
+.git/*
+.github/*
+.gitignore
+LICENSE
+README.md
+dev-container/*
+test/*
