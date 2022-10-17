@@ -3,3 +3,5 @@
 !LICENSE
 !test
 !dev-container
+!.github
+!.gitignore
