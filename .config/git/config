@@ -11,6 +11,7 @@
 	process = git-lfs filter-process
 [push]
 	default = current
+	autoSetupRemote = true
 [pull]
 	rebase = false
 [init]
