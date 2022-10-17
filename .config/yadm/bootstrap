@@ -1,0 +1,3 @@
+#!/bin/bash -e
+yadm gitconfig core.sparsecheckout true
+yadm sparse-checkout reapply
