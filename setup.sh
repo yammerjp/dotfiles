@@ -2,5 +2,5 @@
 # for GitHub codespaces
 
 SCRIPT_DIR=$(dirname "$0")
-DOTFILE_DIRS="$SCRIPT_DIR" "${SCRIPT_DIR}/.bin/dotfiles" link
-DOTFILE_DIRS="$SCRIPT_DIR" "${SCRIPT_DIR}/.bin/dotfiles" setup
+DOTFILE_DIRS="$SCRIPT_DIR" "${SCRIPT_DIR}/.local/bin/dotfiles" link
+DOTFILE_DIRS="$SCRIPT_DIR" "${SCRIPT_DIR}/.local/bin/dotfiles" setup
