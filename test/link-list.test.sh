@@ -7,7 +7,7 @@ cd "$SCRIPT_DIR"
 source test-util.sh
 
 DOTFILES_RUN_MODE="debug"
-source ../.bin/dotfiles
+source ../.local/bin/dotfiles
 
 # mock
 function uname() {
