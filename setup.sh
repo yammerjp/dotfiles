@@ -6,12 +6,12 @@ if ! which git > /dev/null 2>&1; then
   exit
 fi
 
-if [ "$DOTFILES_DIR" == "" ]; then
+if [ "$DOTFILES_REPO" == "" ]; then
   HOME_DOTFILES="$HOME/dotfiles"
   if git -C "$HOME_DOTFILES" ls-files > /dev/null 2>&1 ; then
-    DOTFILES_DIR="$HOME_DOTFILES"
+    DOTFILES_REPO="$HOME_DOTFILES"
   fi
-  DOTFILES_DIR="https://github.com/yammerjp/dotfiles"
+  DOTFILES_REPO="https://github.com/yammerjp/dotfiles"
 fi
 
 # setup yadm

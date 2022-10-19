@@ -20,7 +20,7 @@ jobs:
 
     - name: Run
       run : |
-        DOTFILES_DIR="${GITHUB_WORKSPACE}" ./setup.sh
+        DOTFILES_REPO="${GITHUB_WORKSPACE}/.git" ./setup.sh
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     #- name: Load .zprofile
