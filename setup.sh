@@ -16,7 +16,7 @@ fi
 
 # setup yadm
 curl -fLo ~/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x ~/yadm
-~yadm list > /dev/null 2>&1 | ~/yadm clone "$DOTFILES_REPO"
+~yadm list > /dev/null 2>&1 || ~/yadm clone "$DOTFILES_REPO"
 ~/yadm clone
 ~/yadm bootstrap
 
