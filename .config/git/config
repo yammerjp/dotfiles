@@ -18,6 +18,8 @@
 	defaultBranch = main
 [core]
 	editor = vim
+[ghq]
+	root = "~/src"
 	[alias]
 	a = add
 	c = "commit -v"
