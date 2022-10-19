@@ -14,11 +14,14 @@ if [ "$DOTFILES_REPO" == "" ]; then
   DOTFILES_REPO="https://github.com/yammerjp/dotfiles"
 fi
 
+YADM_PROGRAM="$HOME/yadm"
+
 # setup yadm
-curl -fLo ~/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x ~/yadm
-~/yadm list > /dev/null 2>&1 || ~/yadm clone "$DOTFILES_REPO"
+curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x "$YADM_PROGRAM"
+"$YADM_PROGRAM" list > /dev/null 2>&1 || "$YADM_PROGRAM" clone "$DOTFILES_REPO"
+"$YADM_PROGRAM" checkout ~/
 chmod a+x ~/.config/yadm/bootstrap
-~/yadm bootstrap
+"$YADM_PROGRAM" bootstrap
 
 # setup packages
 bash ~/.setup.sh
