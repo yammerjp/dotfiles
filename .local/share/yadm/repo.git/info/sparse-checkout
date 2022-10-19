@@ -5,3 +5,4 @@
 !dev-container
 !.github
 !.gitignore
+!Makefile

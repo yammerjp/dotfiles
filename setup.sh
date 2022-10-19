@@ -1,7 +1,7 @@
 #!/bin/bash -e
 # for GitHub codespaces
 
-if ! which git > /dev/null 2>&1; then
+if ! command -v git > /dev/null 2>&1; then
   echo "Need git" 1>&2
   exit
 fi
@@ -17,7 +17,6 @@ fi
 # setup yadm
 curl -fLo ~/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x ~/yadm
 ~yadm list > /dev/null 2>&1 || ~/yadm clone "$DOTFILES_REPO"
-~/yadm clone
 ~/yadm bootstrap
 
 # setup packages
