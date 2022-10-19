@@ -13,16 +13,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Copy
-      run : |
-        mkdir -p ~/src/github.com/yammerjp
-        cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
-
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles/.bin
-        ./dotfiles link
-        ./dotfiles setup
+        DOTFILES_DIR="${GITHUB_WORKSPACE}" setup.sh
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     # - name: Load .zprofile
