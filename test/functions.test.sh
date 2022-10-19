@@ -8,7 +8,7 @@ source test-util.sh
 
 # shellcheck disable=SC2034
 DOTFILES_RUN_MODE="debug"
-source "../.bin/dotfiles"
+source "../.local/bin/dotfiles"
 
 
 
