@@ -7,7 +7,7 @@ if ! command -v git > /dev/null 2>&1; then
 fi
 
 if [ "$DOTFILES_REPO" == "" ]; then
-  HOME_DOTFILES="$HOME/dotfiles"
+  HOME_DOTFILES="$HOME/dotfiles/.git"
   if git -C "$HOME_DOTFILES" ls-files > /dev/null 2>&1 ; then
     DOTFILES_REPO="$HOME_DOTFILES"
   fi
@@ -18,7 +18,9 @@ YADM_PROGRAM="/usr/local/bin/yadm"
 
 # setup yadm
 curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x "$YADM_PROGRAM"
+echo "dotfiles-repo: $DOTFILES_REPO"
 "$YADM_PROGRAM" list > /dev/null 2>&1 || "$YADM_PROGRAM" clone "$DOTFILES_REPO"
+echo "checkout all files"
 "$YADM_PROGRAM" checkout ~/
 chmod a+x ~/.config/yadm/bootstrap
 "$YADM_PROGRAM" bootstrap
