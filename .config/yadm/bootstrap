@@ -1,3 +1,8 @@
 #!/bin/bash -e
-yadm gitconfig core.sparsecheckout true
-yadm sparse-checkout reapply
+
+if [ "$YADM_PROGRAM" == "" ]; then
+  YADM_PROGRAM="$(command -v yadm)"
+fi
+
+"$YADM_PROGRAM" gitconfig core.sparsecheckout true
+"$YADM_PROGRAM" sparse-checkout reapply

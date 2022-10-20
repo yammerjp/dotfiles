@@ -14,7 +14,9 @@ if [ "$DOTFILES_REPO" == "" ]; then
   DOTFILES_REPO="https://github.com/yammerjp/dotfiles"
 fi
 
-YADM_PROGRAM="/usr/local/bin/yadm"
+mkdir -p "$HOME/.local/bin"
+export PATH="$HOME/.local/bin:$PATH"
+YADM_PROGRAM="$HOME/.local/bin/yadm"
 
 # setup yadm
 curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x "$YADM_PROGRAM"
