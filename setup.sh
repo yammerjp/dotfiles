@@ -20,9 +20,10 @@ YADM_PROGRAM="/usr/local/bin/yadm"
 curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm && chmod a+x "$YADM_PROGRAM"
 echo "dotfiles-repo: $DOTFILES_REPO"
 "$YADM_PROGRAM" list > /dev/null 2>&1 || "$YADM_PROGRAM" clone "$DOTFILES_REPO"
+ls -al "$HOME"
 echo "checkout all files"
-"$YADM_PROGRAM" checkout ~/
-chmod a+x ~/.config/yadm/bootstrap
+"$YADM_PROGRAM" checkout "$HOME"
+chmod a+x "$HOME/.config/yadm/bootstrap"
 "$YADM_PROGRAM" bootstrap
 
 # setup packages
