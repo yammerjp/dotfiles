@@ -15,7 +15,6 @@ if [ "$DOTFILES_REPO" == "" ]; then
 fi
 
 mkdir -p "$HOME/.local/bin"
-export PATH="$HOME/.local/bin:$PATH"
 YADM_PROGRAM="$HOME/.local/bin/yadm"
 
 # setup yadm
