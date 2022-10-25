@@ -1,19 +1,33 @@
 #!/usr/bin/env node
 
-process.stdin.setEncoding("utf8");
+const helpMessage = `usage: jnp [options] processing_program_string`;
 
-const lines = [];
+if (process.stdin.isTTY) {
+  console.error(helpMessage);
+  process.exit();
+}
 
-const reader = require("readline").createInterface({
-  input: process.stdin,
-});
+(async () => {
+  const buffers = [];
+  for await (const chunk of process.stdin) buffers.push(chunk);
 
-reader.on("line", (line) => {
-  lines.push(line);
-});
+  let input, output, stdin, stdout;
 
-reader.on("close", () => {
-  let input = JSON.parse(lines.join("\n"));
-  let output = eval("input " + process.argv.slice(2).join(' '));
-  console.log(JSON.stringify(output, null, ' '));
-});
+  stdin = Buffer.concat(buffers).toString();
+
+
+  try {
+    input = JSON.parse(stdin);
+  } catch {
+    console.error('failed to parse json from STDIN');
+    input = undefined;
+  }
+
+  eval("output = input " + process.argv.slice(2).join(' '));
+
+  if (stdout !== null || stdout !== undefined) {
+    console.log(stdout)
+  } else {
+    console.log(JSON.stringify(output, null, ' '));
+  }
+})()
