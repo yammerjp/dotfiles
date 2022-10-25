@@ -7,6 +7,12 @@ if (process.stdin.isTTY) {
   process.exit();
 }
 
+/*
+ * TODO: implements command line options
+ *  --help -h
+ *  --silent -s
+ */
+
 (async () => {
   const buffers = [];
   for await (const chunk of process.stdin) buffers.push(chunk);
@@ -14,7 +20,6 @@ if (process.stdin.isTTY) {
   let input, output, stdin, stdout;
 
   stdin = Buffer.concat(buffers).toString();
-
 
   try {
     input = JSON.parse(stdin);
