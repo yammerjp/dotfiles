@@ -1,13 +1,7 @@
 #!/bin/bash -e
 cat /dev/stdin > /tmp/stdin.json
-
-# node -e "console.log(JSON.stringify(require('/tmp/stdin.json')$*, null, ' '));"
 node << CODE
-
-let input = require('/tmp/stdin.json')
-
-let output = require('/tmp/stdin.json')$*
-
-console.log(JSON.stringify(output, null, ' '));
-
+  let input = require('/tmp/stdin.json');
+  let output = input $*;
+  console.log(JSON.stringify(output, null, ' '));
 CODE
