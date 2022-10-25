@@ -1,7 +1,19 @@
-#!/bin/bash -e
-cat /dev/stdin > /tmp/stdin.json
-node << CODE
-  let input = require('/tmp/stdin.json');
-  let output = input $*;
+#!/usr/bin/env node
+
+process.stdin.setEncoding("utf8");
+
+const lines = [];
+
+const reader = require("readline").createInterface({
+  input: process.stdin,
+});
+
+reader.on("line", (line) => {
+  lines.push(line);
+});
+
+reader.on("close", () => {
+  let input = JSON.parse(lines.join("\n"));
+  let output = eval("input " + process.argv.slice(2).join(' '));
   console.log(JSON.stringify(output, null, ' '));
-CODE
+});
