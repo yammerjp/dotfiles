@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-const helpMessage = `usage: jnp [options] processing_program_string`;
+const helpMessage = `usage: jpr [options] processing_program_string`;
 
 if (process.stdin.isTTY) {
   console.error(helpMessage);
