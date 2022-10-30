@@ -1,5 +1,11 @@
 #!/usr/bin/env node
 
+/*
+ * TODO: implements command line options
+ *  --help -h
+ *  --silent -s
+ */
+
 const helpMessage = `Usage:    j-j <a JavaScript code piece to process JSON following "output = input ">
 
 j-j is a JSON processor that can be written in a JavaScript code piece.
@@ -12,7 +18,7 @@ The following variables are available in the code piece.
 - input ... JavaScript object input as JSON from STDIN
 - output ... JavaScript object output as JSON to STDOUT
 - stdin ... String input from STDIN
-- stdout ... String output to STDOUT (Preferred over output, if not undefined)
+- stdout ... String output to STDOUT (Preferred over output, if not null or undefined)
 
 Examples of execution is shown below.
 
@@ -32,37 +38,43 @@ Examples of execution is shown below.
     sushi&orange
 `;
 
-if (process.stdin.isTTY) {
-  console.error(helpMessage);
-  process.exit();
+function processJSON(input, stdin, code) {
+  let output, stdout;
+  eval("output = input" + code);
+  return { stdout, output }
 }
 
-/*
- * TODO: implements command line options
- *  --help -h
- *  --silent -s
- */
-
-(async () => {
+async function getStringFromStdin() {
   const buffers = [];
   for await (const chunk of process.stdin) buffers.push(chunk);
+  return Buffer.concat(buffers).toString();
+}
 
-  let input, output, stdin, stdout;
-
-  stdin = Buffer.concat(buffers).toString();
-
+async function getInput() {
+  const stdin = await getStringFromStdin();
+  let input;
   try {
     input = JSON.parse(stdin);
   } catch {
     console.error('failed to parse json from STDIN');
     input = undefined;
   }
+  return { stdin, input }
+}
 
-  eval("output = input " + process.argv.slice(2).join(' '));
-
-  if (stdout !== undefined) {
-    console.log(stdout)
-  } else {
-    console.log(JSON.stringify(output, null, ' '));
+async function main() {
+  if (process.stdin.isTTY) {
+    console.error(helpMessage);
+    process.exit();
   }
-})()
+
+  const { stdin, input } = await getInput();
+
+  const code = process.argv.slice(2).join(' ');
+
+  const { stdout, output } = processJSON(input, stdin, code);
+
+  console.log(stdout ?? JSON.stringify(output, null, ' '));
+}
+
+main();
