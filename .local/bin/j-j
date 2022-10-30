@@ -1,6 +1,36 @@
 #!/usr/bin/env node
 
-const helpMessage = `usage: jpr [options] processing_program_string`;
+const helpMessage = `Usage:    j-j <a JavaScript code piece to process JSON following "output = input ">
+
+j-j is a JSON processor that can be written in a JavaScript code piece.
+The command line argument code piece is interpreted as follows.
+
+    eval("output = input " + <A CODE PIECE WITH COMMAND LINE ARGUMENT>)
+
+The following variables are available in the code piece.
+
+- input ... JavaScript object input as JSON from STDIN
+- output ... JavaScript object output as JSON to STDOUT
+- stdin ... String input from STDIN
+- stdout ... String output to STDOUT (Preferred over output, if not undefined)
+
+Examples of execution is shown below.
+
+    $ echo '{"name":"bob","like":["sushi","orange"]}' | j-j '.like'
+    [
+     "sushi",
+     "orange"
+    ]
+
+    $ echo '{"name":"bob","like":["sushi","orange"]}' | j-j '&& Object.keys(input)'
+    [
+     "name",
+     "like"
+    ]
+
+    $ echo '{"name":"bob","like":["sushi","orange"]}' | j-j '; stdout = input.like.join("&")'
+    sushi&orange
+`;
 
 if (process.stdin.isTTY) {
   console.error(helpMessage);
