@@ -9,6 +9,7 @@ alias bip='bundle install --path vendor/bundle'
 alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
 alias vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
 alias vim-origin="/usr/bin/vim"
+alias dc="docker compose"
 
 # ssh
 function ssh-authorized_keys-refresh() {
