@@ -1,0 +1,43 @@
+#!/bin/bash -e
+
+function find_dotfiles() {
+  DOTFILES_DIR="$1"
+
+  DOTFILES_DIR_CHAR_LENGTH=${#DOTFILES_DIR}
+  # shellcheck disable=SC2004
+  find "$DOTFILES_DIR" -type f | cut -c "$(($DOTFILES_DIR_CHAR_LENGTH + 2))-" | grep -e "^\." | grep -v "^\.git/" | grep -v "^\.github/" | grep -v "^\.gitignore$" | sort
+}
+
+find_dotfiles $1
+
+cd dit  git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only | sort | uniq | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }
+
+
+# git commit されたことのあるファイルのうち、現在シンボリックリンクが貼られているもの
+echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only | sort | uniq | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }" | xargs -I{} /bin/bash -c 'test -L {} && echo {} || true')"
+
+
+# git commitされたことのあるdotfiles
+echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only )" | sed 's#^env/[-_a-zA-Z0-9]*/##g' | grep -e '^\.' | sort | uniq
+
+
+
+# git commitされたことのあるdotfilesのうち、現在シンボリックリンクが貼られているもの
+echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only )" | sed 's#^env/[-_a-zA-Z0-9]*/##g' | grep -e '^\.' | sort | uniq | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }" | xargs -I{} /bin/bash -c 'test -L {} && echo {} || true' 
+
+# 現在リポジトリ配下にあるdotfiles
+find $(git rev-parse --show-toplevel) -type f | sed "s#^$(git rev-parse --show-toplevel)/##g" | grep -v '^\.git/' | grep -v '^\.github/' | grep '^\.'
+
+# 現在リポジトリ配下にあるdotfilesとgit commitされたことのあるdotfiles
+cat <( find $(git rev-parse --show-toplevel) -type f | sed "s#^$(git rev-parse --show-toplevel)/##g" ) <( echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only )" | sed 's#^env/[-_a-zA-Z0-9]*/##g') | grep -v '^\.git/' | grep -v '^\.github/' | grep '^\.' | sort | uniq
+
+
+# 現在リポジトリ配下にあるdotfilesとgit commitされたことのあるdotfilesのうち、現在シンボリックリンクが貼られているもの
+cat <( find $(git rev-parse --show-toplevel) -type f | sed "s#^$(git rev-parse --show-toplevel)/##g" ) <( echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only )" | sed 's#^env/[-_a-zA-Z0-9]*/##g') | grep -v '^\.git/' | grep -v '^\.github/' | grep '^\.' | sort | uniq | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }" | xargs -I{} /bin/bash -c 'test -L {} && realpath {} || true'  
+
+
+realpath() {
+  case "$1" in /*) ;; *) printf '%s/' "$PWD";; esac; echo "$1"
+}
+
+cat <( find $(git rev-parse --show-toplevel) -type f | sed "s#^$(git rev-parse --show-toplevel)/##g" ) <( echo -n "$(cd $(git rev-parse --show-toplevel) && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only )" | sed 's#^env/[-_a-zA-Z0-9]*/##g') | grep -v '^\.git/' | grep -v '^\.github/' | grep '^\.' | sort | uniq | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }" | xargs -I{} /bin/bash -c 'test -L {} && realpath {} || true'  

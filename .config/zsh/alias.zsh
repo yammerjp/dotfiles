@@ -36,41 +36,6 @@ else
 fi
 export LESS='-R'
 
-# memo
-function memo() {
-  memo_repo_dir="$HOME/src/github.com/yammerjp/memo"
-  if ! [ -e $memo_repo_dir ]; then
-    gclone memo
-  fi
-
-  dairy_dir="$memo_repo_dir/daylog"
-  mkdir -p ${dairy_dir}
-
-  if command -v gdate > /dev/null; then
-    DATECMD="gdate"
-  else
-    DATECMD="date"
-  fi
-
-  if command -v bat > /dev/null; then
-    CATCMD="bat"
-  else
-    CATCMD="cat"
-  fi
-
-  if [ "$1" = prev ] || [ "$1" = p ]; then
-    FILENAME="$($DATECMD --date "$2 day ago" '+%Y%m%d').md"
-  elif [ "$1" = next ] || [ "$1" = n ]; then
-    FILENAME="$($DATECMD --date "$2 day" '+%Y%m%d').md"
-  elif [ "$1" = list ] || [ "$1" = l ]; then
-    vim "$(find "${dairy_dir}" -type f | fzf --preview "$CATCMD {}")"
-    return
-  else
-    FILENAME="$($DATECMD '+%Y%m%d').md"
-  fi
-  vim "${dairy_dir}/$FILENAME"
-}
-
 # compress
 function compress() {
   if ! [ -n "$1" ]; then

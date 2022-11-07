@@ -1,5 +1,7 @@
+aswinkumar863.smarty-template-support
 AvishekPatra.htmlBoilerPlate
 bmewburn.vscode-intelephense-client
+castwide.solargraph
 cocopon.iceberg-theme
 Dart-Code.dart-code
 Dart-Code.flutter
@@ -7,11 +9,13 @@ dbaeumer.vscode-eslint
 donjayamanne.githistory
 eamodio.gitlens
 esbenp.prettier-vscode
-felixfbecker.php-debug
 golang.go
 hashicorp.terraform
-imperez.smarty
+jakebathman.mysql-syntax
+janisdd.vscode-edit-csv
 kaiwood.endwise
+mechatroner.rainbow-csv
+misogi.ruby-rubocop
 ms-azuretools.vscode-docker
 MS-CEINTL.vscode-language-pack-ja
 ms-vscode-remote.remote-containers
@@ -27,5 +31,8 @@ sadesyllas.vscode-workspace-switcher
 sidthesloth.html5-boilerplate
 stuart.unique-window-colors
 svelte.svelte-vscode
+vortizhe.simple-ruby-erb
 vscodevim.vim
+Vue.volar
 wingrunr21.vscode-ruby
+xdebug.php-debug

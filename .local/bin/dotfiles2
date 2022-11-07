@@ -1,0 +1,81 @@
+#!/bin/bash
+
+if [ "$DOTFILES_REPO_DIR" = "" ]; then
+  #DOTFILES_REPO_DIR=$(git rev-parse --show-toplevel)
+  DOTFILES_REPO_DIR="$HOME/src/github.com/yammerjp/dotfiles"
+fi
+
+function fullpath() {
+  echo "$(cd $(dirname $1); pwd)/$(basename $1)"
+}
+
+function current-repo-files() {
+  find $DOTFILES_REPO_DIR -type f \
+    | sed "s#^$DOTFILES_REPO_DIR/##g"
+}
+
+function committed-all-repo-files() {
+  cat <( cd $DOTFILES_REPO_DIR && git rev-list HEAD | xargs -I{} git ls-tree -r {} --name-only ) \
+    | sed 's#^env/[-_a-zA-Z0-9]*/##g'
+}
+
+function filter-dotfiles() {
+  cat \
+    | grep -v '^\.git/' \
+    | grep -v '^\.github/' \
+    | grep '^\.'
+}
+
+function relative-path-2-homedir-fullpath() {
+  cat \
+    | awk "{ printf \"%s/%s\n\", \"$HOME\", \$0 }"
+}
+
+function dotfiles-link() {
+  CURRENT_REPO_DOTFILES="$(current-repo-files | filter-dotfiles)"
+  echo -n "$CURRENT_REPO_DOTFILES" | while read CURRENT_REPO_DOTFILE
+  do
+    echo mkdir -p "$(dirname "$HOME/$CURRENT_REPO_DOTFILE")"
+    echo ln -s "$DOTFILES_REPO_DIR/$CURRENT_REPO_DOTFILE" "$HOME/$CURRENT_REPO_DOTFILE"
+  done \
+    | sort \
+    | tac \
+    | uniq
+}
+
+function is-link-to-dotfiles-repo-dir() {
+  LINK_FROM_PATH="$1"
+  if [ -L "$LINK_FROM_PATH" ]; then
+    LINK_TO_PATH="$(fullpath "$(readlink "$LINK_FROM_PATH")")"
+    if [[ "$LINK_TO_PATH" =~ ^$DOTFILES_REPO_DIR ]]; then
+      return 0
+    fi
+  fi
+  return 1
+}
+
+function dotfiles-unlink() {
+  echo -n "$(current-repo-files)" "$(committed-all-repo-files)" \
+    | filter-dotfiles \
+    | sort \
+    | uniq \
+    | relative-path-2-homedir-fullpath \
+    | while read LINK_FROM_PATH
+  do
+    if is-link-to-dotfiles-repo-dir "$LINK_FROM_PATH"; then
+      echo "rm $LINK_FROM_PATH"
+    fi
+  done
+}
+
+if [ "$1" = 'link' ]; then
+  SCRIPTS="$(dotfiles-link)"
+elif [ "$1" = 'unlink' ]; then
+  SCRIPTS="$(dotfiles-unlink)"
+fi
+
+if [ "$2" = '--real-run' ]; then
+  bash -c "$SCRIPTS"
+else
+  echo -n "$SCRIPTS"
+fi

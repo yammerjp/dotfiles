@@ -19,6 +19,8 @@ setopt hist_verify
 setopt hist_reduce_blanks
 # historyコマンドは履歴に登録しない
 setopt hist_no_store
+# 空白で始まるコマンドは履歴に登録しない
+setopt hist_ignore_space
 
 alias his="history -i -t '%Y/%m/%d-%H:%M'"
 alias his-all="history -t '%Y/%m/%d-%H:%M' -E 1"

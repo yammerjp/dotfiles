@@ -15,20 +15,12 @@ jobs:
 
     - name: Mask Homebrew package list
       run : |
-        echo 'brew "vim"' >>  ${GITHUB_WORKSPACE}/.config/homebrew/package-list-darwin-x86_64
         sed -i '' '/^cask /d' ${GITHUB_WORKSPACE}/.config/homebrew/package-list-darwin-x86_64
         sed -i '' '/^mas /d'  ${GITHUB_WORKSPACE}/.config/homebrew/package-list-darwin-x86_64
 
-    - name: Copy
-      run : |
-        mkdir -p ~/src/github.com/yammerjp
-        cp -r ${GITHUB_WORKSPACE} ~/src/github.com/yammerjp
-
     - name: Run
       run : |
-        cd ~/src/github.com/yammerjp/dotfiles/.bin
-        ./dotfiles link
-        ./dotfiles setup
+        DOTFILES_REPO="${GITHUB_WORKSPACE}/.git" ./setup.sh
 
     # Use error.log. Not be able to use 'set -e' in .zprofile
     #- name: Load .zprofile

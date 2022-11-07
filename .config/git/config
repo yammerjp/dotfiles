@@ -1,46 +1,64 @@
 # This is Git's per-user configuration file.
 [user]
-        name = Keisuke Nakayama
-        email = me@yammer.jp
+	name = Keisuke Nakayama
+	email = me@yammer.jp
 [include]
-        path = ~/.config/git/config-company
+	path = ~/.config/git/config-company
 [filter "lfs"]
-        required = true
-        clean = git-lfs clean -- %f
-        smudge = git-lfs smudge -- %f
-        process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
 [push]
-        default = current
+	default = current
+	autoSetupRemote = true
+[pull]
+	rebase = false
 [init]
-        defaultBranch = main
+	defaultBranch = main
 [core]
         editor = vim
 [commit]
         verbose = true
+[ghq]
+	root = ~/src
 [alias]
-        a = add
-        c = commit
-        d = diff
-        ds = "diff --staged"
-        ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
-        pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
-        l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-        diflog = log -p
-        s = status --short
-        tree = ls-tree -r master --name-only
-        alias = "!git config --list | grep -e '^alias' | sed -e 's/alias\\.//' -e 's/=/\\t\\t/'"
-        als = alias
-        remote-add-origin = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
-        rao = remote-add-origin
-        remote-show-origin = remote show origin
-        rso = remote-show-origin
-        sw = "!git branch -a | fzf | xargs git checkout"
-        branch-delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main|master'|xargs git branch -d; };f"
-        worktree-new = "!bash -c 'git worktree add ~/git-worktree/$(dirname $(pwd))-$1' $1"
-        latest-merged-commit = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -1 | awk '{print $1}'"
-        open-editing = "!bash -c 'git diff --name-only `git latest-merged-commit` | cat | xargs code'"
-        oe = open-editing
-        r = "!git reflog -n 50 --pretty='format:%gs' | perl -anal -e '$seen{$1}++ or print $1 if /checkout:.*to (.+)/'"
-        ls-files-all-history = "!git log --oneline | awk '{ print $1 }' | xargs -I{} git ls-tree -r --name-only {} | sort | uniq"
-        reflog-verbose = log -g
-        vv = branch -vv
+	a = add
+	c = "commit -v"
+	d = diff
+	di = "diff --ignore-all-space"
+	ds = "diff --ignore-all-space --staged"
+	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	diflog = log -p
+	s = status --short
+	tree = ls-tree -r master --name-only
+	alias = "!git config --list | grep -e '^alias' | sed -e 's/alias\\.//' -e 's/=/\\t\\t/'"
+	als = alias
+	remote-add-origin = "!sh -c  '[ \"$1\" != \"\" ] && [ \"$2\" != \"\" ] && git remote add origin git@github.com:$1/$2.git' -"
+	rao = remote-add-origin
+	remote-show-origin = remote show origin
+	rso = remote-show-origin
+	sw = "!git branch -a | fzf | xargs git checkout"
+	branch-delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main|master'|xargs git branch -d; };f"
+	worktree-new = "!bash -c 'git worktree add ~/git-worktree/$(dirname $(pwd))-$1' $1"
+	latest-merged-commit = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -1 | awk '{print $1}'"
+	merged-commit-10 = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -10 | awk '{print $1}' | xargs -III git diff II II~ --name-only | cat - "
+	open-editing-vscode = "!bash -c 'git dfr --name-only | cat | xargs code'"
+	open-editing = "!git dfr --name-only | xargs -o nvim"
+	open-editing-prev-head = "!bash -c 'git dfp --name-only | cat | xargs -o nvim'"
+	open-editing-prev-head-vscode = "!bash -c 'git dfp --name-only | cat | xargs code'"
+	oe = open-editing
+	oev = open-editing-vscode
+	oep = open-editing-prev-head
+	oepv = open-editing-prev-head-vscode
+	r = "!git reflog -n 50 --pretty='format:%gs' | perl -anal -e '$seen{$1}++ or print $1 if /checkout:.*to (.+)/'"
+	rsw = "!git reflog -n 50 --pretty='format:%gs' | perl -anal -e '$seen{$1}++ or print $1 if /checkout:.*to (.+)/' | fzf | xargs git checkout"
+	ls-files-all-history = "!git log --oneline | awk '{ print $1 }' | xargs -I{} git ls-tree -r --name-only {} | sort | uniq"
+	reflog-verbose = log -g
+	vv = branch -vv
+	diff-from-release = "!git diff --ignore-all-space `git latest-merged-commit`"
+	diff-from-prev-head = "!git diff --ignore-all-space HEAD^"
+	dfr = diff-from-release
+	dfp = diff-from-prev-head
