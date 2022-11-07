@@ -45,7 +45,12 @@ zle -N ghq_code
 bindkey '^f' ghq_code
 
 function cr() {
-  cd "$(ghq root)/$(ghq list | fzf)"
+  repo_path_from_root="$(ghq list | fzf)"
+  ret="$?"
+  if [ "$ret" -ne 0 ]; then
+    return "$ret"
+  fi
+  cd "$(ghq root)/$repo_path_from_root"
 }
 
 function git-pull-latest() {
