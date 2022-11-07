@@ -16,24 +16,17 @@ autoload -Uz _zinit
 ### End of Zinit's installer chunk
 
 function main () {
-  if [ -e ~/.config/zsh/init.zsh ]; then
-    source ~/.config/zsh/init.zsh
-  else
-    echo "not found: ~/.config/zsh/init.zsh"
-  fi
-
-  if [ -e ~/.zshrc.company ]; then
-    source ~/.zshrc.company
-  fi
-
-
-  if [ -e ~/.zshrc.private ]; then
-    source ~/.zshrc.private
-  fi
-
-  if [ -e ~/.zshrc.local ]; then
-    source ~/.zshrc.local
-  fi
+  ZSH_SCRIPT_PATHS=( \
+    $HOME/.config/zsh/init.zsh \
+    $HOME/.zshrc.company \
+    $HOME/.zshrc.private \
+    $HOME/.zshrc.local \
+  )
+  for ZSH_SCRIPT_PATH in $ZSH_SCRIPT_PATHS; do
+    if [ -e $ZSH_SCRIPT_PATH ]; then
+      source "$ZSH_SCRIPT_PATH"
+    fi
+  done
 }
 
 if [ "$LOADED_ZSHRC" != "true" ] || [ "$FORCE_LOAD_ZSHRC" = "true" ]; then

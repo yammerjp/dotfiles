@@ -30,13 +30,7 @@ for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
 done
 
 function findDotfilesDiff() {
-  if [ "$1" = "" ] ; then
-    REPO_PATH="$HOME/src/github.com/yammerjp/dotfiles"
-  else
-    REPO_PATH="$1"
-  fi
-
-  if ! git -C "$REPO_PATH" diff --exit-code --quiet "origin/$(git -C "$REPO_PATH" branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')" ; then
+  if ! yadm diff --exit-code --quiet "origin/$(yadm branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')" ; then
     cat 1>&2 << EOF
  ____  _     _____    _    ____  _____    ____ ___  __  __ __  __ ___ _____ 
 |  _ \| |   | ____|  / \  / ___|| ____|  / ___/ _ \|  \/  |  \/  |_ _|_   _|
@@ -44,8 +38,7 @@ function findDotfilesDiff() {
 |  __/| |___| |___ / ___ \ ___) | |___  | |__| |_| | |  | | |  | || |  | |  
 |_|   |_____|_____/_/   \_\____/|_____|  \____\___/|_|  |_|_|  |_|___| |_|  
 
-Find diff on dotfiles: $REPO_PATH
-Please commit or push diff
+Find diff on dotfiles. Please commit or push diff!
 EOF
   fi
 }
