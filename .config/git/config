@@ -26,6 +26,7 @@
 	root = ~/src
 [alias]
 	a = add
+	au = "add -u" # add tracked files
 	c = "commit -v"
 	d = diff
 	di = "diff --ignore-all-space"
