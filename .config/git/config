@@ -17,9 +17,10 @@
 [init]
 	defaultBranch = main
 [core]
-        editor = vim
+	editor = vim
+	quotepath = false
 [commit]
-        verbose = true
+	verbose = true
 [ghq]
 	root = ~/src
 [alias]
