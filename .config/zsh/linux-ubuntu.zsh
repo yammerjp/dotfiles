@@ -3,6 +3,8 @@ alias pst="xclip -selection clipboard -o"
 alias ls='ls -Fh --color=auto'
 alias open='xdg-open'
 
+LC_CTYPE=ja_JP.UTF-8
+
 if [ -e "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
