@@ -21,6 +21,7 @@ ZSH_SCRIPT_FILENAMES=( \
   "git.zsh" \
   "gdb.zsh" \
   "detect-to-edit-dotfiles.zsh" \
+  "asdf.zsh" \
 )
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do
