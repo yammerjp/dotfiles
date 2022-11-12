@@ -19,6 +19,7 @@
 [core]
 	editor = vim
 	quotepath = false
+	pager = "LESSCHARSET=utf-8 less"
 [commit]
 	verbose = true
 [ghq]
