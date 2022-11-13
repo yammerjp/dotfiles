@@ -19,7 +19,7 @@ ZSH_SCRIPT_FILENAMES=( \
   "completion.zsh" \
   "alias.zsh" \
   "git.zsh" \
-  "gdb.zsh" \
+#  "gdb.zsh" \
   "detect-to-edit-dotfiles.zsh" \
   "asdf.zsh" \
 )
