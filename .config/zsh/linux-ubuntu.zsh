@@ -1,7 +1,4 @@
-alias cpy="xclip -selection clipboard"
-alias pst="xclip -selection clipboard -o"
 alias ls='ls -Fh --color=auto'
-alias open='xdg-open'
 
 LC_CTYPE=ja_JP.UTF-8
 
