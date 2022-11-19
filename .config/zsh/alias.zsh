@@ -9,6 +9,8 @@ alias bip='bundle install --path vendor/bundle'
 alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
 alias vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
 alias vim-origin="/usr/bin/vim"
+alias dc="docker compose"
+alias snip="vim ~/src/github.com/yammerjp/memo/snippets.md"
 
 # ssh
 function ssh-authorized_keys-refresh() {
@@ -135,3 +137,8 @@ function man() {
 }
 # [manの読み方（初心者向け） - Qiita](https://qiita.com/aosho235/items/0f2b73d08eb645c05208)
 # [manコマンドで表示されるドキュメントの色付けをカスタマイズ - Steel Dragon 14106](https://raimon49.github.io/2017/03/31/man-with-colored-pager.html)
+
+function cpnew() {
+  cp ~/.config/yammerjp/competitive-programming-template.cpp ./$1
+  vim $1
+}

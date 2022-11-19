@@ -5,8 +5,7 @@ font:
   bold:
     family: HackGen Console NFJ
     style: Bold
-      #size: 36.0
-  size: 18.0
+    size: 18.0
 window:
    dimensions:
      columns: 133

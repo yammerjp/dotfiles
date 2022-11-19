@@ -10,6 +10,7 @@ path=(
   $HOME/.local/bin(N-/)
   $HOME/.config/npm-packages/bin(N-/)
   $HOME/go/bin(N-/)
+  $HOME/.cargo/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /opt/homebrew/bin(N-/)

@@ -18,10 +18,15 @@
 	defaultBranch = main
 [core]
 	editor = vim
+	quotepath = false
+	pager = "LESSCHARSET=utf-8 less"
+[commit]
+	verbose = true
 [ghq]
 	root = ~/src
 [alias]
 	a = add
+	au = "add -u" # add tracked files
 	c = "commit -v"
 	d = diff
 	di = "diff --ignore-all-space"
