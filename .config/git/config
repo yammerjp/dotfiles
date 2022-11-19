@@ -60,3 +60,4 @@
 	diff-from-prev-head = "!git diff --ignore-all-space HEAD^"
 	dfr = diff-from-release
 	dfp = diff-from-prev-head
+	g = "!f(){ git grep "$@" ':/'; };f"
