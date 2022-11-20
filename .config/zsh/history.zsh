@@ -28,8 +28,16 @@ alias hisall="his-all"
 
 # shellのhistory一覧
 function select-history() {
-  BUFFER=$(history -n -r 1 | fzf --no-sort +m --query "$LBUFFER" --prompt="History > ")
+  BUFFER=$(history -n -r 1 | fzf --no-sort +m --height 50% --query "$LBUFFER" --prompt="History > ")
   CURSOR=$#BUFFER
 }
 zle -N select-history
-bindkey '^r' select-history
+bindkey '^t' select-history
+
+# shellのhistory一覧
+function select-history-perfect-matching() {
+  BUFFER=$(history -n -r 1 | fzf -e --no-sort +m --height 50% --query "$LBUFFER" --prompt="History > ")
+  CURSOR=$#BUFFER
+}
+zle -N select-history-perfect-matching
+bindkey '^r' select-history-perfect-matching
