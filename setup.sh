@@ -23,5 +23,6 @@ curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yad
   || YADM_PROGRAM="$YADM_PROGRAM" "$YADM_PROGRAM" clone "$DOTFILES_REPO" --bootstrap
 
 # setup packages
+ls -al ~/
 bash ~/.setup.sh
 
