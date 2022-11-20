@@ -45,7 +45,12 @@ zle -N ghq_code
 bindkey '^f' ghq_code
 
 function cr() {
-  repo_path_from_root="$(ghq list | fzf --query "$@")"
+  QUERY="$@"
+  if [ "$QUERY" != "" ]; then
+    repo_path_from_root="$(ghq list | fzf --query "$@")"
+  else
+    repo_path_from_root="$(ghq list | fzf )"
+  fi
   ret="$?"
   if [ "$ret" -ne 0 ]; then
     return "$ret"
