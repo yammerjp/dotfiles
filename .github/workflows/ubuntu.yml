@@ -2,9 +2,9 @@ name: Ubuntu Setup
 
 on:
   push:
-    branches: [ master ]
+    branches: [ run_setup_action ]
   pull_request:
-    branches: [ master ]
+    branches: [ run_setup_action ]
 
 jobs:
   ubuntu-setup:
