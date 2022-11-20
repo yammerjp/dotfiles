@@ -142,3 +142,7 @@ function cpnew() {
   cp ~/.config/yammerjp/competitive-programming-template.cpp ./$1
   vim $1
 }
+
+function hgrep() {
+    command hgrep --term-width "$COLUMNS" "$@" | less -R
+}
