@@ -12,6 +12,11 @@ alias vim-origin="/usr/bin/vim"
 alias dc="docker compose"
 alias snip="vim ~/src/github.com/yammerjp/memo/snippets.md"
 
+alias a1="awk '{ print \$1 }'"
+alias a2="awk '{ print \$2 }'"
+alias a3="awk '{ print \$3 }'"
+alias a4="awk '{ print \$4 }'"
+alias a5="awk '{ print \$5 }'"
 # ssh
 function ssh-authorized_keys-refresh() {
   mkdir -p ~/.ssh
