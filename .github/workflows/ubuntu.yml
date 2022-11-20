@@ -9,8 +9,6 @@ on:
 jobs:
   ubuntu-setup:
     runs-on: ubuntu-latest
-    container:
-      image: ubuntu:22.04
 
     steps:
     - uses: actions/checkout@v2

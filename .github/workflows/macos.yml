@@ -2,9 +2,9 @@ name: macOS Setup
 
 on:
   push:
-    branches: [ run_macos ]
+    branches: [ master ]
   pull_request:
-    branches: [ run_macos ]
+    branches: [ master ]
 
 jobs:
   macos-setup:
