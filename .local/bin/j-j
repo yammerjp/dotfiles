@@ -31,6 +31,12 @@ Examples of execution is shown below.
     $ echo '{"name":"bob","like":["sushi","orange"]}' | j-j '; stdout = input.like.join("&")'
     sushi&orange
 
+    $ echo 'hello, world' | j-j ';stdout = stdin.toUpperCase()'
+    Warning: failed to parse JSON from STDIN
+    HELLO, WORLD
+
+    $ echo 'hello, world' | J_J_SILENT=true j-j ';stdout = stdin.toUpperCase()'
+    HELLO, WORLD
 `;
 
 (async () => {
@@ -46,7 +52,8 @@ Examples of execution is shown below.
   try {
     input = JSON.parse(stdin);
   } catch {
-    console.error('failed to parse json from STDIN');
+    // Warn when STDIN cannot be parsed to JSON, unless a suppressing environment variable is specified.
+    process.env.J_J_SILENT || console.error('Warning: failed to parse JSON from STDIN');
   }
   const code = process.argv.slice(2).join(' ')
   // Evaluates the code specified in the arguments.
