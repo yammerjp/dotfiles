@@ -10,24 +10,6 @@ alias ls='ls -FGh' # "-F":ディレクトリに"/"を表示, "-G"でディレク
 alias prev='open /Applications/Preview.app'
 alias xcode='open /Applications/Xcode.app'
 
-function brew-dump() {
-  rm -rf /tmp/.Brewfile
-  brew bundle dump --file /tmp/.Brewfile
-  cat /tmp/.Brewfile > ~/.Brewfile
-}
-
-function brew-bundle() {
-  brew bundle --file ~/.Brewfile
-}
-
-brew() {
-  sub_command="$1"
-  command brew $@
-  if [ "$sub_command" = "install" ] || [ "$sub_command" = "uninstall" ]; then
-    brew-dump
-  fi
-}
-
 alias nv='nvim'
 alias purevim='/usr/bin/vim'
 alias vim='nvim'
