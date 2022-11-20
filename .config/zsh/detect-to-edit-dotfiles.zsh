@@ -1,5 +1,6 @@
 function findDotfilesDiff() {
-  if ! yadm diff --exit-code --quiet "origin/$(yadm branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')" ; then
+  comparing_branch="origin/$(yadm branch  | grep -e main -e master | sed 's/*//g' | awk '{ print $1}')"
+  if ! yadm diff --exit-code --quiet "$comparing_branch" ; then
     cat 1>&2 << EOF
  ____  _     _____    _    ____  _____    ____ ___  __  __ __  __ ___ _____ 
 |  _ \| |   | ____|  / \  / ___|| ____|  / ___/ _ \|  \/  |  \/  |_ _|_   _|
@@ -9,7 +10,7 @@ function findDotfilesDiff() {
 
 Find diff on dotfiles. Please commit or push diff!
 
-$(yadm diff --name-only)
+$(yadm diff --name-only "$comparing_branch")
 EOF
   fi
 }
