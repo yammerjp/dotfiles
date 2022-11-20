@@ -1,11 +1,5 @@
 #!/usr/bin/env node
 
-/*
- * TODO: implements command line options
- *  --help -h
- *  --silent -s
- */
-
 const helpMessage = `Usage:    j-j <a JavaScript code piece to process JSON following "output = input ">
 
 j-j is a JSON processor that can be written in a JavaScript code piece.
@@ -36,45 +30,26 @@ Examples of execution is shown below.
 
     $ echo '{"name":"bob","like":["sushi","orange"]}' | j-j '; stdout = input.like.join("&")'
     sushi&orange
+
 `;
 
-function processJSON(input, stdin, code) {
-  let output, stdout;
-  eval("output = input" + code);
-  return { stdout, output }
-}
-
-async function getStringFromStdin() {
+(async () => {
+  if (process.stdin.isTTY) {
+    console.error(helpMessage);
+    return;
+  }
   const buffers = [];
   for await (const chunk of process.stdin) buffers.push(chunk);
-  return Buffer.concat(buffers).toString();
-}
+  const stdin = Buffer.concat(buffers).toString();
 
-async function getInput() {
-  const stdin = await getStringFromStdin();
-  let input;
+  let input, output, stdout;
   try {
     input = JSON.parse(stdin);
   } catch {
     console.error('failed to parse json from STDIN');
-    input = undefined;
   }
-  return { stdin, input }
-}
-
-async function main() {
-  if (process.stdin.isTTY) {
-    console.error(helpMessage);
-    process.exit();
-  }
-
-  const { stdin, input } = await getInput();
-
-  const code = process.argv.slice(2).join(' ');
-
-  const { stdout, output } = processJSON(input, stdin, code);
-
+  const code = process.argv.slice(2).join(' ')
+  // Evaluates the code specified in the arguments.
+  eval("output = input" + code);
   console.log(stdout ?? JSON.stringify(output, null, ' '));
-}
-
-main();
+})();
