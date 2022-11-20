@@ -28,30 +28,6 @@ brew() {
   fi
 }
 
-pyenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(pyenv init -)
-  $0 "$@"
-}
-
-nodenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(nodenv init -)
-  $0 "$@"
-}
-
-rbenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(rbenv init -)
-  $0 "$@"
-}
-
 alias nv='nvim'
 alias purevim='/usr/bin/vim'
 alias vim='nvim'
