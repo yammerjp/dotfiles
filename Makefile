@@ -8,10 +8,17 @@ help: ## print this message ## make help
 	@echo "Command list:"
 	@echo ""
 	@printf "\033[36m%-30s\033[0m %-50s %s\n" "[Sub command]" "[Description]" "[Example]"
-	@grep -E '^[/a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | perl -pe 's%^([/a-zA-Z_-]+):.*?(##)%$$1 $$2%' | awk -F " *?## *?" '{printf "\033[36m%-30s\033[0m %-50s %s\n", $$1, $$2, $$3}'
+	@grep -E '^[/a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) \
+		| perl -pe 's%^([/a-zA-Z_-]+):.*?(##)%$$1 $$2%' \
+		| awk -F " *?## *?" '{printf "\033[36m%-30s\033[0m %-50s %s\n", $$1, $$2, $$3}'
 lint: ## lint shell scripts ## make lint
 	@find . -type f | grep -E "\.sh$$|\.bin/dotfiles$$" | xargs shellcheck
 docker/build: ## build docker image ## make docker/build
 	docker build . -t yammerjp/dotfiles:latest
 docker/run: ## run docker image ## make docker/run
-	docker run -it -v $$(pwd):/home/yammer/dotfiles -e LOCAL_UID=$$(id -u $$USER) -e LOCAL_GID=$$(id -g $$USER) yammerjp/dotfiles bash
+	docker run -it \
+		-v $$(pwd):/home/yammer/dotfiles \
+		-e LOCAL_UID=$$(id -u $$USER) \
+		-e LOCAL_GID=$$(id -g $$USER) \
+		-e DOTFILES_REPO="/home/yammer/dotfiles/.git" \
+		yammerjp/dotfiles bash

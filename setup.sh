@@ -8,15 +8,7 @@ fi
 
 # find dotfiles repository
 if [ "$DOTFILES_REPO" == "" ]; then
-  HOME_DOTFILES="$HOME/dotfiles/.git"
-  if git -C "$HOME_DOTFILES" ls-files > /dev/null 2>&1 ; then
-    # CI and Docker
-    DOTFILES_REPO="$HOME_DOTFILES"
-  else
-    # other
-    DOTFILES_REPO="https://github.com/yammerjp/dotfiles"
-  fi
-  echo "dotfiles-repo: $DOTFILES_REPO"
+  DOTFILES_REPO="https://github.com/yammerjp/dotfiles"
 fi
 
 # setup yadm
