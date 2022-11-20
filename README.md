@@ -11,7 +11,8 @@
 ### Ubuntu Setup
 
 ```sh
-DOTFILES_EXECUTE_LINK=true DOTFILES_EXECUTE_SETUP=true bash -c "$(wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/.bin/download.sh )"
+sudo apt update && sudo apt install git -y
+bash -c "$(wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/setup.sh)"
 ```
 
 ### macOS Setup
@@ -25,7 +26,7 @@ xcode-select --install
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-DOTFILES_EXECUTE_LINK=true DOTFILES_EXECUTE_SETUP=true bash -c "$(curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/.bin/download.sh )"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/yammerjp/dotfiles/master/setup.sh)"
 
 # Enable macOS settings of User Defaults
 sudo reboot
@@ -33,7 +34,6 @@ sudo reboot
 # Enable karabiner settings
 open /Applications/Karabiner-Elements.app/
 #   Complex modifications > Add rule > yammerjp's setting > Enable All
-
 ```
 
 ## LICENSE
