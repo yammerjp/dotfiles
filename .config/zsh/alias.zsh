@@ -11,7 +11,10 @@ alias vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
 alias vim-origin="/usr/bin/vim"
 alias dc="docker compose"
 alias snip="vim ~/src/github.com/yammerjp/memo/snippets.md"
-
+alias y='yadm'
+alias .z="vim ~/.config/zsh/*"
+alias .g="vim ~/.config/git/*"
+alias .v="vim $XDG_CONFIG_HOME/nvim/init.vim"
 alias a1="awk '{ print \$1 }'"
 alias a2="awk '{ print \$2 }'"
 alias a3="awk '{ print \$3 }'"
