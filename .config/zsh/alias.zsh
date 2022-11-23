@@ -21,6 +21,7 @@ alias a2="awk '{ print \$2 }'"
 alias a3="awk '{ print \$3 }'"
 alias a4="awk '{ print \$4 }'"
 alias a5="awk '{ print \$5 }'"
+alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
 # ssh
 function ssh-authorized_keys-refresh() {
   mkdir -p ~/.ssh
@@ -154,4 +155,14 @@ function cpnew() {
 
 function hgrep() {
     command hgrep --term-width "$COLUMNS" "$@" | less -R
+}
+
+function svim() {
+    tmux has-session &> /dev/null
+    if [ $? = 0 ] && [ $COLUMNS -ge 120 ];
+    then
+        tmux split-window -h -p 70 "vim $1"
+    else
+        vim $1
+    fi
 }
