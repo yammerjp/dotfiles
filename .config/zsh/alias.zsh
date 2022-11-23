@@ -12,6 +12,7 @@ alias vim-origin="/usr/bin/vim"
 alias dc="docker compose"
 alias snip="vim ~/src/github.com/yammerjp/memo/snippets.md"
 alias y='yadm'
+alias yadm-private="yadm --yadm-repo $HOME/.local/share/yadm/repo-private.git"
 alias .z="vim ~/.config/zsh/*"
 alias .g="vim ~/.config/git/*"
 alias .v="vim $XDG_CONFIG_HOME/nvim/init.vim"
