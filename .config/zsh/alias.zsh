@@ -155,3 +155,13 @@ function cpnew() {
 function hgrep() {
     command hgrep --term-width "$COLUMNS" "$@" | less -R
 }
+
+function svim() {
+    tmux has-session &> /dev/null
+    if [ $? = 0 ] && [ $COLUMNS -ge 120 ];
+    then
+        tmux split-window -h -p 70 "vim $1"
+    else
+        vim $1
+    fi
+}
