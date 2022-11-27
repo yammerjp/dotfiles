@@ -49,3 +49,6 @@ precmd() {
   esac
   return $_r
 }
+
+# '#' 以降をコメントとして扱う
+setopt interactive_comments
