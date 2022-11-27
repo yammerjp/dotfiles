@@ -30,6 +30,8 @@
 	a = add
 	au = "add -u" # add tracked files
 	c = "commit -v"
+	cm = "!f(){ git commit -m \"$*\" ; };f"
+	fixit = "commit --amend --no-edit"
 	d = diff
 	di = "diff --ignore-all-space"
 	ds = "diff --ignore-all-space --staged"
