@@ -1,4 +1,5 @@
 alias:
+  g: git
   du: du -h
   vi: vim -u NONE
   tree: tree -N
@@ -22,4 +23,3 @@ alias:
   a3: awk '{ print $3 }'
   a4: awk '{ print $4 }'
   a5: awk '{ print $5 }'
-  ztime: "time (ZSH_TIME: true zsh -i -c exit)"

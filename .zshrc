@@ -21,6 +21,8 @@ LOADED_ZSHRC="false"
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# zsh initial time measurement
 if (which zprof > /dev/null) ;then
   zprof | less
 fi
+alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
