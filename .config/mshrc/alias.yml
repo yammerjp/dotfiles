@@ -1,0 +1,25 @@
+alias:
+  du: du -h
+  vi: vim -u NONE
+  tree: tree -N
+  search: find . -type f | grep -v "/.git/" | xargs grep
+  covid19: curl https://corona-stats.online/
+  ssh: ssh -A
+  ipe: curl ipinfo.io/ip
+  bip: bundle install --path vendor/bundle
+  eucjp2utf8: iconv -f EUC-JP -t UTF-8
+  vim-config-edit: vim $XDG_CONFIG_HOME/nvim/init.vim
+  vim-origin: /usr/bin/vim
+  dc: docker compose
+  snip: vim ~/src/github.com/yammerjp/memo/snippets.md
+  y: yadm
+  yadm-private: yadm --yadm-repo $HOME/.local/share/yadm/repo-private.git
+  .z: vim ~/.config/zsh/*
+  .g: vim ~/.config/git/*
+  .v: vim $XDG_CONFIG_HOME/nvim/init.vim
+  a1: awk '{ print $1 }'
+  a2: awk '{ print $2 }'
+  a3: awk '{ print $3 }'
+  a4: awk '{ print $4 }'
+  a5: awk '{ print $5 }'
+  ztime: "time (ZSH_TIME: true zsh -i -c exit)"
