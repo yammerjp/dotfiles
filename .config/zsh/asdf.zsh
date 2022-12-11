@@ -7,5 +7,5 @@ if [ -f "$HOME/.asdf/asdf.sh" ]; then
     $fpath
   )
   # initialise completions with ZSH's compinit
-  autoload -Uz compinit && compinit
+  # autoload -Uz compinit && compinit
 fi
