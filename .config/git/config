@@ -36,6 +36,7 @@
 	di = "diff --ignore-all-space"
 	ds = "diff --ignore-all-space --staged"
 	ps = "!git push origin $(git rev-parse --abbrev-ref HEAD)"
+	pf = "!git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease --force-if-includes"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
 	diflog = log -p
@@ -47,7 +48,7 @@
 	rao = remote-add-origin
 	remote-show-origin = remote show origin
 	rso = remote-show-origin
-  sw = !git branch --all --format=\"%(refname:short)\" | fzf --preview='git log -p --color {}' | xargs git checkout
+	sw = !git branch --all --format=\"%(refname:short)\" | fzf | xargs git checkout
 	branch-delete-merged = "!f () { git checkout $1; git branch --merged|egrep -v '\\*|develop|main|master'|xargs git branch -d; };f"
 	worktree-new = "!bash -c 'git worktree add ~/git-worktree/$(dirname $(pwd))-$1' $1"
 	latest-merged-commit = "!git log --oneline | grep -E '^[0-9a-z]+ Merge pull request #' | head -1 | awk '{print $1}'"
