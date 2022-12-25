@@ -5,6 +5,7 @@ set list listchars=tab:>-
 set shiftwidth=2
 " タブ文字の表示幅
 set tabstop=2
+filetype plugin indent on
 " タブキー押下時に挿入される文字幅を指定
 set softtabstop=2
 " 挿入モードでタブキー押下時に半角スペースを挿入

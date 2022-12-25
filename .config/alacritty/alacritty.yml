@@ -2,7 +2,6 @@ font:
   normal:
     family: HackGen Console NFJ
     style: Regular
-      # size: 36.0
   size: 12.0
   bold:
     family: HackGen Console NFJ

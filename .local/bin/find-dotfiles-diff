@@ -4,10 +4,15 @@ if [ "$YADM_PROGRAM" == "" ]; then
   YADM_PROGRAM="$(command -v yadm)"
 fi
 
-COMPARING_BRANCH=origin/master
+if [ "$COMPARING_BRANCH" == "" ]; then
+  COMPARING_BRANCH="origin/master"
+fi
 
 if ! $YADM_PROGRAM diff --exit-code --quiet $COMPARING_BRANCH ; then
   cat 1>&2 << EOF
+
+===
+on $($YADM_PROGRAM rev-parse --git-dir)
  ____  _     _____    _    ____  _____    ____ ___  __  __ __  __ ___ _____ 
 |  _ \| |   | ____|  / \  / ___|| ____|  / ___/ _ \|  \/  |  \/  |_ _|_   _|
 | |_) | |   |  _|   / _ \ \___ \|  _|   | |  | | | | |\/| | |\/| || |  | |  
@@ -17,6 +22,7 @@ if ! $YADM_PROGRAM diff --exit-code --quiet $COMPARING_BRANCH ; then
 Find diff on dotfiles. Please commit or push diff!
 
 $($YADM_PROGRAM diff --name-only "$COMPARING_BRANCH")
+===
 EOF
 fi
 
