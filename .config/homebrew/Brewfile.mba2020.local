@@ -1,4 +1,5 @@
 tap "basd4g/tap"
+tap "charmbracelet/tap"
 tap "heroku/brew"
 tap "homebrew/bundle"
 tap "homebrew/cask"
@@ -23,7 +24,6 @@ brew "libidn2"
 brew "openldap"
 brew "curl"
 brew "freetds"
-brew "krb5"
 brew "php"
 brew "composer"
 brew "coreutils"
@@ -36,10 +36,11 @@ brew "fd"
 brew "harfbuzz"
 brew "libass"
 brew "srt"
-brew "ffmpeg", link: false
+brew "ffmpeg"
 brew "fish"
 brew "fzf"
 brew "gawk"
+brew "ghostscript"
 brew "ghq"
 brew "git"
 brew "glow"
@@ -50,6 +51,8 @@ brew "gobject-introspection"
 brew "goreleaser"
 brew "httrack"
 brew "hugo"
+brew "libraw"
+brew "imagemagick"
 brew "imagemagick@6"
 brew "jhead"
 brew "jq"
@@ -77,11 +80,14 @@ brew "ripgrep"
 brew "rust"
 brew "sd"
 brew "shellcheck"
+brew "t-rec"
 brew "tealdeer"
 brew "tig"
 brew "tmux"
 brew "tree"
+brew "ttyd"
 brew "twty"
+brew "vhs"
 brew "wget"
 brew "wireshark"
 brew "xq"
@@ -92,7 +98,7 @@ brew "zoxide"
 brew "basd4g/tap/pdef"
 brew "heroku/brew/heroku"
 brew "olets/tap/zsh-abbr"
-brew "qmk/qmk/qmk", link: false
+brew "qmk/qmk/qmk"
 brew "rhysd/hgrep/hgrep"
 brew "yammerjp/tap/db-time-traveler"
 cask "chromium"
@@ -117,11 +123,7 @@ mas "ForkLift", id: 412448059
 mas "Free Ruler", id: 1483172210
 mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
-mas "LINE", id: 539883307
 mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
 mas "Slack", id: 803453959
 mas "TweetDeck", id: 485812721
-mas "Xcode", id: 497799835
