@@ -2,13 +2,15 @@ font:
   normal:
     family: HackGen Console NFJ
     style: Regular
-  size: 18.0
+      # size: 36.0
+  size: 12.0
   bold:
     family: HackGen Console NFJ
     style: Bold
 window:
    dimensions:
-     columns: 133
-     lines: 40
+     columns: 60
+     lines: 10
 import:
   - "~/.config/alacritty/alacritty.local.yml"
+
