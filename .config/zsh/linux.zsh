@@ -2,8 +2,6 @@
 export EDITOR="/bin/vi"
 export SUDO_EDITOR="/bin/vi"
 
-alias vim="nvim"
-
 if [ -x `whence -p xclip` ]; then
   alias cpy="xclip -selection clipboard"
   alias pst="xclip -selection clipboard -o"
@@ -22,5 +20,7 @@ if [ -e "/home/linuxbrew/.linuxbrew/bin/brew" ]; then
 fi
 
 eval `dircolors --sh ~/.gruvbox.dircolors`
-if [ -x `whence -p ls` ]; then alias ls='ls --color=auto'; fi
+if [ -x `whence -p ls` ]; then
+  alias ls='ls --color=auto'
+fi
 zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"

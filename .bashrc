@@ -1,11 +1,6 @@
 #!/bin/bash
 
-set -o vi
-
-_replace_by_history() {
-  local l
-  l=$(HISTTIMEFORMAT='' history | awk '{ print $2}'  | fzf --query "$READLINE_LINE")
-  READLINE_LINE="$l"
-  READLINE_POINT=${#l}
-}
-bind -x '"\C-r": _replace_by_history'
+# ~/.git-prompt.sh を読み込んで、__git_ps1コマンドを利用できるようにする
+source ~/.git-prompt.sh
+# プロンプト表示前に、ブランチ名をPS1に代入する
+PROMPT_COMMAND='__git_ps1 "[\u@\h \t \w" "]\\\$ "'

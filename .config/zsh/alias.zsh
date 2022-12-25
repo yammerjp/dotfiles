@@ -21,6 +21,9 @@ alias a2="awk '{ print \$2 }'"
 alias a3="awk '{ print \$3 }'"
 alias a4="awk '{ print \$4 }'"
 alias a5="awk '{ print \$5 }'"
+alias purevim='/usr/bin/vim'
+alias nv='nvim'
+alias vim='nvim'
 # ssh
 function ssh-authorized_keys-refresh() {
   mkdir -p ~/.ssh
@@ -46,28 +49,6 @@ else
   alias diff='diff -u'
 fi
 export LESS='-R'
-
-# compress
-function compress() {
-  if ! [ -n "$1" ]; then
-    echo "Usage: $0 <compressing-dir>" 1>&2
-    return
-  fi
-  echo "tar -zcvf $1.tar.gz $1"
-  tar zcvf "$1.tar.gz" "$1"
-}
-function decompress() {
-  if ! [ -n "$1" ]; then
-    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
-    return
-  fi
-  if ! [[ "$1" =~ "\.tar\/.gz$" ]]; then
-    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
-    return
-  fi
-  echo "tar zxvf $1"
-  tar -zxvf "$1"
-}
 
 # color
 function zshcolors () {
@@ -114,22 +95,6 @@ function npm-global-bundle() {
   do
     npm install --global $pkg
   done < "$NPM_PACKAGE_LIST"
-}
-
-function nodenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(nodenv init -)
-  $0 "$@"
-}
-
-function rbenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(rbenv init -)
-  $0 "$@"
 }
 
 # man
