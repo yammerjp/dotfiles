@@ -8,8 +8,8 @@ font:
     style: Bold
 window:
    dimensions:
-     columns: 60
-     lines: 10
+     columns: 120
+     lines: 120
 import:
   - "~/.config/alacritty/alacritty.local.yml"
 
