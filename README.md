@@ -4,7 +4,21 @@
 [![Ubuntu Setup](https://github.com/yammerjp/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
 -->
 
-# My dotfiles
+# yammerjp's dotfiles (~/.*)
+
+![Desktop Screnn shot](docs/screen-shot-20221230.png)
+
+My setting files for Ubuntu / macOS
+
+- Neovim
+- Yadm
+- Zsh
+- tmux
+- Alacritty
+- asdf
+- fzf
+
+...etc
 
 ## Setup
 
