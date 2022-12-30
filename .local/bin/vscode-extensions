@@ -1,0 +1,36 @@
+#!/bin/bash
+
+VSCODE_EXTENSION_LIST="$XDG_CONFIG_HOME/vscode/extension-list"
+function vscode-extensions-export () {
+  code --list-extensions > "$VSCODE_EXTENSION_LIST"
+}
+
+function vscode-extensions-import () {
+  if ! [ -e "$VSCODE_EXTENSION_LIST" ]; then
+    echo "$VSCODE_EXTENSION_LIST is not found..." 1>&2
+    return
+  fi
+  while read -r extension; do
+    code --install-extension "$extension"
+  done < "$VSCODE_EXTENSION_LIST"
+}
+
+case "$1" in
+  export)
+    vscode-extensions-export
+    ;;
+  import)
+    vscode-extensions-import
+    ;;
+  list)
+    cat "$VSCODE_EXTENSION_LIST"
+    ;;
+  *)
+    cat <<EOF 1>&2
+Usage:
+        vscode-extensions export ... dump installed extensions to $VSCODE_EXTENSION_LIST
+        vscode-extensions import ... install extensions from $VSCODE_EXTENSION_LIST
+        vscode-extensions list   ... cat $VSCODE_EXTENSION_LIST
+EOF
+    ;;
+esac

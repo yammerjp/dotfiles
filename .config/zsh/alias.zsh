@@ -24,23 +24,6 @@ alias a5="awk '{ print \$5 }'"
 alias purevim='/usr/bin/vim'
 alias nv='nvim'
 alias vim='nvim'
-# ssh
-function ssh-authorized_keys-refresh() {
-  mkdir -p ~/.ssh
-  chmod 700 ~/.ssh
-  if [ -e ~/.ssh/authorized_keys.org ]; then
-    echo "Please evacuate ~/.ssh/authorized_keys.org"
-    return
-  fi
-  if [ -e ~/.ssh/authorized_keys ]; then
-    mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
-  fi
-  curl https://github.com/yammerjp.keys > ~/.ssh/authorized_keys
-  chmod 600 ~/.ssh/authorized_keys
-}
-function ssh-keygen-me() {
-  ssh-keygen -t rsa -b 4096 -C "me@yammer.jp"
-}
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
@@ -68,34 +51,6 @@ function zshcolors () {
 }
 
 # mmv
-
-# vscode
-VSCODE_EXTENSION_LIST="$XDG_CONFIG_HOME/vscode/extension-list"
-function vscode-extensions-export () {
-  code --list-extensions > "$VSCODE_EXTENSION_LIST"
-}
-function vscode-extensions-import () {
-  if ! [ -e "$VSCODE_EXTENSION_LIST" ]; then
-    echo "$VSCODE_EXTENSION_LIST is not found..." 1>&2
-    return
-  fi
-  cat "$VSCODE_EXTENSION_LIST" | while read extension; do
-    code --install-extension $extension
-  done
-}
-
-# npm
-NPM_PACKAGE_LIST="${XDG_CONFIG_HOME}/npm/package-list"
-function npm-global-dump() {
-  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > "$NPM_PACKAGE_LIST"
-}
-
-function npm-global-bundle() {
-  while read pkg
-  do
-    npm install --global $pkg
-  done < "$NPM_PACKAGE_LIST"
-}
 
 # man
 function man() {
