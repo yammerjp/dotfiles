@@ -18,6 +18,7 @@
     .z: vim ~/.config/zsh/*
     .g: vim ~/.config/git/*
     .v: vim $XDG_CONFIG_HOME/nvim/init.vim
+    .t: vim ~/.tmux.conf
     a1: awk '{ print $1 }'
     a2: awk '{ print $2 }'
     a3: awk '{ print $3 }'
