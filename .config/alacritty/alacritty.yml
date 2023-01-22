@@ -1,15 +1,24 @@
 font:
+  size: 16.0
   normal:
-    family: HackGen Console NFJ
+    family: HackGen35 Console NFJ
     style: Regular
-  size: 12.0
   bold:
-    family: HackGen Console NFJ
+    family: HackGen35 Console NFJ
     style: Bold
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux a -t 0 || tmux -u"
 window:
    dimensions:
-     columns: 120
-     lines: 120
+     columns: 200
+     lines: 60
+cursor:
+  style:
+    shape: Block
 import:
   - "~/.config/alacritty/alacritty.local.yml"
 
