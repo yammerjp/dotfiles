@@ -39,6 +39,7 @@
 	pf = "!git push origin $(git rev-parse --abbrev-ref HEAD) --force-with-lease --force-if-includes"
 	pl = "!git pull origin $(git rev-parse --abbrev-ref HEAD)"
 	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+  lc = !git l --color=always | fzf --reverse --ansi | sed 's/[^a-z0-9 ]//g' | awk '{print $1}' | pbcopy
 	diflog = log -p
 	s = status --short
 	tree = ls-tree -r master --name-only
