@@ -6,3 +6,7 @@ fi
 if [ -e "$HOME/.cargo/env" ]; then
   source "$HOME/.cargo/env"
 fi
+
+if [ -e "$HOME/.config/zsh/variables.zsh" ]; then
+  source $HOME/.config/zsh/variables.zsh
+fi
