@@ -16,13 +16,13 @@ ZSH_SCRIPT_FILENAMES=( \
   "${(L)OS}.zsh" \
   "prompt.zsh" \
   "history.zsh" \
-  "completion.zsh" \
   "alias.zsh" \
   "git.zsh" \
   "homebrew.zsh" \
 #  "gdb.zsh" \
   "detect-to-edit-dotfiles.zsh" \
   "asdf.zsh" \
+  "completion.zsh" \
 )
 
 for ELEMENT in $ZSH_SCRIPT_FILENAMES; do

@@ -21,10 +21,13 @@ MS-CEINTL.vscode-language-pack-ja
 ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
+ms-vscode.remote-explorer
 ms-vsliveshare.vsliveshare
+neilbrayfield.php-docblocker
 octref.vetur
 rebornix.ruby
 ritwickdey.LiveServer
+rogalmic.bash-debug
 rvest.vs-code-prettier-eslint
 ryannaddy.laravel-artisan
 sadesyllas.vscode-workspace-switcher

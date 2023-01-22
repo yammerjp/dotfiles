@@ -11,6 +11,7 @@ path=(
   $HOME/.config/npm-packages/bin(N-/)
   $HOME/go/bin(N-/)
   $HOME/.cargo/bin(N-/)
+  $HOME/.composer/vendor/bin(N-/)
   /usr/local/bin(N-/)
   /usr/local/sbin(N-/)
   /opt/homebrew/bin(N-/)

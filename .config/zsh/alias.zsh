@@ -16,29 +16,15 @@ alias yadm-private="YADM_REPO=$HOME/.local/share/yadm/repo-private.git yadm --ya
 alias .z="vim ~/.config/zsh/*"
 alias .g="vim ~/.config/git/*"
 alias .v="vim $XDG_CONFIG_HOME/nvim/init.vim"
+alias .t="vim ~/.tmux.conf"
 alias a1="awk '{ print \$1 }'"
 alias a2="awk '{ print \$2 }'"
 alias a3="awk '{ print \$3 }'"
 alias a4="awk '{ print \$4 }'"
 alias a5="awk '{ print \$5 }'"
-alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
-# ssh
-function ssh-authorized_keys-refresh() {
-  mkdir -p ~/.ssh
-  chmod 700 ~/.ssh
-  if [ -e ~/.ssh/authorized_keys.org ]; then
-    echo "Please evacuate ~/.ssh/authorized_keys.org"
-    return
-  fi
-  if [ -e ~/.ssh/authorized_keys ]; then
-    mv ~/.ssh/authorized_keys ~/.ssh/authorized_keys.org
-  fi
-  curl https://github.com/yammerjp.keys > ~/.ssh/authorized_keys
-  chmod 600 ~/.ssh/authorized_keys
-}
-function ssh-keygen-me() {
-  ssh-keygen -t rsa -b 4096 -C "me@yammer.jp"
-}
+alias purevim='/usr/bin/vim'
+alias nv='nvim'
+alias vim='nvim'
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
@@ -47,28 +33,6 @@ else
   alias diff='diff -u'
 fi
 export LESS='-R'
-
-# compress
-function compress() {
-  if ! [ -n "$1" ]; then
-    echo "Usage: $0 <compressing-dir>" 1>&2
-    return
-  fi
-  echo "tar -zcvf $1.tar.gz $1"
-  tar zcvf "$1.tar.gz" "$1"
-}
-function decompress() {
-  if ! [ -n "$1" ]; then
-    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
-    return
-  fi
-  if ! [[ "$1" =~ "\.tar\/.gz$" ]]; then
-    echo "Usage: $0 <decompressing-file.tar.gz>" 1>&2
-    return
-  fi
-  echo "tar zxvf $1"
-  tar -zxvf "$1"
-}
 
 # color
 function zshcolors () {
@@ -88,50 +52,6 @@ function zshcolors () {
 }
 
 # mmv
-
-# vscode
-VSCODE_EXTENSION_LIST="$XDG_CONFIG_HOME/vscode/extension-list"
-function vscode-extensions-export () {
-  code --list-extensions > "$VSCODE_EXTENSION_LIST"
-}
-function vscode-extensions-import () {
-  if ! [ -e "$VSCODE_EXTENSION_LIST" ]; then
-    echo "$VSCODE_EXTENSION_LIST is not found..." 1>&2
-    return
-  fi
-  cat "$VSCODE_EXTENSION_LIST" | while read extension; do
-    code --install-extension $extension
-  done
-}
-
-# npm
-NPM_PACKAGE_LIST="${XDG_CONFIG_HOME}/npm/package-list"
-function npm-global-dump() {
-  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > "$NPM_PACKAGE_LIST"
-}
-
-function npm-global-bundle() {
-  while read pkg
-  do
-    npm install --global $pkg
-  done < "$NPM_PACKAGE_LIST"
-}
-
-function nodenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(nodenv init -)
-  $0 "$@"
-}
-
-function rbenv() {
-  # コマンド実行時に遅延読み込み
-  # https://qiita.com/Suzuki09/items/6c27a8a875cf94d981a4
-  unfunction "$0"
-  source <(rbenv init -)
-  $0 "$@"
-}
 
 # man
 function man() {

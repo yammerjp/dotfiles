@@ -12,15 +12,14 @@ function main () {
   done
 }
 
-if [ "$LOADED_ZSHRC" != "true" ] || [ "$FORCE_LOAD_ZSHRC" = "true" ]; then
-  main
-fi
-
-LOADED_ZSHRC="false"
+main
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
 
+# zsh initial time measurement
 if (which zprof > /dev/null) ;then
-  zprof | less
+  zprof | cat
 fi
+
+alias ztime="time (ZSH_TIME=true zsh -i -c exit)"

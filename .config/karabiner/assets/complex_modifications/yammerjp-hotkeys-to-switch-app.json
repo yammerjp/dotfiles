@@ -1,0 +1,132 @@
+{
+  "title": "hotkeys to switch app",
+  "rules":
+  [
+    {
+      "description": "ctrl-1 to Alacritty",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "1",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Alacritty"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ctrl-2 to VSCode",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "2",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Visual Studio Code'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ctrl-3 to Slack",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Slack"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ctrl-3 to Discord",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "3",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Discord"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ctrl-4 to Google Chrome",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a 'Google Chrome'"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "description": "ctrl-4 to Vivaldi",
+      "manipulators": [
+        {
+          "type": "basic",
+          "from": {
+            "key_code": "4",
+            "modifiers": {
+              "mandatory": [
+                "control"
+              ]
+            }
+          },
+          "to": [
+            {
+              "shell_command": "open -a Vivaldi"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
