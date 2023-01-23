@@ -19,8 +19,10 @@ set smartindent
 
 "========== encoding ==========
 set encoding=utf8
+"set encoding=euc-jp
 scriptencoding utf8
-set fileencoding=utf-8
+set fileencoding=utf8
+"set fileencoding=euc-jp
 set termencoding=utf8
 set fileencodings=utf-8,ucs-boms,euc-jp,ep932
 set fileformats=unix,dos,mac
