@@ -86,3 +86,8 @@ function svim() {
         vim $1
     fi
 }
+
+function mknow() {
+    mkdir -p "$HOME/tmp/$(date '+%Y-%m-%dT%H:%M:%S%z')"
+    cd $_
+}
