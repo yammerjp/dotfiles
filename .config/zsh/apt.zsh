@@ -13,12 +13,13 @@ function apt-bundle() {
   cat "$APTFILE" | xargs sudo apt-get install -y
 }
 
-apt() {
-  command apt $@
+
+sudo-apt() {
+  command sudo apt $@
   apt-dump
 }
 
-apt-get() {
-  command apt-get $@
+sudo-apt-get() {
+  command sudo apt-get $@
   apt-dump
 }
