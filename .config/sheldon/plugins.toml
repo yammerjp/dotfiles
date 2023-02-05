@@ -1,0 +1,29 @@
+# `sheldon` configuration file
+# ----------------------------
+#
+# You can modify this file directly or you can use one of the following
+# `sheldon` commands which are provided to assist in editing the config file:
+#
+# - `sheldon add` to add a new plugin to the config file
+# - `sheldon edit` to open up the config file in the default editor
+# - `sheldon remove` to remove a plugin from the config file
+#
+# See the documentation for more https://github.com/rossmacarthur/sheldon#readme
+
+shell = "zsh"
+[templates]
+fpath-file = 'fpath=( {% for file in files %} "{{ file }}"(N-/) {% endfor %} $fpath )'
+
+[plugins]
+
+# For example:
+#
+# [plugins.base16]
+# github = "chriskempson/base16-shell"
+[plugins.yadm-completions]
+#remote = 'https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/zsh/_yadm'
+github = "TheLocehiliosan/yadm"
+#use = ["completion/zsh"]
+#apply = ["fpath-file"]
+dir = "completion/zsh"
+apply = [ "fpath" ]
