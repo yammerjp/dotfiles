@@ -18,7 +18,9 @@ if ! command -v sheldon > /dev/null ; then
   curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
     | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
 fi
+
 eval "$(sheldon source)"
+
 autoload -U compinit
 compinit
 

@@ -12,7 +12,10 @@
 
 shell = "zsh"
 [templates]
-fpath-file = 'fpath=( {% for file in files %} "{{ file }}"(N-/) {% endfor %} $fpath )'
+fpath-file = 'fpath=( {% for file in files %} "{{ file }}" {% endfor %} $fpath )'
+add-function ='{{name}}() { {% for file in files %} {{ file }} {% endfor%} }'
+fpath-completion-zsh = "fpath=({{ dir }}/completion/zsh $fpath )"
+fpath-completions = "fpath=({{ dir }}/completions $fpath )"
 
 [plugins]
 
@@ -20,10 +23,24 @@ fpath-file = 'fpath=( {% for file in files %} "{{ file }}"(N-/) {% endfor %} $fp
 #
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
-[plugins.yadm-completions]
+[plugins.yadm]
 #remote = 'https://raw.githubusercontent.com/TheLocehiliosan/yadm/master/completion/zsh/_yadm'
-github = "TheLocehiliosan/yadm"
 #use = ["completion/zsh"]
 #apply = ["fpath-file"]
-dir = "completion/zsh"
-apply = [ "fpath" ]
+github = "TheLocehiliosan/yadm"
+apply = [ "fpath-completion-zsh", "path" ]
+
+[plugins.asdf]
+github = "asdf-vm/asdf"
+use = ["asdf.sh"]
+apply = [ "fpath-completions", "source" ]
+
+[plugins.sheldon-completion]
+inline = """
+ZSH_COMPLETION_DIR="$HOME/.local/share/zsh/completions"
+if ! [ -e "$ZSH_COMPLETION_DIR/_sheldon" ]; then
+  mkdir -p "$ZSH_COMPLETION_DIR"
+  sheldon completions --shell zsh > "$ZSH_COMPLETION_DIR/_sheldon"
+fi
+fpath=($ZSH_COMPLETION_DIR $fpath)
+"""
