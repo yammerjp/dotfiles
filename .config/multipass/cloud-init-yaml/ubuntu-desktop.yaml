@@ -1,0 +1,19 @@
+# package
+# multipass launch --cpus 4 --disk 32GB --mem 4GB --name ubuntu-desktop-cloud-init --cloud-init ~/.config/multipass/cloud-init-yaml/ubuntu-desktop.yaml
+
+package_update: true
+package_upgrade: true
+packages:
+  - ubuntu-desktop # enable GUI
+  - xrdp # connect via RDP
+
+users:
+  - name: yammer
+    groups: admin
+    sudo: ALL=(ALL) NOPASSWD:ALL
+    shell: /bin/bash
+
+chpasswd:
+  list: |
+    yammer:yammer
+  expire: False
