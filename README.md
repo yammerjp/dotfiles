@@ -17,6 +17,8 @@ My setting files for Ubuntu / macOS
 - Alacritty
 - asdf
 - fzf
+- HackGen
+- Sheldon
 
 ...etc
 

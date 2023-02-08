@@ -21,7 +21,6 @@ ZSH_SCRIPT_FILENAMES=( \
   "homebrew.zsh" \
 #  "gdb.zsh" \
   "detect-to-edit-dotfiles.zsh" \
-  "asdf.zsh" \
   "completion.zsh" \
 )
 

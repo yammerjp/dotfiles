@@ -76,10 +76,12 @@ dbus-user-session
 dconf-cli
 dconf-gsettings-backend:amd64
 dconf-service
+dctrl-tools
 debconf
 debconf-i18n
 debhelper
 debianutils
+debtree
 dh-autoreconf
 dh-strip-nondeterminism
 dictionaries-common
@@ -100,7 +102,6 @@ eatmydata
 ed
 efibootmgr
 eject
-emacs
 emacs-bin-common
 emacs-common
 emacs-el
@@ -181,6 +182,7 @@ gpg-wks-server
 gpgconf
 gpgsm
 gpgv
+graphviz
 grep
 groff-base
 grub-common
@@ -247,6 +249,7 @@ libalgorithm-diff-perl
 libalgorithm-diff-xs-perl
 libalgorithm-merge-perl
 libamd2:amd64
+libann0
 libanthy1:amd64
 libanthyinput0:amd64
 libaom0:amd64
@@ -334,6 +337,8 @@ libccolamd2:amd64
 libcdio-cdda2:amd64
 libcdio-paranoia2:amd64
 libcdio18:amd64
+libcdt5:amd64
+libcgraph6:amd64
 libcholmod3:amd64
 libchromaprint1:amd64
 libclass-method-modifiers-perl
@@ -493,8 +498,12 @@ libgtk2-perl
 libgtk2.0-0:amd64
 libgtk2.0-bin
 libgtk2.0-common
+libgts-0.7-5:amd64
+libgts-bin
 libgudev-1.0-0:amd64
 libgusb2:amd64
+libgvc6
+libgvpr2:amd64
 libharfbuzz0b:amd64
 libhcrypto4-heimdal:amd64
 libheif1:amd64
@@ -567,6 +576,7 @@ libkrb5-26-heimdal:amd64
 libkrb5-3:amd64
 libkrb5support0:amd64
 libksba8:amd64
+liblab-gamut1:amd64
 liblapack3:amd64
 liblcms2-2:amd64
 libldap-2.4-2:amd64
@@ -693,6 +703,7 @@ libparams-classify-perl
 libparted-fs-resize0:amd64
 libparted2:amd64
 libpath-tiny-perl
+libpathplan4:amd64
 libpcap0.8:amd64
 libpci3:amd64
 libpciaccess0:amd64
@@ -1306,7 +1317,6 @@ xorg-sgml-doctools
 xtrans-dev
 xxd
 xz-utils
-yadm
 yarn
 zerofree
 zlib1g:amd64
