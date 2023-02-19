@@ -1,10 +1,8 @@
-#!/bin/bash -e
-# for GitHub codespaces
+#!/bin/bash
 
-if ! command -v git > /dev/null 2>&1; then
-  echo "Need git" 1>&2
-  exit
-fi
+set -e
+
+#### SETUP DOTFILES
 
 # find dotfiles repository
 if [ "$DOTFILES_REPO" == "" ]; then
@@ -14,15 +12,30 @@ fi
 # setup yadm
 mkdir -p "$HOME/.local/bin"
 YADM_PROGRAM="$HOME/.local/bin/yadm"
-curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm \
-  && chmod a+x "$YADM_PROGRAM"
+curl -fLo "$YADM_PROGRAM" https://github.com/TheLocehiliosan/yadm/raw/master/yadm
+chmod a+x "$YADM_PROGRAM"
 
 # clone dotfiles repository
 # shellcheck disable=SC2097,SC2098
-"$YADM_PROGRAM" list -a > /dev/null 2>&1 \
-  || YADM_PROGRAM="$YADM_PROGRAM" "$YADM_PROGRAM" clone "$DOTFILES_REPO" --bootstrap
+if ! "$YADM_PROGRAM" list -a > /dev/null 2>&1 ; then
+  YADM_PROGRAM="$YADM_PROGRAM" "$YADM_PROGRAM" clone "$DOTFILES_REPO" --bootstrap
+fi
 
-# setup packages
-ls -al ~/
-bash ~/.setup.sh
-
+#### SETUP PACKAGES
+function os_distribution() {
+  if uname -v | grep -q "Ubuntu"; then  # 0 ... ubuntu / 1 ... other
+    echo 'Ubuntu'
+    return
+  fi
+}
+OS="$(uname -s)"          # Darwin Linux
+DIST="$(os_distribution)" # Ubuntu         # allow empty
+if [ "$OS" = Darwin ]; then
+  # shellcheck disable=SC1090
+  "$HOME/setup-darwin.sh"
+elif [ "$OS" = Linux ] && [ "$DIST" = Ubuntu ]; then
+  # shellcheck disable=SC1090
+  "$HOME/setup-ubuntu.sh"
+else
+  echo "setup script is not found..."
+fi
