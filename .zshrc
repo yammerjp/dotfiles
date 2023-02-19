@@ -15,8 +15,13 @@ function main () {
 main
 
 if ! command -v sheldon > /dev/null ; then
-  curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
-    | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+  if [ "$(uname)" = "Darwin" ] && [ "$(uname -m)" = "arm64" ]; then
+    curl -o ~/.local/bin/sheldon https://blob.yammer.jp/bin/sheldon-darwin-arm64-0.7.1
+    chmod u+x ~/.local/bin/sheldon
+  else
+    curl --proto '=https' -fLsS https://rossmacarthur.github.io/install/crate.sh \
+      | bash -s -- --repo rossmacarthur/sheldon --to ~/.local/bin
+  fi
 fi
 
 eval "$(sheldon source)"
