@@ -25,6 +25,8 @@ alias a5="awk '{ print \$5 }'"
 alias purevim='/usr/bin/vim'
 alias nv='nvim'
 alias vim='nvim'
+alias lsof-3306="lsof -i:3306"
+alias ssh-boot='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
