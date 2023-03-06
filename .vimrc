@@ -62,6 +62,8 @@ nnoremap <Esc><Esc> :nohlsearch<CR><ESC>
 " 挿入モードでバックスペース削除を有効
 set backspace=indent,eol,start
 
+inoremap <silent> jj <ESC>
+
 
 "========== その他 ==========
 " 行番号を表示
