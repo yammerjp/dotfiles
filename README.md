@@ -1,43 +1,55 @@
 [![lint](https://github.com/yammerjp/dotfiles/workflows/lint/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3Alint)
+<!--
 [![macOS Setup](https://github.com/yammerjp/dotfiles/workflows/macOS%20Setup/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3A%22macOS+Setup%22)
 [![Ubuntu Setup](https://github.com/yammerjp/dotfiles/workflows/Ubuntu%20Setup/badge.svg)](https://github.com/yammerjp/dotfiles/actions?query=workflow%3A%22Ubuntu+Setup%22)
+-->
 
-# My dotfiles
+# yammerjp's dotfiles (~/.*)
+
+![Desktop Screnn shot](docs/screen-shot-20221230.png)
+
+My setting files for Ubuntu / macOS
+
+- Neovim
+- Yadm
+- Zsh
+- tmux
+- Alacritty
+- asdf
+- fzf
+- HackGen
+- Sheldon
+
+...etc
 
 ## Setup
 
 ### Ubuntu Setup
 
 ```sh
-$ wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
-$ cd ~/src/github.com/yammerjp/dotfiles
-$ make link
-$ make setup
+sudo apt update && sudo apt install git -y
+bash -c "$(wget -q -O https://raw.githubusercontent.com/yammerjp/dotfiles/master/setup.sh)"
 ```
 
 ### macOS Setup
 
 ```sh
 # Sign in to Apple ID
-$ open /System/Applications/App\ Store.app
+open /System/Applications/App\ Store.app
 
 # Setup Homebrew
-$ xcode-select --install
-$ /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+xcode-select --install
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Setup my settings
-$ curl -sL https://raw.githubusercontent.com/yammerjp/dotfiles/master/bin/download.sh | bash
-$ cd ~/src/github.com/yammerjp/dotfiles
-$ make link
-$ make setup
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/yammerjp/dotfiles/master/setup.sh)"
 
 # Enable macOS settings of User Defaults
-$ sudo reboot
+sudo reboot
 
 # Enable karabiner settings
-$ open /Applications/Karabiner-Elements.app/
+open /Applications/Karabiner-Elements.app/
 #   Complex modifications > Add rule > yammerjp's setting > Enable All
-
 ```
 
 ## LICENSE
@@ -46,5 +58,4 @@ MIT
 
 ## ToDo
 
-- [ ] Add anyenv
 - [ ] Add `dot.yammerjp.net/help`

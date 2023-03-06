@@ -1,0 +1,3 @@
+#!/bin/bash
+
+MEMO_REPO_REPONAME=keepa MEMO_REPO_DAYLOG_DIR=text MEMO_DATE_FORMAT='+%Y-%m-%d' memo $@

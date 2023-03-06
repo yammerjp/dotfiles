@@ -1,0 +1,33 @@
+#!/bin/bash
+
+NPM_PACKAGE_LIST="${XDG_CONFIG_HOME}/npm/package-list"
+function npm-global-dump() {
+  npm list --global --parseable --depth=0 | sed '1d' | awk '{gsub(/\/.*\//,"",$1); print}' > "$NPM_PACKAGE_LIST"
+}
+
+function npm-global-bundle() {
+  while read pkg
+  do
+    npm install --global $pkg
+  done < "$NPM_PACKAGE_LIST"
+}
+
+case "$1" in
+  dump)
+    npm-global-dump
+    ;;
+  bundle)
+    npm-global-bundle
+    ;;
+  list)
+    cat "$NPM_PACKAGE_LIST"
+    ;;
+  *)
+    cat <<EOF 1>&2
+Usage:
+        npm-global dump   ... dump installed extensions to $NPM_PACKAGE_LIST
+        npm-global bundle ... install extensions from $NPM_PACKAGE_LIST
+        npm-global list   ... cat $NPM_PACKAGE_LIST
+EOF
+    ;;
+esac

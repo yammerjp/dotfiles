@@ -1,0 +1,23 @@
+import:
+  - "~/.config/alacritty/alacritty.local.yml"
+font:
+  normal:
+    family: HackGen35 Console NFJ
+    style: Regular
+  bold:
+    family: HackGen35 Console NFJ
+    style: Bold
+shell:
+  program: /bin/zsh
+  args:
+    - -l
+    - -c
+    - "tmux a -t 0 || tmux -u"
+window:
+   dimensions:
+     columns: 200
+     lines: 60
+cursor:
+  style:
+    shape: Block
+

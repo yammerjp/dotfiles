@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+
+require 'yaml'
+require 'shellwords'
+
+configs = YAML.load_file(ARGV[0])
+
+class Mshrc
+  def initialize(adapter)
+    @adapter = adapter
+  end
+  def codegen(configs)
+    configs.each do |config|
+      config.each do |key, value|
+        if key === 'alias'
+          @adapter.alias(value)
+        end
+      end
+    end
+  end
+end
+
+class BashAdapter
+  def alias(hash)
+    hash.each do |key, value|
+      puts "alias #{key}=#{value.shellescape}"
+    end
+  end
+end
+
+
+mshrc = Mshrc.new(BashAdapter.new())
+
+mshrc.codegen(configs)

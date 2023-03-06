@@ -1,0 +1,10 @@
+{
+  "require-dev": {
+    "felixfbecker/language-server": "5.4.6"
+  },
+  "require": {
+    "squizlabs/php_codesniffer": "*"
+ },
+ "minimum-stability": "dev",
+ "prefer-stable": true
+}

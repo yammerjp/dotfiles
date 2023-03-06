@@ -1,0 +1,294 @@
+#!/bin/bash -e
+
+OWN_EXECUTION_COMMAND="$0"
+SUB_COMMAND="$1"
+
+# before: functions.sh
+# link
+#   hoge:fuga:wara という文字列をつくる
+#   hoge:fuga:wara という文字列を hoge fuga wara に分割する
+#   hoge/.* となるファイルのリストを作る
+#   hoge/.* fuga/.* wara/.* を link_from link_to に変換
+#   link_to がuniqueになるようなリストをつくる
+#   LINK_TOにファイル/シンボリックリンクが存在するか確認し、存在するなら次のオプションの通りにバックアップをとるなどしてから削除する (オプション, overwrite skip) (オプション: シンボリックリンクでない場合にバックアップを取るかどうか) 
+#     LINK_FROM LINK_TO を引数に受け取る
+#     LINK_TOにLINK_FROMへのシンボリックリンクがある -> exit
+#     LINK_TOにLINK_FROMではない場所へのシンボリックリンクがある -> exit or overwrite
+#     LINK_TOに実態ファイルがある -> backupするorしない && exit or overwrite
+#   (ファイルが存在しなければ) リストの通りにシンボリックリンクを貼る 
+
+# unlink
+#   $HOME/.* というファイル一覧を取得
+#   一蘭に対してシンボリックリンクであるものを抽出
+#   シンボリックリンク先が DOT_DIRS に含まれる場合、そのシンボリックリンクを削除する
+
+function message() {
+  echo "$@" 1>&2
+}
+
+function devide_with_colon() {
+  COLON_SEPARATED_STRING="$1"
+
+  # shellcheck disable=SC2001
+  echo "$COLON_SEPARATED_STRING" | \
+    # awk 'BEGIN{RS=":"}NR==1{printf "%s", $1} NR!=1{printf "\n%s", $1}'
+    tr ':' '\n'
+}
+
+function find_dotfiles() {
+  DOTFILES_DIR="$1"
+
+  DOTFILES_DIR_CHAR_LENGTH=${#DOTFILES_DIR}
+  # shellcheck disable=SC2004
+  find "$DOTFILES_DIR" -type f | cut -c "$(($DOTFILES_DIR_CHAR_LENGTH + 2))-" | grep -e "^\." | grep -v "^\.git/" | grep -v "^\.github/" | grep -v "^\.gitignore$" | sort
+}
+
+function link_from_to() {
+  DOTFILES_DIR="$1"
+  DOTFILES_RELATIVE_PATH="$2"
+
+  LINK_FROM="$DOTFILES_DIR/$DOTFILES_RELATIVE_PATH"
+  LINK_TO="$HOME/$DOTFILES_RELATIVE_PATH"
+  echo "$LINK_FROM $LINK_TO"
+}
+
+function extract_should_link() {
+  # /dev/stdin
+  # link_from link_to
+  # link_from link_to
+  # link_from link_to
+  # ...
+
+  TMPFILE_EXTRACT_SHOULD_LINK="/tmp/dotfiles_extract_should_link_from_to"
+  rm -rf "$TMPFILE_EXTRACT_SHOULD_LINK"
+  touch "$TMPFILE_EXTRACT_SHOULD_LINK"
+
+  while read -r LINK_FROM LINK_TO
+  do
+    # if the same $LINK_TO is not echoed yet
+    if ! grep -q "$LINK_TO" "$TMPFILE_EXTRACT_SHOULD_LINK"; then
+      echo "$LINK_FROM $LINK_TO"
+      echo "$LINK_TO" >> "$TMPFILE_EXTRACT_SHOULD_LINK"
+    fi
+  done
+}
+
+function create_dir() {
+  CREATE_DIR_FILE_PATH="$1"
+  DIRNAME=$(dirname "$CREATE_DIR_FILE_PATH")
+  if [ -d "$DIRNAME" ]; then
+    return
+  fi
+  message "mkdir -p $DIRNAME"
+  mkdir -p "$DIRNAME"
+}
+
+function evacuate_file() {
+  FILE_PATH="$1"
+
+  COUNT=0
+  while true;
+  do
+    EVACUATE_PATH="$FILE_PATH.org${COUNT}"
+    if ! [ -e "$EVACUATE_PATH" ]; then
+      break;
+    fi
+    # shellcheck disable=SC2004
+    COUNT="$(($COUNT + 1))"
+  done
+
+  message "mv -f $FILE_PATH $EVACUATE_PATH"
+  mv -f "$FILE_PATH" "$EVACUATE_PATH"
+}
+
+function resolve_if_conflict() {
+  FILE_PATH="$1"
+  ON_CONFLICTION="$2"
+  # return 0 ... should be create link
+  # return 1 ... should be skip to create link
+
+  # on confliction
+  if ! [ -e "$FILE_PATH" ]; then
+    return 0
+  fi
+
+
+  case $ON_CONFLICTION in
+    # backup old file
+    evacuate )
+      if [ -L "$FILE_PATH" ];then
+        message "delete link from $(readlink "$FILE_PATH") to $FILE_PATH"
+        rm "$FILE_PATH"
+        return 0
+      else
+        evacuate_file "$FILE_PATH"
+        return 0
+      fi
+        ;;
+    # overwrite old file
+    overwrite )
+      message "overwrite $FILE_PATH"
+      rm "$FILE_PATH"
+      return 0
+        ;;
+    # skip linking
+    skip )
+      message "file already exists. skip. $FILE_PATH"
+      return 1
+        ;;
+    # error
+    * )
+      message "ERROR: ON_CONFLICTION is not specified"
+      exit 1
+        ;;
+  esac
+}
+
+function dotfiles_list() {
+  DOTFILE_DIRS_COLON_SEPARATED="$1"
+
+  devide_with_colon "$DOTFILE_DIRS_COLON_SEPARATED" | while read -r DOTFILES_DIR
+  do
+    find_dotfiles "$DOTFILES_DIR" | while read -r DOTFILE_RELATIVE_PATH
+    do
+      link_from_to "$DOTFILES_DIR" "$DOTFILE_RELATIVE_PATH"
+    done
+  done | extract_should_link
+}
+
+function create_link() {
+  LINK_FROM="$1"
+  LINK_TO="$2"
+  ON_CONFLICTION="$3"
+
+  # already exist
+  if [ "$(readlink "$LINK_TO")" = "$LINK_FROM" ];then
+    message "symlink already exists. $LINK_FROM -> $LINK_TO"
+    return
+  fi
+
+  create_dir "$LINK_TO"
+
+  if ! resolve_if_conflict "$LINK_TO" "$ON_CONFLICTION"; then
+    return 1
+  fi
+
+  message "ln -s $LINK_FROM $LINK_TO"
+  ln -s "$LINK_FROM" "$LINK_TO"
+}
+
+function create_links() {
+  DOTFILE_DIRS_COLON_SEPARATED="$1"
+  ON_CONFLICTION="$2"
+
+  dotfiles_list "$DOTFILE_DIRS_COLON_SEPARATED" | while read -r LINK_FROM LINK_TO
+  do
+    create_link "$LINK_FROM" "$LINK_TO" "$ON_CONFLICTION"
+  done
+}
+
+## before: link-list.sh
+function distribution() {
+  if uname -v | grep -q "Ubuntu"; then  # 0 ... ubuntu / 1 ... other 
+    echo 'Ubuntu'
+    return
+  fi
+}
+
+
+OS="$(uname -s)"       # Darwin Linux
+ARCH="$(uname -m)"     # arm64 x86_64
+DIST="$(distribution)" # Ubuntu
+
+function dotdirs_with_line_break() {
+  REPO="yammerjp/dotfiles"
+  DOTFILES_DIR="$HOME/src/github.com/$REPO"
+
+  if [ "$ARCH" != "" ]; then
+    echo "$DOTFILES_DIR/env/$OS-$DIST-$ARCH"
+  fi
+  if [ "$DIST" != "" ]; then
+    echo "$DOTFILES_DIR/env/$OS-$DIST"
+  fi
+  if [ "$OS" != "" ]; then
+    echo "$DOTFILES_DIR/env/$OS"
+  fi
+  echo "$DOTFILES_DIR/env/common"
+  echo -n "$DOTFILES_DIR"
+}
+
+function dotdirs() {
+  dotdirs_with_line_break | \
+   # /usr/bin/awk 'NR==1{printf "%s", $0} NR!=1{printf ":%s", $0}'
+    tr '\n' ':'
+}
+
+# example: 
+#   $HOME/src/github.com/yammerjp/dotfiles/env/Darwin--x86_64:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/common
+#
+#   $HOME/src/github.com/yammerjp/dotfiles/env/Darwin--arm64:$HOME/src/github.com/yammerjp/dotfiles/env/Darwin:$HOME/src/github.com/yammerjp/dotfiles/env/common
+#   
+#   $HOME/src/github.com/yammerjp/dotfiles/Linux-Ubuntu-x86_64:$HOME/src/github.com/yammerjp/dotfiles/env/Linux-Ubuntu:$HOME/src/github.com/yammerjp/dotfiles/env/Linux:$HOME/src/github.com/yammerjp/dotfiles/env/common
+
+function read_env_dotfile_dirs() {
+  # shellcheck disable=SC1091
+  ENVIRONMENTAL_DOTFILE_DIRS="$(dotdirs)"
+  if [ "$DOTFILE_DIRS" != "" ]; then
+    echo -n "$DOTFILE_DIRS"
+    return
+  fi
+
+  # shellcheck disable=SC2153
+  if [ "$DOTFILE_DIR" == "" ]; then
+    echo -n "$ENVIRONMENTAL_DOTFILE_DIRS"
+  else
+    echo -n "$DOTFILE_DIR:$ENVIRONMENTAL_DOTFILE_DIRS"
+  fi
+}
+
+function print_help() {
+  message '# Hello, this is dotfiles written by yammerjp'
+  message "$OWN_EXECUTION_COMMAND"
+  message "$(grep -E '^    [a-z\-]+ *) # @help-message ' "$OWN_EXECUTION_COMMAND" | sed 's/) # @help-message/.../')"
+}
+
+function run_setup() {
+  SUB_COMMAND="$1"
+  DOTFILE_DIRS="$2"
+  OWN_EXECUTION_COMMAND="$3"
+
+  case "$SUB_COMMAND" in
+    help          ) # @help-message Show this help
+      print_help
+      ;;
+    link          ) # @help-message Put symlinks of a dotfile
+      create_links "$DOTFILE_DIRS" evacuate
+      ;;
+    link-skip     ) # @help-message Put symlinks of a dotfile without confliction
+      create_links "$DOTFILE_DIRS" skip
+      ;;
+
+    link-overwrite) # @help-message Put symlinks of a dotfile with overwriting if they conflict
+      create_links "$DOTFILE_DIRS" overwrite
+      ;;
+    setup         ) # @help-message Run setup script for your environment (install packages, os settings, and so on ...)
+      message "you can execute 'make setup' after excuting '$OWN_EXECUTION_COMMAND link'"
+      bash ~/.setup.sh
+      ;;
+    dotdirs       ) # @help-message Show dotfile directories for your environment
+      echo "$DOTFILE_DIRS"
+      ;;
+    * )
+      print_help
+      ;;
+  esac
+
+}
+
+DOTFILE_DIRS="$(read_env_dotfile_dirs)"
+if [ "$1" ==  "--debug" ]; then
+  DOTFILES_RUN_MODE=debug
+fi
+if [ "$DOTFILES_RUN_MODE" !=  "debug" ]; then
+  run_setup "$SUB_COMMAND" "$DOTFILE_DIRS" "$OWN_EXECUTION_COMMAND"
+fi
