@@ -6,3 +6,20 @@ fi
 if which brew > /dev/null; then
   brew upgrade
 fi
+
+if which yadm > /dev/null; then
+  yadm pl
+  yadm status
+fi
+
+if which today.private > /dev/null; then
+  today.private
+fi
+
+if which today.company > /dev/null; then
+  today.company
+fi
+
+if which ghq > /dev/null; then
+  ghq list | ghq get --update --parallel
+fi
