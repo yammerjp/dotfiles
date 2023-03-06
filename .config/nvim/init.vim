@@ -177,3 +177,11 @@ let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
 
 " マッピング設定
 nmap <buffer><leader>sf <Plug>(sqlfmt)
+
+if executable('awk-language-server')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'awk-language-server',
+        \ 'cmd': {server_info->['awk-language-server']},
+        \ 'allowlist': ['awk'],
+        \ })
+endif
