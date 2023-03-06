@@ -24,7 +24,6 @@ alias a4="awk '{ print \$4 }'"
 alias a5="awk '{ print \$5 }'"
 alias purevim='/usr/bin/vim'
 alias nv='nvim'
-alias vim='nvim'
 alias lsof-3306="lsof -i:3306"
 alias ssh-boot='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 
