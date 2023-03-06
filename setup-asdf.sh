@@ -14,7 +14,8 @@ if which apt-get > /dev/null; then
   sudo apt-get install -y autoconf bison patch build-essential rustc libssl-dev libyaml-dev libreadline6-dev zlib1g-dev libgmp-dev libncurses5-dev libffi-dev libgdbm6 libgdbm-dev libdb-dev uuid-dev
 elif which brew > /dev/null; then
   brew install openssl@3 readline libyaml gmp rust bison
-  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$(brew --prefix openssl@3)"
+  prefix="$(brew --prefix openssl@3)"
+  export RUBY_CONFIGURE_OPTS="--with-openssl-dir=$prefix"
   # need to execute other commands to install for ruby ~3.0.x
   # ref: https://github.com/rbenv/ruby-build/wiki#macos
 else

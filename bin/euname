@@ -10,11 +10,11 @@ function os_distribution() {
 case "$1" in
   os)
     # ex. Darwin Linux
-    uname -s | tr '[A-Z]' '[a-z]'
+    uname -s | tr '[:upper:]' '[:lower:]'
     ;;
   architecture)
     # ex. arm64 x86_64
-    uname -m | tr '[A-Z]' '[a-z]'
+    uname -m | tr '[:upper:]' '[:lower:]'
     ;;
   distribution)
     # ex. Ubuntu

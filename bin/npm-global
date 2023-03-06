@@ -6,9 +6,9 @@ function npm-global-dump() {
 }
 
 function npm-global-bundle() {
-  while read pkg
+  while read -r pkg
   do
-    npm install --global $pkg
+    npm install --global "$pkg"
   done < "$NPM_PACKAGE_LIST"
 }
 

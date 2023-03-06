@@ -8,7 +8,7 @@ if [ "$COMPARING_BRANCH" == "" ]; then
   COMPARING_BRANCH="origin/master"
 fi
 
-if ! $YADM_PROGRAM diff --exit-code --quiet $COMPARING_BRANCH ; then
+if ! $YADM_PROGRAM diff --exit-code --quiet "$COMPARING_BRANCH"; then
   cat 1>&2 << EOF
 
 ===
