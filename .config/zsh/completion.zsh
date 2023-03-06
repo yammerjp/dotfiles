@@ -1,5 +1,6 @@
 # キーバインドをviにする
 bindkey -v
+bindkey "jj" vi-cmd-mode
 
 # 補完機能有効にする
 autoload -U compinit

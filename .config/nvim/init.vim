@@ -170,7 +170,7 @@ noremap sP :GFiles?<CR>
 noremap sb :Buffer<CR>
 noremap sf :Rg<CR>
 noremap bt :NERDTree<CR>
-
+inoremap <silent> jj <ESC>
 
 " フォーマットのオプションを変更
 let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
