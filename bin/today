@@ -8,6 +8,7 @@ if which brew > /dev/null; then
 fi
 
 if which yadm > /dev/null; then
+  yadm fetch
   yadm pl
   yadm status
 fi
