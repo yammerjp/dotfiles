@@ -15,7 +15,7 @@ fi
 # clone dotfiles repository
 # shellcheck disable=SC2097,SC2098
 if ! "$YADM_PROGRAM" list -a > /dev/null 2>&1 ; then
-  YADM_PROGRAM="$YADM_PROGRAM" "$YADM_PROGRAM" clone "$DOTFILES_REPO:-https://github.com/yammerjp/dotfiles" --bootstrap
+  YADM_PROGRAM="$YADM_PROGRAM" "$YADM_PROGRAM" clone "${DOTFILES_REPO:-https://github.com/yammerjp/dotfiles}" --bootstrap
 fi
 
 if [ "$CODE_SPACES" == "true" ]; then
