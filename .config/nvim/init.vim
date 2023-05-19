@@ -1,4 +1,4 @@
-"========== インデント ==========
+"========== インデント =========
 " 不可視文字を可視化(タブが「>-」と表示される)
 set list listchars=tab:>-
 " インデント幅
@@ -127,6 +127,9 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 Plug 'mattn/vim-sqlfmt'
+Plug 'vim-denops/denops.vim'
+Plug 'kat0h/bufpreview.vim', { 'do': 'deno task prepare' }
+Plug 'github/copilot.vim'
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -170,6 +173,8 @@ noremap sP :GFiles?<CR>
 noremap sb :Buffer<CR>
 noremap sf :Rg<CR>
 noremap bt :NERDTree<CR>
+noremap sg :G<Space>
+noremap sb :Buffers<CR>
 inoremap <silent> jj <ESC>
 
 " フォーマットのオプションを変更
