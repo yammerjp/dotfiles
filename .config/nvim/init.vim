@@ -127,6 +127,7 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 Plug 'mattn/vim-sqlfmt'
+Plug 'neoclide/coc.nvim'
 call plug#end()
 " brew install fzf
 " brew install repgrep
@@ -185,3 +186,5 @@ if executable('awk-language-server')
         \ 'allowlist': ['awk'],
         \ })
 endif
+
+source ~/.config/nvim/coc-keybindings.vim
