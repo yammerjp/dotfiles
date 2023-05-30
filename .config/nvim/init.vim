@@ -127,6 +127,7 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 Plug 'mattn/vim-sqlfmt'
+Plug 'ap/vim-buftabline'
 call plug#end()
 " brew install fzf
 " brew install repgrep
