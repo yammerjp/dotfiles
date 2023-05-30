@@ -127,12 +127,14 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 Plug 'mattn/vim-sqlfmt'
+Plug 'neoclide/coc.nvim'
 Plug 'vim-denops/denops.vim'
 Plug 'kat0h/bufpreview.vim', { 'do': 'deno task prepare' }
 Plug 'github/copilot.vim'
 call plug#end()
 " brew install fzf
 " brew install repgrep
+" brew install deno
 " need nodejs and npm (for LSP)
 
 " GitGutter
@@ -155,19 +157,6 @@ syntax enable
 set background=dark
 colorscheme gruvbox
 
-" deno and vim-lsp
-if executable("deno")
-  augroup LspTypeScript
-    autocmd!
-    autocmd User lsp_setup call lsp#register_server({
-    \ "name": "deno lsp",
-    \ "cmd": {server_info -> ["deno", "lsp"]},
-    \ "root_uri": {server_info->lsp#utils#path_to_uri(lsp#utils#find_nearest_parent_file_directory(lsp#utils#get_buffer_path(), "tsconfig.json"))},
-    \ "whitelist": ["typescript", "typescript.tsx"],
-    \ })
-  augroup END
-endif
-
 noremap sp :GFiles<CR>
 noremap sP :GFiles?<CR>
 noremap sb :Buffer<CR>
@@ -183,10 +172,4 @@ let g:sqlfmt_program = "sqlformat --comma_first true -r -k upper -o %s -"
 " マッピング設定
 nmap <buffer><leader>sf <Plug>(sqlfmt)
 
-if executable('awk-language-server')
-    au User lsp_setup call lsp#register_server({
-        \ 'name': 'awk-language-server',
-        \ 'cmd': {server_info->['awk-language-server']},
-        \ 'allowlist': ['awk'],
-        \ })
-endif
+source ~/.config/nvim/coc-keybindings.vim
