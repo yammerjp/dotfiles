@@ -35,3 +35,7 @@ if (which zprof > /dev/null) ;then
 fi
 
 alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
+
+if (which rtx > /dev/null); then
+  eval "$(rtx activate zsh)"
+fi

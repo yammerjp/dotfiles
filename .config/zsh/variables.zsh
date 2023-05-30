@@ -18,4 +18,5 @@ path=(
   $HOME/bin(N-/)
   $HOME/.bin(N-/)
   $HOME/.local/bin(N-/)
+  $HOME/Library/Python/3.9/bin(N-/)
 )

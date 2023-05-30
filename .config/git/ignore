@@ -9,3 +9,4 @@ vendor/**
 ehthumbs.db
 Thumbs.db
 desktop.ini
+.tool-versions
