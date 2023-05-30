@@ -75,3 +75,4 @@
 	g = "!f(){ git grep "$@" ':/'; };f"
 	sw2 = !git branch -a | fzf | xargs git checkout
 	sw3 = !git checkout $(git branch -a | fzf )
+	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
