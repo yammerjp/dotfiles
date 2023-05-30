@@ -59,6 +59,7 @@ brew "gnu-sed"
 brew "gnupg"
 brew "go"
 brew "gobject-introspection"
+brew "golangci-lint"
 brew "goreleaser"
 brew "httrack"
 brew "hugo"
@@ -137,13 +138,11 @@ cask "sequel-ace"
 cask "visual-studio-code"
 cask "vivaldi"
 mas "1Password 7", id: 1333542190
-mas "Bitwarden", id: 1352778147
 mas "ForkLift", id: 412448059
 mas "Free Ruler", id: 1483172210
-mas "Keynote", id: 409183694
 mas "Kindle", id: 405399194
 mas "Magnet", id: 441258766
 mas "Microsoft Remote Desktop", id: 1295203466
 mas "Slack", id: 803453959
-mas "TweetDeck", id: 485812721
+mas "Tailscale", id: 1475387142
 mas "virtualOS", id: 1614659226
