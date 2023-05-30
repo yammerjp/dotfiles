@@ -26,6 +26,8 @@
 	root = ~/src
 [log]
 	date = format:%Y/%m/%d %H:%M:%S
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [alias]
 	a = add
 	au = "add -u" # add tracked files
