@@ -36,9 +36,9 @@ if which apt-get > /dev/null; then
   sudo apt-get update -y
   sudo apt-get install -y autoconf bison build-essential curl gettext git libgd-dev libcurl4-openssl-dev libedit-dev libicu-dev libjpeg-dev libmysqlclient-dev libonig-dev libpng-dev libpq-dev libreadline-dev libsqlite3-dev libssl-dev libxml2-dev libzip-dev openssl pkg-config re2c zlib1g-dev
 elif which brew > /dev/null; then
-  brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip openssl@1.1 pkg-config re2c zlib
+  brew install autoconf automake bison freetype gd gettext icu4c krb5 libedit libiconv libjpeg libpng libxml2 libzip openssl@1.1 pkg-config re2c zlib libsodium bison re2c gd libiconv libzip oniguruma
 else
-  echo "Need dependencies for ruby"
+  echo "Need dependencies for PHP"
   exit 1
 fi
 asdf plugin add php || echo 'already added plugin'
