@@ -1,0 +1,10 @@
+#!/bin/bash
+# ref: https://tech.buty4649.net/entry/2023/03/29/122505
+
+if [[ "$1" == "exec" ]]; then
+    shift
+    command=$1; shift
+    set - exec $command -- $command "$@"
+fi
+
+exec rtx "$@"
