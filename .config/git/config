@@ -75,3 +75,4 @@
 	g = "!f(){ git grep "$@" ':/'; };f"
 	sw2 = !git branch -a | fzf | xargs git checkout
 	sw3 = !git checkout $(git branch -a | fzf )
+	initc = !git init && git commit -m Initial\\ Commit --allow-empty
