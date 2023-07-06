@@ -127,6 +127,7 @@ Plug 'jonsmithers/vim-html-template-literals'
 Plug 'pangloss/vim-javascript'
 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app && npm install'  }
 Plug 'mattn/vim-sqlfmt'
+Plug 'ap/vim-buftabline'
 Plug 'neoclide/coc.nvim'
 Plug 'vim-denops/denops.vim'
 Plug 'kat0h/bufpreview.vim', { 'do': 'deno task prepare' }
