@@ -92,3 +92,7 @@ function mknow() {
     mkdir -p "$HOME/tmp/$(date '+%Y-%m-%dT%H:%M:%S%z')"
     cd $_
 }
+
+function random() {
+  date | sha1sum | awk '{ print $1 }' | tee /dev/stderr | cpy
+}
