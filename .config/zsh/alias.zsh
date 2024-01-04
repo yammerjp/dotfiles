@@ -26,6 +26,7 @@ alias purevim='/usr/bin/vim'
 alias nv='nvim'
 alias lsof-3306="lsof -i:3306"
 alias ssh-boot='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
+alias tellme="openai api chat_completions.create -m gpt-4-1106-preview -g user"
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
