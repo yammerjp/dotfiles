@@ -34,6 +34,10 @@ if (which zprof > /dev/null) ;then
   zprof | cat
 fi
 
+if (which mise > /dev/null); then
+  alias rtx=mise
+fi
+
 if (which rtx > /dev/null); then
   eval "$(rtx activate zsh)"
 fi
