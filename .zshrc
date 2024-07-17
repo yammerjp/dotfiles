@@ -40,3 +40,5 @@ if (which mise > /dev/null); then
 fi
 
 alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
+
+alias code=cursor
