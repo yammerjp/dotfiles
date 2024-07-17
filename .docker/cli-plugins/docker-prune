@@ -1,0 +1,11 @@
+#!/bin/bash
+
+set -e
+
+if [ "$1" == "docker-cli-plugin-metadata" ]; then
+  echo '{"SchemaVersion":"0.1.0", "Vendor":"me@yammer.jp","Version":"v0.0.1","ShortDescription": "prune image, container and volume" }'
+else
+  docker image prune
+  docker container prune
+  docker volume prune
+fi
