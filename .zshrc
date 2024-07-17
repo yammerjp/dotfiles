@@ -36,10 +36,7 @@ fi
 
 if (which mise > /dev/null); then
   alias rtx=mise
-fi
-
-if (which rtx > /dev/null); then
-  eval "$(rtx activate zsh)"
+  eval "$(mise activate)"
 fi
 
 alias ztime="time (ZSH_TIME=true zsh -i -c exit)"
