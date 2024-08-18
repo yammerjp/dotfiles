@@ -19,7 +19,7 @@
 [core]
 	editor = vim
 	quotepath = false
-	pager = "LESSCHARSET=utf-8 less"
+	pager = git-split-diffs --color | less -RFX
 [commit]
 	verbose = true
 [ghq]
@@ -77,3 +77,6 @@
 	g = "!f(){ git grep "$@" ':/'; };f"
 	sw2 = !git branch -a | fzf | xargs git checkout
 	sw3 = !git checkout $(git branch -a | fzf )
+	initc = !git init && git commit -m Initial\\ Commit --allow-empty
+	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
+	en =  "!git switch -c yammer_$(date +'%Y%m%d')_$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10)"
