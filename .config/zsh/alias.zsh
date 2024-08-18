@@ -1,5 +1,6 @@
 alias du='du -h'
 alias vi='vim -u NONE'
+alias vim='nvim'
 alias tree='tree -N'
 alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
@@ -96,4 +97,7 @@ function mknow() {
 
 function random() {
   date | sha1sum | awk '{ print $1 }' | tee /dev/stderr | cpy
+}
+function dotenv() {
+  eval "$(cat .env <(echo) <(declare -x))"
 }

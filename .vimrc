@@ -31,3 +31,4 @@ set softtabstop=2 " タブキー押下時に挿入される文字幅を指定
 set shiftwidth=2 " インデント幅
 set tabstop=2 " タブ文字の表示幅
 set nobomb
+colorscheme pablo

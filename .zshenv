@@ -10,3 +10,9 @@ fi
 if [ -e "$HOME/.config/zsh/variables.zsh" ]; then
   source $HOME/.config/zsh/variables.zsh
 fi
+
+if [ -e "$HOME/.config/zsh/asdf.zsh" ]; then
+  source $HOME/.config/zsh/asdf.zsh
+fi
+
+. "$HOME/.cargo/env"
