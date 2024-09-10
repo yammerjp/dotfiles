@@ -2,11 +2,12 @@ if [ -f ~/.zshrc ] && [ "$LOADED_ZSHRC" != "true" ] ; then
   . ~/.zshrc
 fi
 
-##
-# Your previous /Users/yammer/.zprofile file was backed up as /Users/yammer/.zprofile.macports-saved_2022-12-02_at_04:51:21
-##
-
-# MacPorts Installer addition on 2022-12-02_at_04:51:21: adding an appropriate PATH variable for use with MacPorts.
-export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Finished adapting your PATH environment variable for use with MacPorts.
-
+if [ -e "/opt/homebrew" ]; then
+  export HOMEBREW_PREFIX="/opt/homebrew";
+  export HOMEBREW_CELLAR="/opt/homebrew/Cellar";
+  export HOMEBREW_REPOSITORY="/opt/homebrew";
+  export PATH="/opt/homebrew/bin:/opt/homebrew/sbin${PATH+:$PATH}";
+  export MANPATH="/opt/homebrew/share/man${MANPATH+:$MANPATH}:";
+  export INFOPATH="/opt/homebrew/share/info:${INFOPATH:-}";
+fi

@@ -19,13 +19,15 @@
 [core]
 	editor = vim
 	quotepath = false
-	pager = git-split-diffs --color | less -RFX
+#	pager = git-split-diffs --color | less -RFX
 [commit]
 	verbose = true
 [ghq]
 	root = ~/src
 [log]
 	date = format:%Y/%m/%d %H:%M:%S
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
 [alias]
 	a = add
 	au = "add -u" # add tracked files

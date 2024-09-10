@@ -1,5 +1,6 @@
 alias du='du -h'
 alias vi='vim -u NONE'
+alias vim='nvim'
 alias tree='tree -N'
 alias search='find . -type f | grep -v "/.git/" | xargs grep'
 alias covid19='curl https://corona-stats.online/'
@@ -101,4 +102,8 @@ function random() {
 
 function op-to-env-file() {
   op item get "$1" --format json  | jq -r '.fields[] | select(.value) | (.label) + "=" + (.reference)'
+}
+
+function dotenv() {
+  eval "$(cat .env <(echo) <(declare -x))"
 }

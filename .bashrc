@@ -4,3 +4,4 @@ if [ -e ~/.git-prompt.sh ]; then
   # プロンプト表示前に、ブランチ名をPS1に代入する
   PROMPT_COMMAND='__git_ps1 "[\u@\h \t \w" "]\\\$ "'
 fi
+. "$HOME/.cargo/env"
