@@ -98,3 +98,7 @@ function mknow() {
 function random() {
   date | sha1sum | awk '{ print $1 }' | tee /dev/stderr | cpy
 }
+
+function op-to-env-file() {
+  op item get "$1" --format json  | jq -r '.fields[] | select(.value) | (.label) + "=" + (.reference)'
+}
