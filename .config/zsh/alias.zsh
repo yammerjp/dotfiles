@@ -101,3 +101,25 @@ function random() {
 function dotenv() {
   eval "$(cat .env <(echo) <(declare -x))"
 }
+
+function ssht() {
+  if [ "$1" = "" ]; then
+    cat <<EOT
+Usage: $0 <server-name> <commands ...>
+
+Configuration Example:
+
+    Host myhost
+    HostName www.example.com
+    LocalForward 8000 localhost:8000
+EOT
+
+    return
+  fi
+
+  ssh $1 -N &
+  local pid=$!  # SSHのプロセスIDを保存する
+  shift  # $2以降はコマンドとその引数
+  $@  # コマンドを呼び出す
+  kill $pid  # SSHポートフォワーディングを止める
+}
