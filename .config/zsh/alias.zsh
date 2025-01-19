@@ -1,3 +1,4 @@
+alias k=kubectl
 alias du='du -h'
 alias vi='vim -u NONE'
 alias vim='nvim'
