@@ -79,4 +79,6 @@
 	sw3 = !git checkout $(git branch -a | fzf )
 	initc = !git init && git commit -m Initial\\ Commit --allow-empty
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
-	en =  "!git switch -c yammer_$(date +'%Y%m%d')_$(cat /dev/urandom | head -c 50 | sha256sum | head -c 10)"
+	en =  "!git switch -c yammer-$(date +'%Y%m%d')-$(cat /dev/urandom | head -c 50 | sha256sum | head -c 4)"
+	aic = "!ai-commit.sh"
+

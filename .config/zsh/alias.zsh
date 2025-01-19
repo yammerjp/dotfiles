@@ -29,6 +29,7 @@ alias nv='nvim'
 alias lsof-3306="lsof -i:3306"
 alias ssh-boot='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
 alias tellme="openai api chat_completions.create -m gpt-4-1106-preview -g user"
+alias ai="chatgpt --interactive"
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
@@ -99,6 +100,11 @@ function mknow() {
 function random() {
   date | sha1sum | awk '{ print $1 }' | tee /dev/stderr | cpy
 }
+
+function op-to-env-file() {
+  op item get "$1" --format json  | jq -r '.fields[] | select(.value) | (.label) + "=" + (.reference)'
+}
+
 function dotenv() {
   eval "$(cat .env <(echo) <(declare -x))"
 }
