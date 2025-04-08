@@ -1,0 +1,24 @@
+
+[cursor.style]
+shape = "Block"
+
+[font.bold]
+family = "HackGen35 Console NF"
+style = "Bold"
+
+[font.normal]
+family = "HackGen35 Console NF"
+style = "Regular"
+
+[terminal.shell]
+args = ["-l", "-c", "tmux a -t 0 || tmux -u"]
+program = "/bin/zsh"
+
+[window.dimensions]
+columns = 200
+lines = 60
+
+[general]
+import = ["/Users/k.nakayama/.config/alacritty/alacritty.local.yml"]
+
+[terminal]
