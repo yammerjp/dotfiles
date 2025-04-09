@@ -3,10 +3,11 @@ awscli = ['latest']
 go = ['latest']
 heroku-cli = ['latest']
 node = ['latest', 'lts', '14', '16', '18', '20']
-ruby = "3.2.2"
+ruby = "latest"
 python = "3.12.4"
 php = ['latest', '7.4.33']
 terraform = ['latest', '1.0.5', '1.3.1', '1.3.3', '1.3.4', '1.3.6', '1.3.7', '1.4.6', '1.5.0', '1.5.1', '1.5.2']
+deno = "latest"
 [settings]
 jobs = 4
 experimental = true
