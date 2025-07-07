@@ -32,28 +32,6 @@ function gclone() {
   echo "Cloned from '${clone_from}' to '${clone_to}', and moved there"
 }
 
-# ghqでcloneしたリポジトリ一覧
-function ghq_code() {
-  local repo="$(ghq list | fzf --preview "bat --color=always --style=numbers --line-range=:100 $(ghq root)/{}/README.*")"
-  if [ -n "$repo" ]; then
-    BUFFER="cd $(ghq root)/${repo}"
-    zle accept-line
-  fi
-  zle clear-screen
-}
-zle -N ghq_code
-bindkey '^f' ghq_code
-
 function cr() {
-  QUERY="$@"
-  if [ "$QUERY" != "" ]; then
-    repo_path_from_root="$(ghq list | fzf --query "$@")"
-  else
-    repo_path_from_root="$(ghq list | fzf )"
-  fi
-  ret="$?"
-  if [ "$ret" -ne 0 ]; then
-    return "$ret"
-  fi
-  cd "$(ghq root)/$repo_path_from_root"
+  cd "$(ghq root)/$(ghq list | fzf --preview "bat --color=always --style=numbers --line-range=:100 $(ghq root)/{}/README.*")"
 }

@@ -93,7 +93,7 @@ function svim() {
 }
 
 function mknow() {
-    mkdir -p "$HOME/tmp/$(date '+%Y-%m-%dT%H:%M:%S%z')"
+  mkdir -p "$HOME/tmp/$(date '+%Y%m%d')-$(date | sha1sum | awk '{print substr($0, 0, 4)}')"
     cd $_
 }
 
@@ -130,3 +130,15 @@ EOT
   $@  # コマンドを呼び出す
   kill $pid  # SSHポートフォワーディングを止める
 }
+
+function dcr() {
+  local service
+  service=$(docker compose config --services | fzf --height=10 --layout=reverse --prompt='Select service: ')
+  if [[ -n "$service" ]]; then
+    LBUFFER="docker compose run --rm $service "
+    zle redisplay
+  fi
+}
+
+zle -N dcr
+bindkey '^X^D' dcr
