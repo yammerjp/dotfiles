@@ -20,6 +20,7 @@ ZSH_SCRIPT_FILENAMES=( \
   "git.zsh" \
   "homebrew.zsh" \
 #  "gdb.zsh" \
+  "gitw.zsh" \
   "detect-to-edit-dotfiles.zsh" \
   "completion.zsh" \
 )
