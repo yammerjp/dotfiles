@@ -31,6 +31,7 @@
 [alias]
 	a = add
 	au = "add -u" # add tracked files
+  aicommit = "!f() { COMMITMSG=$(claude -p 'Generate ONLY a one-line Git commit message in English, using imperative mood, summarizing what was changed and why, based strictly on the contents of `git diff --cached`. Do not add explanation or a body. Output only the commit summary line.'); git commit -m \"$COMMITMSG\" -e; }; f"
 	c = "commit -v"
 	cm = "!f(){ git commit -m \"$*\" ; };f"
 	fixit = "commit --amend --no-edit"
