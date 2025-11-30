@@ -82,4 +82,4 @@
 	sed =  "!f () { git grep -l $1 | xargs sed -i s/$1/$2/g; }; f"
 	en =  "!git switch -c yammer-$(date +'%Y%m%d')-$(cat /dev/urandom | head -c 50 | sha256sum | head -c 4)"
 	aic = "!ai-commit.sh"
-
+	w = "!f() { gitw \"$@\"; }; f"
