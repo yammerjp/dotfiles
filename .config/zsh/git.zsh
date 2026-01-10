@@ -33,5 +33,8 @@ function gclone() {
 }
 
 function cr() {
-  cd "$(ghq root)/$(ghq list | fzf --preview "bat --color=always --style=numbers --line-range=:100 $(ghq root)/{}/README.*")"
+  local src_root="$HOME/src"
+  local repo_list=$(find "$src_root" -maxdepth 4 -name .git -type d -prune 2>/dev/null | sed 's|/.git$||')
+  TARGET_DIR="$(echo "$repo_list" | fzf --preview "bat --color=always --style=numbers --line-range=:100 {}/README.*")"
+  cd "$TARGET_DIR"
 }
