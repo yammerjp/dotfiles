@@ -3,33 +3,11 @@ alias du='du -h'
 alias vi='vim -u NONE'
 alias vim='nvim'
 alias tree='tree -N'
-alias search='find . -type f | grep -v "/.git/" | xargs grep'
-alias covid19='curl https://corona-stats.online/'
 alias ssh='ssh -A'
-alias ipe='curl ipinfo.io/ip'
-alias bip='bundle install --path vendor/bundle'
 alias eucjp2utf8="iconv -f EUC-JP -t UTF-8"
-alias vim-config-edit="vim $XDG_CONFIG_HOME/nvim/init.vim"
-alias vim-origin="/usr/bin/vim"
-alias dc="docker compose"
-alias snip="vim ~/src/github.com/yammerjp/memo/snippets.md"
 alias y='yadm'
 alias yadm-private="YADM_REPO=$HOME/.local/share/yadm/repo-private.git yadm --yadm-repo $HOME/.local/share/yadm/repo-private.git"
-alias .z="vim ~/.config/zsh/*"
-alias .g="vim ~/.config/git/*"
-alias .v="vim $XDG_CONFIG_HOME/nvim/init.vim"
-alias .t="vim ~/.tmux.conf"
-alias a1="awk '{ print \$1 }'"
-alias a2="awk '{ print \$2 }'"
-alias a3="awk '{ print \$3 }'"
-alias a4="awk '{ print \$4 }'"
-alias a5="awk '{ print \$5 }'"
-alias purevim='/usr/bin/vim'
 alias nv='nvim'
-alias lsof-3306="lsof -i:3306"
-alias ssh-boot='eval $(ssh-agent) && ssh-add ~/.ssh/id_rsa'
-alias tellme="openai api chat_completions.create -m gpt-4-1106-preview -g user"
-alias ai="chatgpt --interactive"
 
 # colordiff
 if [[ -x `which colordiff 2> /dev/null` ]]; then
@@ -38,25 +16,6 @@ else
   alias diff='diff -u'
 fi
 export LESS='-R'
-
-# color
-function zshcolors () {
-  for num in `seq 256`;do
-    echo -ne "\e[38;5;${num}m${num}\t\e[0m"
-    if [ `expr $num "%" 16` = 0 ];then
-      echo
-    fi
-  done
-  for num in `seq 256`;do
-    echo -ne "\e[48;5;${num}m${num}\t\e[0m"
-    row=`expr $num "%" 16`
-    if [ `expr $num "%" 16` = 0 ];then
-      echo
-    fi
-  done
-}
-
-# mmv
 
 # man
 function man() {
@@ -73,72 +32,7 @@ function man() {
 # [manの読み方（初心者向け） - Qiita](https://qiita.com/aosho235/items/0f2b73d08eb645c05208)
 # [manコマンドで表示されるドキュメントの色付けをカスタマイズ - Steel Dragon 14106](https://raimon49.github.io/2017/03/31/man-with-colored-pager.html)
 
-function cpnew() {
-  cp ~/.config/yammerjp/competitive-programming-template.cpp ./$1
-  vim $1
-}
-
-function hgrep() {
-    command hgrep --term-width "$COLUMNS" "$@" | less -R
-}
-
-function svim() {
-    tmux has-session &> /dev/null
-    if [ $? = 0 ] && [ $COLUMNS -ge 120 ];
-    then
-        tmux split-window -h -p 70 "vim $1"
-    else
-        vim $1
-    fi
-}
-
 function mknow() {
   mkdir -p "$HOME/tmp/$(date '+%Y%m%d')-$(date | sha1sum | awk '{print substr($0, 0, 4)}')"
     cd $_
 }
-
-function random() {
-  date | sha1sum | awk '{ print $1 }' | tee /dev/stderr | cpy
-}
-
-function op-to-env-file() {
-  op item get "$1" --format json  | jq -r '.fields[] | select(.value) | (.label) + "=" + (.reference)'
-}
-
-function dotenv() {
-  eval "$(cat .env <(echo) <(declare -x))"
-}
-
-function ssht() {
-  if [ "$1" = "" ]; then
-    cat <<EOT
-Usage: $0 <server-name> <commands ...>
-
-Configuration Example:
-
-    Host myhost
-    HostName www.example.com
-    LocalForward 8000 localhost:8000
-EOT
-
-    return
-  fi
-
-  ssh $1 -N &
-  local pid=$!  # SSHのプロセスIDを保存する
-  shift  # $2以降はコマンドとその引数
-  $@  # コマンドを呼び出す
-  kill $pid  # SSHポートフォワーディングを止める
-}
-
-function dcr() {
-  local service
-  service=$(docker compose config --services | fzf --height=10 --layout=reverse --prompt='Select service: ')
-  if [[ -n "$service" ]]; then
-    LBUFFER="docker compose run --rm $service "
-    zle redisplay
-  fi
-}
-
-zle -N dcr
-bindkey '^X^D' dcr
