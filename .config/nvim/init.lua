@@ -25,6 +25,3 @@ end
 
 require "lazy_setup"
 require "polish"
-
-require "config.php-encoding"
-require "config.smarty-encoding"
